@@ -1,0 +1,10 @@
+.idea
+.eslintcache
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+node_modules
+dist
+storybook-static
+bundle-analysis.html
+*.tgz

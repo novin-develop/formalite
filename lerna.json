@@ -1,0 +1,67 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "0.0.0",
+  "npmClient": "npm",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "packages/website/*"
+      ]
+    },
+    "version": {
+      "message": "chore(release): :bookmark: %s",
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "yes": true,
+      "allowBranch": "main",
+      "changelogPreset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "Features"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes"
+          },
+          {
+            "type": "chore",
+            "hidden": true
+          },
+          {
+            "type": "docs",
+            "hidden": true
+          },
+          {
+            "type": "style",
+            "hidden": true
+          },
+          {
+            "type": "refactor",
+            "hidden": true
+          },
+          {
+            "type": "perf",
+            "hidden": true
+          },
+          {
+            "type": "test",
+            "hidden": true
+          }
+        ],
+        "commitUrlFormat": "https://github.com/novin-develop/formalite/commit/{{hash}}",
+        "issueUrlFormat": "https://github.com/novin-develop/formalite/issues/{{id}}",
+        "releaseCommitMessageFormat": "chore(release): :bookmark: {{currentTag}}",
+        "issuePrefixes": [
+          "#"
+        ],
+        "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
+        "userUrlFormat": "{{host}}/{{user}}"
+      }
+    }
+  }
+}

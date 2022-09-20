@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Intro/Formalite Props" />
+
+<style>{`
+  table {
+      width:100%;
+  }
+  .red {
+    color:red
+  }
+`}</style>
+
+# Formalite Props 
+<br/>
+Props of Formalite component 
+
+| Name                                       | Type                                      | Description | Defaults |
+| ------------------------------------------ | ----------------------------------------- | ----------- | -------- |
+| formString<span class="red">*</span>       | <code>MainType</code>                     | Main part of Formalite how add input component from String. | - |
+| onSubmit<span class="red">*</span>         | <code>Function</code>                     | Callback to be called when the form submitted. | - |
+| validationSchema<span class="red">*</span> | <code>OptionalObjectSchema</code>         | Yup Schema. it will use to validate form - <a href="https://github.com/jquense/yup#schema-basics">Yup Document</a>  | - | 
+| initialValues<span class="red">*</span>    | <code>T</code>                            | Initial field values of the form, Formik will make these values available to render methods component as values. | - |
+| formRef<span class="red">*</span>          | <code>RefObject<ReferenceType<T\>></code> | a special reference who can control form with it (callSubmit,callRest,formik,addRow)| - |
+| offsetScroll                               | <code>number</code>                       | when Formalite scroll to input it might stop in incorrect place because of your layout with offsetScroll can adjust this offset. | 0 |
+| scrollReferenceId                          | <code>string</code>                       | it will use as reference scroll for auto scroll when form has error. | undefined |
+| reIni                                      | <code>boolean</code>                      | Control whether Formik should reset the form if initialValues changes (using deep equality) | false |
+| lang                                       | <code>Language</code>                     | Formalite form languages | "en" |
+| loading                                    | <code>boolean</code>                      | set all input to loading (show MUI skeleton) | false |
+| isUpdateMode                               | <code>boolean</code>                      | if isUpdateMode set to false inputs who has showOnUpdate flag will not be rendered | false |
+| formMustRegex                              | <code>RegExp</code>                       | this RegExp will apply to all inputs | undefined |
+| translator                                 | <code>Function</code>                     | send your i18n translator to Formalite use it for auto select Error text from i18n. | undefined |
+| onFormChange                               | <code>OnFormChangeType<T\></code>         | Callback to be called when any input change. | undefined |
+
+* ```T = Yup.InferType<typeof validationSchema\>``` - Generic type who sent to Formalite 

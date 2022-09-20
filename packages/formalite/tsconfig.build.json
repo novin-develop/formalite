@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "dist",
+    "rollup.config.js",
+    "./src/themes",
+    "./src/**/*.stories.mdx",
+    "./src/**/*.stories.@(js|jsx|ts|tsx)"
+  ]
+}

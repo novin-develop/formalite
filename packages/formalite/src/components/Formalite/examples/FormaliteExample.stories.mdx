@@ -1,0 +1,143 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Examples/React-Query-Example" />
+
+# React-Query-Example
+
+### This Example use React-Query for data caching
+
+```ts
+import React, { useMemo, useState } from "react";
+import { useQuery } from "react-query";
+import * as Yup from "yup";
+import {
+  Formalite,
+  ViewTypes,
+  FetchingDataEnum,
+  useFormaliteRef,
+} from "@novin-dev/formalite";
+import type { MainType } from "@novin-dev/formalite";
+
+import { getUsers, ApiUsersType } from "./utils";
+
+const useGetUsers = (apiRoute: string, page: number, isEnabled: boolean) =>
+  useQuery<ApiUsersType, Error>(
+    ["users", page],
+    () => getUsers(apiRoute, page),
+    {
+      enabled: isEnabled,
+    }
+  );
+
+const validation = Yup.object({
+  selectView: Yup.string().required(),
+  selectView2: Yup.string().required(),
+  title: Yup.string(),
+});
+type ValidationType = Yup.InferType<typeof validation>;
+const iniValues: ValidationType = {
+  selectView: "",
+  selectView2: "1",
+  title: "",
+};
+export interface SelectViewOptionsType {
+  [key: string]: {
+    label: string | JSX.Element;
+  };
+}
+
+const useFromString = () => {
+  const [page, setPage] = useState<string | null>("");
+  const { data, isLoading, isError, refetch } = useGetUsers(
+    "api/users",
+    page ? +page : 1,
+    !!page
+  );
+  return useMemo<MainType>(() => {
+    return {
+      title: {
+        type: ViewTypes.TextView,
+        layoutProps: {
+          xs: 12,
+        },
+        inputProps: {
+          disabled: true,
+        },
+      },
+      selectView: {
+        type: ViewTypes.SelectView,
+        layoutProps: {
+          xs: 12,
+        },
+        inputProps: {
+          label: "SelectView",
+          helperText: "1",
+          onChange: (value) => {
+            setPage(value);
+          },
+        },
+        dataFetching: {
+          type: FetchingDataEnum.MANUAL,
+          loading: false,
+          error: false,
+          onRetry: () => { },
+          data: {
+            1: {
+              label: "1",
+            },
+            2: {
+              label: "2",
+            },
+          },
+        },
+      },
+      selectView2: {
+        type: ViewTypes.SelectView,
+        layoutProps: {
+          xs: 12,
+        },
+        inputProps: {
+          label: "SelectView2",
+          helperText: "2",
+          disabled: !page,
+        },
+        dataFetching: {
+          type: FetchingDataEnum.MANUAL,
+          loading: isLoading,
+          error: isError,
+          onRetry: () => refetch(),
+          data: data?.data ? data?.data : {},
+        },
+      },
+    };
+  }, [data, isError, isLoading, refetch, page]);
+}
+
+const FormExample = () => {
+  const formRef = useFormaliteRef<ValidationType>();
+  const formString = useFromString();
+  return (
+      <Formalite<ValidationType>
+        offsetScroll={50}
+        loading={false}
+        lang="en"
+        formString={formString}
+        initialValues={iniValues}
+        validationSchema={validation}
+        formRef={formRef}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      />
+      <button
+        type="submit"
+        onClick={() => {
+          formRef.current?.callSubmit();
+        }}
+      >
+        Submit
+      </button>
+  );
+};
+export default FormExample;
+```

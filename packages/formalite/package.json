@@ -1,6 +1,6 @@
 {
   "name": "@novin-dev/formalite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generate MUI form with few line of code",
   "author": "Mostafa Roosta <mostafaroosta74@gmail.com>",
   "homepage": "https://formalite.novin.dev",
@@ -133,5 +133,5 @@
     "stylis-plugin-rtl": "2.1.1",
     "tslib": "2.3.1"
   },
-  "gitHead": "e74a9c181c060b663ad264f138e4aa8a8d0b2703"
+  "gitHead": "87e861bf18daaf60e4e53468ccc9d3ae33702a8b"
 }

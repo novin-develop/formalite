@@ -2,16 +2,15 @@ import React, { useRef, useState } from "react";
 import { Grid } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import { TextFieldBase } from "@components/Formalite/elements/Bases/TextFieldBase";
 import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { useI18nContext } from "@components/base/I18nProvider";
+import { Language } from "@components/base/model";
 import { TextViewType } from "./TextView.type";
-import {Language} from "@components/base/model";
 
 type TextViewProps<T> = {
   allData: TextViewType;
@@ -21,8 +20,8 @@ type TextViewProps<T> = {
   validationSchema: OptionalObjectSchema<any>;
   formMustRegex?: RegExp;
   translator: Function;
-  isUpdateMode:boolean;
-  lang:Language;
+  isUpdateMode: boolean;
+  lang: Language;
 };
 
 const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {

@@ -1,10 +1,10 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import TextViewTemplate from './templates/TextViewTemplate'
+import TextViewTemplate from '../templates/TextViewTemplate'
 
 <Meta title="Intro/Quick Start" />
 
 ### Install
-      npm i --save @novin-dev/formalite
+      npm i --save @novin-dev/formalite @mui/material @emotion/react @emotion/styled
 
 ### Setup
 TypeScript Example for Required TextView
@@ -18,8 +18,6 @@ TypeScript Example for Required TextView
          md: 6,
          xs: 12,
        },
-       mustRegex:
-         /^([1-9]\d*(\.)\d{1,4}|0?(\.)\d*[1-9]\d*|0?|[1-9]\d*|[1-9]\d*(\.))$/,
        inputProps: {
          label: "Title Input",
          helperText: "Helper text",
@@ -64,8 +62,6 @@ TypeScript Example for Required TextView
                md: 6,
                xs: 12,
              },
-             mustRegex:
-               /^([1-9]d*(.)d{1,4}|0?(.)d*[1-9]d*|0?|[1-9]d*|[1-9]d*(.))$/,
              inputProps: {
                label: "Title Input",
                helperText: "Helper text",

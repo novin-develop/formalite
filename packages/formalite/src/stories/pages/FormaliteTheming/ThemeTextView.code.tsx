@@ -33,8 +33,6 @@ export const TextView = () => {
           md: 6,
           xs: 12,
         },
-        mustRegex:
-          /^([1-9]\d*(\.)\d{1,4}|0?(\.)\d*[1-9]\d*|0?|[1-9]\d*|[1-9]\d*(\.))$/,
         inputProps: {
           label: "Title Input",
           helperText: "Helper text",

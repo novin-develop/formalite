@@ -1,0 +1,124 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import TextViewTemplate from '../templates/TextViewTemplate'
+
+<Meta title="Intro/Ref Object" />
+
+
+# Ref Object
+#### how to use Reference Object in Formalite
+
+one of main part for working with formalite is Ref Object
+
+```js
+import React from "React"
+import { Formalite, ViewTypes, useFormaliteRef } from "@novin-dev/formalite";
+
+export const RefTest = () => {
+  const formRef = useFormaliteRef();
+  return (
+    <>
+      <Formalite
+        {/* other props */}
+        formRef={formRef}
+      />
+    </>
+  )
+}
+```
+
+
+### 1. callSubmit <code>Function</code>
+Formalite is not includes submit Button for submitting form you must add external button and call `formRef.callSubmit()` it will trigger `onSubmit` on Formalite Props    
+  
+```js
+  import React from "React"
+  import { Formalite, ViewTypes, useFormaliteRef } from "@novin-dev/formalite";
+  
+  export const RefTest = () => {
+    const formRef = useFormaliteRef();
+    return (
+      <>
+        <Formalite
+          {/* other props */}
+          formRef={formRef}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+        />
+        <button type={"button"} onClick={() => formRef.current?.callSubmit()}>
+          Submit
+        </button>
+      </>
+    )
+  }
+```
+
+### 2. callRest <code>Function</code>
+for resetting form in Formalite you can use `callRest` this will trigger action that clear all inputs 
+
+```js
+  import React from "React"
+  import { Formalite, ViewTypes, useFormaliteRef } from "@novin-dev/formalite";
+  
+  export const RefTest = () => {
+    const formRef = useFormaliteRef();
+    return (
+      <>
+        <Formalite
+          {/* other props */}
+          formRef={formRef}
+        />
+        <button type={"button"} onClick={() => formRef.current?.callRest()}>
+          reset
+        </button>
+      </>
+    )
+  }
+```
+
+### 3. addRow <code>Function</code>
+when you use `RepeaterView` a button will appear at end of View but also you can use Ref to repeat `RepeaterView` with specific name
+
+```js
+  import React from "React"
+  import { Formalite, ViewTypes, useFormaliteRef } from "@novin-dev/formalite";
+  
+  export const RefTest = () => {
+    const formRef = useFormaliteRef();
+    return (
+      <>
+        <Formalite
+          {/* other props */}
+          formRef={formRef}
+        />
+        <button type={"button"} onClick={() => formRef.current?.addRow("repeater_name")}>
+          add row
+        </button>
+      </>
+    )
+  }
+```
+
+### 4. formik
+this part return `formik` Obj, and it can be very useful. you can have Control over input to change there value `formik` return formik instance and you can work with that for more information 
+[Formik Docs](https://formik.org/docs/overview "Formik official website")  
+
+```js
+  import React from "React"
+  import { Formalite, ViewTypes, useFormaliteRef } from "@novin-dev/formalite";
+  
+  export const RefTest = () => {
+    const formRef = useFormaliteRef();
+    return (
+      <>
+        <Formalite
+          {/* other props */}
+          formRef={formRef}
+        />
+        <button type={"button"} onClick={() => formRef.current?.formik.setFieldValue("title","new_name")}>
+          set title to new_name
+        </button>
+      </>
+    )
+  }
+```

@@ -3,9 +3,10 @@ import { TestTextView } from "@components/Formalite/elements/TextView/TestTextVi
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDarkMode } from "storybook-dark-mode";
+import { TextViewType } from "@components/Formalite/elements/TextView/TextView.type";
 
 const TextViewTemplate: ComponentStory<typeof TestTextView> = (
-  args: any,
+  args: Omit<TextViewType & { theme?: any }, "type">,
   { globals: { locale } }
 ) => {
   const { theme, ...allArgs } = args;

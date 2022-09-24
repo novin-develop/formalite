@@ -1,11 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { useDarkMode } from "storybook-dark-mode";
-
-import { Theme, FetchingDataEnum } from "@components/base/model";
-import { RTL } from "@components/base/RTL";
-import ThemeProvider from "@themes/index";
-import { getDirectionFromLang } from "@config/utils";
+import { FetchingDataEnum } from "@components/base/model";
 import { PaddingContainer } from "@components/base/PaddingContainer";
 import { TestSimpleAutoCompleteView } from "./TestSimpleAutoCompleteView";
 import {

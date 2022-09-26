@@ -3,6 +3,14 @@ import TextViewTemplate from '../templates/TextViewTemplate'
 
 <Meta title="Intro/Ref Object" />
 
+<style>{`
+  table {
+      width:100%;
+  }
+  .red {
+    color:red
+  }
+`}</style>
 
 # Ref Object
 #### how to use Reference Object in Formalite
@@ -27,9 +35,14 @@ export const RefTest = () => {
 ```
 
 
-### 1. callSubmit <code>Function</code>
+### 1. callSubmit <code>Function(resolve, reject)</code>
 Formalite is not includes submit Button for submitting form you must add external button and call `formRef.callSubmit()` it will trigger `onSubmit` on Formalite Props    
-  
+
+| Parameter         | Type                  | Description         | Default |
+|-------------------|-----------------------|---------------------|---------|
+| resolve           | <code>Function</code> | if you have promise where you submit form you can send resolve to `onSubmit` on Formalite props | undefind |
+| reject            | <code>Function</code> | if you have promise where you submit form you can send reject to `onSubmit` on Formalite props  | undefind | 
+
 ```js
   import React from "React"
   import { Formalite, ViewTypes, useFormaliteRef } from "@novin-dev/formalite";
@@ -53,7 +66,7 @@ Formalite is not includes submit Button for submitting form you must add externa
   }
 ```
 
-### 2. callRest <code>Function</code>
+### 2. callRest <code>Function()</code>
 for resetting form in Formalite you can use `callRest` this will trigger action that clear all inputs 
 
 ```js
@@ -76,8 +89,12 @@ for resetting form in Formalite you can use `callRest` this will trigger action 
   }
 ```
 
-### 3. addRow <code>Function</code>
+### 3. addRow <code>Function(name)</code>
 when you use `RepeaterView` a button will appear at end of View but also you can use Ref to repeat `RepeaterView` with specific name
+
+| Name                                       | Type                                      | Description | Default |
+| ------------------------------------------ | ----------------------------------------- | ----------- | -------- |
+| name<span class="red">*</span>             | <code>String</code>                       | name of the RepeaterView to add a Repeat | - |
 
 ```js
   import React from "React"

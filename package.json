@@ -34,7 +34,7 @@
     "start:website": "lerna run --scope website dev --stream",
     "start:story": "lerna run --scope @novin-dev/formalite storybook --stream",
     "prepare": "husky install",
-    "prepublish": "lerna run build:local --scope @novin-dev/formalite",
+    "prepublishOnly": "lerna run build:local --scope @novin-dev/formalite",
     "deploy:website" : "lerna run build --scope website",
     "deploy:story" : "lerna run build:storybook --scope @novin-dev/formalite"
   },

@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import {alpha} from "@mui/material";
+import { alpha } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ const EditorToolbarStyle = styled("div")(({ theme }) => {
       },
     "& .ql-toolbar.ql-snow": {
       border: "none",
-      borderBottom: `solid 1px ${alpha(theme.palette.grey[500],0.32)}`,
+      borderBottom: `solid 1px ${alpha(theme.palette.grey[500], 0.32)}`,
       "& .ql-formats": {
         "&:not(:last-of-type)": {
           marginRight: theme.spacing(2),
@@ -130,6 +130,6 @@ const EditorToolbarStyle = styled("div")(({ theme }) => {
       },
     },
   };
-});
+}) as any;
 
 export default EditorToolbarStyle;

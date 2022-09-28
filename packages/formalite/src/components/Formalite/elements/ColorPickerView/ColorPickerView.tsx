@@ -7,6 +7,7 @@ import {
   Fade,
   Box,
   IconButton,
+  InputAdornment,
 } from "@mui/material";
 import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
@@ -49,7 +50,7 @@ const ColorPickerViewStartAdornment = styled("div")(
     marginRight: "10px",
     backgroundColor: colorPicker,
   })
-);
+) as any;
 
 const ColorPickerViewCleaner = <T extends FormikValues>({
   formik,
@@ -111,9 +112,9 @@ const ColorPickerView = <T extends FormikValues>(
             name={name}
             InputProps={{
               startAdornment: !!colorPicked && (
-                <div>
+                <InputAdornment position="start">
                   <ColorPickerViewStartAdornment colorPicker={colorPicked} />
-                </div>
+                </InputAdornment>
               ),
               endAdornment: !!colorPicked && (
                 <ColorPickerViewCleaner formik={formik} name={name} />

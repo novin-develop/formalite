@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { FormControl, FormHelperText, FormLabel, Grid } from "@mui/material";
 import { FormikValues } from "formik";
 import { checkIsMin, getData } from "@components/Formalite/config/utils";
-import { alpha, styled } from "@mui/material/styles";
+import { alpha, styled, Theme } from "@mui/material/styles";
 import { useDropzone } from "react-dropzone";
 import BlockContent from "@components/Formalite/elements/DropZoneView/Components/BlockContent";
 import RejectionFiles from "@components/Formalite/elements/DropZoneView/Components/RejectionFiles";
@@ -34,7 +34,7 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
     ),
     cursor: "pointer",
   },
-}));
+})) as any;
 
 const MultiDropZoneView = <T extends FormikValues>(
   props: MultiDropZoneViewProps<T>
@@ -214,7 +214,7 @@ const MultiDropZoneView = <T extends FormikValues>(
       )}
       <DropZoneStyle
         {...getRootProps()}
-        sx={(theme) => ({
+        sx={(theme: Theme) => ({
           ...(isDragActive && { opacity: 0.72 }),
           ...((isDragReject ||
             (getData({ source: formik.errors, key: name }) &&

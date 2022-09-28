@@ -12,12 +12,12 @@ const FallBackContainer = styled(Box)(({ theme }) => {
     color: theme.palette.error.main,
     minHeight: "18.75rem",
   };
-});
+}) as any;
 
 const FallBackButton = styled(Button)(({ theme }) => ({
   textDecoration: "underline",
   fontWeight: theme.typography.fontWeightRegular,
-}));
+})) as any;
 
 const FallBack = ({ error, resetErrorBoundary }: FallbackProps) => {
   const { t } = useI18nContext();

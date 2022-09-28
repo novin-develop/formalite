@@ -37,7 +37,7 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
     ),
     cursor: "pointer",
   },
-}));
+})) as any;
 
 const SingleDropZoneView = <T extends FormikValues>(
   props: SingleDropZoneViewProps<T>

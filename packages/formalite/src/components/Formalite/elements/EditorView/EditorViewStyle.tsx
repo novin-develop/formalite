@@ -1,8 +1,8 @@
-import {alpha, Box, styled} from "@mui/material";
+import { alpha, Box, styled } from "@mui/material";
 
 const EditorViewRootStyle = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
-  border: `solid 1px ${alpha(theme.palette.grey[500],0.32)}`,
+  border: `solid 1px ${alpha(theme.palette.grey[500], 0.32)}`,
   "& .ql-container.ql-snow": {
     borderColor: "transparent",
     ...theme.typography.body1,
@@ -24,6 +24,6 @@ const EditorViewRootStyle = styled(Box)(({ theme }) => ({
       backgroundColor: theme.palette.grey[900],
     },
   },
-}));
+})) as any;
 
 export default EditorViewRootStyle;

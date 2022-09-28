@@ -13,13 +13,13 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import DownloadIcon from "@mui/icons-material/Download";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { useI18nContext } from "@components/base/I18nProvider";
-import {downloadBase64} from "@components/Formalite/elements/DropZoneView/utils";
+import { downloadBase64 } from "@components/Formalite/elements/DropZoneView/utils";
+import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
 import { ReactComponent as DOC } from "./svg/files/doc.svg";
 import { ReactComponent as MP4 } from "./svg/files/mp4.svg";
 import { ReactComponent as PDF } from "./svg/files/pdf.svg";
 import { ReactComponent as ZIP } from "./svg/files/zip.svg";
 import { ReactComponent as FILE } from "./svg/files/file.svg";
-import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 // ----------------------------------------------------------------------
 const FileIcon = (props: { type: string; preview: JSX.Element }) => {
   switch (props.type.toLowerCase()) {
@@ -158,7 +158,7 @@ export default function BlockContent(props: BlockContentType) {
               }
             }}
           >
-            <CloseIcon sx={{ padding: "4px" }} />
+            <CloseIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
           </Box>
           {props.file.status === "error" && (
             <Box
@@ -287,7 +287,10 @@ export default function BlockContent(props: BlockContentType) {
           )}
         </Box>
       ) : (
-        <CloudUploadOutlinedIcon color={"primary"} style={{width:"80px",height:"150px"}}/>
+        <CloudUploadOutlinedIcon
+          color="primary"
+          style={{ width: "80px", height: "150px" }}
+        />
       )}
 
       <HelperSection required={props.required} file={props.file} />

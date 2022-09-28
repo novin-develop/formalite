@@ -6,16 +6,14 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import {Grid} from "@mui/material";
-import AdbIcon from '@mui/icons-material/Adb';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import {useTheme} from "@mui/system";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import useLocalStorage from "../../../hooks/useLocalStorage";
 import {useSettings} from "../../Provider/SettingsContext";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import Link from "next/link";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -30,7 +28,7 @@ const Search = styled('div')(({ theme }) => ({
         marginLeft: theme.spacing(1),
         width: 'auto',
     },
-}));
+})) as any;
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -40,7 +38,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-}));
+})) as any;
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
@@ -57,7 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             },
         },
     },
-}));
+})) as any;
 
 export default function SearchAppBar() {
   const { palette } = useTheme();
@@ -91,6 +89,11 @@ export default function SearchAppBar() {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     />
+                    <a href={"https://github.com/novin-develop/formalite"} target={"_blank"} rel="noreferrer">
+                      <IconButton>
+                        <GitHubIcon/>
+                      </IconButton>
+                    </a>
                     <IconButton onClick={()=>{
                       onToggleMode();
                     }}>

@@ -182,7 +182,7 @@ export default function BlockContent(props: BlockContentType) {
                 props.uploadFunction(props.file as CustomFile);
               }}
             >
-              <ReplayIcon sx={{ padding: "4px" }} />
+              <ReplayIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
             </Box>
           )}
           {props.file.status !== "error" && props.file.original === "default" && (
@@ -210,7 +210,7 @@ export default function BlockContent(props: BlockContentType) {
                 );
               }}
             >
-              <DownloadIcon sx={{ padding: "4px" }} />
+              <DownloadIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
             </Box>
           )}
           {props.file.status === "error" && (

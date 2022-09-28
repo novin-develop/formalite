@@ -14,6 +14,7 @@ import { CustomFile, OutsideFile } from "@components/Formalite";
 import { DropzoneRootProps } from "react-dropzone";
 import { DeleteIconButton } from "@components/Formalite/elements/DropZoneView/AvatarDropZoneView/elements/DeleteIconButton";
 import { useI18nContext } from "@components/base/I18nProvider";
+import { Theme } from "@mui/material/styles";
 
 type AvatarComponentPropsType<T> = {
   formik: FormikProps<T>;
@@ -81,7 +82,7 @@ export const AvatarComponent = <T extends FormikValues>(
 
         <PlaceholderStyle
           className="placeholder"
-          sx={(theme) => ({
+          sx={(theme: Theme) => ({
             ...(file[0] && {
               opacity: `${0}`,
               color: `${theme.palette.common.white}`,

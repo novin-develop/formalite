@@ -18,7 +18,7 @@ const getElement = <T>({ keys, errors }: GetElementPropsType<T>) => {
     let newKey: string = "";
     for (let i = 0; i < (errors[keys[0]] as typeof errors[]).length; i += 1) {
       try {
-        newKey = `${keys[0]}.${i}.${
+        newKey = `${keys[0].toString()}.${i}.${
           Object.keys((errors[keys[0]] as any[])?.[i])?.[0]
         }`;
         break;
@@ -32,9 +32,9 @@ const getElement = <T>({ keys, errors }: GetElementPropsType<T>) => {
       document.querySelector(`#formalite div[id="${newKey}"]`);
   } else {
     errorElement =
-      document.querySelector(`input[name="${keys[0]}"]`) ||
-      document.querySelector(`textarea[name="${keys[0]}"]`) ||
-      document.querySelector(`#formalite div[id="${keys[0]}"]`);
+      document.querySelector(`input[name="${keys[0].toString()}"]`) ||
+      document.querySelector(`textarea[name="${keys[0].toString()}"]`) ||
+      document.querySelector(`#formalite div[id="${keys[0].toString()}"]`);
   }
 
   return errorElement;

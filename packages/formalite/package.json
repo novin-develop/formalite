@@ -71,7 +71,7 @@
     "@svgr/rollup": "6.2.1",
     "@svgr/webpack": "6.2.1",
     "@types/lodash-es": "4.17.6",
-    "@types/react": "17.0.39",
+    "@types/react": "^18.0.21",
     "@types/react-dom": "17.0.11",
     "@types/stylis": "4.0.2",
     "@typescript-eslint/eslint-plugin": "5.11.0",
@@ -133,5 +133,5 @@
     "stylis-plugin-rtl": "2.1.1",
     "tslib": "2.3.1"
   },
-  "gitHead": "87e861bf18daaf60e4e53468ccc9d3ae33702a8b"
+  "gitHead": "9019a32bc14d510e4dacbaa840337ddf66e55565"
 }

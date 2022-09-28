@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/novin-develop/formalite/compare/v0.1.3...v0.1.4) (2022-09-28)
+
+
+### Bug Fixes
+
+* fix singleDropzoneView icon size ([06166f2](https://github.com/novin-develop/formalite/commit/06166f2a1b2a6abf298bc5240f332d75d4e1b898))
+* fix textView code example in Docs ([55eb34d](https://github.com/novin-develop/formalite/commit/55eb34dbd941115c009a4396855c230bc7e4fa5a))
+
+
+
+
 ## [0.1.3](https://github.com/novin-develop/formalite/compare/v0.1.1...v0.1.3) (2022-09-21)
 
 

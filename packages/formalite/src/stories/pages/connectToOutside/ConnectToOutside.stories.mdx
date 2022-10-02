@@ -1,0 +1,44 @@
+import { Canvas,Meta,Story,Source } from '@storybook/addon-docs';
+import {
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
+import { OutsideComponentCode } from "./OutsideComponent.code"
+import SelectViewTemplate from '../../templates/SelectViewTemplate'
+import Stack from '@mui/material/Stack';
+import { OutsideComponent } from './OutsideComponent';
+
+
+<Meta title="Intro/Connect To Outside" />
+
+# Connect to Outside of form
+
+Formalite can connect and and validate your custom input outside of Formalite object
+
+we can place custom component two place:
+* Outside of Formalite
+* Inside of Formalite
+
+### Outside of Formalite
+
+we can add Rating view with not included in Formalite added after Formalite form and when form submitted this rating and get validated and submitted with Formalite form
+
+##### Example:
+
+<Canvas>
+  <Story
+    style={{width:"100%"}} 
+    name="Connect To Outside"
+    parameters={{ docs: { source: { 
+        code: OutsideComponentCode,
+        language: "javascript",
+        type: "auto"
+      }} 
+    }}>
+    <OutsideComponent/>
+  </Story>
+</Canvas> 
+
+### Inside of Formalite
+
+Its same as Outside of Formalite just need add CustomComponent inside `render` in `ComponentView`, with that you can put your input any were

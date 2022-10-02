@@ -1,0 +1,162 @@
+import { Canvas,Meta,Story } from '@storybook/addon-docs';
+import { AutomaticallySelectCode } from "./AutomaticallySelect.code"
+import { ManuallySelectCode } from "./ManuallySelect.code"
+import {
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
+import SelectViewTemplate from '../../templates/SelectViewTemplate'
+
+<Meta title="Intro/Fetching Content" />
+
+<style>{`
+  table {
+      width:100%;
+  }
+  .red {
+    color:red
+  }
+`}</style>
+
+# Fetching Content
+
+sometimes for inputs like `selectView`,`AutoCompleteView`,`BigRadioGroupView`,`CheckGroupView`,`RadioGroupView`,`SwitchGroupView` we need fetch content from external source (Like APIs), Formalite have two ways to fetch contents 
+
+* Automatically
+* Manually  
+
+### Fetching Automatically 
+
+in this way Formalite give you `Promise` to `resolve` when data is fetched or `reject` when it fails and other part of like `Loading`,`retry`,`error` will triggered Automatically
+
+
+dataFetching object when its in Automatic Mode:
+
+| Parameter         | Type                  | Description         | Default |
+|-------------------|-----------------------|---------------------|---------|
+| type <span class="red">*</span>               | <code>AUTOMATIC</code>   | type of data Fetching   | - |
+| options <span class="red">*</span>            | <code>Promise</code>     | resolving or rejecting of this Promise determine state of SelectView   | - |
+| dependency                                    | <code>String</code>      | changing this string makes selectView refetch data  | - |
+
+
+##### Example:
+
+<Canvas>
+  <Story 
+    name="Automatically"
+    parameters={{ docs: { source: { 
+        code: AutomaticallySelectCode,
+        language: "javascript",
+        type: "auto"
+      }} 
+    }}
+    args={{ 
+      layoutProps: {
+        xs: 12,
+      },
+      dataFetching: {
+        type: "AUTOMATIC",
+        options: () => new Promise((resolve, reject) => {
+          setTimeout(()=>{
+            fetch("https://reqres.in/api/users?page=1",{method:"get"})
+              .then((response) => response.json())
+              .then(res=>{
+                const data = res.data
+                const result = {}
+                data.map(item => {
+                  result[`${item?.id}`] = {
+                    label : `${item?.first_name} ${item?.last_name}`
+                  }
+                })
+                resolve(result)
+              })
+              .catch (err => reject(err))
+          },200)          
+        }),
+        },
+        inputProps: {
+          label: "Select Title",
+          helperText: "HelperText",
+        },
+      theme:{}
+    }}
+    >
+      {SelectViewTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### Fetching Manually 
+
+in this way Formalite give you full control of component, you can manually edit `loading`, `error`, `onRetry`, `data` to control dataFetching
+
+dataFetching object when its in Manual Mode:
+
+| Parameter         | Type                  | Description         | Default |
+|-------------------|-----------------------|---------------------|---------|
+| type <span class="red">*</span>   | <code>MANUAL</code>            | type of data Fetching   | - |
+| loading <span class="red">*</span>| <code>boolean</code>           | set selectView state to loading   | - |
+| error <span class="red">*</span>  | <code>boolean</code>           | set selectView state to error  | - |
+| onRetry <span class="red">*</span>| <code>Function()</code>        | when dataFetching get error retry icon will appear and clicking on it will onRetry function | - |
+| data <span class="red">*</span>   | <code><a href="#data">SelectViewOptionsType</a></code>  | data object will determine data for selectView <a href="#data" >Read More</a> | - |
+
+
+<h6 id="data">SelectViewOptionsType</h6>
+
+`key` : each option have a key when selectView select item, keys will be sent on submit  
+
+`value` :  
+ 
+| Parameter         | Type                  | Description         | Default |
+|-------------------|-----------------------|---------------------|---------|
+| label <span class="red">*</span> | <code>string</code>            | text on showing each options    | - |
+| description                      | <code>string</code>            | text describe each option (just used in BigRadioGroupView)   | - |
+| additionalData                   | <code>Object</code>            | when onChange call additionalData will also sent to it  | - |
+
+##### Example:
+
+<Canvas>
+  <Story 
+    name="Manually"
+    parameters={{ docs: { source: { 
+        code: ManuallySelectCode,
+        language: "javascript",
+        type: "auto"
+      }} 
+    }}
+    args={{ 
+      layoutProps: {
+        xs: 12,
+      },
+      dataFetching: {
+        type: "MANUAL",
+        loading: false,
+        error: false,
+        onRetry: () => {
+          console.log("fg forever");
+        },
+        data: {
+          "1": {
+            label: "one",
+            description: "This is desc",
+            additionalData: {
+              x: 1,
+              y: 2,
+            },
+          },
+          "2": {
+            label: "two",
+            description: "that is desc",
+          },
+        },
+        },
+        inputProps: {
+          label: "Select Title",
+          helperText: "HelperText",
+        },
+      theme:{}
+    }}
+    >
+      {SelectViewTemplate.bind({})}
+  </Story>
+</Canvas>
+

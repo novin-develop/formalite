@@ -23,6 +23,7 @@ import { fixDropZoneDefaultValue } from "@components/Formalite/elements/DropZone
 
 const TextDropZoneView = <T extends FormikValues>(
   props: TextDropZoneViewProps<T>
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   const {
     allData,
@@ -242,7 +243,9 @@ const TextDropZoneView = <T extends FormikValues>(
           />
         </>
       ) : null}
-      {helperText && (
+      {helperText ||
+      (getData({ source: formik.touched, key: name }) &&
+        Boolean(getData({ source: formik.errors, key: name }))) ? (
         <FormControl>
           <FormHelperText
             error={
@@ -258,7 +261,7 @@ const TextDropZoneView = <T extends FormikValues>(
               : helperText}
           </FormHelperText>
         </FormControl>
-      )}
+      ) : null}
     </Grid>
   );
 };

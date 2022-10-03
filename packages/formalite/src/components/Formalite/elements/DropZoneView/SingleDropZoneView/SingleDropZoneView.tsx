@@ -233,7 +233,9 @@ const SingleDropZoneView = <T extends FormikValues>(
         (typeof file[0] === "object" && file[0]?.status === "error")) && (
         <RejectionFiles fileRejections={fileRejections} fileState={file[0]} />
       )}
-      {helperText && (
+      {helperText ||
+      (getData({ source: formik.touched, key: name }) &&
+        Boolean(getData({ source: formik.errors, key: name }))) ? (
         <FormControl>
           <FormHelperText
             error={
@@ -247,7 +249,7 @@ const SingleDropZoneView = <T extends FormikValues>(
               : helperText}
           </FormHelperText>
         </FormControl>
-      )}
+      ) : null}
     </Grid>
   );
 };

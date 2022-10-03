@@ -236,6 +236,7 @@ const MultiDropZoneView = <T extends FormikValues>(
             resetDropZone={() => {}}
             required={isRequired}
             uploadFunction={uploadFunction}
+            isLessMd={false}
           />
         )}
       </DropZoneStyle>

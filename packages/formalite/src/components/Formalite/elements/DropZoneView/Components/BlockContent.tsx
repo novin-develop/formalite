@@ -60,6 +60,7 @@ type BlockContentType = {
   required: boolean;
   uploadFunction: (file: CustomFile) => void;
   uploadController?: AbortController;
+  isLessMd: boolean;
 };
 
 type HelperSectionType = Pick<BlockContentType, "file" | "required">;
@@ -92,14 +93,18 @@ const HelperSection = ({ required, file }: HelperSectionType) => {
   );
 };
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export default function BlockContent(props: BlockContentType) {
   return (
     <Stack
       spacing={2}
       alignItems="center"
       justifyContent="center"
-      direction={{ xs: "column", md: "row" }}
-      sx={{ width: 1, textAlign: { xs: "center", md: "left" } }}
+      direction={{ xs: "column", md: props.isLessMd ? "column" : "row" }}
+      sx={{
+        width: 1,
+        textAlign: { xs: "center", md: props.isLessMd ? "center" : "left" },
+      }}
     >
       {props.file ? (
         <Box width={220} sx={{ position: "relative" }}>

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/novin-develop/formalite/compare/v0.1.5...v0.1.6) (2022-10-04)
+
+
+### Bug Fixes
+
+* dropZones can get ReactNode for Label ([88e80e8](https://github.com/novin-develop/formalite/commit/88e80e804153056a6fe352ef2080b9a60cd50764))
+* fix DropZone Error text bug ([635c3af](https://github.com/novin-develop/formalite/commit/635c3af2f718005c3cae47f7b2ce6d165ac12365))
+* fix singleDropzone responsive bug ([e6e4ac7](https://github.com/novin-develop/formalite/commit/e6e4ac725e715624e7618ab90c539eca7b4d8ac1))
+* fix singleDropzone responsive bug part 2 ([bfedceb](https://github.com/novin-develop/formalite/commit/bfedceb6ea28e4e7ee89d50721f4f411cb142bfe))
+
+
+
+
 ## [0.1.5](https://github.com/novin-develop/formalite/compare/v0.1.4...v0.1.5) (2022-09-28)
 
 

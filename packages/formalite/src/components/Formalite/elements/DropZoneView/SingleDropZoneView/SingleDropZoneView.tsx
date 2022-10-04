@@ -1,10 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   FormControl,
   FormHelperText,
   FormLabel,
   Grid,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { FormikValues } from "formik";
 import { SingleDropZoneViewProps } from "@components/Formalite/elements/DropZoneView/SingleDropZoneView/SingleDropZoneView.type";
@@ -50,6 +57,13 @@ const SingleDropZoneView = <T extends FormikValues>(
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>([]);
   const [preventDrop, setPreventDefault] = useState(false);
   const uploadController = new AbortController();
+  const ref = useRef<HTMLInputElement>(null);
+  const theme = useTheme();
+  const [isLessMd, setIsLessMd] = useState(false);
+
+  useLayoutEffect(() => {
+    setIsLessMd((ref.current?.offsetWidth || 0) < theme.breakpoints.values.sm);
+  }, []);
 
   const uploadFunction = useCallback((item: CustomFile) => {
     onUpload(
@@ -169,7 +183,7 @@ const SingleDropZoneView = <T extends FormikValues>(
   }
 
   return (
-    <Grid item {...layoutProps} id={name}>
+    <Grid item {...layoutProps} id={name} ref={ref}>
       {inputProps.label && (
         <FormLabel
           component="legend"
@@ -199,6 +213,7 @@ const SingleDropZoneView = <T extends FormikValues>(
         <input {...getInputProps()} ref={inputRef} />
 
         <BlockContent
+          isLessMd={isLessMd}
           file={file[0]}
           onDelete={onDelete}
           setFile={setFile}
@@ -218,7 +233,9 @@ const SingleDropZoneView = <T extends FormikValues>(
         (typeof file[0] === "object" && file[0]?.status === "error")) && (
         <RejectionFiles fileRejections={fileRejections} fileState={file[0]} />
       )}
-      {helperText && (
+      {helperText ||
+      (getData({ source: formik.touched, key: name }) &&
+        Boolean(getData({ source: formik.errors, key: name }))) ? (
         <FormControl>
           <FormHelperText
             error={
@@ -232,7 +249,7 @@ const SingleDropZoneView = <T extends FormikValues>(
               : helperText}
           </FormHelperText>
         </FormControl>
-      )}
+      ) : null}
     </Grid>
   );
 };

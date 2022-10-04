@@ -1,5 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { FormControl, FormHelperText, FormLabel, Grid } from "@mui/material";
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import {
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Grid,
+  useTheme,
+} from "@mui/material";
 import { FormikValues } from "formik";
 import { checkIsMin, getData } from "@components/Formalite/config/utils";
 import { alpha, styled, Theme } from "@mui/material/styles";
@@ -38,6 +50,7 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
 
 const MultiDropZoneView = <T extends FormikValues>(
   props: MultiDropZoneViewProps<T>
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   const { allData, name, formik, loading, validationSchema, translator } =
     props;
@@ -56,6 +69,13 @@ const MultiDropZoneView = <T extends FormikValues>(
       getData({ source: formik.values, key: name }) || []
     ) || []
   );
+  const ref = useRef<HTMLInputElement>(null);
+  const theme = useTheme();
+  const [isLessMd, setIsLessMd] = useState(false);
+
+  useLayoutEffect(() => {
+    setIsLessMd((ref.current?.offsetWidth || 0) < theme.breakpoints.values.sm);
+  }, []);
   const isRequired = checkIsMin({
     schema: validationSchema,
     formikValues: formik.values,
@@ -199,7 +219,7 @@ const MultiDropZoneView = <T extends FormikValues>(
   }
 
   return (
-    <Grid item {...layoutProps} id={name}>
+    <Grid item {...layoutProps} id={name} ref={ref}>
       {inputProps.label && (
         <FormLabel
           component="legend"
@@ -214,7 +234,7 @@ const MultiDropZoneView = <T extends FormikValues>(
       )}
       <DropZoneStyle
         {...getRootProps()}
-        sx={(theme: Theme) => ({
+        sx={() => ({
           ...(isDragActive && { opacity: 0.72 }),
           ...((isDragReject ||
             (getData({ source: formik.errors, key: name }) &&
@@ -236,6 +256,7 @@ const MultiDropZoneView = <T extends FormikValues>(
             resetDropZone={() => {}}
             required={isRequired}
             uploadFunction={uploadFunction}
+            isLessMd={isLessMd}
           />
         )}
       </DropZoneStyle>
@@ -260,7 +281,9 @@ const MultiDropZoneView = <T extends FormikValues>(
         uploadController={uploadController}
       />
 
-      {helperText && (
+      {helperText ||
+      (getData({ source: formik.touched, key: name }) &&
+        Boolean(getData({ source: formik.errors, key: name }))) ? (
         <FormControl>
           <FormHelperText
             error={
@@ -274,7 +297,7 @@ const MultiDropZoneView = <T extends FormikValues>(
               : helperText}
           </FormHelperText>
         </FormControl>
-      )}
+      ) : null}
     </Grid>
   );
 };

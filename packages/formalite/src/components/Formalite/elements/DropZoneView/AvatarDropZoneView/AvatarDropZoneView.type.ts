@@ -1,7 +1,4 @@
-import {
-  BaseViewType,
-  ViewTypes,
-} from "@components/Formalite/Formalite.type";
+import { BaseViewType, ViewTypes } from "@components/Formalite/Formalite.type";
 import { DropzoneOptions } from "react-dropzone";
 import { ReactNode } from "react";
 import { CustomFile, ImageDownloaderPromise } from "@components/Formalite";
@@ -23,7 +20,7 @@ export interface AvatarDropZoneViewType extends BaseViewType {
    */
   inputProps: {
     onChange?: (value: string) => void;
-    label: string;
+    label: ReactNode;
 
     /**
      * Specify props that passed to react-dropzone Dropzone component

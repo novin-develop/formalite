@@ -181,7 +181,9 @@ const AvatarDropZone = <T extends FormikValues>(
         <RejectionFiles fileRejections={fileRejections} fileState={file[0]} />
       )}
 
-      {helperText && (
+      {helperText ||
+      (getData({ source: formik.touched, key: name }) &&
+        Boolean(getData({ source: formik.errors, key: name }))) ? (
         <FormControl sx={{ alignItems: "center", display: "flex" }}>
           <FormHelperText>
             {getData({ source: formik.touched, key: name }) &&
@@ -190,7 +192,7 @@ const AvatarDropZone = <T extends FormikValues>(
               : helperText}
           </FormHelperText>
         </FormControl>
-      )}
+      ) : null}
     </Grid>
   );
 };

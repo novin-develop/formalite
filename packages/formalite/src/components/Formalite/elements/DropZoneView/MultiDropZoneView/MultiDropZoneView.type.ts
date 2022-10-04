@@ -1,10 +1,7 @@
 import { DropzoneOptions } from "react-dropzone";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import { SxProps } from "@mui/material";
-import {
-  BaseViewType,
-  ViewTypes,
-} from "@components/Formalite/Formalite.type";
+import { BaseViewType, ViewTypes } from "@components/Formalite/Formalite.type";
 import { FormikProps } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import {
@@ -31,7 +28,7 @@ export interface MultiDropZoneViewType extends BaseViewType {
    */
   inputProps: {
     onChange?: (value: string) => void;
-    label: string;
+    label: ReactNode;
 
     /**
      * Specify props that passed to react-dropzone Dropzone component

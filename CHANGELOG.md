@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/novin-develop/formalite/compare/v0.1.6...v0.1.7) (2022-10-08)
+
+
+### Bug Fixes
+
+* fix componentView render function parameters ([131a1b2](https://github.com/novin-develop/formalite/commit/131a1b22d8aef1c2201bab8589d3463ed55c3c6d))
+
+
+
+
 ## [0.1.6](https://github.com/novin-develop/formalite/compare/v0.1.5...v0.1.6) (2022-10-04)
 
 

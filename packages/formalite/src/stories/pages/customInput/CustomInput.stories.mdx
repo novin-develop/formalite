@@ -1,0 +1,61 @@
+import { Canvas,Meta,Story,Source } from '@storybook/addon-docs';
+import {
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
+import { OutsideComponentCode } from "./OutsideComponent.code"
+import { InsideComponentCode } from "./InsideComponent.code"
+import SelectViewTemplate from '../../templates/SelectViewTemplate'
+import Stack from '@mui/material/Stack';
+import { OutsideComponent } from './OutsideComponent';
+import { InsideComponent } from './InsideComponent';
+
+
+<Meta title="Intro/Custom Input" />
+
+# Custom Input
+
+Formalite can connect and and validate your custom input outside of Formalite object
+
+we can place custom component two place:
+* Inside of Formalite
+* Outside of Formalite
+
+### Inside of Formalite
+
+Its same as Outside of Formalite just need add CustomComponent inside `render` in `ComponentView`, with that you can put your input any were
+
+<Canvas>
+  <Story
+    style={{width:"100%"}} 
+    name="Inside of Formalite"
+    parameters={{ docs: { source: { 
+        code: InsideComponentCode,
+        language: "javascript",
+        type: "auto"
+      }} 
+    }}>
+    <InsideComponent/>
+  </Story>
+</Canvas> 
+
+### Outside of Formalite
+
+For example: we can add Rating view with not included in Formalite added after Formalite form and when form submitted this rating and get validated and submitted with Formalite form
+
+##### Example:
+
+<Canvas>
+  <Story
+    style={{width:"100%"}} 
+    name="Outside of Formalite"
+    parameters={{ docs: { source: { 
+        code: OutsideComponentCode,
+        language: "javascript",
+        type: "auto"
+      }} 
+    }}>
+    <OutsideComponent/>
+  </Story>
+</Canvas> 
+

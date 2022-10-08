@@ -1,4 +1,3 @@
-export const OutsideComponentCode = `
 import React, { useMemo, useState } from "react";
 import * as Yup from "yup";
 import {
@@ -12,18 +11,18 @@ import { Fade, FormHelperText, Rating, Stack, Typography } from "@mui/material";
 const validation = Yup.object({
   first_name: Yup.string().required(),
   last_name: Yup.string().required(),
-  stars: Yup.number().min(2)
+  stars: Yup.number().min(2),
 });
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {
   first_name: "",
   last_name: "",
-  stars: 0
+  stars: 0,
 };
-export const OutsideComponent = () => {
+export const InsideComponent = () => {
   const formRef = useFormaliteRef<ValidationType>();
-  const [_, setRender] = useState(0);
+  const [showTest, setShowText] = useState(false);
 
   const formString = useMemo<MainType>(() => {
     return {
@@ -31,26 +30,45 @@ export const OutsideComponent = () => {
         type: ViewTypes.TextView,
         layoutProps: {
           xs: 12,
-          md: 6
+          md: 4,
         },
         inputProps: {
           label: "First Name",
           helperText: "Helper text",
-          placeholder: "First name"
-        }
+          placeholder: "First name",
+        },
+      },
+      stars: {
+        type: ViewTypes.ComponentView,
+        layoutProps: {
+          xs: 12,
+          md: 4,
+        },
+        render: (name, value, onChange, error, isTouched) => (
+          <Stack alignItems="center" justifyContent="center">
+            <Rating
+              name={name}
+              value={value}
+              onChange={(event, newValue) => onChange(newValue)}
+            />
+            {isTouched && (
+              <FormHelperText error={!!error}>{error}</FormHelperText>
+            )}
+          </Stack>
+        ),
       },
       last_name: {
         type: ViewTypes.TextView,
         layoutProps: {
           xs: 12,
-          md: 6
+          md: 4,
         },
         inputProps: {
           label: "Last Name",
           helperText: "Helper text",
-          placeholder: "Last Name"
-        }
-      }
+          placeholder: "Last Name",
+        },
+      },
     };
   }, []);
 
@@ -62,26 +80,14 @@ export const OutsideComponent = () => {
         initialValues={iniValues}
         validationSchema={validation}
         formRef={formRef}
-        onFormChange={() => {
-          setRender(new Date().getTime());
-        }}
         onSubmit={(values) => {
           console.log(values);
+          setShowText(true);
+          setTimeout(() => {
+            setShowText(false);
+          }, 300);
         }}
       />
-      <Rating
-        name="stars"
-        value={formRef.current?.formik.values.stars}
-        onChange={(event, value) => {
-          formRef.current?.formik.setFieldValue("stars", value);
-        }}
-      />
-      {formRef.current?.formik.touched.stars && (
-        <FormHelperText error={!!formRef.current?.formik.errors.stars}>
-          {formRef.current?.formik.errors.stars}
-        </FormHelperText>
-      )}
-
       <div>
         <button
           type="button"
@@ -91,8 +97,13 @@ export const OutsideComponent = () => {
         >
           Submit
         </button>
+        <Fade in={showTest}>
+          <Typography variant="caption" color="success.main">
+            {" "}
+            Submitted!
+          </Typography>
+        </Fade>
       </div>
     </Stack>
   );
 };
-`;

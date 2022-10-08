@@ -18,7 +18,7 @@ const iniValues: ValidationType = {
   title: "",
 };
 
-export const ColorPickerView = () => {
+export const ComponentView = () => {
   const formRef = useFormaliteRef<ValidationType>();
 
   const formString = useMemo<MainType>(() => {

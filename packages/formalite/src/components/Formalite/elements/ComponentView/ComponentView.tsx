@@ -4,6 +4,7 @@ import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import { ComponentViewType } from "@components/Formalite/elements/ComponentView/ComponentView.type";
 import React from "react";
+import { getData } from "@components/Formalite/config/utils";
 
 type ComponentViewProps<T> = {
   allData: ComponentViewType;
@@ -18,6 +19,11 @@ const ComponentView = <T extends FormikValues>(
 ) => {
   const { allData, name, formik, loading } = props;
 
+  const value = getData({ source: formik.values, key: name });
+  const onChange = (newValue: any) => formik.setFieldValue(name, newValue);
+  const error = getData({ source: formik.errors, key: name });
+  const isTouched = getData({ source: formik.touched, key: name });
+
   if (loading) {
     return (
       <Grid item {...allData.layoutProps}>
@@ -27,7 +33,7 @@ const ComponentView = <T extends FormikValues>(
   }
   return (
     <Grid item {...allData.layoutProps}>
-      {allData.render(name)}
+      {allData.render(name, value, onChange, error, isTouched)}
     </Grid>
   );
 };

@@ -41,7 +41,7 @@ Base.args = {
     md: 6,
     xs: 12,
   },
-  render: (name) => (
+  render: (name, value, onChange, error, isTouched) => (
     <div style={{ border: "1px solid", padding: "8px" }}>
       Can Render any component
     </div>

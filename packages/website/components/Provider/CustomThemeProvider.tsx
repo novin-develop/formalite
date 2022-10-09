@@ -11,6 +11,11 @@ const CustomThemeProvider = (props:{children:ReactNode}) => {
     direction:themeDirection,
     palette: {
       mode: themeMode,
+      secondary:{
+        light:"#834bff",
+        main:"#651fff",
+        dark:"#4615b2"
+      }
     },
   });
   return (

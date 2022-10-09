@@ -9,6 +9,7 @@ import { Index1Header } from "../components/IndexPageCompoenent/Index1Header";
 import { Index2Features } from "../components/IndexPageCompoenent/Index2Features";
 import { Index3Examples } from "../components/IndexPageCompoenent/Index3Examples";
 import { Index4Includes } from "../components/IndexPageCompoenent/Index4Includes";
+import { Index5Builder } from "../components/IndexPageCompoenent/Index5Builder/Index5Builder";
 
 const Home: NextPage = () => {
   return (
@@ -30,6 +31,8 @@ const Home: NextPage = () => {
               <Index3Examples/>
             {/* Includes */}
               <Index4Includes/>
+            {/* Builder */}
+              <Index5Builder/>
           </Stack>
         </Container>
         <Footer />

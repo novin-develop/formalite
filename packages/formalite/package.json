@@ -126,6 +126,7 @@
     "react-imask": "6.4.2",
     "react-lazy-load-image-component": "1.5.4",
     "react-number-format": "4.9.4",
+    "react-perfect-scrollbar": "^1.5.8",
     "react-quill": "2.0.0",
     "react-transition-group": "4.4.2",
     "stylis": "4.0.13",

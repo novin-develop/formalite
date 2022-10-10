@@ -36,9 +36,10 @@ export const Index5Builder = () => {
       </Grid>
       <Grid container spacing={2}>
         <DragDropContext onDragEnd={()=>{}}>
-        <Grid item xs={12} md={3}>
-          <PerfectScrollbar style={{height:"500px"}} onScroll={event => event.preventDefault()}>
-            <DropComponent >
+        <Grid item xs={12} md={2}>
+          <PerfectScrollbar onScroll={event => event.preventDefault()}>
+            <DropComponent droppableId={"source"} isDropDisabled={true} >
+              <div/>
               <DragItem num={1} icon={<ShortTextIcon color={"primary"}/>} text={"TextView"}/>
               <DragItem num={2} icon={<CheckBoxIcon color={"primary"}/>} text={"Check Group View"}/>
               <DragItem num={3} icon={<HdrAutoIcon color={"primary"}/>} text={"Auto Complete View"}/>
@@ -49,22 +50,30 @@ export const Index5Builder = () => {
               <DragItem num={8} icon={<CalendarMonthIcon color={"primary"}/>} text={"Date Picker View"}/>
               <DragItem num={9} icon={<DateRangeIcon color={"primary"}/>} text={"Date Time Picker View"}/>
               <DragItem num={10} icon={<QueryBuilderIcon color={"primary"}/>} text={"Time Picker View"}/>
-              <DragItem num={11} icon={<AccountCircleIcon color={"primary"}/>} text={"Avatar DropZone View"}/>
-              <DragItem num={12} icon={<PermMediaIcon color={"primary"}/>} text={"Multi DropZone View"}/>
-              <DragItem num={13} icon={<PanoramaIcon color={"primary"}/>} text={"Single DropZone View"}/>
-              <DragItem num={14} icon={<ArtTrackIcon color={"primary"}/>} text={"Text DropZone View"}/>
-              <DragItem num={15} icon={<TitleIcon color={"primary"}/>} text={"Editor View"}/>
-              <DragItem num={16} icon={<ViewQuiltIcon color={"primary"}/>} text={"Group View"}/>
-              <DragItem num={17} icon={<AttachMoneyIcon color={"primary"}/>} text={"Price View"}/>
-              <DragItem num={18} icon={<RadioButtonUncheckedIcon color={"primary"}/>} text={"Radio Group View"}/>
-              <DragItem num={19} icon={<RepeatOnIcon color={"primary"}/>} text={"Repeater View"}/>
-              <DragItem num={20} icon={<ArrowDropDownCircleIcon color={"primary"}/>} text={"Select View"}/>
-              <DragItem num={21} icon={<ToggleOnIcon color={"primary"}/>} text={"Switch Group View"}/>
             </DropComponent>
           </PerfectScrollbar>
         </Grid>
-        <Grid item xs={12} md={9}>
-          aaa
+          <Grid item xs={12} md={2}>
+            <PerfectScrollbar onScroll={event => event.preventDefault()}>
+              <DropComponent droppableId={"source"} isDropDisabled={true} >
+                <div/>
+                <DragItem num={11} icon={<AccountCircleIcon color={"primary"}/>} text={"Avatar DropZone View"}/>
+                <DragItem num={12} icon={<PermMediaIcon color={"primary"}/>} text={"Multi DropZone View"}/>
+                <DragItem num={13} icon={<PanoramaIcon color={"primary"}/>} text={"Single DropZone View"}/>
+                <DragItem num={14} icon={<ArtTrackIcon color={"primary"}/>} text={"Text DropZone View"}/>
+                <DragItem num={15} icon={<TitleIcon color={"primary"}/>} text={"Editor View"}/>
+                <DragItem num={17} icon={<AttachMoneyIcon color={"primary"}/>} text={"Price View"}/>
+                <DragItem num={18} icon={<RadioButtonUncheckedIcon color={"primary"}/>} text={"Radio Group View"}/>
+                <DragItem num={19} icon={<RepeatOnIcon color={"primary"}/>} text={"Repeater View"}/>
+                <DragItem num={20} icon={<ArrowDropDownCircleIcon color={"primary"}/>} text={"Select View"}/>
+                <DragItem num={21} icon={<ToggleOnIcon color={"primary"}/>} text={"Switch Group View"}/>
+              </DropComponent>
+            </PerfectScrollbar>
+          </Grid>
+        <Grid item xs={12} md={8} >
+          <DropComponent droppableId={"form"}>
+
+          </DropComponent>
         </Grid>
         </DragDropContext>
 

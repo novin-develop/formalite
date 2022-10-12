@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid, Stack, Typography } from "@mui/material";
+import { Button, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
 import * as React from "react";
 import ShortTextIcon from '@mui/icons-material/ShortText';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -21,6 +21,7 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import RepeatOnIcon from '@mui/icons-material/RepeatOn';
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import AddIcon from '@mui/icons-material/Add';
 import PerfectScrollbar from "react-perfect-scrollbar"
 import { DragDropContext,Droppable } from 'react-beautiful-dnd';
 import { DragItem } from "./components/DragItem";
@@ -71,12 +72,19 @@ export const Index5Builder = () => {
             </PerfectScrollbar>
           </Grid>
         <Grid item xs={12} md={8} >
-          <DropComponent droppableId={"form"}>
+          <Grid sx={{marginTop:"15px"}}/>
+            <Button
+              variant={"contained"}
+              fullWidth
+              color={"secondary"}
+              startIcon={<AddIcon />}>
+              Add Layout
+            </Button>
+            <DropComponent droppableId={"form"}>
 
-          </DropComponent>
-        </Grid>
+            </DropComponent>
+          </Grid>
         </DragDropContext>
-
       </Grid>
     </Grid>
   )

@@ -1,4 +1,15 @@
-import { Button, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  ButtonBase,
+  ButtonGroup,
+  Card,
+  CardContent,
+  ClickAwayListener,
+  Divider,
+  Grid,
+  Stack,
+  Typography
+} from "@mui/material";
 import * as React from "react";
 import ShortTextIcon from '@mui/icons-material/ShortText';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -28,8 +39,11 @@ import { DragItem } from "./components/DragItem";
 
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import { DropComponent } from "./components/DropComponent";
+import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
+import { useState } from "react";
 
 export const Index5Builder = () => {
+  const [addLayout,setAddLayout] = useState<boolean>(false);
   return (
     <Grid container justifyContent={"center"} justifyItems={"center"} spacing={2}>
       <Grid item xs={12} style={{textAlign:"center"}}>
@@ -71,15 +85,59 @@ export const Index5Builder = () => {
               </DropComponent>
             </PerfectScrollbar>
           </Grid>
-        <Grid item xs={12} md={8} >
+        <Grid item xs={12} md={8}>
           <Grid sx={{marginTop:"15px"}}/>
-            <Button
-              variant={"contained"}
-              fullWidth
-              color={"secondary"}
-              startIcon={<AddIcon />}>
-              Add Layout
-            </Button>
+          {
+            !addLayout ?
+              <Button
+                variant={"contained"}
+                fullWidth
+                color={"secondary"}
+                startIcon={<AddIcon />}
+                onClick={()=>setAddLayout(true)}>
+                  Add Layout Row
+              </Button>
+            :<ClickAwayListener onClickAway={()=>{setAddLayout(false)}}>
+              <Card>
+                <Stack direction={"row"} sx={{height:"70px"}} divider={<Divider orientation="vertical" flexItem sx={{width:"8px"}} />}>
+                  <Grid item xs={3} spacing={1}>
+                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
+                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
+                        <LayoutViewBtnItem />
+                      </Stack>
+                    </ButtonBase>
+                  </Grid >
+                  <Grid item xs={3}>
+                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
+                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
+                        <LayoutViewBtnItem />
+                        <LayoutViewBtnItem />
+                      </Stack>
+                    </ButtonBase>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
+                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
+                        <LayoutViewBtnItem />
+                        <LayoutViewBtnItem />
+                        <LayoutViewBtnItem />
+                      </Stack>
+                    </ButtonBase>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
+                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
+                        <LayoutViewBtnItem />
+                        <LayoutViewBtnItem />
+                        <LayoutViewBtnItem />
+                        <LayoutViewBtnItem />
+                      </Stack>
+                    </ButtonBase>
+                  </Grid>
+                </Stack>
+              </Card>
+            </ClickAwayListener>
+          }
             <DropComponent droppableId={"form"}>
 
             </DropComponent>
@@ -89,3 +147,9 @@ export const Index5Builder = () => {
     </Grid>
   )
 }
+
+const LayoutViewBtnItem = () => <Grid sx={theme=>({background:theme.palette.grey[400],width:"100%",border:"dashed 1px gray",borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",color:theme.palette.grey[500]})}>
+  <Typography variant={"subtitle2"}>
+    view
+  </Typography>
+</Grid>

@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import compare from "react-fast-compare";
 import {
   generateNestedKeyForYup,
   getData,
@@ -27,4 +28,7 @@ export const baseMemo = (
   ) &&
   prevProps.allData?.inputProps?.disabled ===
     nextProps.allData?.inputProps?.disabled &&
-  prevProps.loading === nextProps.loading;
+  prevProps.loading === nextProps.loading && compare(
+    prevProps.allData?.renderDependency,
+    nextProps.allData?.renderDependency
+  );

@@ -199,6 +199,10 @@ const AutoCompleteView = <T extends FormikValues>(
               }
               {...params}
               {...inputProps}
+              InputProps={{
+                ...(params.InputProps ? params.InputProps : {}),
+                ...(inputProps.InputProps ? inputProps.InputProps : {}),
+              }}
             />
           )}
           {...(autoCompleteProps || {})}

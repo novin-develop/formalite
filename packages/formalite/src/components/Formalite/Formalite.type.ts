@@ -78,7 +78,7 @@ export type MainType = {
 export type AutomaticFetchingType<T> = {
   type: FetchingDataEnum.AUTOMATIC;
   options: () => Promise<T>;
-  dependency?: string;
+  refetchDependency?: string[];
 };
 export type ManualFetchingType<T> = {
   type: FetchingDataEnum.MANUAL;
@@ -137,4 +137,9 @@ export interface BaseViewType {
    * @see [Mui GridProps](https://mui.com/material-ui/api/grid/)
    */
   layoutProps: GridProps;
+
+  /**
+   * Changing this prop cause rerenders in related view
+   */
+   renderDependency?: string[];
 }

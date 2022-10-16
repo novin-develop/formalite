@@ -28,9 +28,4 @@ export interface ComponentViewType extends BaseViewType {
      */
     isTouched: boolean
   ) => JSX.Element;
-
-  /**
-   * use this for dependant fields
-   */
-  dependency?: string;
 }

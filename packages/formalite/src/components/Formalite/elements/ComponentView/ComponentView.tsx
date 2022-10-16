@@ -1,9 +1,9 @@
+import React from "react";
 import { Grid, Skeleton } from "@mui/material";
 import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import { ComponentViewType } from "@components/Formalite/elements/ComponentView/ComponentView.type";
-import React from "react";
 import { getData } from "@components/Formalite/config/utils";
 
 type ComponentViewProps<T> = {
@@ -40,9 +40,7 @@ const ComponentView = <T extends FormikValues>(
 export default React.memo(ComponentView, (prevProps, nextProps) => {
   try {
     return (
-      baseMemo(prevProps, nextProps) &&
-      prevProps.allData?.dependency === nextProps.allData?.dependency
-    );
+      baseMemo(prevProps, nextProps));
   } catch (e) {
     return true;
   }

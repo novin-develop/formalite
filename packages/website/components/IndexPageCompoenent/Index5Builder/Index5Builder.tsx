@@ -41,30 +41,43 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import { DropComponent } from "./components/DropComponent";
 import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
 import { useState } from "react";
+import AddLayoutButton from "./components/AddLayoutButton";
+import InLayoutDragItem from "./components/InLayoutDragItem";
+
+type layoutViewType = {
+  id:string,
+  type:string
+}[][]
 
 export const Index5Builder = () => {
-  const [addLayout,setAddLayout] = useState<boolean>(false);
+  const [layoutView,setLayoutView] = useState<layoutViewType>([]);
+  const [countRow,setCountRow] = useState(1);
   return (
     <Grid container justifyContent={"center"} justifyItems={"center"} spacing={2}>
       <Grid item xs={12} style={{textAlign:"center"}}>
         <Typography variant={"h3"} marginBottom={"32px"}> Code Builder </Typography>
       </Grid>
       <Grid container spacing={2}>
-        <DragDropContext onDragEnd={()=>{}}>
+        <DragDropContext onDragEnd={(result, provided)=>{
+          const {source,destination,draggableId} = result;
+          const id = destination?.droppableId.split(".")[1];
+          if (id !== undefined ){
+            setLayoutView(pre =>pre.map(item=>item.map(innerItem=>innerItem.id=== id?{...innerItem,type:draggableId}:innerItem)))
+          }
+        }}>
         <Grid item xs={12} md={2}>
           <PerfectScrollbar onScroll={event => event.preventDefault()}>
             <DropComponent droppableId={"source"} isDropDisabled={true} >
               <div/>
               <DragItem num={1} icon={<ShortTextIcon color={"primary"}/>} text={"TextView"}/>
-              <DragItem num={2} icon={<CheckBoxIcon color={"primary"}/>} text={"Check Group View"}/>
-              <DragItem num={3} icon={<HdrAutoIcon color={"primary"}/>} text={"Auto Complete View"}/>
-              <DragItem num={4} icon={<RadioButtonCheckedIcon color={"primary"}/>} text={"Big Radio Group View"}/>
-              <DragItem num={5} icon={<CreditCardIcon color={"primary"}/>} text={"Card Number View"}/>
-              <DragItem num={6} icon={<ColorLensIcon color={"primary"}/>} text={"Color Picker View"}/>
-              <DragItem num={7} icon={<RectangleIcon color={"primary"}/>} text={"Component View"}/>
-              <DragItem num={8} icon={<CalendarMonthIcon color={"primary"}/>} text={"Date Picker View"}/>
-              <DragItem num={9} icon={<DateRangeIcon color={"primary"}/>} text={"Date Time Picker View"}/>
-              <DragItem num={10} icon={<QueryBuilderIcon color={"primary"}/>} text={"Time Picker View"}/>
+              <DragItem num={2} icon={<CheckBoxIcon color={"primary"}/>} text={"Check Group"}/>
+              <DragItem num={3} icon={<HdrAutoIcon color={"primary"}/>} text={"Auto Complete"}/>
+              <DragItem num={4} icon={<RadioButtonCheckedIcon color={"primary"}/>} text={"Big Radio Group"}/>
+              <DragItem num={5} icon={<CreditCardIcon color={"primary"}/>} text={"Card Number"}/>
+              <DragItem num={6} icon={<ColorLensIcon color={"primary"}/>} text={"Color Picker"}/>
+              <DragItem num={8} icon={<CalendarMonthIcon color={"primary"}/>} text={"Date Picker"}/>
+              <DragItem num={9} icon={<DateRangeIcon color={"primary"}/>} text={"Date Time Picker"}/>
+              <DragItem num={10} icon={<QueryBuilderIcon color={"primary"}/>} text={"Time Picker"}/>
             </DropComponent>
           </PerfectScrollbar>
         </Grid>
@@ -72,84 +85,92 @@ export const Index5Builder = () => {
             <PerfectScrollbar onScroll={event => event.preventDefault()}>
               <DropComponent droppableId={"source"} isDropDisabled={true} >
                 <div/>
-                <DragItem num={11} icon={<AccountCircleIcon color={"primary"}/>} text={"Avatar DropZone View"}/>
-                <DragItem num={12} icon={<PermMediaIcon color={"primary"}/>} text={"Multi DropZone View"}/>
-                <DragItem num={13} icon={<PanoramaIcon color={"primary"}/>} text={"Single DropZone View"}/>
-                <DragItem num={14} icon={<ArtTrackIcon color={"primary"}/>} text={"Text DropZone View"}/>
-                <DragItem num={15} icon={<TitleIcon color={"primary"}/>} text={"Editor View"}/>
-                <DragItem num={17} icon={<AttachMoneyIcon color={"primary"}/>} text={"Price View"}/>
-                <DragItem num={18} icon={<RadioButtonUncheckedIcon color={"primary"}/>} text={"Radio Group View"}/>
-                <DragItem num={19} icon={<RepeatOnIcon color={"primary"}/>} text={"Repeater View"}/>
-                <DragItem num={20} icon={<ArrowDropDownCircleIcon color={"primary"}/>} text={"Select View"}/>
-                <DragItem num={21} icon={<ToggleOnIcon color={"primary"}/>} text={"Switch Group View"}/>
+                <DragItem num={11} icon={<AccountCircleIcon color={"primary"}/>} text={"Avatar DropZone"}/>
+                <DragItem num={12} icon={<PermMediaIcon color={"primary"}/>} text={"Multi DropZone"}/>
+                <DragItem num={13} icon={<PanoramaIcon color={"primary"}/>} text={"Single DropZone"}/>
+                <DragItem num={14} icon={<ArtTrackIcon color={"primary"}/>} text={"Text DropZone"}/>
+                <DragItem num={15} icon={<TitleIcon color={"primary"}/>} text={"Editor"}/>
+                <DragItem num={17} icon={<AttachMoneyIcon color={"primary"}/>} text={"Price"}/>
+                <DragItem num={18} icon={<RadioButtonUncheckedIcon color={"primary"}/>} text={"Radio Group"}/>
+                <DragItem num={20} icon={<ArrowDropDownCircleIcon color={"primary"}/>} text={"Select"}/>
+                <DragItem num={21} icon={<ToggleOnIcon color={"primary"}/>} text={"Switch Group"}/>
               </DropComponent>
             </PerfectScrollbar>
           </Grid>
         <Grid item xs={12} md={8}>
           <Grid sx={{marginTop:"15px"}}/>
-          {
-            !addLayout ?
-              <Button
-                variant={"contained"}
-                fullWidth
-                color={"secondary"}
-                startIcon={<AddIcon />}
-                onClick={()=>setAddLayout(true)}>
-                  Add Layout Row
-              </Button>
-            :<ClickAwayListener onClickAway={()=>{setAddLayout(false)}}>
-              <Card>
-                <Stack direction={"row"} sx={{height:"70px"}} divider={<Divider orientation="vertical" flexItem sx={{width:"8px"}} />}>
-                  <Grid item xs={3} spacing={1}>
-                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
-                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
-                        <LayoutViewBtnItem />
-                      </Stack>
-                    </ButtonBase>
-                  </Grid >
-                  <Grid item xs={3}>
-                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
-                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
-                        <LayoutViewBtnItem />
-                        <LayoutViewBtnItem />
-                      </Stack>
-                    </ButtonBase>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
-                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
-                        <LayoutViewBtnItem />
-                        <LayoutViewBtnItem />
-                        <LayoutViewBtnItem />
-                      </Stack>
-                    </ButtonBase>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <ButtonBase component="div" sx={{height:"100%",width:"100%"}} onClick={()=>setAddLayout(false)}>
-                      <Stack spacing={1} direction={"row"} sx={{height:"100%",width:"100%",p:1}}>
-                        <LayoutViewBtnItem />
-                        <LayoutViewBtnItem />
-                        <LayoutViewBtnItem />
-                        <LayoutViewBtnItem />
-                      </Stack>
-                    </ButtonBase>
-                  </Grid>
-                </Stack>
-              </Card>
-            </ClickAwayListener>
-          }
-            <DropComponent droppableId={"form"}>
-
-            </DropComponent>
+          {/* start layout builder */}
+          <Stack spacing={2}>
+            <Stack spacing={2}>
+              {
+                layoutView.map((item,index)=>(
+                  <Stack direction={"row"} key={`${index}`} spacing={2} width={"100%"}>
+                    {item.map(innerItem=> (
+                      <Grid key={innerItem.id} xs={12/item.length}>
+                        <DropComponent droppableId={`drop.${innerItem.id}`}>
+                          <Grid sx={theme=>({
+                            background:theme.palette.grey[200],
+                            width:"100%",
+                            height:"46px",
+                            border:"dashed 1px gray",
+                            borderRadius:"4px",
+                            display:"flex",
+                            alignItems:"center",
+                            justifyContent:"center",
+                            color:theme.palette.grey[500],
+                            cursor:"pointer"
+                          })} onClick={()=>{
+                            if (!innerItem.type) {
+                              setLayoutView(pre=>{
+                                const selectedRow= pre[index];
+                                if (selectedRow.length ===1){
+                                  return pre.filter((item,preIndex)=>index !== preIndex)
+                                }else {
+                                  const temp = selectedRow.filter(item=>item.id !== innerItem.id)
+                                  return  pre.map((item,preIndex) => {
+                                    if (preIndex === index){
+                                      return temp
+                                    }else {
+                                      return item
+                                    }
+                                  })
+                                }
+                              })
+                            }
+                          }}>
+                            <InLayoutDragItem type={innerItem.type} id={innerItem.id}/>
+                          </Grid>
+                        </DropComponent>
+                      </Grid>
+                      )
+                    )}
+                  </Stack>
+                  )
+                )
+              }
+            </Stack>
+            <AddLayoutButton
+              onLayoutSelected={(value)=>{
+                setLayoutView(pre=>{
+                  const temp = []
+                  for (let i = 0; i < value; i++) {
+                    temp.push({id:`${countRow}_${i}`,type:""})
+                  }
+                  pre.push(temp)
+                  return [...pre]
+                })
+                setCountRow(pre=>pre+1)
+              }}
+            />
+          </Stack>
           </Grid>
+          <Grid mx={2}>
+            + <code>ComponentView</code>, <code>RepeaterView</code>, <code>GroupView</code>
+          </Grid>
+
         </DragDropContext>
       </Grid>
     </Grid>
   )
 }
 
-const LayoutViewBtnItem = () => <Grid sx={theme=>({background:theme.palette.grey[400],width:"100%",border:"dashed 1px gray",borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",color:theme.palette.grey[500]})}>
-  <Typography variant={"subtitle2"}>
-    view
-  </Typography>
-</Grid>

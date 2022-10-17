@@ -13,16 +13,19 @@ type DragItemProps = {
 
 export const DragItem = (props:DragItemProps) => {
   return (
-    <Draggable draggableId={props.text} index={props.num}>
+    <Draggable draggableId={`${props.text}.${props.num}`} index={props.num}>
       {(provided, snapshot) => (
         <>
-          <Card ref={provided.innerRef}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-                style={
-                  provided.draggableProps
-                    .style
-                } sx={{p:1,flexShrink:0,cursor:"pointer",...snapshot.isDragging?{}:{transform:"none!important"}}}>
+          <Card
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            style={
+              provided.draggableProps
+                .style
+            }
+            sx={{p:1,flexShrink:0,cursor:"pointer",...snapshot.isDragging?{marginTop:"0!important"}:{transform:"none!important"}}}
+          >
             <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"center"}>
               <Grid item xs={2} sx={{display:"flex",alignItems:"center",justifyContent:"center"}} >
                 {props.icon}

@@ -5,19 +5,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.1.9](https://github.com/novin-develop/formalite/compare/v0.1.8...v0.1.9) (2022-10-16)
 
-**Note:** Version bump only for package formalite
+### Features
 
-
+* ✨ add renderDependency prop to all views  ([86fad80](https://github.com/novin-develop/formalite/commit/86fad80107497f65bfc0bd8804826c35c3601cb2))
 
 
 
 
 ## [0.1.8](https://github.com/novin-develop/formalite/compare/v0.1.7...v0.1.8) (2022-10-16)
 
-**Note:** Version bump only for package formalite
+### Bug Fixes
 
-
-
+* 🐛 fix props separating in autoComplete InputProps  ([f67ebab](https://github.com/novin-develop/formalite/commit/f67ebab702c5eddc0a8c155534ba1af5d5fd0d8b))
+ 
 
 
 

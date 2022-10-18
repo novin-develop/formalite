@@ -60,6 +60,12 @@ export const Index5Builder = () => {
       <Grid container spacing={2}>
         <DragDropContext onDragEnd={(result, provided)=>{
           const {source,destination,draggableId} = result;
+          if (!!destination && source.droppableId !== "source"){
+            const id = source?.droppableId.split(".")[1];
+            if (id !== undefined ){
+              setLayoutView(pre =>pre.map(item=>item.map(innerItem=>innerItem.id=== id?{...innerItem,type:""}:innerItem)))
+            }
+          }
           const id = destination?.droppableId.split(".")[1];
           if (id !== undefined ){
             setLayoutView(pre =>pre.map(item=>item.map(innerItem=>innerItem.id=== id?{...innerItem,type:draggableId}:innerItem)))
@@ -98,7 +104,10 @@ export const Index5Builder = () => {
             </PerfectScrollbar>
           </Grid>
         <Grid item xs={12} md={8}>
-          <Grid sx={{marginTop:"15px"}}/>
+          {
+            layoutView.length !== 0 &&
+            <Grid sx={{marginTop:"15px"}}/>
+          }
           {/* start layout builder */}
           <Stack spacing={2}>
             <Stack spacing={2}>
@@ -138,7 +147,13 @@ export const Index5Builder = () => {
                               })
                             }
                           }}>
-                            <InLayoutDragItem type={innerItem.type} id={innerItem.id}/>
+                            <InLayoutDragItem
+                              type={innerItem.type}
+                              id={innerItem.id}
+                              onDelete={key => {
+                                setLayoutView(pre =>pre.map(item=>item.map(innerItem=>innerItem.id=== key?{...innerItem,type:""}:innerItem)))
+                              }}
+                            />
                           </Grid>
                         </DropComponent>
                       </Grid>

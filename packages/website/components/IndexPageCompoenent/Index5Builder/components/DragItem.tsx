@@ -1,13 +1,16 @@
-import { Card, Grid, Stack, Typography } from "@mui/material";
+import { Card, Grid, IconButton, Stack, Typography } from "@mui/material";
 import ShortTextIcon from "@mui/icons-material/ShortText";
 import * as React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { styled } from "@mui/material/styles";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 type DragItemProps = {
   text: string,
   icon: JSX.Element,
-  num: number
+  num: number,
+  isFromLayout?: boolean,
+  onDelete?:()=>void
 }
 
 
@@ -24,8 +27,9 @@ export const DragItem = (props:DragItemProps) => {
               provided.draggableProps
                 .style
             }
-            sx={{p:1,flexShrink:0,cursor:"pointer",...snapshot.isDragging?{marginTop:"0!important"}:{transform:"none!important"}}}
+            sx={{p:1,flexShrink:0,cursor:"pointer",position:"relative",...snapshot.isDragging?{marginTop:"0!important"}:{transform:"none!important"}}}
           >
+
             <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"center"}>
               <Grid item xs={2} sx={{display:"flex",alignItems:"center",justifyContent:"center"}} >
                 {props.icon}
@@ -35,9 +39,27 @@ export const DragItem = (props:DragItemProps) => {
                   {props.text}
                 </Typography>
               </Grid>
+              {
+                props.isFromLayout &&
+                <Grid item >
+                  <IconButton
+                    aria-label="delete"
+                    size="small"
+                    color={"error"}
+                    onClick={(event)=>{
+                      event.preventDefault();
+                      if (props.onDelete){
+                        props.onDelete()
+                      }
+                    }}>
+                    <DeleteIcon fontSize="inherit" />
+                  </IconButton>
+                </Grid>
+              }
+
             </Stack>
           </Card>
-          {snapshot.isDragging && (
+          {!props.isFromLayout && snapshot.isDragging && (
             <Card sx={{p:1,flexShrink:0,cursor:"pointer"}}>
               <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"center"}>
                 <Grid item xs={2} sx={{display:"flex",alignItems:"center",justifyContent:"center"}} >

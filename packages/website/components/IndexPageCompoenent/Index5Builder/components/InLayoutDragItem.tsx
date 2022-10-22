@@ -145,5 +145,5 @@ const InLayoutDragItem = (props:{type:string,id:string,onDelete:(key:string)=>vo
 export default InLayoutDragItem;
 
 const Wrapper= (props:{children:ReactNode}) => {
-  return <Grid sx={{width:"99%"}}>{props.children}</Grid>
+  return <Grid sx={{width:"100%"}}>{props.children}</Grid>
 }

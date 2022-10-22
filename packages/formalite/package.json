@@ -1,6 +1,6 @@
 {
   "name": "@novin-dev/formalite",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Generate MUI form with few line of code",
   "author": "Mostafa Roosta <mostafaroosta74@gmail.com>",
   "homepage": "https://formalite.novin.dev",
@@ -74,6 +74,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/stylis": "4.0.2",
+    "@types/yup": "0.29.13",
     "@typescript-eslint/eslint-plugin": "5.11.0",
     "@typescript-eslint/parser": "5.11.0",
     "babel-loader": "^8.2.5",
@@ -103,8 +104,7 @@
     "storybook-dark-mode": "1.0.9",
     "tsc-alias": "1.6.7",
     "tsconfig-paths-webpack-plugin": "3.5.2",
-    "typescript": "^4.8.4",
-    "@types/yup": "0.29.13"
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "@date-io/date-fns": "2.13.1",

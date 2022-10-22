@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import * as Yup from "yup";
-
 import { Language } from "@components/base/model";
 import { Formalite, MainType, ViewTypes } from "@components/Formalite";
 import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";

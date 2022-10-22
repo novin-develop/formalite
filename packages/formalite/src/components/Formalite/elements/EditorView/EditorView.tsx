@@ -3,13 +3,13 @@ import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import ReactQuill from "react-quill";
 import { FormHelperText, Grid, InputLabel } from "@mui/material";
-import "react-quill/dist/quill.snow.css";
 import {
   checkIsRequired,
   getData,
   handleRandomClassNameOrId,
 } from "@components/Formalite/config/utils";
 import { Theme } from "@mui/material/styles/createTheme";
+import { Global } from "@emotion/react";
 import { baseMemo } from "../Bases/functions/memo";
 import type { EditorViewType } from "./EditorView.type";
 import { TextViewSkeleton } from "../Bases/SkeletonBase";
@@ -19,6 +19,7 @@ import EditorToolbar, {
   redoChange,
   undoChange,
 } from "./Editor/EditorToolbar";
+import { cssText } from "./editorCss";
 
 interface EditorViewProps<T> {
   allData: EditorViewType;
@@ -67,6 +68,7 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
   }
   return (
     <Grid id={name} item {...allData.layoutProps}>
+      <Global styles={cssText} />
       {label && (
         <InputLabel
           required={checkIsRequired({

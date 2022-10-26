@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/novin-develop/formalite/compare/v0.1.10...v0.2.0) (2022-10-26)
+
+
+### Features
+
+* replace ReactQuill with WangEditor ([64c1e07](https://github.com/novin-develop/formalite/commit/64c1e077ca597bbe767f4091486f01a9fe50aba5))
+
+
+
+
 ## [0.1.10](https://github.com/novin-develop/formalite/compare/v0.1.9...v0.1.10) (2022-10-22)
 
 

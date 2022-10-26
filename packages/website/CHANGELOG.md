@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/novin-develop/formalite/compare/v0.1.10...v0.2.0) (2022-10-26)
+
+**Note:** Version bump only for package website
+
+
+
+
+
+
 ## [0.1.10](https://github.com/novin-develop/formalite/compare/v0.1.9...v0.1.10) (2022-10-22)
 
 **Note:** Version bump only for package website

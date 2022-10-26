@@ -1,7 +1,6 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
-import ReactQuill from "react-quill";
 import { FormHelperText, Grid, InputLabel } from "@mui/material";
 import {
   checkIsRequired,
@@ -29,11 +28,14 @@ interface EditorViewProps<T> {
   validationSchema: OptionalObjectSchema<any>;
   translator: Function;
 }
+
+let ReactQuill = (...props: any) => <>a</>;
+
 const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
   const { allData, name, formik, loading, validationSchema, translator } =
     props;
   const { helperText, label, ...editorProps } = allData.editorProps;
-
+  const [load, setLoad] = useState(false);
   const id = useMemo(() => `minimal-quill-${handleRandomClassNameOrId()}`, []);
 
   const modules = useMemo(
@@ -59,7 +61,15 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
     [id]
   );
 
-  if (loading) {
+  useEffect(() => {
+    // eslint-disable-next-line global-require
+    ReactQuill = require("react-quill");
+    if (document) {
+      setLoad(true);
+    }
+  }, []);
+
+  if (loading && !load) {
     return (
       <Grid item {...allData.layoutProps}>
         <TextViewSkeleton height={253} hasHelper={!!helperText} />
@@ -97,19 +107,13 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
           className={`class-${id}`}
           isSimple={allData.editorProps.isToolbarSimple}
         />
-        {/* @ts-ignore */}
         <ReactQuill
           className={`class-${id}`}
           value={getData({ source: formik.values, key: name })}
           // value={editorValue}
           modules={modules}
           formats={formats}
-          onChange={(
-            value: string,
-            _delta: any,
-            _source: any,
-            editor: ReactQuill.UnprivilegedEditor
-          ) => {
+          onChange={(value: string, _delta: any, _source: any, editor: any) => {
             formik.setFieldValue(
               name,
               editor.getLength() > 1 ? value : formik.initialValues[name]

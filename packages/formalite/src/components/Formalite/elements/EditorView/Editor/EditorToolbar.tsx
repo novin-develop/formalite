@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
-import { Quill } from "react-quill";
 import RedoIcon from "@mui/icons-material/Redo";
 import UndoIcon from "@mui/icons-material/Undo";
 //
@@ -43,14 +42,6 @@ export function redoChange() {
   // @ts-ignore
   this.quill.history.redo();
 }
-
-const Size = Quill.import("attributors/style/size");
-Size.whitelist = FONT_SIZE;
-Quill.register(Size, true);
-
-const Font = Quill.import("attributors/style/font");
-Font.whitelist = FONT_FAMILY;
-Quill.register(Font, true);
 
 export const formats = [
   "align",

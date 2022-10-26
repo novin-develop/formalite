@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/novin-develop/formalite/compare/v0.2.0...v0.2.1) (2022-10-26)
+
+
+### Bug Fixes
+
+* fix react quill for Nextjs ([ceaa98d](https://github.com/novin-develop/formalite/commit/ceaa98d9157dee726cfd4d9c43735dde71d9f6d9))
+
+
+
+
 ## [0.2.0](https://github.com/novin-develop/formalite/compare/v0.1.10...v0.2.0) (2022-10-26)
 
 

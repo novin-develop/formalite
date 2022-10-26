@@ -11,17 +11,12 @@ import { css, Global } from "@emotion/react";
 import { useEditorI18n } from "@components/Formalite/elements/EditorView/Editor/useEditorI18n";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 import { CustomFile } from "@components/Formalite";
+import { darkAndLightColors } from "@components/Formalite/elements/EditorView/Editor/utils";
 import { baseMemo } from "../Bases/functions/memo";
 import type { EditorViewType } from "./EditorView.type";
 import { TextViewSkeleton } from "../Bases/SkeletonBase";
-import { cssText } from "./editorCss";
+import { cssText } from "./Editor/editorCss";
 
-/**
- * TODO add I18n
- * TODO remove and organize
- * TODO fix spreading Pops override
- * TODO fix and check upload image
- */
 interface EditorViewProps<T> {
   allData: EditorViewType;
   name: string;
@@ -42,6 +37,7 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
   const {
     helperText,
     label,
+    placeholder,
     editorConfig: editorConfigProps = {},
     toolbarConfig: toolbarConfigProps = {},
     toolbarComponentProps = {},
@@ -52,6 +48,7 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
   const i18nObject = useEditorI18n();
   const theme = useTheme();
   const boxRef = useRef<HTMLDivElement>(null);
+  const { MENU_CONF, ...otherEditorConfigProps } = editorConfigProps;
 
   useEffect(() => {
     // eslint-disable-next-line global-require
@@ -72,42 +69,7 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
   }, []);
 
   useEffect(() => {
-    const r = document.querySelector<any>(":root")!;
-    if (theme.palette.mode === "dark") {
-      if (boxRef.current) {
-        boxRef.current.style.border = "1px solid #ffffff3b";
-      }
-      // r.style.setProperty("--w-e-textarea-bg-color", "#333");
-      r.style.setProperty("--w-e-textarea-color", "#fff");
-      r.style.setProperty("--w-e-toolbar-bg-color", "#333");
-      r.style.setProperty("--w-e-toolbar-color", "#fff");
-      r.style.setProperty(
-        "--w-e-toolbar-active-bg-color",
-        theme.palette.grey[700]
-      );
-      r.style.setProperty(
-        "--w-e-toolbar-active-color",
-        theme.palette.grey[500]
-      );
-      r.style.setProperty("--w-e-toolbar-active-color_options", "#fff");
-    } else {
-      if (boxRef.current) {
-        boxRef.current.style.border = "1px solid #0000003b";
-      }
-      // r.style.setProperty("--w-e-textarea-bg-color", "#fff");
-      r.style.setProperty("--w-e-textarea-color", "#333");
-      r.style.setProperty("--w-e-toolbar-bg-color", "#fff");
-      r.style.setProperty("--w-e-toolbar-color", "#333");
-      r.style.setProperty(
-        "--w-e-toolbar-active-bg-color",
-        theme.palette.grey[200]
-      );
-      r.style.setProperty(
-        "--w-e-toolbar-active-color",
-        theme.palette.grey[500]
-      );
-      r.style.setProperty("--w-e-toolbar-active-color_options", "#000");
-    }
+    darkAndLightColors(theme, boxRef);
   }, [theme.palette.mode]);
 
   useEffect(() => {
@@ -117,14 +79,17 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
       setEditor(null);
     };
   }, [editor]);
-
   const toolbarConfig: Partial<IToolbarConfig> = {
-    excludeKeys: ["uploadVideo", "fullScreen"],
+    excludeKeys: [
+      "uploadVideo",
+      "fullScreen",
+      ...(allData.onUpload ? [] : ["uploadImage"]),
+    ],
     ...toolbarConfigProps,
   };
 
   const editorConfig: Partial<IEditorConfig> = {
-    placeholder: "Type here...",
+    placeholder,
     MENU_CONF: {
       fontFamily: {
         fontFamilyList: [
@@ -135,14 +100,21 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
         ],
       },
       uploadImage: {
+        base64LimitSize: 5 * 1024, // less than 5Kb use base64
         async customUpload(file: File, insertFn: Function) {
           if (allData.onUpload) {
-            allData.onUpload(file as CustomFile).then((res) => {
-              insertFn(res.url, res.alt, res.href);
-            });
+            allData
+              .onUpload(file as CustomFile)
+              .then((res) => {
+                insertFn(res.url, res.alt, res.href);
+              })
+              .catch((err) => {
+                throw err;
+              });
           }
         },
       },
+      ...MENU_CONF,
     },
     autoFocus: false,
     onFocus: () => {
@@ -157,7 +129,7 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
         }`;
       }
     },
-    ...editorConfigProps,
+    ...otherEditorConfigProps,
   };
 
   if (loading || !load) {

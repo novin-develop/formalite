@@ -2,6 +2,12 @@ import { BaseViewType, ViewTypes } from "@components/Formalite/Formalite.type";
 import { IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 import { CustomFile } from "@components/Formalite";
 
+export interface OnUploadPromise {
+  url: string;
+  alt: string;
+  href: string;
+}
+
 export interface EditorViewType extends BaseViewType {
   type: ViewTypes.EditorView;
 
@@ -13,9 +19,7 @@ export interface EditorViewType extends BaseViewType {
    * @param progress > A callback that gives progress number in arg
    * @param uploadController > uploadController to connect to axios for auto abort
    */
-  onUpload?: (
-    file: CustomFile
-  ) => Promise<{ url: string; alt: string; href: string }>;
+  onUpload?: (file: CustomFile) => Promise<OnUploadPromise>;
 
   /**
    * Props that contain
@@ -31,6 +35,7 @@ export interface EditorViewType extends BaseViewType {
   editorProps: {
     label?: string;
     helperText?: string | JSX.Element;
+    placeholder?: string;
     editorConfig?: Partial<IEditorConfig>;
     toolbarConfig?: Partial<IToolbarConfig>;
     toolbarComponentProps?: Object;

@@ -166,9 +166,7 @@ export const TestFormalite = ({
               onSubmit={(values) => {
                 console.log(values);
               }}
-              onFormChange={(formik) => {
-                console.log("formik", formik);
-              }}
+              onFormChange={() => {}}
             />
             <Button
               onClick={() => {

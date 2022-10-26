@@ -1,8 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import { useI18nContext } from "@components/base/I18nProvider";
-import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-
+import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
 const SmallBlockContent = (props: { required: boolean }) => {
   const { t } = useI18nContext();
 

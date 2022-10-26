@@ -119,7 +119,6 @@ export const cssText = css`
     border-radius: 3px;
     box-shadow: 0 2px 5px #0000001f;
     position: absolute;
-    background: var(--w-e-toolbar-bg-color);
   }
   .w-e-toolbar {
     flex-wrap: wrap;
@@ -242,6 +241,7 @@ export const cssText = css`
   }
   .w-e-bar-item-group:hover .w-e-bar-item-menus-container {
     display: block;
+    background: ;
   }
   .w-e-select-list {
     background-color: var(--w-e-toolbar-bg-color);

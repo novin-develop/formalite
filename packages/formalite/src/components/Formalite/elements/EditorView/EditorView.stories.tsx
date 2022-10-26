@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { PaddingContainer } from "@components/base/PaddingContainer";
-import { OnUploadPromise } from "@components/Formalite/elements/EditorView/EditorView.type";
 import { TestEditorView } from "./TestEditorView";
 import { EditorViewCode } from "./EditorView.code";
 
@@ -42,24 +41,11 @@ Base.args = {
     xs: 12,
   },
   editorProps: {
+    isToolbarSimple: false,
     label: "Editor",
     helperText: "helper text",
     placeholder: "Placeholder...",
   },
-  onUpload: (file) =>
-    new Promise<OnUploadPromise>((resolve, reject) => {
-      setTimeout(() => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-          resolve({
-            alt: "image",
-            href: "image",
-            url: String(reader.result),
-          });
-        };
-      }, 1000);
-    }),
 };
 Base.storyName = "Base";
 Base.parameters = {

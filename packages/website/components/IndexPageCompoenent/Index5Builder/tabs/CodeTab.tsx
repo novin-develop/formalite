@@ -1,75 +1,100 @@
-import { Button, Grid, useTheme } from "@mui/material";
+import { Button, Grid, ThemeProvider, useTheme } from "@mui/material";
 import dynamic from "next/dynamic";
 import "@uiw/react-code-preview/esm/index.css"
 import { layoutViewType } from "../Index5Builder";
-import { Formalite, MainType, useFormaliteRef, ViewTypes } from "@novin-dev/formalite";
-import { useMemo, useRef } from "react";
+import { Formalite as FormaliteOriginal, useFormaliteRef, ViewTypes } from "@novin-dev/formalite";
 import * as Yup from "yup";
+import { fillFormString } from "./utils";
 
 type CodeTabType ={
   layoutView:layoutViewType
 }
 
 
-const code =
+const code = (validation:string,ini:string,formString:string) =>
 `import { Button } from "@mui/material";
+import { Formalite, useFormaliteRef, ViewTypes } from "@novin-dev/formalite";
+import * as Yup from "yup";
 
-ReactDOM.createRoot(_mount_).render(
-  <div>
-    aaa
-    <br/>
-    <Button type="primary" variant={"contained"}>Submit</Button>
-  </div>,
-);
-`;
-///-------------------------------
-const builderForm = Yup.object({
-  title: Yup.string().required(),
-});
-type builderFormType = Yup.InferType<typeof builderForm>;
-const ini:builderFormType ={
+
+const builderForm = Yup.object(${validation});
+
+const ini ={
   title:"aaa"
 }
-const useFrom = () => {
-  return useMemo<MainType>(
-    () => ({
-      title: {
-        type: ViewTypes.TextView,
-        layoutProps: {
-          xs: 12,
-        },
-        inputProps: {
-          label: "aaa",
-        },
-      },
-    })
-  ,[])
+
+const formString =
+{
+  title: {
+    type: ViewTypes.TextView,
+    layoutProps: {
+      xs: 12,
+    },
+    inputProps: {
+      label: "aaa",
+    },
+  },
 }
-///-------------------------------
 
-const CodeTab = ({ layoutView }: CodeTabType) => {
-  const theme = useTheme();
-  const formRef = useFormaliteRef<builderFormType>()
-  const CodePreview = dynamic(
-    () => import("@uiw/react-code-preview").then((mod) => mod.default),
-    { ssr: false }
-  );
-  const form = useFrom();
-
+const MainComponent = () => {
+  const formRef = useFormaliteRef()
 
   return (
-    <Grid sx={{display:"flex",pt:6,width:"100%"}}>
-      <Formalite<builderFormType>
-        formString={form}
-        onSubmit={()=>{}}
+    <div>
+      <Formalite
+        formString={formString}
+        onSubmit={(values)=>{
+          console.log(values)
+        }}
         validationSchema={builderForm}
         initialValues={ini}
         formRef={formRef}
       />
+    <br/>
+    <Button
+      type="primary"
+      variant={"contained"}
+      onClick={()=>{
+        formRef.current.callSubmit()
+      }}>
+        Submit
+    </Button>
+  </div>
+  )
+}
+
+ReactDOM.createRoot(_mount_).render(
+  <MainComponent/>,
+);
+`;
+
+
+
+const CodeTab = ({ layoutView }: CodeTabType) => {
+  const theme = useTheme();
+  console.log(fillFormString(layoutView))
+  const Formalite = (props:any) => {
+    return (
+      <ThemeProvider theme={theme}>
+        <FormaliteOriginal {...props}/>
+      </ThemeProvider>
+    )
+  }
+  const a = `{
+    title: Yup.string().required(),
+  }`
+
+  const CodePreview = dynamic(
+    () => import("@uiw/react-code-preview").then((mod) => mod.default),
+    { ssr: false }
+  );
+
+  return (
+    <Grid sx={{display:"flex",pt:6,width:"100%"}}>
       <CodePreview
         theme={theme.palette.mode}
-        code={code}
-        dependencies={{ Button }}
+        code={code(a,"bb","cc")}
+        dependencies={{ Button,Formalite,useFormaliteRef,ViewTypes,Yup }}
         style={{display:"flex",width:"100%",minHeight:"250px"}}
       />
     </Grid>

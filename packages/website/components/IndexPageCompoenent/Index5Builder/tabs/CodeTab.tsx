@@ -4,7 +4,7 @@ import "@uiw/react-code-preview/esm/index.css"
 import { layoutViewType } from "../Index5Builder";
 import { Formalite as FormaliteOriginal, useFormaliteRef, ViewTypes } from "@novin-dev/formalite";
 import * as Yup from "yup";
-import { fillFormString } from "./utils";
+import { fillFormString, getFromString, getInitialFromString, getValidationFromString } from "./utils";
 
 type CodeTabType ={
   layoutView:layoutViewType
@@ -19,22 +19,10 @@ import * as Yup from "yup";
 
 const builderForm = Yup.object(${validation});
 
-const ini ={
-  title:"aaa"
-}
+const ini =${ini}
 
-const formString =
-{
-  title: {
-    type: ViewTypes.TextView,
-    layoutProps: {
-      xs: 12,
-    },
-    inputProps: {
-      label: "aaa",
-    },
-  },
-}
+const formString =${formString}
+
 
 const MainComponent = () => {
   const formRef = useFormaliteRef()
@@ -80,9 +68,6 @@ const CodeTab = ({ layoutView }: CodeTabType) => {
       </ThemeProvider>
     )
   }
-  const a = `{
-    title: Yup.string().required(),
-  }`
 
   const CodePreview = dynamic(
     () => import("@uiw/react-code-preview").then((mod) => mod.default),
@@ -93,7 +78,11 @@ const CodeTab = ({ layoutView }: CodeTabType) => {
     <Grid sx={{display:"flex",pt:6,width:"100%"}}>
       <CodePreview
         theme={theme.palette.mode}
-        code={code(a,"bb","cc")}
+        code={code(
+          getValidationFromString(layoutView),
+          getInitialFromString(layoutView),
+          getFromString(layoutView)
+        )}
         dependencies={{ Button,Formalite,useFormaliteRef,ViewTypes,Yup }}
         style={{display:"flex",width:"100%",minHeight:"250px"}}
       />

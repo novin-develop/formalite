@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Generate MUI form with few line of code",
   "devDependencies": {
+    "next": "12.2.5",
     "lerna": "^3.22.1",
     "husky": "^8.0.1",
     "conventional-changelog-conventionalcommits": "^5.0.0",

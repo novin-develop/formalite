@@ -16,7 +16,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.7",
-    "formalite": "file:../formalite",
+    "@novin-dev/formalite": "^0.2.1",
     "@uiw/react-code-preview": "^5.1.2",
     "lodash-es": "^4.17.21",
     "next": "12.2.5",

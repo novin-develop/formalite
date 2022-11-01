@@ -2,7 +2,7 @@ import { Button, Grid, ThemeProvider, useTheme,Typography } from "@mui/material"
 import dynamic from "next/dynamic";
 import "@uiw/react-code-preview/esm/index.css"
 import { layoutViewType } from "../Index5Builder";
-import { FetchingDataEnum, Formalite as FormaliteOriginal, useFormaliteRef, ViewTypes } from "formalite";
+import { FetchingDataEnum, Formalite as FormaliteOriginal, useFormaliteRef, ViewTypes } from "@novin-dev/formalite";
 import * as Yup from "yup";
 import { fillFormString, getFromString, getInitialFromString, getValidationFromString } from "./utils";
 

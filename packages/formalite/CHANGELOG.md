@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/novin-develop/formalite/compare/v0.2.1...v0.2.2) (2022-11-02)
+
+
+### Bug Fixes
+
+* remove lodash-es ([fc2d6be](https://github.com/novin-develop/formalite/commit/fc2d6bea32d5af1481866f552864d24a66612ac9))
+
+
+
+
 ## [0.2.1](https://github.com/novin-develop/formalite/compare/v0.2.0...v0.2.1) (2022-10-26)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@novin-dev/formalite",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Generate MUI form with few line of code",
   "author": "Mostafa Roosta <mostafaroosta74@gmail.com>",
   "homepage": "https://formalite.novin.dev",
@@ -58,6 +58,7 @@
     "@emotion/react": "^11.10.3",
     "@mui/material": "^5.10.7",
     "@rollup/plugin-commonjs": "21.0.1",
+    "@rollup/plugin-image": "^3.0.1",
     "@rollup/plugin-node-resolve": "13.1.3",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-console": "1.2.3",
@@ -99,7 +100,6 @@
     "rollup-plugin-dts": "4.1.0",
     "rollup-plugin-typescript2": "0.31.2",
     "rollup-plugin-visualizer": "5.5.4",
-    "@rollup/plugin-image": "^3.0.1",
     "standard-version": "9.3.2",
     "storybook-dark-mode": "1.0.9",
     "tsc-alias": "1.6.7",

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/novin-develop/formalite/compare/v0.2.3...v0.2.4) (2022-11-02)
+
+
+### Bug Fixes
+
+* fix ColorPickerView popup zIndex ([b6273fb](https://github.com/novin-develop/formalite/commit/b6273fb236bcaa1d0739182f65f6604b86506491))
+
+
+
+
 ## [0.2.3](https://github.com/novin-develop/formalite/compare/v0.2.2...v0.2.3) (2022-11-02)
 
 

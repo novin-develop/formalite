@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/novin-develop/formalite/compare/v0.2.2...v0.2.3) (2022-11-02)
+
+
+### Bug Fixes
+
+* fix dropZone without imageDownloader bug and fix some typescripts bug ([7641c68](https://github.com/novin-develop/formalite/commit/7641c68c77c0d56fd64d003dc0a762c4778b68b4))
+
+
+
+
 ## [0.2.2](https://github.com/novin-develop/formalite/compare/v0.2.1...v0.2.2) (2022-11-02)
 
 

@@ -8,7 +8,7 @@ import type { TimePickerViewType } from "./TimePickerView.type";
 
 const validation = Yup.object({
   title: Yup.mixed().required(),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

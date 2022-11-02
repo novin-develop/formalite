@@ -7,6 +7,7 @@ import {
   CustomFile,
   ImageDownloaderPromise,
 } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
+import { ObjectSchema } from "yup";
 
 export interface SingleDropZoneViewType extends BaseViewType {
   type: ViewTypes.SingleDropZoneView;
@@ -90,6 +91,6 @@ export type SingleDropZoneViewProps<T> = {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 };

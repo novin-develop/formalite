@@ -15,13 +15,14 @@ import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { GroupViewSkeleton } from "@components/Formalite/elements/Bases/SkeletonBase";
 import RadioGroupViewAllViews from "@components/Formalite/elements/RadioGroupView/RadioGroupViewAllViews";
 import { FetchingDataEnum } from "@components/base/model";
+import { ObjectSchema } from "yup";
 
 type RadioGroupViewProps<T> = {
   allData: RadioGroupViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   formatOptionFn?: FormatOptionFnType;
 };

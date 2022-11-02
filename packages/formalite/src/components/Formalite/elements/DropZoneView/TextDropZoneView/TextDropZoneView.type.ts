@@ -10,6 +10,7 @@ import {
 import { FormikProps } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import { Theme } from "@mui/material/styles";
+import { ObjectSchema } from "yup";
 
 export interface TextDropZoneViewType extends BaseViewType {
   type: ViewTypes.TextDropZoneView;
@@ -88,7 +89,7 @@ export type TextDropZoneViewProps<T> = {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   formMustRegex?: RegExp;
 };

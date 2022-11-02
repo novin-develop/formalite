@@ -24,9 +24,9 @@ import { Image } from "@components/Image";
 import CloseIcon from "@mui/icons-material/Close";
 import { fData } from "@components/Formalite/config/utils";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
+import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import DownloadIcon from "@mui/icons-material/Download";
-import {downloadBase64} from "@components/Formalite/elements/DropZoneView/utils";
+import { downloadBase64 } from "@components/Formalite/elements/DropZoneView/utils";
 // ----------------------------------------------------------------------
 
 const getFileData = (file: CustomFile | string) => {
@@ -220,128 +220,130 @@ export default function MultiFilePreview({
                     sx={{ borderRadius: 0.75, my: 1, px: 2, py: 0.75 }}
                   />
                 ) : (
-                <ListItem
-                  sx={{
-                    my: 1,
-                    px: 2,
-                    py: 0.75,
-                    borderRadius: 0.75,
-                    border: (theme) => `solid 1px ${theme.palette.divider}`,
-                  }}
-                >
-                  <Grid
+                  <ListItem
                     sx={{
-                      position: "relative",
-                      width: 28,
-                      height: 28,
-                      mr: 2,
+                      my: 1,
+                      px: 2,
+                      py: 0.75,
+                      borderRadius: 0.75,
+                      border: (theme) => `solid 1px ${theme.palette.divider}`,
                     }}
                   >
-                    <Fade in={["uploading", "deleting"].includes(status || "")}>
-                      {status === "deleting" ? (
-                        <CircularProgress
-                          variant="indeterminate"
-                          color="error"
+                    <Grid
+                      sx={{
+                        position: "relative",
+                        width: 28,
+                        height: 28,
+                        mr: 2,
+                      }}
+                    >
+                      <Fade
+                        in={["uploading", "deleting"].includes(status || "")}
+                      >
+                        {status === "deleting" ? (
+                          <CircularProgress
+                            variant="indeterminate"
+                            color="error"
+                            sx={{
+                              position: "absolute",
+                              left: 0,
+                              right: 0,
+                              top: 0,
+                              bottom: 0,
+                              marginTop: "-6px",
+                              marginLeft: "-7px",
+                            }}
+                          />
+                        ) : (
+                          <CircularProgress
+                            variant="determinate"
+                            value={progress || 0}
+                            sx={{
+                              position: "absolute",
+                              left: 0,
+                              right: 0,
+                              top: 0,
+                              bottom: 0,
+                              marginTop: "-6px",
+                              marginLeft: "-7px",
+                            }}
+                          />
+                        )}
+                      </Fade>
+                      {status === "error" ? (
+                        <BrokenImageIcon
                           sx={{
                             position: "absolute",
+                            color: "text.secondary",
+                            width: 28,
+                            height: 28,
                             left: 0,
                             right: 0,
                             top: 0,
                             bottom: 0,
-                            marginTop: "-6px",
-                            marginLeft: "-7px",
                           }}
                         />
                       ) : (
-                        <CircularProgress
-                          variant="determinate"
-                          value={progress || 0}
+                        <InsertDriveFileOutlinedIcon
                           sx={{
                             position: "absolute",
+                            color: "text.secondary",
+                            width: 28,
+                            height: 28,
                             left: 0,
                             right: 0,
                             top: 0,
                             bottom: 0,
-                            marginTop: "-6px",
-                            marginLeft: "-7px",
                           }}
                         />
                       )}
-                    </Fade>
-                    {status === "error" ? (
-                      <BrokenImageIcon
-                        sx={{
-                          position: "absolute",
-                          color: "text.secondary",
-                          width: 28,
-                          height: 28,
-                          left: 0,
-                          right: 0,
-                          top: 0,
-                          bottom: 0,
-                        }}
-                      />
-                    ) : (
-                      <InsertDriveFileOutlinedIcon
-                        sx={{
-                          position: "absolute",
-                          color: "text.secondary",
-                          width: 28,
-                          height: 28,
-                          left: 0,
-                          right: 0,
-                          top: 0,
-                          bottom: 0,
-                        }}
-                      />
-                    )}
-                  </Grid>
+                    </Grid>
 
-                  <ListItemText
-                    primary={
-                      file.original === "selected"
-                        ? file.name
-                        : file.originalName
-                    }
-                    secondary={fData(size || 0)}
-                    primaryTypographyProps={{ variant: "subtitle2" }}
-                    secondaryTypographyProps={{ variant: "caption" }}
-                  />
-                  <Stack spacing={1} direction="row-reverse">
-                    {status === "error" && (
+                    <ListItemText
+                      primary={
+                        file.original === "selected"
+                          ? file.name
+                          : file.originalName
+                      }
+                      secondary={size ? fData(size) : ""}
+                      primaryTypographyProps={{ variant: "subtitle2" }}
+                      secondaryTypographyProps={{ variant: "caption" }}
+                    />
+                    <Stack spacing={1} direction="row-reverse">
+                      {status === "error" && file.original === "selected" && (
+                        <IconButton
+                          edge="end"
+                          size="small"
+                          onClick={() => handleRetry(file)}
+                        >
+                          <ReplayIcon />
+                        </IconButton>
+                      )}
                       <IconButton
                         edge="end"
                         size="small"
-                        onClick={() => handleRetry(file)}
-                      >
-                        <ReplayIcon />
-                      </IconButton>
-                    )}
-                    <IconButton
-                      edge="end"
-                      size="small"
-                      onClick={(e) => {
-                        DeleteFunc(e, file);
-                      }}
-                    >
-                      <CloseIcon />
-                    </IconButton>
-                    {status !== "error" && file.original === "default" && (
-                      <IconButton
-                        edge="end"
-                        size="small"
-                        onClick={() => {
-                          downloadBase64(
-                            file.preview || "",
-                            file.originalName || ""
-                          );
+                        onClick={(e) => {
+                          DeleteFunc(e, file);
                         }}
                       >
-                        <DownloadIcon />
+                        <CloseIcon />
                       </IconButton>
-                    )}
-                  </Stack>
-                </ListItem>
+                      {status !== "error" && file.original === "default" && (
+                        <IconButton
+                          edge="end"
+                          size="small"
+                          onClick={() => {
+                            downloadBase64(
+                              file.preview || "",
+                              file.originalName || ""
+                            );
+                          }}
+                        >
+                          <DownloadIcon />
+                        </IconButton>
+                      )}
+                    </Stack>
+                  </ListItem>
                 )}
               </Collapse>
             );

@@ -19,6 +19,7 @@ import {
 } from "@components/Formalite/elements/CheckGroupView/CheckGroupView.type";
 import ViewPending from "@components/Formalite/components/ViewPending";
 import ViewError from "@components/Formalite/components/ViewError";
+import { ObjectSchema } from "yup";
 
 const checkComponentMap = {
   checkbox: Checkbox,
@@ -30,7 +31,7 @@ export type CheckComponentType = keyof typeof checkComponentMap;
 type CheckGroupAllViewsProps<T> = {
   formik: FormikProps<T>;
   name: string;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   dataStatus: CheckGroupStateType;
   allInputProps: CheckGroupInputPropsType;
   labelProps: FormLabelProps<"legend">;

@@ -3,6 +3,7 @@ import { OptionalObjectSchema } from "yup/lib/object";
 import Condition from "yup/lib/Condition";
 import numeral from "numeral";
 import { ViewTypes } from "@components/Formalite/Formalite.type";
+import { ObjectSchema } from "yup";
 import get from "./loadashGet/get";
 
 type GetDataProps = {
@@ -11,7 +12,7 @@ type GetDataProps = {
 };
 
 type CheckIsRequiredProps = {
-  schema: OptionalObjectSchema<any>;
+  schema: ObjectSchema<any>;
   formikValues: FormikValues;
   key: string;
 };

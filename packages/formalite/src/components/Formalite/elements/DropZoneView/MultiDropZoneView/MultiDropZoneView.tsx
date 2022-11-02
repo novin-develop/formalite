@@ -28,6 +28,7 @@ import {
 import MultiFilePreview from "@components/Formalite/elements/DropZoneView/Components/MultiFilePreview";
 import SmallBlockContent from "@components/Formalite/elements/DropZoneView/Components/SmallBlockContent";
 import { fixDropZoneDefaultValue } from "@components/Formalite/elements/DropZoneView/utils";
+import { getNameFromUrl } from "@config/utils";
 
 const DropZoneStyle = styled("div")(({ theme }) => ({
   outline: "none",
@@ -145,37 +146,47 @@ const MultiDropZoneView = <T extends FormikValues>(
   useEffect(() => {
     file.forEach((item) => {
       const controller = new AbortController();
-      if (
-        imageDownloader &&
-        item.original === "default" &&
-        item.status === "not_downloaded"
-      ) {
-        const newDataForDefaults = Object.assign(item, {
-          status: "downloading",
-        } as OutsideFile);
-        handleSetFile(item, newDataForDefaults);
-        imageDownloader(item.preview || "", item.controller)
-          .then((res) => {
-            const newData = Object.assign(item, {
-              original: "default",
-              status: "done",
-              base64: res.base64,
-              preview: res.base64,
-              originalName: res.originalName,
-              size: res.size,
-              errorText: "",
-              controller,
+      if (item.original === "default" && item.status === "not_downloaded") {
+        if (imageDownloader) {
+          const newDataForDefaults = Object.assign(item, {
+            status: "downloading",
+          } as OutsideFile);
+          handleSetFile(item, newDataForDefaults);
+          imageDownloader(item.preview || "", item.controller)
+            .then((res) => {
+              const newData = Object.assign(item, {
+                original: "default",
+                status: "done",
+                base64: res.base64,
+                preview: res.base64,
+                originalName: res.originalName,
+                size: res.size,
+                errorText: "",
+                controller,
+              });
+              handleSetFile(item, newData);
+            })
+            .catch((e) => {
+              const newData = Object.assign(item, {
+                original: "default",
+                status: "error",
+                errorText: e.message,
+              } as OutsideFile);
+              handleSetFile(item, newData);
             });
-            handleSetFile(item, newData);
-          })
-          .catch((e) => {
-            const newData = Object.assign(item, {
-              original: "default",
-              status: "error",
-              errorText: e.message,
-            } as OutsideFile);
-            handleSetFile(item, newData);
+        } else {
+          const newData = Object.assign(item, {
+            original: "default",
+            status: "done",
+            base64: item.preview,
+            preview: item.preview,
+            originalName: getNameFromUrl(item.preview),
+            size: 0,
+            errorText: "",
+            controller,
           });
+          handleSetFile(item, newData);
+        }
       }
     });
   }, [formik.values[name]]);

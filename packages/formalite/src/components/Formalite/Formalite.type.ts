@@ -17,6 +17,7 @@ import { CheckGroupViewType } from "@components/Formalite/elements/CheckGroupVie
 import { GridProps } from "@mui/material";
 import { GroupViewType } from "@components/Formalite/elements/GroupView/GroupView.type";
 import { AvatarDropZoneViewType } from "@components/Formalite/elements/DropZoneView/AvatarDropZoneView/AvatarDropZoneView.type";
+import { ObjectSchema } from "yup";
 import { SingleDropZoneViewType } from "./elements/DropZoneView/SingleDropZoneView/SingleDropZoneView.type";
 import { AutoCompleteViewType } from "./elements/AutoCompleteView/AutoCompleteView.type";
 import { DatePickerViewType } from "./elements/DatePickerView/DatePickerView/DatePickerView.type";
@@ -118,7 +119,7 @@ export type FormalitePropsType<T> = {
   lang?: Language;
   loading?: boolean;
   isUpdateMode?: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   initialValues: T;
   formRef: RefObject<ReferenceType<T>>;
   formMustRegex?: RegExp;
@@ -141,5 +142,5 @@ export interface BaseViewType {
   /**
    * Changing this prop cause rerenders in related view
    */
-   renderDependency?: string[];
+  renderDependency?: string[];
 }

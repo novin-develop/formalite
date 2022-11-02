@@ -23,6 +23,7 @@ import {
 } from "@components/Formalite/elements/SelectView/SelectView.type";
 import ViewPending from "@components/Formalite/components/ViewPending";
 import ViewError from "@components/Formalite/components/ViewError";
+import { ObjectSchema } from "yup";
 
 const selectSX = {
   paddingRight: 0,
@@ -40,7 +41,7 @@ const menuItemSx = {
 type SelectViewAllViewsProps<T> = {
   formik: FormikProps<T>;
   name: string;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   dataStatus: SelectGroupStateType;
   allInputProps: SelectInputPropsType;

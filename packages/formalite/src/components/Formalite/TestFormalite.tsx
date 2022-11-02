@@ -46,7 +46,7 @@ const validation = Yup.object({
     text: Yup.string().required("Required"),
     files: Yup.array().min(1),
   }),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 type TestFormaliteProps = {
@@ -165,9 +165,6 @@ export const TestFormalite = ({
               }
               onSubmit={(values) => {
                 console.log(values);
-              }}
-              onFormChange={(formik) => {
-                console.log("formik", formik);
               }}
             />
             <Button

@@ -9,6 +9,7 @@ import {
 } from "@components/Formalite/config/utils";
 import { Theme } from "@mui/material/styles/createTheme";
 import { Global } from "@emotion/react";
+import { ObjectSchema } from "yup";
 import { baseMemo } from "../Bases/functions/memo";
 import type { EditorViewType } from "./EditorView.type";
 import { TextViewSkeleton } from "../Bases/SkeletonBase";
@@ -25,7 +26,7 @@ interface EditorViewProps<T> {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 }
 

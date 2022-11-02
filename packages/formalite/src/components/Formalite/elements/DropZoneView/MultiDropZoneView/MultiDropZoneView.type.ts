@@ -10,6 +10,7 @@ import {
   OutsideFile,
 } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
 import { Theme } from "@mui/material/styles";
+import { ObjectSchema } from "yup";
 
 export interface MultiDropZoneViewType extends BaseViewType {
   type: ViewTypes.MultiDropZoneView;
@@ -103,7 +104,7 @@ export type MultiDropZoneViewProps<T> = {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 };
 

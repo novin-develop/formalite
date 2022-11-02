@@ -11,7 +11,7 @@ const validation = Yup.object({
   name: Yup.string().required("Required"),
   family: Yup.string().required("Required"),
   address: Yup.string().required("Required"),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

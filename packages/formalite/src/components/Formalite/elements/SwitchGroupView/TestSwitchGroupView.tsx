@@ -8,7 +8,7 @@ import type { SwitchGroupViewType } from "./SwitchGroupView.type";
 
 const validation = Yup.object({
   title: Yup.array().required().min(1, "At least select one item"),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

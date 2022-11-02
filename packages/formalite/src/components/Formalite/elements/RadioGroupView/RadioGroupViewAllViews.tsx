@@ -18,11 +18,12 @@ import {
 } from "@components/Formalite/elements/RadioGroupView/RadioGroupView.type";
 import ViewError from "@components/Formalite/components/ViewError";
 import ViewPending from "@components/Formalite/components/ViewPending";
+import { ObjectSchema } from "yup";
 
 type RadioGroupAllViewsProps<T> = {
   formik: FormikProps<T>;
   name: string;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   dataStatus: RadioGroupStateType;
   allInputProps: RadioGroupInputPropsType;

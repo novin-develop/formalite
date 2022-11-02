@@ -10,12 +10,13 @@ import {
 import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import { TextViewSkeleton } from "@components/Formalite/elements/Bases/SkeletonBase";
+import { ObjectSchema } from "yup";
 
 type TextFieldBaseProps<T> = {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   mustRegex?: (RegExp | undefined)[];
   translator: Function;
   onChange?: (

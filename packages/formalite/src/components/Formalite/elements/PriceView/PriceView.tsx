@@ -6,13 +6,14 @@ import { Grid } from "@mui/material";
 import { PriceViewType } from "@components/Formalite/elements/PriceView/PriceView.type";
 import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { TextFieldBase } from "@components/Formalite/elements/Bases/TextFieldBase";
+import { ObjectSchema } from "yup";
 
 type PriceViewProps<T> = {
   allData: PriceViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   formMustRegex?: RegExp;
 };

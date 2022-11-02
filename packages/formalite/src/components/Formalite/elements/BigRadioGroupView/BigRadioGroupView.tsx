@@ -9,13 +9,14 @@ import { ViewTypes } from "@components/Formalite/Formalite.type";
 import RadioGroupView from "@components/Formalite/elements/RadioGroupView/RadioGroupView";
 import { FormatOptionFnType } from "@components/Formalite/elements/RadioGroupView/RadioGroupView.type";
 import { Box } from "@mui/material";
+import { ObjectSchema } from "yup";
 
 type BigRadioGroupViewProps<T> = {
   allData: BigRadioGroupViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 };
 

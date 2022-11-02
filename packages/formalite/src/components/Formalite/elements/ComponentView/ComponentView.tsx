@@ -5,13 +5,14 @@ import { FormikProps, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import { ComponentViewType } from "@components/Formalite/elements/ComponentView/ComponentView.type";
 import { getData } from "@components/Formalite/config/utils";
+import { ObjectSchema } from "yup";
 
 type ComponentViewProps<T> = {
   allData: ComponentViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
 };
 
 const ComponentView = <T extends FormikValues>(
@@ -39,8 +40,7 @@ const ComponentView = <T extends FormikValues>(
 };
 export default React.memo(ComponentView, (prevProps, nextProps) => {
   try {
-    return (
-      baseMemo(prevProps, nextProps));
+    return baseMemo(prevProps, nextProps);
   } catch (e) {
     return true;
   }

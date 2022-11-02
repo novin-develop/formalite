@@ -8,7 +8,7 @@ import type { ColorPickerViewType } from "./ColorPickerView.type";
 
 const validation = Yup.object({
   title: Yup.string(),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

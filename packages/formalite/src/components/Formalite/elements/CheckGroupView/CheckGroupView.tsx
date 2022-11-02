@@ -15,13 +15,14 @@ import CheckGroupViewAllViews, {
   CheckComponentType,
 } from "@components/Formalite/elements/CheckGroupView/CheckGroupViewAllViews";
 import { FetchingDataEnum } from "@components/base/model";
+import { ObjectSchema } from "yup";
 
 type CheckGroupViewProps<T> = {
   allData: CheckGroupViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   component?: CheckComponentType;
 };

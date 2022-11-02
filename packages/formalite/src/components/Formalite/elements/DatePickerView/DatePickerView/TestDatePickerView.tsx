@@ -8,7 +8,7 @@ import type { DatePickerViewType } from "./DatePickerView.type";
 
 const validation = Yup.object({
   title: Yup.mixed().required(),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

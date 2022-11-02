@@ -735,7 +735,7 @@ export const cssText = css`
     display: inline;
   }
 
-  .ql-snow .ql-direction.ql-active svg:first-child {
+  .ql-snow .ql-direction.ql-active svg:first-of-type {
     display: none;
   }
 

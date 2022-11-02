@@ -6,6 +6,7 @@ import { Grid, TextField } from "@mui/material";
 
 import { checkIsRequired, getData } from "@components/Formalite/config/utils";
 import { Language } from "@components/base/model";
+import { ObjectSchema } from "yup";
 import { baseMemo } from "../../Bases/functions/memo";
 import DatePickerLocalizationProvider from "../DatePickerLocalizationProvider";
 import type { TimePickerViewType } from "./TimePickerView.type";
@@ -17,7 +18,7 @@ interface TimePickerViewProps<T> {
   lang: Language;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 }
 const TimePickerView = <T extends FormikValues>(

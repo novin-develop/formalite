@@ -13,13 +13,14 @@ import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { TextViewSkeleton } from "@components/Formalite/elements/Bases/SkeletonBase";
 import SelectViewAllViews from "@components/Formalite/elements/SelectView/SelectViewAllViews";
 import { FetchingDataEnum } from "@components/base/model";
+import { ObjectSchema } from "yup";
 
 type SelectViewProps<T> = {
   allData: SelectViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 };
 

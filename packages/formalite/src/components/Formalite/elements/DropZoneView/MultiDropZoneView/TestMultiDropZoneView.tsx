@@ -8,7 +8,7 @@ import type { MultiDropZoneViewType } from "./MultiDropZoneView.type";
 
 const validation = Yup.object({
   title: Yup.array().of(Yup.mixed()).nullable(),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

@@ -10,6 +10,7 @@ import { TextFieldBase } from "@components/Formalite/elements/Bases/TextFieldBas
 import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { useI18nContext } from "@components/base/I18nProvider";
 import { Language } from "@components/base/model";
+import { ObjectSchema } from "yup";
 import { TextViewType } from "./TextView.type";
 
 type TextViewProps<T> = {
@@ -17,7 +18,7 @@ type TextViewProps<T> = {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   formMustRegex?: RegExp;
   translator: Function;
   isUpdateMode: boolean;

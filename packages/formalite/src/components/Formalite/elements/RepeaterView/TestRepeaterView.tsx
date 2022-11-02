@@ -16,7 +16,7 @@ const validation = Yup.object({
     )
     .required("Must have friends")
     .min(2, "Minimum of 2 friends"),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

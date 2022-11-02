@@ -6,7 +6,7 @@ import { Formalite, MainType, ViewTypes } from "@components/Formalite";
 import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
 import type { TextDropZoneViewType } from "./TextDropZoneView.type";
 
-const validation = Yup.object({});
+const validation = Yup.object({}).required();
 
 type ValidationType = Yup.InferType<typeof validation>;
 

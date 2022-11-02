@@ -10,10 +10,9 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import ClearIcon from "@mui/icons-material/Clear";
-
 import { getData } from "@components/Formalite/config/utils";
+import { ObjectSchema } from "yup";
 import { baseMemo } from "../Bases/functions/memo";
 import { TextFieldBase } from "../Bases/TextFieldBase";
 import { ColorPickerViewType } from "./ColorPickerView.type";
@@ -24,7 +23,7 @@ interface ColorPickerViewProps<T> {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 }
 

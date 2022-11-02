@@ -9,6 +9,7 @@ import { checkIsRequired, getData } from "@components/Formalite/config/utils";
 import ViewError from "@components/Formalite/components/ViewError";
 import { FetchingDataEnum } from "@components/base/model";
 import ViewPending from "@components/Formalite/components/ViewPending";
+import { ObjectSchema } from "yup";
 import { baseMemo } from "../Bases/functions/memo";
 import type {
   AutoCompleteViewOptionsDataType,
@@ -22,7 +23,7 @@ interface AutoCompleteViewProps<T> {
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 }
 enum OptionsStateEnum {

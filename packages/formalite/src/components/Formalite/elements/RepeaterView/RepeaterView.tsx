@@ -8,10 +8,7 @@ import {
   Grid,
 } from "@mui/material";
 import { FieldArray, FormikProps, FormikValues } from "formik";
-import {
-  getData,
-  getDefaultValue,
-} from "@components/Formalite/config/utils";
+import { getData, getDefaultValue } from "@components/Formalite/config/utils";
 import { itemRenderer } from "@components/Formalite/Formalite";
 import { OptionalObjectSchema } from "yup/lib/object";
 import { RepeaterViewType } from "@components/Formalite/elements/RepeaterView/RepeaterView.type";
@@ -20,13 +17,14 @@ import { TransitionGroup } from "react-transition-group";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { Language } from "@components/base/model";
 import { useI18nContext } from "@components/base/I18nProvider";
+import { ObjectSchema } from "yup";
 
 type RepeaterViewProps<T> = {
   allData: RepeaterViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   lang: Language;
   isUpdateMode: boolean;

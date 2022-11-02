@@ -4,13 +4,14 @@ import { OptionalObjectSchema } from "yup/lib/object";
 import { SwitchGroupViewType } from "@components/Formalite/elements/SwitchGroupView/SwitchGroupView.type";
 import { ViewTypes } from "@components/Formalite/Formalite.type";
 import CheckGroupView from "@components/Formalite/elements/CheckGroupView/CheckGroupView";
+import { ObjectSchema } from "yup";
 
 type SwitchGroupViewProps<T> = {
   allData: SwitchGroupViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
 };
 

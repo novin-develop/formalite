@@ -8,7 +8,7 @@ import type { SelectViewType } from "./SelectView.type";
 
 const validation = Yup.object({
   title: Yup.string().required(),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

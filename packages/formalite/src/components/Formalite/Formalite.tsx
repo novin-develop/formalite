@@ -37,6 +37,7 @@ import ErrorFocus from "@components/Formalite/elements/ErrorFocus";
 import EditorView from "@components/Formalite/elements/EditorView/EditorView";
 import GroupView from "@components/Formalite/elements/GroupView/GroupView";
 import AvatarDropZoneView from "@components/Formalite/elements/DropZoneView/AvatarDropZoneView/AvatarDropZoneView";
+import { ObjectSchema } from "yup";
 import { en } from "./translations/default-en";
 import { fa } from "./translations/default-fa";
 import FormObserver from "./components/FormObserver";
@@ -76,9 +77,7 @@ let GReject: (reason?: any) => void;
 const gridStyle = { overflow: "hidden" };
 const defaultTranslator = (input: string | { [key: string]: unknown }) =>
   typeof input === "object" ? input?.key : input;
-const Formalite = <T extends FormikValues>(
-  props: FormalitePropsType<T>
-) => {
+const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
   const {
     offsetScroll = 0,
     scrollReferenceId,
@@ -208,7 +207,7 @@ export function itemRenderer<T extends FormikValues>({
   loading: boolean;
   lang: Language;
   isUpdateMode: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   repItem?: { name: string; index: number };
   formMustRegex?: RegExp;
   translator: Function;

@@ -15,24 +15,26 @@ import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { useI18nContext } from "@components/base/I18nProvider";
 import { downloadBase64 } from "@components/Formalite/elements/DropZoneView/utils";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-import { ReactComponent as DOC } from "./svg/files/doc.svg";
-import { ReactComponent as MP4 } from "./svg/files/mp4.svg";
-import { ReactComponent as PDF } from "./svg/files/pdf.svg";
-import { ReactComponent as ZIP } from "./svg/files/zip.svg";
-import { ReactComponent as FILE } from "./svg/files/file.svg";
+import { getExtensionFromUrl } from "@config/utils";
+import DOC from "./svg/files/doc.svg";
+import MP4 from "./svg/files/mp4.svg";
+import PDF from "./svg/files/pdf.svg";
+import ZIP from "./svg/files/zip.svg";
+import FILE from "./svg/files/file.svg";
+
 // ----------------------------------------------------------------------
 const FileIcon = (props: { type: string; preview: JSX.Element }) => {
   switch (props.type.toLowerCase()) {
     case "mp4":
-      return <MP4 />;
+      return <img src={MP4 as any} alt="aa" />;
     case "doc":
     case "docs":
-      return <DOC />;
+      return <img src={DOC as any} alt="aa" />;
     case "pdf":
-      return <PDF />;
+      return <img src={PDF as any} alt="aa" />;
     case "zip":
     case "rar":
-      return <ZIP />;
+      return <img src={ZIP as any} alt="aa" />;
     case "png":
     case "jpg":
     case "jpeg":
@@ -44,7 +46,7 @@ const FileIcon = (props: { type: string; preview: JSX.Element }) => {
     case "svg":
       return props.preview;
     default:
-      return <FILE />;
+      return <img src={FILE as any} alt="aa" />;
   }
 };
 
@@ -72,9 +74,9 @@ const HelperSection = ({ required, file }: HelperSectionType) => {
     <Box sx={{ p: 3 }}>
       <Typography gutterBottom variant="h5">
         {file
-          ? `${
-              file.original === "selected" ? file.name : file.originalName
-            } - ${file?.size ? fData(file?.size) : ""}`
+          ? `${file.original === "selected" ? file.name : file.originalName} ${
+              file?.size ? ` - ${fData(file?.size)}` : ""
+            }`
           : `${t("fg-dropzone-drop-or-select-file")} ${required ? "*" : ""}`}
       </Typography>
 
@@ -235,14 +237,8 @@ export default function BlockContent(props: BlockContentType) {
               <BrokenImageIcon fontSize="large" />
             </Box>
           )}
-
           <FileIcon
-            type={
-              (props.file.original === "selected"
-                ? props.file.name
-                : props.file.originalName
-              )?.split(".")[1] || ""
-            }
+            type={getExtensionFromUrl(props.file)}
             preview={
               <Image
                 alt="file preview"
@@ -264,7 +260,6 @@ export default function BlockContent(props: BlockContentType) {
               />
             }
           />
-
           {props.file?.status && (
             <Fade in={["uploading", "deleting"].includes(props.file?.status)}>
               <Box

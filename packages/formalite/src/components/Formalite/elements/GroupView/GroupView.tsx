@@ -5,13 +5,14 @@ import { Grid } from "@mui/material";
 import { itemRenderer } from "@components/Formalite/Formalite";
 import React from "react";
 import { GroupViewType } from "@components/Formalite/elements/GroupView/GroupView.type";
+import { ObjectSchema } from "yup";
 
 type GroupViewProps<T> = {
   allData: GroupViewType;
   name: string;
   formik: FormikProps<T>;
   loading: boolean;
-  validationSchema: OptionalObjectSchema<any>;
+  validationSchema: ObjectSchema<any>;
   translator: Function;
   lang: Language;
   isUpdateMode: boolean;

@@ -1,9 +1,9 @@
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
 import { OptionalObjectSchema } from "yup/lib/object";
 import Condition from "yup/lib/Condition";
-import get from "lodash-es/get";
 import numeral from "numeral";
 import { ViewTypes } from "@components/Formalite/Formalite.type";
+import get from "./loadashGet/get";
 
 type GetDataProps = {
   source?: FormikTouched<unknown> | FormikErrors<unknown> | unknown;

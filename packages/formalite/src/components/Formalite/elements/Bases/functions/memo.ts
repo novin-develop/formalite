@@ -4,7 +4,7 @@ import {
   generateNestedKeyForYup,
   getData,
 } from "@components/Formalite/config/utils";
-import get from "lodash-es/get";
+import get from "../../../config/loadashGet/get";
 
 export const baseMemo = (
   prevProps: Readonly<PropsWithChildren<any>>,
@@ -28,7 +28,8 @@ export const baseMemo = (
   ) &&
   prevProps.allData?.inputProps?.disabled ===
     nextProps.allData?.inputProps?.disabled &&
-  prevProps.loading === nextProps.loading && compare(
+  prevProps.loading === nextProps.loading &&
+  compare(
     prevProps.allData?.renderDependency,
     nextProps.allData?.renderDependency
   );

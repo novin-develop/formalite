@@ -99,6 +99,7 @@
     "rollup-plugin-dts": "4.1.0",
     "rollup-plugin-typescript2": "0.31.2",
     "rollup-plugin-visualizer": "5.5.4",
+    "@rollup/plugin-image": "^3.0.1",
     "standard-version": "9.3.2",
     "storybook-dark-mode": "1.0.9",
     "tsc-alias": "1.6.7",
@@ -132,5 +133,5 @@
     "tslib": "2.3.1",
     "yup": "0.32.11"
   },
-  "gitHead": "9019a32bc14d510e4dacbaa840337ddf66e55565"
+  "gitHead": "2a8f7594dd72c5c70bec2af94092108fa3362e3c"
 }

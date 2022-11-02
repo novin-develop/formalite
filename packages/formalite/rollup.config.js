@@ -6,6 +6,7 @@ import typescript from "rollup-plugin-typescript2";
 import visualizer from "rollup-plugin-visualizer";
 import svgr from "@svgr/rollup";
 import dts from "rollup-plugin-dts";
+import image from "@rollup/plugin-image";
 
 const onwarn = (warning, rollupWarn) => {
   const ignoredWarnings = [
@@ -90,6 +91,7 @@ export default [
       visualizer({
         filename: "bundle-analysis.html",
       }),
+      image(),
     ],
     external: isExternal,
   },

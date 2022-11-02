@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "private": true,
   "scripts": {
     "dev": "next dev -p 8080",
@@ -16,7 +16,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.7",
-    "@novin-dev/formalite": "^0.2.1",
+    "@novin-dev/formalite": "^0.2.2",
     "@uiw/react-code-preview": "^5.1.2",
     "lodash-es": "^4.17.21",
     "next": "12.2.5",
@@ -35,8 +35,8 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
-    "typescript": "^4.8.4",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "typescript": "^4.8.4"
   },
   "gitHead": "4bfdc7d937f5ba0937114d15c46e909b6d784e1d"
 }

@@ -126,7 +126,7 @@ const ColorPickerView = <T extends FormikValues>(
             id={id}
             open={chromePicker.isOpen}
             anchorEl={chromePicker.anchorEl}
-            style={{ zIndex: 1 }}
+            style={{ zIndex: 11 }}
           >
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={400}>

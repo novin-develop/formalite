@@ -24,8 +24,9 @@ import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import InLayoutDragItem from "../components/InLayoutDragItem";
 import AddLayoutButton from "../components/AddLayoutButton";
 import * as React from "react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { layoutViewType } from "../Index5Builder";
+import { DrawerComponent, RefDrawer } from "../components/DrawerComponent";
 
 
 type BuilderTabType ={
@@ -35,9 +36,18 @@ type BuilderTabType ={
 
 const BuilderTab = ({setLayoutView,layoutView}:BuilderTabType) => {
   const [countRow,setCountRow] = useState(1);
+  const drawerRef = useRef<RefDrawer>();
+
+  const onDraggableItemClick = (type:string) => {
+    drawerRef.current?.setDrawerState({
+      open:true,
+      type
+    })
+  }
 
   return (
     <Grid container spacing={2}>
+      <DrawerComponent layoutView={layoutView} setLayoutView={setLayoutView} drawerRef={drawerRef}  />
       <DragDropContext onDragEnd={(result, provided)=>{
         const {source,destination,draggableId} = result;
         if (!!destination && source.droppableId !== "source"){
@@ -133,6 +143,7 @@ const BuilderTab = ({setLayoutView,layoutView}:BuilderTabType) => {
                                   onDelete={key => {
                                     setLayoutView(pre =>pre.map(item=>item.map(innerItem=>innerItem.id=== key?{...innerItem,type:""}:innerItem)))
                                   }}
+                                  onDraggableItemClick={onDraggableItemClick}
                                 />
                               </Grid>
                             </DropComponent>

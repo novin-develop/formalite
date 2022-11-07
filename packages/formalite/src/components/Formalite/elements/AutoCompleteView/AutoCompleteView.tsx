@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import { Autocomplete, Grid, TextField } from "@mui/material";
 import compare from "react-fast-compare";
-
 import { TextViewSkeleton } from "@components/Formalite/elements/Bases/SkeletonBase";
 import { checkIsRequired, getData } from "@components/Formalite/config/utils";
 import ViewError from "@components/Formalite/components/ViewError";
@@ -18,9 +16,9 @@ import type {
   SingleAutoCompleteViewOptionType,
 } from "./AutoCompleteView.type";
 
-interface AutoCompleteViewProps<T> {
+export interface AutoCompleteViewProps<T> {
   allData: AutoCompleteViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -103,7 +101,7 @@ const AutoCompleteView = <T extends FormikValues>(
     } else if (!value) {
       finalValue = isMultiple ? [] : "";
     }
-    formik.setFieldValue(name, finalValue);
+    formik.setFieldValue(String(name), finalValue);
     if (onChange) {
       onChange(finalValue);
     }
@@ -181,11 +179,11 @@ const AutoCompleteView = <T extends FormikValues>(
           }}
           renderInput={(params) => (
             <TextField
-              name={name}
+              name={String(name)}
               required={checkIsRequired({
                 schema: validationSchema,
                 formikValues: formik.values,
-                key: name,
+                key: String(name),
               })}
               error={
                 getData({ source: formik.touched, key: name }) &&

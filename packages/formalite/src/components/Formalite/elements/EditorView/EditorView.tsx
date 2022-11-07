@@ -21,9 +21,9 @@ import EditorToolbar, {
 } from "./Editor/EditorToolbar";
 import { cssText } from "./editorCss";
 
-interface EditorViewProps<T> {
+export interface EditorViewProps<T> {
   allData: EditorViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -78,14 +78,14 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
     );
   }
   return (
-    <Grid id={name} item {...allData.layoutProps}>
+    <Grid id={String(name)} item {...allData.layoutProps}>
       <Global styles={cssText} />
       {label && (
         <InputLabel
           required={checkIsRequired({
             schema: validationSchema,
             formikValues: formik.values,
-            key: name,
+            key: String(name),
           })}
           error={
             getData({ source: formik.touched, key: name }) &&
@@ -116,7 +116,7 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
           formats={formats}
           onChange={(value: string, _delta: any, _source: any, editor: any) => {
             formik.setFieldValue(
-              name,
+              String(name),
               editor.getLength() > 1 ? value : formik.initialValues[name]
             );
           }}

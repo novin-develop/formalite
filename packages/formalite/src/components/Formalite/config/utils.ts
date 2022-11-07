@@ -8,7 +8,7 @@ import get from "./loadashGet/get";
 
 type GetDataProps = {
   source?: FormikTouched<unknown> | FormikErrors<unknown> | unknown;
-  key: string;
+  key: string | number | symbol;
 };
 
 type CheckIsRequiredProps = {
@@ -18,7 +18,7 @@ type CheckIsRequiredProps = {
 };
 
 export const getData = ({ source, key }: GetDataProps) => {
-  return get(source as object, key);
+  return get(source as object, String(key));
 };
 
 export const generateNestedKeyForYup = (key: string) => {

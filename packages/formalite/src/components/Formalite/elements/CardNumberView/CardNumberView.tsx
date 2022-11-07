@@ -1,17 +1,15 @@
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
-import { Grid, Skeleton, TextField } from "@mui/material";
+import { Grid } from "@mui/material";
 import React, { useMemo } from "react";
-import { getData, showErrorMessage } from "@components/Formalite/config/utils";
 import { IMaskInput } from "react-imask";
 import { CardNumberViewType } from "@components/Formalite/elements/CardNumberView/CardNumberView.type";
 import { TextFieldBase } from "@components/Formalite/elements/Bases/TextFieldBase";
 import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { ObjectSchema } from "yup";
 
-type CartNumberViewProps<T> = {
+export type CartNumberViewProps<T> = {
   allData: CardNumberViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -69,7 +67,7 @@ const CartNumberView = <T extends FormikValues>(
         loading={loading}
         validationSchema={validationSchema}
         translator={translator}
-        name={name}
+        name={String(name)}
         mustRegex={[allData.mustRegex, formMustRegex]}
         {...inputProps}
         InputProps={{

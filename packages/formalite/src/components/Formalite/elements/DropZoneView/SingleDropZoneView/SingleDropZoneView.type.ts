@@ -88,7 +88,7 @@ export interface SingleDropZoneViewType extends BaseViewType {
 
 export type SingleDropZoneViewProps<T> = {
   allData: SingleDropZoneViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;

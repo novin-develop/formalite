@@ -80,7 +80,7 @@ const MultiDropZoneView = <T extends FormikValues>(
   const isRequired = checkIsMin({
     schema: validationSchema,
     formikValues: formik.values,
-    key: name,
+    key: String(name),
   });
   const uploadController = new AbortController();
 
@@ -126,7 +126,7 @@ const MultiDropZoneView = <T extends FormikValues>(
             tempArray[index].status = "done";
             (tempArray[index] as CustomFile).progress = 100;
           }
-          formik.setFieldValue(name, tempArray);
+          formik.setFieldValue(String(name), tempArray);
           return tempArray;
         });
       })
@@ -230,14 +230,14 @@ const MultiDropZoneView = <T extends FormikValues>(
   }
 
   return (
-    <Grid item {...layoutProps} id={name} ref={ref}>
+    <Grid item {...layoutProps} id={String(name)} ref={ref}>
       {inputProps.label && (
         <FormLabel
           component="legend"
           required={checkIsMin({
             schema: validationSchema,
             formikValues: formik.values,
-            key: name,
+            key: String(name),
           })}
         >
           {inputProps.label}
@@ -286,7 +286,7 @@ const MultiDropZoneView = <T extends FormikValues>(
         onRemove={onDelete}
         setFile={setFile}
         setToFormik={(newValue) => {
-          formik.setFieldValue(name, newValue);
+          formik.setFieldValue(String(name), newValue);
         }}
         uploadFunction={uploadFunction}
         uploadController={uploadController}

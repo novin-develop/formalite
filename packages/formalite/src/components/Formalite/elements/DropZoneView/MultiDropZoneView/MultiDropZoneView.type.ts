@@ -101,7 +101,7 @@ export interface MultiDropZoneViewType extends BaseViewType {
 
 export type MultiDropZoneViewProps<T> = {
   allData: MultiDropZoneViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;

@@ -15,9 +15,9 @@ import SelectViewAllViews from "@components/Formalite/elements/SelectView/Select
 import { FetchingDataEnum } from "@components/base/model";
 import { ObjectSchema } from "yup";
 
-type SelectViewProps<T> = {
+export type SelectViewProps<T> = {
   allData: SelectViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -98,7 +98,7 @@ const SelectView = <T extends FormikValues>(props: SelectViewProps<T>) => {
         formik={formik}
         validationSchema={validationSchema}
         translator={translator}
-        name={name}
+        name={String(name)}
         dataStatus={dataStatus}
         allInputProps={allData.inputProps}
         loadFunction={

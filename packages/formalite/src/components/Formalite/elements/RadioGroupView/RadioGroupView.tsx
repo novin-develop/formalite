@@ -17,9 +17,9 @@ import RadioGroupViewAllViews from "@components/Formalite/elements/RadioGroupVie
 import { FetchingDataEnum } from "@components/base/model";
 import { ObjectSchema } from "yup";
 
-type RadioGroupViewProps<T> = {
+export type RadioGroupViewProps<T> = {
   allData: RadioGroupViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -123,7 +123,7 @@ const RadioGroupView = <T extends FormikValues>(
         formik={formik}
         validationSchema={validationSchema}
         translator={translator}
-        name={name}
+        name={String(name)}
         dataStatus={dataStatus}
         allInputProps={allData.inputProps}
         labelProps={allData.labelProps}

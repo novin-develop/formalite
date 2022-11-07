@@ -86,7 +86,7 @@ export interface TextDropZoneViewType extends BaseViewType {
 
 export type TextDropZoneViewProps<T> = {
   allData: TextDropZoneViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;

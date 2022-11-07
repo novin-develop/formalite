@@ -1,11 +1,15 @@
-import React, { useEffect, useImperativeHandle } from "react";
+import React, {
+  ReactNode,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+} from "react";
 import { Grid } from "@mui/material";
 import { FormikProps, FormikProvider, FormikValues, useFormik } from "formik";
 import {
   getDefaultValue,
   showErrorMessage,
 } from "@components/Formalite/config/utils";
-import { OptionalObjectSchema } from "yup/lib/object";
 import { I18nProvider, Resources } from "@components/base/I18nProvider";
 import {
   FormalitePropsType,
@@ -92,6 +96,7 @@ const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
     formMustRegex,
     translator = defaultTranslator,
     onFormChange,
+    components = {},
   } = props;
 
   const formik = useFormik<T>({
@@ -178,6 +183,7 @@ const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
                 validationSchema,
                 formMustRegex,
                 translator,
+                components,
               })}
               <ErrorFocus<T>
                 offsetScroll={offsetScroll}
@@ -201,6 +207,7 @@ export function itemRenderer<T extends FormikValues>({
   repItem,
   formMustRegex,
   translator,
+  components,
 }: {
   form: MainType;
   formik: FormikProps<T>;
@@ -211,13 +218,15 @@ export function itemRenderer<T extends FormikValues>({
   repItem?: { name: string; index: number };
   formMustRegex?: RegExp;
   translator: Function;
+  components: FormalitePropsType<T>["components"];
 }) {
+  const NewViewComponentMap = { ...ViewComponentMap, ...components };
   return Object.entries(form).map(([keyOriginal, value]) => {
     const key = repItem
       ? `${repItem.name}.${repItem.index}.${keyOriginal}`
       : keyOriginal;
     if ((!!value.showOnUpdate && isUpdateMode) || !value.showOnUpdate) {
-      const TargetComponent = ViewComponentMap[value.type];
+      const TargetComponent = NewViewComponentMap[value.type];
       if (TargetComponent) {
         return (
           <TargetComponent<T>

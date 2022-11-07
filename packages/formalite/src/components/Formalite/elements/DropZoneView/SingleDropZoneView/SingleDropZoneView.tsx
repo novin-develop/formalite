@@ -93,7 +93,7 @@ const SingleDropZoneView = <T extends FormikValues>(
             tempArray[0].status = "done";
             tempArray[0].progress = 100;
           }
-          formik.setFieldValue(name, tempArray);
+          formik.setFieldValue(String(name), tempArray);
           return tempArray;
         });
       })
@@ -195,14 +195,14 @@ const SingleDropZoneView = <T extends FormikValues>(
   }
 
   return (
-    <Grid item {...layoutProps} id={name} ref={ref}>
+    <Grid item {...layoutProps} id={String(name)} ref={ref}>
       {inputProps.label && (
         <FormLabel
           component="legend"
           required={checkIsMin({
             schema: validationSchema,
             formikValues: formik.values,
-            key: name,
+            key: String(name),
           })}
         >
           {inputProps.label}
@@ -230,12 +230,12 @@ const SingleDropZoneView = <T extends FormikValues>(
           onDelete={onDelete}
           setFile={setFile}
           resetDropZone={() => {
-            formik.setFieldValue(name, []);
+            formik.setFieldValue(String(name), []);
           }}
           required={checkIsMin({
             schema: validationSchema,
             formikValues: formik.values,
-            key: name,
+            key: String(name),
           })}
           uploadFunction={uploadFunction}
           uploadController={uploadController}

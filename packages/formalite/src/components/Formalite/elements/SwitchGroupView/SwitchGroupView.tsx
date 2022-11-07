@@ -1,14 +1,13 @@
 import React from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import { SwitchGroupViewType } from "@components/Formalite/elements/SwitchGroupView/SwitchGroupView.type";
 import { ViewTypes } from "@components/Formalite/Formalite.type";
 import CheckGroupView from "@components/Formalite/elements/CheckGroupView/CheckGroupView";
 import { ObjectSchema } from "yup";
 
-type SwitchGroupViewProps<T> = {
+export type SwitchGroupViewProps<T> = {
   allData: SwitchGroupViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -23,8 +22,8 @@ const SwitchGroupView = <T extends FormikValues>(
 
   return (
     <CheckGroupView<T>
-      key={name}
-      name={name}
+      key={String(name)}
+      name={String(name)}
       allData={{
         ...allData,
         type: ViewTypes.CheckGroupView,

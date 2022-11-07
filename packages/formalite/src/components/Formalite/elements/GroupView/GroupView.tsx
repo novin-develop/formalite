@@ -7,9 +7,9 @@ import React from "react";
 import { GroupViewType } from "@components/Formalite/elements/GroupView/GroupView.type";
 import { ObjectSchema } from "yup";
 
-type GroupViewProps<T> = {
+export type GroupViewProps<T> = {
   allData: GroupViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -32,7 +32,7 @@ const GroupView = <T extends FormikValues>(props: GroupViewProps<T>) => {
     formMustRegex,
   } = props;
   return (
-    <Grid item container spacing={3} {...allData.layoutProps} id={name}>
+    <Grid item container spacing={3} {...allData.layoutProps} id={String(name)}>
       {itemRenderer<T>({
         formMustRegex,
         form: allData.options,

@@ -54,7 +54,7 @@ export const parameters = {
       method: 'alphabetical',
       order: [
         'Intro',
-        ['Introduction', 'Quick Start','Formalite Props','Ref Object', 'Formalite Theming', 'Fetching Content', 'Custom Input' , 'Changelog'],
+        ['Introduction', 'Quick Start','Formalite Props','Ref Object', 'Component Override', 'Formalite Theming', 'Fetching Content', 'Custom Input' , 'Changelog'],
         'Components',
         [
           'Formalite',

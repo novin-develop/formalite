@@ -13,9 +13,9 @@ import { Language } from "@components/base/model";
 import { ObjectSchema } from "yup";
 import { TextViewType } from "./TextView.type";
 
-type TextViewProps<T> = {
+export type TextViewProps<T> = {
   allData: TextViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -43,7 +43,7 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
         loading={loading}
         validationSchema={validationSchema}
         translator={props.translator}
-        name={name}
+        name={String(name)}
         mustRegex={[allData.mustRegex, props.formMustRegex]}
         inputRef={mainRef}
         type={

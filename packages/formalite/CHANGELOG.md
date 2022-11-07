@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/novin-develop/formalite/compare/v0.2.4...v0.3.0) (2022-11-07)
+
+
+### Features
+
+* add component override with storyBook document ([d91b46d](https://github.com/novin-develop/formalite/commit/d91b46d17dbb1d5a8b42f652f4ee8788d182f239))
+
+
+### Bug Fixes
+
+* fix ColorPickerView popup zIndex ([952123d](https://github.com/novin-develop/formalite/commit/952123de0fba65666bf0e307054c292bfb46a9d6))
+
+
+
+
 ## [0.2.4](https://github.com/novin-develop/formalite/compare/v0.2.3...v0.2.4) (2022-11-02)
 
 

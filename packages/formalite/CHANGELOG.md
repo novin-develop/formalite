@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/novin-develop/formalite/compare/v0.3.0...v0.3.1) (2022-11-07)
+
+
+### Bug Fixes
+
+* fix component override build bug ([d43d450](https://github.com/novin-develop/formalite/commit/d43d450cd45e3295faf0cad8a6205e91952885e2))
+
+
+
 ## [0.3.0](https://github.com/novin-develop/formalite/compare/v0.2.4...v0.3.0) (2022-11-07)
 
 

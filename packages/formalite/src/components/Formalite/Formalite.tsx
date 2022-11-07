@@ -74,6 +74,7 @@ const ViewComponentMap = {
   [ViewTypes.EditorView.toString()]: EditorView,
   [ViewTypes.GroupView.toString()]: GroupView,
 };
+let newComponents: FormalitePropsType<any>["components"] = {};
 
 let GResolve: (value: unknown) => void;
 let GReject: (reason?: any) => void;
@@ -99,6 +100,7 @@ const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
     components = {},
   } = props;
 
+  newComponents = components;
   const formik = useFormik<T>({
     enableReinitialize: reIni,
     initialValues,
@@ -183,7 +185,6 @@ const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
                 validationSchema,
                 formMustRegex,
                 translator,
-                components,
               })}
               <ErrorFocus<T>
                 offsetScroll={offsetScroll}
@@ -207,7 +208,6 @@ export function itemRenderer<T extends FormikValues>({
   repItem,
   formMustRegex,
   translator,
-  components,
 }: {
   form: MainType;
   formik: FormikProps<T>;
@@ -218,9 +218,8 @@ export function itemRenderer<T extends FormikValues>({
   repItem?: { name: string; index: number };
   formMustRegex?: RegExp;
   translator: Function;
-  components: FormalitePropsType<T>["components"];
 }) {
-  const NewViewComponentMap = { ...ViewComponentMap, ...components };
+  const NewViewComponentMap = { ...ViewComponentMap, ...newComponents };
   return Object.entries(form).map(([keyOriginal, value]) => {
     const key = repItem
       ? `${repItem.name}.${repItem.index}.${keyOriginal}`

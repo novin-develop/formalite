@@ -77,19 +77,19 @@ const HelperSection = ({ required, file }: HelperSectionType) => {
           ? `${file.original === "selected" ? file.name : file.originalName} ${
               file?.size ? ` - ${fData(file?.size)}` : ""
             }`
-          : `${t("fg-dropzone-drop-or-select-file")} ${required ? "*" : ""}`}
+          : `${t("dropzone_drop_or_select_file")} ${required ? "*" : ""}`}
       </Typography>
 
       <Typography variant="body2" sx={{ color: "text.secondary" }}>
-        {t("fg-dropzone-drop-files-here-or-click")}&nbsp;
+        {t("dropzone_drop_files_here_or_click")}&nbsp;
         <Typography
           variant="body2"
           component="span"
           sx={{ color: "primary.main", textDecoration: "underline" }}
         >
-          {t("fg-dropzone-browse")}
+          {t("dropzone_browse")}
         </Typography>
-        &nbsp;{t("fg-dropzone-select-thorough-your-machine")}
+        &nbsp;{t("dropzone_select_thorough_your_machine")}
       </Typography>
     </Box>
   );

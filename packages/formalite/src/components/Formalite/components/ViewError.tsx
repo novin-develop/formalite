@@ -18,7 +18,7 @@ const ViewError = (props: ViewErrorProps) => {
       <Box>
         <FormLabel>{label}</FormLabel>
         <Typography sx={(theme) => ({ color: theme.palette.error.main })}>
-          {error?.message || t("fg-something-went-wrong")}
+          {error?.message || t("general_something_went_wrong")}
         </Typography>
       </Box>
       <Box display="flex" justifyContent="center" alignItems="center">

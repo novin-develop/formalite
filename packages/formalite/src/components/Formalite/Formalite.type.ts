@@ -41,6 +41,7 @@ import { CheckGroupViewProps } from "@components/Formalite/elements/CheckGroupVi
 import { CartNumberViewProps } from "@components/Formalite/elements/CardNumberView/CardNumberView";
 import { BigRadioGroupViewProps } from "@components/Formalite/elements/BigRadioGroupView/BigRadioGroupView";
 import { AutoCompleteViewProps } from "@components/Formalite/elements/AutoCompleteView/AutoCompleteView";
+import { en } from "@components/Formalite/translations/default-en";
 import {
   SingleDropZoneViewProps,
   SingleDropZoneViewType,
@@ -151,7 +152,9 @@ export type FormalitePropsType<T extends FormikValues> = {
   formMustRegex?: RegExp;
   translator?: Function;
   onFormChange?: OnFormChangeType<T>;
-  // components?: Partial<Record<ViewTypes, <U>(props: U) => JSX.Element>>;
+  localization?: {
+    [key: string]: Record<keyof typeof en, string>;
+  };
   components?: {
     [ViewTypes.TextView]?: <Z>(props: TextViewProps<T>) => JSX.Element;
     [ViewTypes.SelectView]?: (props: SelectViewProps<T>) => JSX.Element;

@@ -1,7 +1,8 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import { useI18nContext } from "@components/base/I18nProvider";
-import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
+import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
+
 const SmallBlockContent = (props: { required: boolean }) => {
   const { t } = useI18nContext();
 
@@ -27,22 +28,22 @@ const SmallBlockContent = (props: { required: boolean }) => {
       <Grid item xs container direction="column">
         <Grid item>
           <Typography gutterBottom variant="h5">
-            {`${t("fg-dropzone-drop-or-select-file")} ${
+            {`${t("dropzone_drop_or_select_file")} ${
               props.required ? "*" : ""
             }`}
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {t("fg-dropzone-drop-files-here-or-click")}&nbsp;
+            {t("dropzone_drop_files_here_or_click")}&nbsp;
             <Typography
               variant="body2"
               component="span"
               sx={{ color: "primary.main", textDecoration: "underline" }}
             >
-              {t("fg-dropzone-browse")}
+              {t("dropzone_browse")}
             </Typography>
-            &nbsp;{t("fg-dropzone-select-thorough-your-machine")}
+            &nbsp;{t("dropzone_select_thorough_your_machine")}
           </Typography>
         </Grid>
       </Grid>

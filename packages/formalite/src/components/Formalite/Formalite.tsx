@@ -98,6 +98,7 @@ const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
     translator = defaultTranslator,
     onFormChange,
     components = {},
+    localization,
   } = props;
 
   newComponents = components;
@@ -163,8 +164,13 @@ const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
+  const newResources = useMemo(
+    () => ({ ...resources, ...localization }),
+    [localization]
+  );
+
   return (
-    <I18nProvider targetLang={lang} resources={resources}>
+    <I18nProvider targetLang={lang} resources={newResources}>
       <ErrorBoundaryWrapper>
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>

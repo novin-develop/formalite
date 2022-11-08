@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Tooltip } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -56,32 +56,35 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
                 ...InputProps,
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label={t("fg-toggle-password-visibility")}
-                      onClick={() => {
-                        setShowPassword(!showPassword);
-                        setTimeout(() => {
+                    <Tooltip title={t("textview_toggle_password_visibility")}>
+                      <IconButton
+                        aria-label={t("textview_toggle_password_visibility")}
+                        onClick={() => {
+                          setShowPassword(!showPassword);
+                          setTimeout(() => {
+                            if (mainRef.current) {
+                              mainRef.current.selectionStart = startCursor;
+                              mainRef.current.selectionEnd = endCursor;
+                            }
+                          }, 0);
+                        }}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          mainRef.current?.focus();
                           if (mainRef.current) {
-                            mainRef.current.selectionStart = startCursor;
-                            mainRef.current.selectionEnd = endCursor;
+                            startCursor =
+                              mainRef.current.selectionStart || 10000;
+                            endCursor = mainRef.current?.selectionEnd || 10000;
                           }
-                        }, 0);
-                      }}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        mainRef.current?.focus();
-                        if (mainRef.current) {
-                          startCursor = mainRef.current.selectionStart || 10000;
-                          endCursor = mainRef.current?.selectionEnd || 10000;
-                        }
-                      }}
-                    >
-                      {showPassword ? (
-                        <VisibilityOutlinedIcon />
-                      ) : (
-                        <VisibilityOffOutlinedIcon />
-                      )}
-                    </IconButton>
+                        }}
+                      >
+                        {showPassword ? (
+                          <VisibilityOutlinedIcon />
+                        ) : (
+                          <VisibilityOffOutlinedIcon />
+                        )}
+                      </IconButton>
+                    </Tooltip>
                   </InputAdornment>
                 ),
               }

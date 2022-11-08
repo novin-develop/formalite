@@ -113,7 +113,7 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
                           >
                             <DeleteOutlineOutlinedIcon />
                             <Box component="span">
-                              {t("fg-repeator-remove")}
+                              {t("repeater_remove_btn")}
                             </Box>
                           </Button>
                         </Grid>
@@ -154,7 +154,7 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
                     }}
                   >
                     <AddIcon />
-                    {allData.buttonText || t("fg-repeator-add")}
+                    {allData.buttonText || t("repeater_add_btn")}
                   </Button>
                 </Grid>
               </Grid>

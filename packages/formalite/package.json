@@ -20,11 +20,11 @@
     "url": "git+https://github.com/novin-develop/formalite.git"
   },
   "keywords": [
-    "from",
+    "fromalite",
     "formik",
     "material-form",
     "material",
-    "fromalite",
+    "form",
     "from-generator"
   ],
   "scripts": {

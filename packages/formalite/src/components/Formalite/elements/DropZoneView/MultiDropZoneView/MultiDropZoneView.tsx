@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { FormikValues } from "formik";
 import { checkIsMin, getData } from "@components/Formalite/config/utils";
-import { alpha, styled, Theme } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import { useDropzone } from "react-dropzone";
 import BlockContent from "@components/Formalite/elements/DropZoneView/Components/BlockContent";
 import RejectionFiles from "@components/Formalite/elements/DropZoneView/Components/RejectionFiles";

@@ -10,7 +10,6 @@ import {
   FormHelperText,
   FormLabel,
   Grid,
-  Typography,
   useTheme,
 } from "@mui/material";
 import { FormikValues } from "formik";
@@ -26,7 +25,7 @@ import {
   CustomFile,
   OutsideFile,
 } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
-import { getNameFromUrl, removeUrlExtras } from "@config/utils";
+import { getNameFromUrl } from "@config/utils";
 
 const DropZoneStyle = styled("div")(({ theme }) => ({
   outline: "none",

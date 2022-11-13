@@ -5,7 +5,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import { useRef, useState } from "react";
 import BuilderTab from "./tabs/BuilderTab";
 import CodeTab from "./tabs/CodeTab";
-import { DrawerComponent, RefDrawer } from "./components/DrawerComponent";
+import { DrawerComponent, RefDrawer } from "./components/editDrower/DrawerComponent";
 
 export type layoutViewType = {
   id:string,

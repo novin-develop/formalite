@@ -26,7 +26,7 @@ import AddLayoutButton from "../components/AddLayoutButton";
 import * as React from "react";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { layoutViewType } from "../Index5Builder";
-import { DrawerComponent, RefDrawer } from "../components/DrawerComponent";
+import { DrawerComponent, RefDrawer } from "../components/editDrower/DrawerComponent";
 
 
 type BuilderTabType ={

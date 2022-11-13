@@ -1,6 +1,6 @@
-import { Drawer } from "@mui/material";
+import { CardContent, Drawer, Grid, Stack, TextField, Typography } from "@mui/material";
 import { Dispatch, MutableRefObject, SetStateAction, useImperativeHandle, useRef, useState } from "react";
-import { layoutViewType } from "../Index5Builder";
+import { layoutViewType } from "../../Index5Builder";
 
 type DrawerStateType= {
   open:boolean,
@@ -35,7 +35,21 @@ export const DrawerComponent = (props:DrawerComponentProps) => {
           open: false,
         }))
       }}>
-      {drawerState.type}
+      <div style={{width:"350px",padding:"16px"}}>
+        <Typography variant={"h5"} color={"primary"} textAlign={"center"} >
+          {drawerState.type}
+        </Typography>
+        <hr style={{margin:"16px"}}/>
+        <Stack spacing={2} overflow={"hidden auto"}>
+          <TextField variant={"filled"} label={"Label"} fullWidth/>
+          <TextField variant={"filled"} label={"Helper Text"} fullWidth/>
+          <TextField variant={"filled"} label={"mustRegex"} fullWidth/>
+          <TextField variant={"filled"} label={"renderDependency"} fullWidth/>
+          <h4>inputProps</h4>
+          <h4>layoutProps</h4>
+
+        </Stack>
+      </div>
     </Drawer>
   )
 }

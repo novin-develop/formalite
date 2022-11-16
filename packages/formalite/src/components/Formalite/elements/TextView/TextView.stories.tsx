@@ -28,11 +28,8 @@ export default {
   ],
 } as ComponentMeta<typeof TestTextView>;
 
-const Template: ComponentStory<typeof TestTextView> = (
-  args,
-  { globals: { locale } }
-) => {
-  return <TestTextView {...args} lang={locale} />;
+const Template: ComponentStory<typeof TestTextView> = (args, { globals }) => {
+  return <TestTextView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const Simple = Template.bind({});
@@ -68,7 +65,7 @@ PasswordMode.args = {
     xs: 12,
   },
   inputProps: {
-    label: "Title Input",
+    label: "Password Input",
     type: "password",
     helperText: "Helper text",
     placeholder: "Password",

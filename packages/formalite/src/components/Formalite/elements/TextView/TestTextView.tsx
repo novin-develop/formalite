@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import * as Yup from "yup";
 import { Language } from "@components/base/model";
 import { Formalite, MainType, ViewTypes } from "@components/Formalite";
@@ -11,7 +11,7 @@ const validation = Yup.object({
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {
-  title: "123",
+  title: "",
 };
 
 type TestTextViewProps = Omit<TextViewType, "type"> & {

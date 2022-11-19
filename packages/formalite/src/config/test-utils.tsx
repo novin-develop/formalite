@@ -19,3 +19,14 @@ export * from "@testing-library/react";
 
 // override render method
 export { customRender as render };
+
+export const createSelection = (
+  field: HTMLInputElement,
+  start: number,
+  end: number
+) => {
+  if (field.setSelectionRange) {
+    field.focus();
+    field.setSelectionRange(start, end);
+  }
+};

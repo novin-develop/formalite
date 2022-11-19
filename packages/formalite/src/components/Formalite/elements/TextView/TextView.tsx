@@ -32,8 +32,8 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
   );
   const mainRef = useRef<HTMLInputElement>();
   const { t } = useI18nContext();
-  let startCursor = 10000;
-  let endCursor = 10000;
+  const startCursor = 10000;
+  const endCursor = 10000;
   const { autoComplete, type, InputProps, ...inputProps } = allData.inputProps;
 
   return (
@@ -60,20 +60,11 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
                       aria-label={t("fg-toggle-password-visibility")}
                       onClick={() => {
                         setShowPassword(!showPassword);
-                        setTimeout(() => {
-                          if (mainRef.current) {
-                            mainRef.current.selectionStart = startCursor;
-                            mainRef.current.selectionEnd = endCursor;
-                          }
-                        }, 0);
+                        mainRef.current?.blur();
                       }}
                       onMouseDown={(e) => {
                         e.preventDefault();
                         mainRef.current?.focus();
-                        if (mainRef.current) {
-                          startCursor = mainRef.current.selectionStart || 10000;
-                          endCursor = mainRef.current?.selectionEnd || 10000;
-                        }
                       }}
                     >
                       {showPassword ? (

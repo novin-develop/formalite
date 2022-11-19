@@ -70,7 +70,7 @@ PasswordMode.args = {
     helperText: "Helper text",
     placeholder: "Password",
     onChange: (value) => {
-      console.log(value);
+      // console.log(value);
     },
   },
 };

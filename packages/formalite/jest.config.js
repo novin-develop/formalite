@@ -7,11 +7,15 @@ module.exports = {
   testEnvironment: "jsdom",
   collectCoverageFrom: [
     "src/components/Formalite/elements/**/*.{js,jsx,ts,tsx}",
+    "src/components/Formalite/config/**/*.{js,jsx,ts,tsx}",
+    "src/components/Formalite/components/**/*.{js,jsx,ts,tsx}",
+    "src/components/Formalite/Formalite.tsx",
     "!src/components/Formalite/elements/**/Test*.{js,jsx,ts,tsx}",
     "!**/node_modules/**",
     "!**/*.stories.{ts,tsx}",
     "!**/*.code.{ts,tsx}",
   ],
+
   modulePaths: ["."], // <-- This will be set to 'baseUrl' value
   moduleNameMapper: {
     ...pathsToModuleNameMapper({

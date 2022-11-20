@@ -60,11 +60,15 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
                       aria-label={t("fg-toggle-password-visibility")}
                       onClick={() => {
                         setShowPassword(!showPassword);
-                        mainRef.current?.blur();
+                        if (mainRef.current) {
+                          mainRef.current.blur();
+                        }
                       }}
                       onMouseDown={(e) => {
                         e.preventDefault();
-                        mainRef.current?.focus();
+                        if (mainRef.current) {
+                          mainRef.current.focus();
+                        }
                       }}
                     >
                       {showPassword ? (
@@ -84,9 +88,5 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
   );
 };
 export default React.memo(TextView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof TextView;

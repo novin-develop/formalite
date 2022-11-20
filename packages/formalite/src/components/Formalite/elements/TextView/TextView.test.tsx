@@ -28,7 +28,7 @@ test("TextView: is Rendered -> TextView", async () => {
   });
 });
 
-test("TextView: is Rendered -> PasswordView", async () => {
+test("TextView: is Rendered and click icon -> PasswordView", async () => {
   // @ts-ignore
   render(<PasswordMode {...PasswordMode.args} />);
   await waitFor(async () => {
@@ -53,7 +53,7 @@ test("TextView: is Rendered -> PasswordView", async () => {
   });
 });
 
-/* test("TextView: is Cursors are correct -> PasswordView", async () => {
+test("TextView: is focus are correct -> PasswordView", async () => {
   // @ts-ignore
   render(<PasswordMode {...PasswordMode.args} />);
   const PasswordView = (await screen.findByLabelText(
@@ -61,19 +61,33 @@ test("TextView: is Rendered -> PasswordView", async () => {
   )) as HTMLInputElement;
   await waitFor(async () => {
     userEvent.type(PasswordView, "Some Password");
-    createSelection(PasswordView, 5, 10);
   });
-
-  console.log(PasswordView.selectionStart, PasswordView.selectionEnd);
+  expect(PasswordView).toHaveFocus();
 
   const PasswordViewIcon = screen.getByRole("button", {
     name: /Toggle password visibility/i,
   });
-  userEvent.click(PasswordViewIcon);
 
-  const NewPasswordView = (await screen.findByLabelText(
-    /Password Input/i
-  )) as HTMLInputElement;
+  await waitFor(async () => {
+    userEvent.click(PasswordViewIcon);
+  });
 
-  console.log(NewPasswordView.selectionStart, NewPasswordView.selectionEnd);
-}); */
+  expect(PasswordView).not.toHaveFocus();
+});
+
+test("TextView: mustRegex is working -> TextView", async () => {
+  // @ts-ignore
+  render(<Simple {...Simple.args} mustRegex={/^[0-9]{1,}$/} />);
+
+  await waitFor(async () => {
+    const TextView = await screen.findByRole("textbox", {
+      name: /Title Input/i,
+    });
+    expect(TextView).toBeInTheDocument();
+
+    await waitFor(async () => {
+      userEvent.type(TextView, "123abc123");
+    });
+    expect(TextView).toHaveValue("123123");
+  });
+});

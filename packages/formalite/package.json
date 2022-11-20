@@ -30,6 +30,7 @@
   "scripts": {
     "lint:fix": "lerna run lint:fix --stream --parallel",
     "test": "jest",
+    "test:dev": "jest -o --watch",
     "test:coverage": "jest --watchAll=false --coverage",
     "test:coverage-file": "jest --watchAll=false --coverage --collectCoverageFrom=src/components/Formalite/elements/SelectView/SelectView.tsx",
     "build": "rollup -c",

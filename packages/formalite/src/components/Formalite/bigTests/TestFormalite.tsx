@@ -14,7 +14,7 @@ import { getDirectionFromLang } from "@config/utils";
 import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
 import { PaddingContainer } from "@components/base/PaddingContainer";
 import ThemeProvider from "@themes/index";
-import Formalite from "./Formalite";
+import Formalite from "../Formalite";
 
 const validation = Yup.object({
   avatar: Yup.array().of(Yup.mixed()).nullable(),
@@ -56,6 +56,7 @@ type ValidationType = Yup.InferType<typeof validation>;
 type TestFormaliteProps = {
   themeMode: Theme;
   lang?: Language;
+  direction?: "ltr" | "rtl";
 } & Partial<FormalitePropsType<ValidationType>>;
 
 export const TestFormalite = ({
@@ -63,14 +64,7 @@ export const TestFormalite = ({
   lang = "en",
   ...props
 }: TestFormaliteProps) => {
-  const [otherForm, setOtherForm] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [dependency, setDependency] = useState(false);
-  const [disabled, setDisabled] = useState(false);
-  const [selectOptions, setSelectOptions] = useState({});
   const formRef = useFormaliteRef<ValidationType>();
-  const direction = getDirectionFromLang(lang);
-
   const iniValues: ValidationType = {
     avatar: [
       {
@@ -121,47 +115,23 @@ export const TestFormalite = ({
     editor: "123",
     textDropZone: {
       text: "aaaa123",
-      files: [
-        {
-          preview: "https://picsum.photos/200",
-          uid: "123",
-        },
-      ],
+      files: [],
     },
   };
 
-  /*  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSelectOptions({
-        usd: {
-          label: "USD",
-        },
-        rmb: {
-          label: "RMB",
-        },
-      });
-    }, 500);
-  }, []); */
-
   return (
-    <ThemeProvider themeMode={themeMode} themeDirection={direction}>
-      <RTL direction={direction}>
+    <ThemeProvider
+      themeMode={themeMode}
+      themeDirection={props.direction || "ltr"}
+    >
+      <RTL direction={props.direction || "ltr"}>
         <PaddingContainer>
           <Container>
             <Formalite<ValidationType>
               offsetScroll={50}
-              loading={loading}
+              loading={props.loading || false}
               lang={lang}
-              formString={useFromString(
-                otherForm,
-                setOtherForm,
-                dependency,
-                setDependency,
-                disabled,
-                selectOptions
-              )}
+              formString={useFromString()}
               initialValues={iniValues}
               validationSchema={validation}
               formRef={formRef}
@@ -173,52 +143,6 @@ export const TestFormalite = ({
               }}
               {...props}
             />
-            <Button
-              onClick={() => {
-                setLoading((pre) => !pre);
-              }}
-            >
-              setLoading
-            </Button>
-            <Button
-              onClick={() => {
-                formRef.current?.formik
-                  .validateForm()
-                  .then((res) => console.log(res))
-                  .catch((e) => console.log(e));
-              }}
-            >
-              CheckError
-            </Button>
-            <Button
-              onClick={() => {
-                formRef.current?.callSubmit();
-              }}
-            >
-              Submit
-            </Button>
-            <Button
-              onClick={() => {
-                formRef.current?.formik.setFieldValue("switch", ["two"]);
-              }}
-            >
-              switch
-            </Button>
-            <Button
-              onClick={() => {
-                console.log(formRef.current?.formik.values);
-                setDisabled((pre) => !pre);
-              }}
-            >
-              log formik values
-            </Button>
-            <Button
-              onClick={() => {
-                formRef.current?.addRow("friends");
-              }}
-            >
-              add Row
-            </Button>
           </Container>
         </PaddingContainer>
       </RTL>
@@ -246,14 +170,7 @@ const imageDownloader = (filePath: string, controller: AbortController) =>
       });
   });
 
-function useFromString(
-  otherForm: object,
-  setOtherForm: (a: object) => void,
-  dependency: boolean,
-  setDependency: (a: boolean) => void,
-  disabled: boolean,
-  selectOptions: object
-) {
+function useFromString() {
   return useMemo<MainType>(() => {
     return {
       avatar: {
@@ -287,27 +204,14 @@ function useFromString(
         onUpload: (file, progress) =>
           new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              progress(50);
-            }, 1000);
-            setTimeout(() => {
-              progress(35);
-            }, 500);
-            setTimeout(() => {
-              progress(70);
-            }, 1000);
-            setTimeout(() => {
-              progress(100);
-            }, 1500);
-            setTimeout(() => {
-              resolve(new Date().getTime().toString());
-              // reject(new Error("aaaa"));
-            }, 1700);
+              resolve("aaa");
+            }, 1);
           }),
         onDelete: (id, isFromDefault, isSuccess) =>
           new Promise<void>((resolve, reject) => {
             setTimeout(() => {
               resolve();
-            }, 2000);
+            }, 1);
           }),
       },
       grouping2: {
@@ -328,9 +232,8 @@ function useFromString(
               label: "Title Input",
               helperText: "Aaa asdas d asd a dsd sad",
               placeholder: "some other title",
-              disabled,
               onChange: (value) => {
-                console.log(value);
+                // console.log(value);
               },
             },
           },
@@ -359,7 +262,7 @@ function useFromString(
         inputProps: {
           label: "Price",
           onChange: (value) => {
-            console.log(value);
+            // console.log(value);
           },
         },
       },
@@ -396,7 +299,7 @@ function useFromString(
           loading: false,
           error: false,
           onRetry: () => {
-            console.log("fg forever");
+            // console.log("fg forever");
           },
           data: {
             one: {
@@ -437,7 +340,7 @@ function useFromString(
           loading: false,
           error: false,
           onRetry: () => {
-            console.log("fg forever");
+            // console.log("fg forever");
           },
           data: {
             one: {
@@ -470,10 +373,9 @@ function useFromString(
           label: "Date Picker",
           helperText: "helper text",
         },
-        // datePickerProps: {
-        //   mask: "____/__/__",
-        // },
-        onChange: (date) => console.log("test datePicker onChange", date),
+        onChange: (date) => {
+          // console.log("test datePicker onChange", date);
+        },
       },
       dateTimePicker: {
         type: ViewTypes.DateTimePickerView,
@@ -486,7 +388,9 @@ function useFromString(
           helperText: "helper text",
         },
         datePickerProps: {},
-        onChange: (date) => console.log("test dateTimePicker onChange", date),
+        onChange: (date) => {
+          // console.log("test dateTimePicker onChange", date);
+        },
       },
       timePicker: {
         type: ViewTypes.TimePickerView,
@@ -499,7 +403,9 @@ function useFromString(
           helperText: "helper text",
         },
         timePickerProps: {},
-        onChange: (date) => console.log("test timePicker onChange", date),
+        onChange: (date) => {
+          // console.log("test timePicker onChange", date);
+        },
       },
       editor: {
         type: ViewTypes.EditorView,
@@ -561,18 +467,15 @@ function useFromString(
         onUpload: (file, progress) =>
           new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              progress(50);
-            }, 1000);
-            setTimeout(() => {
               resolve(new Date().getTime().toString());
               // reject(new Error("aaaa"));
-            }, 2000);
+            }, 1);
           }),
         onDelete: (id, isFromDefault, isSuccess) =>
           new Promise<void>((resolve, reject) => {
             setTimeout(() => {
               resolve();
-            }, 2000);
+            }, 1);
           }),
       },
       MultiDropZone: {
@@ -593,18 +496,15 @@ function useFromString(
         onUpload: (file, progress) =>
           new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              progress(50);
-            }, 1000);
-            setTimeout(() => {
               // resolve(new Date().getTime().toString());
               reject(new Error("aaaa"));
-            }, 2000);
+            }, 1);
           }),
         onDelete: (id, isFromDefault, isSuccess) =>
           new Promise<void>((resolve, reject) => {
             setTimeout(() => {
               resolve();
-            }, 2000);
+            }, 1);
           }),
       },
       SmallDropZone: {
@@ -626,18 +526,15 @@ function useFromString(
         onUpload: (file, progress) =>
           new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              progress(50);
-            }, 1000);
-            setTimeout(() => {
               resolve(new Date().getTime().toString());
               // reject(new Error("aaaa"));
-            }, 2000);
+            }, 1);
           }),
         onDelete: (id, isFromDefault, isSuccess) =>
           new Promise<void>((resolve, reject) => {
             setTimeout(() => {
               resolve();
-            }, 2000);
+            }, 1);
           }),
       },
       textDropZone: {
@@ -661,19 +558,16 @@ function useFromString(
         onUpload: (file, progress) =>
           new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              progress(50);
-            }, 1000);
-            setTimeout(() => {
               resolve(new Date().getTime().toString());
               // reject(new Error("aaaa"));
-            }, 2000);
+            }, 1);
           }),
         onDelete: (id, isFromDefault, isSuccess) =>
           new Promise<void>((resolve, reject) => {
-            console.log(isSuccess);
+            // console.log(isSuccess);
             setTimeout(() => {
               resolve();
-            }, 2000);
+            }, 1);
           }),
       },
       radio: {
@@ -690,7 +584,7 @@ function useFromString(
           loading: false,
           error: false,
           onRetry: () => {
-            console.log("fg forever");
+            // console.log("fg forever");
           },
           data: {
             one: {
@@ -723,7 +617,7 @@ function useFromString(
           loading: false,
           error: false,
           onRetry: () => {
-            console.log("fg forever");
+            // console.log("fg forever");
           },
           data: {
             one: {
@@ -739,28 +633,11 @@ function useFromString(
               description: "that is desc",
             },
           },
-          // type: FetchingDataEnum.AUTOMATIC,
-          // options: () => {
-          //   return new Promise((resolve, reject) => {
-          //     setTimeout(() => {
-          //       resolve({
-          //         one: {
-          //           label: "one",
-          //
-          //         },
-          //         two: {
-          //           label: "two",
-          //         },
-          //       });
-          //       reject(new Error("yohoooooooo"))
-          //     }, 2000);
-          //   });
-          // },
         },
         inputProps: {
           label: "CheckGroupView",
           onChange: (value, additionalData) => {
-            console.log(value, additionalData);
+            // console.log(value, additionalData);
           },
         },
       },
@@ -778,7 +655,7 @@ function useFromString(
           loading: false,
           error: false,
           onRetry: () => {
-            console.log("fg forever");
+            // console.log("fg forever");
           },
           data: {
             one: {
@@ -788,28 +665,6 @@ function useFromString(
               label: "two",
             },
           },
-          // type: FetchingDataEnum.AUTOMATIC,
-          // options: () => {
-          //   return new Promise((resolve, reject) => {
-          //     setTimeout(() => {
-          //       resolve({
-          //         one: {
-          //           label: "one",
-          //           description: "This is desc",
-          //           additionalData: {
-          //             x: 1,
-          //             y: 2,
-          //           },
-          //         },
-          //         two: {
-          //           label: "two",
-          //           description: "that is desc",
-          //         },
-          //       });
-          //       reject(new Error("yohoooooooo"))
-          //     }, 2000);
-          //   });
-          // },
         },
         inputProps: {
           label: "SwitchGroupView",
@@ -826,7 +681,7 @@ function useFromString(
           loading: false,
           error: false,
           onRetry: () => {
-            console.log("fg forever");
+            // console.log("fg forever");
           },
           data: {
             one: {
@@ -842,33 +697,11 @@ function useFromString(
               description: "that is desc",
             },
           },
-          // type: FetchingDataEnum.AUTOMATIC,
-          // options: () => {
-          //   return new Promise((resolve, reject) => {
-          //     setTimeout(() => {
-          //       resolve({
-          //         one: {
-          //           label: "one",
-          //           description: "This is desc",
-          //           additionalData: {
-          //             x: 1,
-          //             y: 2,
-          //           },
-          //         },
-          //         two: {
-          //           label: "two",
-          //           description: "that is desc",
-          //         },
-          //       });
-          //       reject(new Error("yohoooooooo"))
-          //     }, 2000);
-          //   });
-          // },
         },
         inputProps: {
           helperText: "BigRadioGroupView helperText",
         },
       },
     };
-  }, [disabled]);
+  }, []);
 }

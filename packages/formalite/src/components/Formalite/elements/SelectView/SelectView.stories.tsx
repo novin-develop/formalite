@@ -29,11 +29,8 @@ export default {
   ],
 } as ComponentMeta<typeof TestSelectView>;
 
-const Template: ComponentStory<typeof TestSelectView> = (
-  args,
-  { globals: { locale } }
-) => {
-  return <TestSelectView {...args} lang={locale} />;
+const Template: ComponentStory<typeof TestSelectView> = (args, { globals }) => {
+  return <TestSelectView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const Base = Template.bind({});

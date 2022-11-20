@@ -31,7 +31,7 @@
     "lint:fix": "lerna run lint:fix --stream --parallel",
     "test": "jest",
     "test:coverage": "jest --watchAll=false --coverage",
-    "test:coverage-file": "jest --watchAll=false --coverage --collectCoverageFrom=src/components/Formalite/elements/TextView/TextView.tsx",
+    "test:coverage-file": "jest --watchAll=false --coverage --collectCoverageFrom=src/components/Formalite/elements/SwitchGroupView/SwitchGroupView.tsx",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "./node_modules/.bin/build-storybook",

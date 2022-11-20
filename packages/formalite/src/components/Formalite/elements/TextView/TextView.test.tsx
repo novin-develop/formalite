@@ -78,16 +78,13 @@ test("TextView: is focus are correct -> PasswordView", async () => {
 test("TextView: mustRegex is working -> TextView", async () => {
   // @ts-ignore
   render(<Simple {...Simple.args} mustRegex={/^[0-9]{1,}$/} />);
+  const TextView = await screen.findByRole("textbox", {
+    name: /Title Input/i,
+  });
+  expect(TextView).toBeInTheDocument();
 
   await waitFor(async () => {
-    const TextView = await screen.findByRole("textbox", {
-      name: /Title Input/i,
-    });
-    expect(TextView).toBeInTheDocument();
-
-    await waitFor(async () => {
-      userEvent.type(TextView, "123abc123");
-    });
-    expect(TextView).toHaveValue("123123");
+    userEvent.type(TextView, "123abc123");
   });
+  expect(TextView).toHaveValue("123123");
 });

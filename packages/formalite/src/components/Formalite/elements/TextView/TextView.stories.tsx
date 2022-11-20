@@ -43,7 +43,7 @@ Simple.args = {
     helperText: "Helper text",
     placeholder: "some other title",
     onChange: (value) => {
-      console.log(value);
+      // console.log(value);
     },
   },
 };

@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestRadioGroupView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestRadioGroupView {...args} lang={locale} />;
+  return <TestRadioGroupView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const Base = Template.bind({});

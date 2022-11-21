@@ -1,6 +1,6 @@
+import React from "react";
 import { render, screen } from "@config/test-utils";
 import { waitFor, waitForElementToBeRemoved } from "@testing-library/react";
-import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import { FetchingDataEnum } from "@components/base/model";

@@ -18,15 +18,33 @@ beforeEach(() => {
   });
 });
 
-test("Formalite: All Loading", async () => {
+test("Formalite: All Loading rendered", async () => {
   let allSkeleton: HTMLCollectionOf<Element>;
+
   await waitFor(async () => {
     const { container } = render(<AllBase themeMode="light" loading />);
-
     allSkeleton = container.getElementsByClassName("MuiSkeleton-root");
   });
 
+  const RetryButton = screen.queryByRole("button", { name: "Retry" });
+
   await waitFor(async () => {
     expect(allSkeleton).toHaveLength(49);
+    expect(RetryButton).toBeNull();
+  });
+});
+
+test("Formalite: Dark Mode rendered", async () => {
+  render(<AllBase themeMode="dark" />);
+  const allTextViews = screen.getAllByRole("textbox");
+
+  await waitFor(async () => {
+    expect(allTextViews).toHaveLength(12);
+  });
+
+  const RetryButton = screen.queryByRole("button", { name: "Retry" });
+
+  await waitFor(async () => {
+    expect(RetryButton).toBeNull();
   });
 });

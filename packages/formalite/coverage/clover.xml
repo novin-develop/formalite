@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1669023424368" clover="3.2.0">
-  <project timestamp="1669023424368" name="All files">
-    <metrics statements="26" coveredstatements="26" conditionals="18" coveredconditionals="16" methods="10" coveredmethods="10" elements="54" coveredelements="52" complexity="0" loc="26" ncloc="26" packages="1" files="1" classes="1"/>
-    <file name="RepeaterView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\RepeaterView\RepeaterView.tsx">
-      <metrics statements="26" coveredstatements="26" conditionals="18" coveredconditionals="16" methods="10" coveredmethods="10"/>
-      <line num="1" count="5" type="stmt"/>
-      <line num="2" count="5" type="stmt"/>
-      <line num="10" count="5" type="stmt"/>
-      <line num="11" count="5" type="stmt"/>
-      <line num="12" count="5" type="stmt"/>
-      <line num="15" count="5" type="stmt"/>
-      <line num="16" count="5" type="stmt"/>
-      <line num="17" count="5" type="stmt"/>
-      <line num="19" count="5" type="stmt"/>
-      <line num="34" count="5" type="stmt"/>
-      <line num="35" count="63" type="stmt"/>
-      <line num="37" count="63" type="stmt"/>
-      <line num="46" count="5" type="stmt"/>
-      <line num="57" count="207" type="stmt"/>
-      <line num="58" count="23" type="stmt"/>
-      <line num="60" count="23" type="stmt"/>
-      <line num="66" count="23" type="stmt"/>
-      <line num="71" count="40" type="stmt"/>
-      <line num="78" count="40" type="stmt"/>
-      <line num="112" count="2" type="stmt"/>
-      <line num="134" count="21" type="stmt"/>
-      <line num="149" count="1" type="stmt"/>
-      <line num="150" count="1" type="stmt"/>
-      <line num="151" count="2" type="stmt"/>
-      <line num="155" count="1" type="stmt"/>
-      <line num="179" count="5" type="stmt"/>
+<coverage generated="1669112637820" clover="3.2.0">
+  <project timestamp="1669112637820" name="All files">
+    <metrics statements="42" coveredstatements="42" conditionals="18" coveredconditionals="18" methods="9" coveredmethods="9" elements="69" coveredelements="69" complexity="0" loc="42" ncloc="42" packages="1" files="1" classes="1"/>
+    <file name="RadioGroupView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\RadioGroupView\RadioGroupView.tsx">
+      <metrics statements="42" coveredstatements="42" conditionals="18" coveredconditionals="18" methods="9" coveredmethods="9"/>
+      <line num="1" count="6" type="stmt"/>
+      <line num="2" count="6" type="stmt"/>
+      <line num="5" count="6" type="stmt"/>
+      <line num="7" count="6" type="stmt"/>
+      <line num="14" count="6" type="stmt"/>
+      <line num="15" count="6" type="stmt"/>
+      <line num="16" count="6" type="stmt"/>
+      <line num="17" count="6" type="stmt"/>
+      <line num="30" count="6" type="stmt"/>
+      <line num="34" count="6" type="stmt"/>
+      <line num="35" count="6" type="stmt"/>
+      <line num="36" count="12" type="stmt"/>
+      <line num="38" count="6" type="stmt"/>
+      <line num="41" count="8" type="stmt"/>
+      <line num="43" count="6" type="stmt"/>
+      <line num="53" count="20" type="cond" truecount="2" falsecount="0"/>
+      <line num="54" count="140" type="stmt"/>
+      <line num="55" count="20" type="stmt"/>
+      <line num="56" count="20" type="stmt"/>
+      <line num="61" count="20" type="stmt"/>
+      <line num="62" count="2" type="cond" truecount="1" falsecount="0"/>
+      <line num="63" count="2" type="stmt"/>
+      <line num="64" count="2" type="stmt"/>
+      <line num="65" count="2" type="stmt"/>
+      <line num="67" count="1" type="stmt"/>
+      <line num="73" count="1" type="stmt"/>
+      <line num="82" count="20" type="stmt"/>
+      <line num="83" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="84" count="2" type="stmt"/>
+      <line num="85" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="89" count="1" type="stmt"/>
+      <line num="93" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="94" count="1" type="stmt"/>
+      <line num="98" count="5" type="cond" truecount="1" falsecount="0"/>
+      <line num="99" count="5" type="stmt"/>
+      <line num="106" count="20" type="cond" truecount="1" falsecount="0"/>
+      <line num="107" count="4" type="stmt"/>
+      <line num="114" count="16" type="stmt"/>
+      <line num="140" count="6" type="stmt"/>
+      <line num="141" count="13" type="stmt"/>
+      <line num="142" count="13" type="stmt"/>
+      <line num="143" count="13" type="stmt"/>
     </file>
   </project>
 </coverage>

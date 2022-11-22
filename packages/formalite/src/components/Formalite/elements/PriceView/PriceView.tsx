@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import NumberFormat from "react-number-format";
 import { Grid } from "@mui/material";
 import { PriceViewType } from "@components/Formalite/elements/PriceView/PriceView.type";
@@ -85,7 +84,7 @@ const PriceView = <T extends FormikValues>(props: PriceViewProps<T>) => {
         {...inputProps}
         onChange={(value) => {
           if (typeof onChange === "function") {
-            onChange(parseFloat(value || "0"));
+            onChange(parseFloat(value));
           }
         }}
         InputProps={{
@@ -97,9 +96,5 @@ const PriceView = <T extends FormikValues>(props: PriceViewProps<T>) => {
   );
 };
 export default React.memo(PriceView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof PriceView;

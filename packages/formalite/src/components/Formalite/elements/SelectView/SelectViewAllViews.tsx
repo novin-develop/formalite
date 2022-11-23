@@ -104,7 +104,7 @@ const SelectViewAllViews = <T extends FormikValues>(
           renderValue={(selected) => {
             // console.log(selected)
             if (selected) {
-              return dataStatus.data[selected]?.label;
+              return dataStatus.data[selected].label;
             }
             return placeholder;
           }}
@@ -175,7 +175,7 @@ const SelectViewAllViews = <T extends FormikValues>(
   }
   return (
     <ViewError
-      error={dataStatus?.error}
+      error={dataStatus.error}
       reloadFunction={loadFunction}
       label={label}
     />

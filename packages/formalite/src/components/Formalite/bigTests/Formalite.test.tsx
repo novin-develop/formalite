@@ -2,7 +2,9 @@ import { act } from "react-dom/test-utils";
 import React from "react";
 import { ComponentStory } from "@storybook/react";
 import { render, screen } from "@config/test-utils";
-import { waitFor } from "@testing-library/react";
+import { waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { ErrorTestFormalite } from "./ErrorTestFromalite";
 import { TestFormalite } from "./TestFormalite";
 
 const Template: ComponentStory<typeof TestFormalite> = (args, { globals }) => {
@@ -11,11 +13,36 @@ const Template: ComponentStory<typeof TestFormalite> = (args, { globals }) => {
 
 const AllBase = Template.bind({});
 
+const TemplateError: ComponentStory<typeof ErrorTestFormalite> = (
+  args,
+  { globals }
+) => {
+  return <ErrorTestFormalite {...args} lang={globals?.locale || "en"} />;
+};
+
+const AllBaseError = TemplateError.bind({});
+
 beforeEach(() => {
   jest.useFakeTimers();
   act(() => {
     jest.advanceTimersByTime(100);
   });
+});
+
+/// -------------------------Error
+jest.resetAllMocks();
+test("Formalite: All component must have error", async () => {
+  render(<AllBaseError themeMode="light" />);
+
+  const submitButton = screen.getByRole("button", { name: "Submit" });
+
+  userEvent.click(submitButton);
+
+  const avatarHelper = screen.getByText(/max size of 5000/i);
+  await waitForElementToBeRemoved(avatarHelper);
+
+  const allErrorTexts = screen.getAllByText(/Required/i);
+  expect(allErrorTexts).toHaveLength(18);
 });
 
 test("Formalite: All Loading rendered", async () => {

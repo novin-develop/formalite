@@ -1,6 +1,10 @@
 import React from "react";
 import { render, screen } from "@config/test-utils";
-import { waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import {
+  fireEvent,
+  waitFor,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import { FetchingDataEnum } from "@components/base/model";
@@ -13,7 +17,7 @@ beforeEach(() => {
   });
 });
 
-test("Select View: is Rendered -> SelectView", async () => {
+test("Select View: is Rendered with items -> SelectView", async () => {
   // @ts-ignore
   render(<Base {...Base.args} />);
   const SelectView = screen.getByRole("button");
@@ -26,9 +30,52 @@ test("Select View: is Rendered -> SelectView", async () => {
   });
 });
 
-/// ============================================================= AUTOMATIC
+test("Select View: is clear icon works -> SelectView", async () => {
+  // @ts-ignore
+  render(<Base {...Base.args} />);
+  const SelectView = screen.getByRole("button");
+  const clearIcon = screen.getByTestId("ClearIcon");
 
-test("Select View: is Automatic Fetch Resolve  OK -> SelectView", async () => {
+  expect(clearIcon).toHaveStyle({ visibility: "hidden" });
+
+  userEvent.hover(SelectView);
+  expect(clearIcon).toHaveStyle({ visibility: "visible" });
+
+  userEvent.unhover(SelectView);
+  expect(clearIcon).toHaveStyle({ visibility: "hidden" });
+
+  userEvent.hover(SelectView);
+
+  const icon = screen.getByTestId("ClearIcon");
+
+  userEvent.click(icon);
+
+  const itemWithValue = screen.queryByText(/one/i);
+  await waitFor(async () => {
+    expect(itemWithValue).toBeNull();
+  });
+});
+
+test("Select View: is select options works -> SelectView", async () => {
+  // @ts-ignore
+  render(<Base {...Base.args} />);
+  const SelectView = screen.getByRole("button");
+  await waitFor(async () => {
+    userEvent.click(SelectView);
+  });
+  const AllOptions = screen.getAllByRole("option");
+  await waitFor(async () => {
+    userEvent.click(AllOptions[1]);
+  });
+
+  await waitFor(async () => {
+    expect(screen.queryByRole("option")).toBeNull();
+    expect(SelectView).toHaveTextContent("two");
+  });
+});
+/// ============================================================= Check OnChange works
+
+test("Select View: is onChange throw error works -> SelectView", async () => {
   render(
     <Base
       layoutProps={{
@@ -58,6 +105,68 @@ test("Select View: is Automatic Fetch Resolve  OK -> SelectView", async () => {
       inputProps={{
         label: "Select Title",
         helperText: "HelperText",
+        onChange: () => {
+          throw new Error("Error");
+        },
+      }}
+    />
+  );
+
+  // check
+  const ProgressView = screen.getByRole("progressbar");
+  await waitForElementToBeRemoved(ProgressView);
+
+  const SelectView = screen.getByRole("button");
+  await waitFor(async () => {
+    userEvent.click(SelectView);
+  });
+
+  const AllOptions = screen.getAllByRole("option");
+  await waitFor(async () => {
+    expect(AllOptions).toHaveLength(2);
+  });
+  await waitFor(async () => {
+    userEvent.click(AllOptions[1]);
+  });
+  expect(SelectView).toBeInTheDocument();
+});
+/// ============================================================= AUTOMATIC
+
+test("Select View: is Automatic Fetch Resolve  OK -> SelectView", async () => {
+  const OnChangeFunc = jest.fn();
+  render(
+    <Base
+      layoutProps={{
+        md: 6,
+        xs: 12,
+      }}
+      dataFetching={{
+        type: FetchingDataEnum.AUTOMATIC,
+        // eslint-disable-next-line sonarjs/no-identical-functions
+        options: () =>
+          // eslint-disable-next-line sonarjs/no-identical-functions
+          new Promise((resolve, reject) => {
+            // eslint-disable-next-line sonarjs/no-identical-functions
+            setTimeout(() => {
+              resolve({
+                one: {
+                  label: "one",
+                  additionalData: {
+                    x: 1,
+                    y: 2,
+                  },
+                },
+                two: {
+                  label: "two",
+                },
+              });
+            }, 1);
+          }),
+      }}
+      inputProps={{
+        label: "Select Title",
+        helperText: "HelperText",
+        onChange: OnChangeFunc,
       }}
     />
   );
@@ -74,6 +183,10 @@ test("Select View: is Automatic Fetch Resolve  OK -> SelectView", async () => {
   const AllOptions = screen.getAllByRole("option");
   await waitFor(async () => {
     expect(AllOptions).toHaveLength(2);
+  });
+  await waitFor(async () => {
+    userEvent.click(AllOptions[1]);
+    expect(OnChangeFunc).toBeCalledTimes(1);
   });
 });
 

@@ -260,8 +260,8 @@ const TextDropZoneView = <T extends FormikValues>(
         <FormControl>
           <FormHelperText
             error={
-              getData({ source: formik.touched, key: name }) &&
-              getData({ source: formik.errors, key: `${name}.files` })
+              !!getData({ source: formik.touched, key: name }) &&
+              !!getData({ source: formik.errors, key: `${name}.files` })
             }
           >
             {getData({ source: formik.touched, key: name }) &&

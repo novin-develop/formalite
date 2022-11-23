@@ -62,6 +62,9 @@ Base.args = {
   inputProps: {
     label: "Select Title",
     helperText: "HelperText",
+    onChange: () => {
+      throw new Error("This Error is OK");
+    },
   },
 };
 Base.storyName = "Base";

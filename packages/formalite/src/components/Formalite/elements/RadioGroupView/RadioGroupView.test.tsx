@@ -25,6 +25,8 @@ test("Radio Group: is Rendered -> RadioGroupView", async () => {
 /// ============================================================= AUTOMATIC
 
 test("Radio Group: is Automatic Fetch Resolve  OK -> RadioGroupView", async () => {
+  const onChangeFn = jest.fn();
+
   render(
     <Base
       layoutProps={{
@@ -54,6 +56,7 @@ test("Radio Group: is Automatic Fetch Resolve  OK -> RadioGroupView", async () =
       inputProps={{
         label: "Select Title",
         helperText: "HelperText",
+        onChange: onChangeFn,
       }}
       labelProps={{}}
     />
@@ -71,6 +74,12 @@ test("Radio Group: is Automatic Fetch Resolve  OK -> RadioGroupView", async () =
   const AllOptions = screen.getAllByRole("radio");
   await waitFor(async () => {
     expect(AllOptions).toHaveLength(2);
+  });
+
+  userEvent.click(AllOptions[1]);
+  await waitFor(async () => {
+    expect(onChangeFn).toBeCalledTimes(1);
+    expect(AllOptions[1]).toBeChecked();
   });
 });
 

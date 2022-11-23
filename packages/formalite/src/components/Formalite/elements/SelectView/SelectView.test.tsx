@@ -90,10 +90,7 @@ test("Select View: is onChange throw error works -> SelectView", async () => {
               resolve({
                 one: {
                   label: "one",
-                  additionalData: {
-                    x: 1,
-                    y: 2,
-                  },
+                  additionalData: undefined,
                 },
                 two: {
                   label: "two",
@@ -158,6 +155,10 @@ test("Select View: is Automatic Fetch Resolve  OK -> SelectView", async () => {
                 },
                 two: {
                   label: "two",
+                  additionalData: {
+                    a: 1,
+                    b: 2,
+                  },
                 },
               });
             }, 1);

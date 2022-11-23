@@ -95,7 +95,7 @@ const SelectViewAllViews = <T extends FormikValues>(
             const selectedOption = dataStatus.data[value];
             if (onChange) {
               try {
-                onChange(value, selectedOption?.additionalData);
+                onChange(value, selectedOption.additionalData);
               } catch (e2) {
                 showErrorMessage(e2);
               }

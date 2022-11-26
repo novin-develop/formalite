@@ -23,6 +23,7 @@ const TemplateError: ComponentStory<typeof ErrorTestFormalite> = (
 const AllBaseError = TemplateError.bind({});
 
 beforeEach(() => {
+  jest.resetAllMocks();
   jest.useFakeTimers();
   act(() => {
     jest.advanceTimersByTime(100);
@@ -30,7 +31,6 @@ beforeEach(() => {
 });
 
 /// -------------------------Error
-jest.resetAllMocks();
 test("Formalite: All component must have error", async () => {
   render(<AllBaseError themeMode="light" />);
 
@@ -61,8 +61,8 @@ test("Formalite: All Loading rendered", async () => {
   });
 });
 
-test("Formalite: Dark Mode rendered", async () => {
-  render(<AllBase themeMode="dark" />);
+test("Formalite: Dark Mode and rtl rendered", async () => {
+  render(<AllBase themeMode="dark" direction="rtl" />);
   const allTextViews = screen.getAllByRole("textbox");
 
   await waitFor(async () => {

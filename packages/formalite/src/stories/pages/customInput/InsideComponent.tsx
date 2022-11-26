@@ -12,7 +12,7 @@ const validation = Yup.object({
   first_name: Yup.string().required(),
   last_name: Yup.string().required(),
   stars: Yup.number().min(2),
-});
+}).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {

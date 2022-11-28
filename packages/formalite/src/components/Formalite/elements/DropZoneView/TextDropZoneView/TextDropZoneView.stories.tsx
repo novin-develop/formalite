@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestTextDropZoneView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestTextDropZoneView {...args} lang={locale} />;
+  return <TestTextDropZoneView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const TextDropZoneView = Template.bind({});

@@ -32,7 +32,7 @@
     "test": "jest",
     "test:dev": "jest -o --watch",
     "test:coverage": "jest --watchAll=false --coverage",
-    "test:coverage-file": "jest --watchAll=false --coverage --collectCoverageFrom=src/components/Formalite/elements/PriceView/PriceView.tsx",
+    "test:coverage-file": "jest --watchAll=false --coverage --collectCoverageFrom=src/components/Formalite/elements/DropZoneView/TextDropZoneView/TextDropZoneView.tsx",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "./node_modules/.bin/build-storybook",

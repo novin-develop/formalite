@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1669465870580" clover="3.2.0">
-  <project timestamp="1669465870581" name="All files">
-    <metrics statements="1476" coveredstatements="1032" conditionals="1126" coveredconditionals="596" methods="345" coveredmethods="187" elements="2947" coveredelements="1815" complexity="0" loc="1476" ncloc="1476" packages="33" files="61" classes="61"/>
+<coverage generated="1669614741894" clover="3.2.0">
+  <project timestamp="1669614741894" name="All files">
+    <metrics statements="1476" coveredstatements="1032" conditionals="1124" coveredconditionals="596" methods="345" coveredmethods="187" elements="2945" coveredelements="1815" complexity="0" loc="1476" ncloc="1476" packages="33" files="61" classes="61"/>
     <package name="Formalite">
       <metrics statements="92" coveredstatements="72" conditionals="34" coveredconditionals="19" methods="14" coveredmethods="8"/>
       <file name="Formalite.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\Formalite.tsx">
@@ -1383,9 +1383,9 @@
       </file>
     </package>
     <package name="Formalite.elements.EditorView">
-      <metrics statements="33" coveredstatements="33" conditionals="21" coveredconditionals="20" methods="9" coveredmethods="9"/>
+      <metrics statements="33" coveredstatements="33" conditionals="19" coveredconditionals="19" methods="9" coveredmethods="9"/>
       <file name="EditorView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\EditorView.tsx">
-        <metrics statements="28" coveredstatements="28" conditionals="19" coveredconditionals="18" methods="8" coveredmethods="8"/>
+        <metrics statements="28" coveredstatements="28" conditionals="17" coveredconditionals="17" methods="8" coveredmethods="8"/>
         <line num="1" count="8" type="stmt"/>
         <line num="4" count="8" type="stmt"/>
         <line num="5" count="8" type="stmt"/>
@@ -1411,7 +1411,7 @@
         <line num="74" count="1" type="stmt"/>
         <line num="80" count="15" type="stmt"/>
         <line num="99" count="15" type="stmt"/>
-        <line num="118" count="8" type="stmt"/>
+        <line num="123" count="8" type="stmt"/>
         <line num="143" count="8" type="stmt"/>
         <line num="144" count="13" type="stmt"/>
       </file>
@@ -1428,7 +1428,7 @@
       </file>
     </package>
     <package name="Formalite.elements.EditorView.Editor">
-      <metrics statements="28" coveredstatements="28" conditionals="20" coveredconditionals="19" methods="7" coveredmethods="7"/>
+      <metrics statements="28" coveredstatements="28" conditionals="20" coveredconditionals="20" methods="7" coveredmethods="7"/>
       <file name="EditorToolbar.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\Editor\EditorToolbar.tsx">
         <metrics statements="22" coveredstatements="22" conditionals="18" coveredconditionals="18" methods="6" coveredmethods="6"/>
         <line num="2" count="8" type="stmt"/>
@@ -1455,7 +1455,7 @@
         <line num="189" count="8" type="stmt"/>
       </file>
       <file name="EditorToolbarStyle.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\Editor\EditorToolbarStyle.tsx">
-        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="8" type="stmt"/>
         <line num="2" count="8" type="stmt"/>
         <line num="6" count="8" type="stmt"/>

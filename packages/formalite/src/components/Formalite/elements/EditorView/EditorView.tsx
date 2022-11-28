@@ -114,13 +114,13 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
           // value={editorValue}
           modules={modules}
           formats={formats}
-          onChange={(value: string, _delta: any, _source: any, editor: any) => {
+          /* onChange={(value: string, _delta: any, _source: any, editor: any) => {
             formik.setFieldValue(
               name,
               editor.getLength() > 1 ? value : formik.initialValues[name]
             );
-          }}
-          // onChange={(value) => setEditorValue(value)}
+          }} */
+          onChange={(value: string) => formik.setFieldValue(name, value)}
           // onBlur={() => formik.setFieldValue(name, editorValue)}
           {...editorProps}
         />

@@ -45,7 +45,7 @@ const TextDropZoneView = <T extends FormikValues>(
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>(
     fixDropZoneDefaultValue(
       getData({ source: formik.values, key: name })?.files || []
-    ) || []
+    )
   );
   const uploadController = new AbortController();
 

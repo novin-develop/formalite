@@ -7,7 +7,7 @@ import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
 import type { TextDropZoneViewType } from "./TextDropZoneView.type";
 
 const validation = Yup.object({
-  textDropZone: Yup.object({
+  title: Yup.object({
     text: Yup.string().required("Required"),
     files: Yup.array().min(1),
   }),
@@ -15,9 +15,8 @@ const validation = Yup.object({
 
 type ValidationType = Yup.InferType<typeof validation>;
 
-const iniValues: ValidationType = {};
-const iniValuesWithData: ValidationType = {
-  textDropZone: {
+const iniValues: ValidationType = {
+  title: {
     text: "default text",
     files: [
       {
@@ -27,6 +26,7 @@ const iniValuesWithData: ValidationType = {
     ],
   },
 };
+const iniValueNull = {};
 
 type TestTextDropZoneViewProps = Omit<TextDropZoneViewType, "type"> & {
   lang?: Language;
@@ -39,7 +39,6 @@ export const TestTextDropZoneView = ({
   ...props
 }: TestTextDropZoneViewProps) => {
   const formRef = useFormaliteRef<ValidationType>();
-  console.log("aaaa", withIni);
   const formString: MainType = useMemo(() => {
     return {
       title: {
@@ -53,7 +52,7 @@ export const TestTextDropZoneView = ({
     <Formalite<ValidationType>
       lang={lang}
       formString={formString}
-      initialValues={withIni ? iniValues : iniValuesWithData}
+      initialValues={withIni ? iniValues : iniValueNull}
       validationSchema={validation}
       formRef={formRef}
       onSubmit={(values) => {

@@ -38,6 +38,7 @@ const Template: ComponentStory<typeof TestTextDropZoneView> = (
 
 export const TextDropZoneView = Template.bind({});
 TextDropZoneView.args = {
+  withIni: true,
   layoutProps: {
     md: 6,
     xs: 12,
@@ -57,8 +58,8 @@ TextDropZoneView.args = {
         progress(50);
       }, 1000);
       setTimeout(() => {
-        resolve(new Date().getTime().toString());
-        // reject(new Error("aaaa"));
+        // resolve(new Date().getTime().toString());
+        reject(new Error("aaaa"));
       }, 2000);
     }),
   onDelete: (id, isFromDefault) =>

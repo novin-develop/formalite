@@ -524,7 +524,6 @@ function useFromString() {
           },
           multiline: true,
           rows: 4,
-          helperText: `Allowed *.jpeg, *.jpg, *.png, *.gif`,
         },
         showPreview: false,
         imageDownloader,

@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import * as Yup from "yup";
-
 import { Language } from "@components/base/model";
 import { Formalite, MainType, ViewTypes } from "@components/Formalite";
 import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
@@ -35,7 +34,7 @@ type TestTextDropZoneViewProps = Omit<TextDropZoneViewType, "type"> & {
 
 export const TestTextDropZoneView = ({
   lang = "en",
-  withIni = false,
+  withIni = true,
   ...props
 }: TestTextDropZoneViewProps) => {
   const formRef = useFormaliteRef<ValidationType>();

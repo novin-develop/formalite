@@ -1,5 +1,6 @@
 import { FormikValues } from "formik";
 import {
+  alpha,
   FormControl,
   FormHelperText,
   Grid,
@@ -197,7 +198,7 @@ const TextDropZoneView = <T extends FormikValues>(
         {...inputProps}
         sx={(theme) => ({
           background: isDragActive
-            ? theme.palette.grey[theme.palette.mode === "light" ? 200 : 800]
+            ? alpha(theme.palette.grey[500], 0.2)
             : undefined,
           ...(typeof inputProps.sx === "function" ? inputProps.sx(theme) : {}),
         })}

@@ -434,7 +434,6 @@ function useFromString() {
               "image/png": [".png"],
             },
           },
-          helperText: `Allowed *.jpeg, *.jpg, *.png, *.gif `,
         },
         imageDownloader,
         onUpload: (file, progress) =>

@@ -10,7 +10,6 @@ import {
   FormHelperText,
   FormLabel,
   Grid,
-  Typography,
   useTheme,
 } from "@mui/material";
 import { FormikValues } from "formik";
@@ -26,7 +25,7 @@ import {
   CustomFile,
   OutsideFile,
 } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
-import { getNameFromUrl, removeUrlExtras } from "@config/utils";
+import { getNameFromUrl } from "@config/utils";
 
 const DropZoneStyle = styled("div")(({ theme }) => ({
   outline: "none",
@@ -74,7 +73,7 @@ const SingleDropZoneView = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
+            tempArray[0].status &&
             tempArray[0].original === "selected"
           ) {
             tempArray[0].progress = progress;
@@ -102,7 +101,7 @@ const SingleDropZoneView = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
+            tempArray[0].status &&
             tempArray[0].original === "selected"
           ) {
             tempArray[0].status = "error";
@@ -186,7 +185,7 @@ const SingleDropZoneView = <T extends FormikValues>(
     },
   });
 
-  if (loading || preventDrop) {
+  if (loading) {
     return (
       <Grid item {...allData.layoutProps}>
         <TextViewSkeleton height={253} hasHelper={!!helperText} />
@@ -222,7 +221,7 @@ const SingleDropZoneView = <T extends FormikValues>(
           }),
         }}
       >
-        <input {...getInputProps()} ref={inputRef} />
+        <input {...getInputProps()} ref={inputRef} data-testid="drop-input" />
 
         <BlockContent
           isLessMd={isLessMd}
@@ -242,7 +241,7 @@ const SingleDropZoneView = <T extends FormikValues>(
         />
       </DropZoneStyle>
       {(fileRejections.length > 0 ||
-        (typeof file[0] === "object" && file[0]?.status === "error")) && (
+        (typeof file[0] === "object" && file[0].status === "error")) && (
         <RejectionFiles fileRejections={fileRejections} fileState={file[0]} />
       )}
       {helperText ||
@@ -267,9 +266,5 @@ const SingleDropZoneView = <T extends FormikValues>(
 };
 
 export default React.memo(SingleDropZoneView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof SingleDropZoneView;

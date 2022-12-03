@@ -34,9 +34,9 @@ export default {
 
 const Template: ComponentStory<typeof TestMultiDropZoneView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestMultiDropZoneView {...args} lang={locale} />;
+  return <TestMultiDropZoneView {...args} lang={globals?.locale} />;
 };
 
 export const MultiDropZoneView = Template.bind({});
@@ -55,13 +55,13 @@ MultiDropZoneView.args = {
   showPreview: false,
   imageDownloader: dropzoneImageDownloader,
   onUpload: (_file, progress) =>
-    new Promise<string>((_resolve, reject) => {
+    new Promise<string>((resolve, reject) => {
       setTimeout(() => {
         progress(50);
       }, 1000);
       setTimeout(() => {
-        // resolve(new Date().getTime().toString());
-        reject(new Error("aaaa"));
+        resolve(new Date().getTime().toString());
+        // reject(new Error("aaaa"));
       }, 2000);
     }),
   onDelete: (_id, _isFromDefault) =>

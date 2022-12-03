@@ -78,7 +78,7 @@ export const checkIsMin = ({
 };
 
 export const showErrorMessage = (error: any) => {
-  console.error("Formalite Error", error);
+  console.info("Formalite Error", error);
 };
 
 export function fData(number: string | number) {

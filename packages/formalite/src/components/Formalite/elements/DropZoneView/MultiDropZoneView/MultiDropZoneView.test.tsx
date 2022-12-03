@@ -1,14 +1,15 @@
 import { act } from "react-dom/test-utils";
-import React from "react";
+import { ImageDownloaderPromise } from "@components/Formalite";
+import { render, screen } from "@config/test-utils";
+import { SingleDropZoneView } from "@components/Formalite/elements/DropZoneView/SingleDropZoneView/SingleDropZoneView.stories";
 import {
   fireEvent,
   waitFor,
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { render, screen } from "../../../../../config/test-utils";
-import { ImageDownloaderPromise } from "../Components/Global.type";
-import { SingleDropZoneView } from "./SingleDropZoneView.stories";
+import React from "react";
+import { MultiDropZoneView } from "@components/Formalite/elements/DropZoneView/MultiDropZoneView/MultiDropZoneView.stories";
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -27,13 +28,14 @@ const TestImageDownloader = () =>
     });
   });
 
-test("Single Drop Zone: is Rendered -> SingleDropZoneView", async () => {
+test("Multi Drop Zone: is Rendered -> MultiDropZoneView", async () => {
   render(
     // @ts-ignore
-    <SingleDropZoneView
-      {...SingleDropZoneView.args}
-      withIni={false}
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
+      withIni
       imageDownloader={TestImageDownloader}
+      isSmallView={undefined}
     />
   );
   const title = screen.getByText("Drop or Select file");
@@ -48,14 +50,40 @@ test("Single Drop Zone: is Rendered -> SingleDropZoneView", async () => {
   });
 });
 
-test("Single Drop Zone: is Rendered with ini data-> SingleDropZoneView", async () => {
+test("Small Drop Zone: is Rendered -> MultiDropZoneView", async () => {
+  render(
+    // @ts-ignore
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
+      withIni={false}
+      imageDownloader={TestImageDownloader}
+      isSmallView
+      inputProps={{
+        label: "label",
+      }}
+    />
+  );
+  const title = screen.getByText("Drop or Select file");
+  const icon = screen.getByTestId("CloudUploadOutlinedIcon");
+  await waitFor(async () => {
+    expect(title).toBeInTheDocument();
+    expect(icon).toBeInTheDocument();
+  });
+  userEvent.click(icon);
+  await waitFor(async () => {
+    expect(screen.queryByText("retry")).not.toBeInTheDocument();
+  });
+});
+
+test("Multi Drop Zone: is Rendered with ini data-> MultiDropZoneView", async () => {
   const onSelectFunc = jest.fn();
   const onDeleteFunc = jest.fn();
   render(
     // @ts-ignore
-    <SingleDropZoneView
-      {...SingleDropZoneView.args}
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
       withIni
+      isSmallView
       inputProps={{
         label: "aaa",
         helperText: undefined,
@@ -82,8 +110,8 @@ test("Single Drop Zone: is Rendered with ini data-> SingleDropZoneView", async (
       }
     />
   );
-  expect(await screen.findByText(/original-name/i)).toBeInTheDocument();
-
+  const item = await screen.findAllByText(/original-name/i);
+  expect(item).toHaveLength(2);
   // select file for upload
   const fileInput = screen.getByTestId("drop-input");
   const file = new File(["file"], "ping.json", {
@@ -97,22 +125,28 @@ test("Single Drop Zone: is Rendered with ini data-> SingleDropZoneView", async (
   fireEvent.dragOver(fileInput);
   fireEvent.drop(fileInput);
 
-  const closeIcon = await screen.findAllByTestId("CloseIcon");
   expect(await screen.findByText(/ping.json/i)).toBeInTheDocument();
   expect(onSelectFunc).toBeCalledTimes(1);
-  expect(closeIcon).toHaveLength(1);
+  const closeIcons = await screen.findAllByTestId("CloseIcon");
+  await waitFor(async () => {
+    expect(closeIcons).toHaveLength(3);
+  });
 
   // click remove image
-  userEvent.click(closeIcon[0]);
-  expect(await screen.findByText("Drop or Select file")).toBeInTheDocument();
+  userEvent.click(closeIcons[2]);
+  const closeIcons2 = await screen.findAllByTestId("CloseIcon");
+  await waitFor(async () => {
+    expect(closeIcons2).toHaveLength(3);
+  });
 });
 
-test("Single Drop Zone: is Rendered with adding item without id  -> SingleDropZoneView", async () => {
+test("Multi Drop Zone: is Rendered with adding item without id -> MultiDropZoneView", async () => {
   render(
     // @ts-ignore
-    <SingleDropZoneView
-      {...SingleDropZoneView.args}
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
       withIni={false}
+      isSmallView
       imageDownloader={TestImageDownloader}
       onUpload={(file, progress) =>
         new Promise((resolve, reject) => {
@@ -144,13 +178,13 @@ test("Single Drop Zone: is Rendered with adding item without id  -> SingleDropZo
   });
 });
 
-test("Single Drop Zone: is Rendered with reject  -> SingleDropZoneView", async () => {
+test("Multi Drop Zone: is Rendered with reject  -> MultiDropZoneView", async () => {
   jest.resetAllMocks();
   const onSelectFunc = jest.fn();
   render(
     // @ts-ignore
-    <SingleDropZoneView
-      {...SingleDropZoneView.args}
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
       withIni
       imageDownloader={TestImageDownloader}
       onUpload={(file, progress) =>
@@ -163,7 +197,7 @@ test("Single Drop Zone: is Rendered with reject  -> SingleDropZoneView", async (
       }
     />
   );
-  expect(await screen.findByText(/original-name/i)).toBeInTheDocument();
+  expect(await screen.findAllByText(/original-name/i)).toHaveLength(2);
 
   // select file for upload
   const fileInput = screen.getByTestId("drop-input");
@@ -182,11 +216,11 @@ test("Single Drop Zone: is Rendered with reject  -> SingleDropZoneView", async (
   expect(text).toBeInTheDocument();
 });
 
-test("Single Zone: is Rendered with error in imageDownloader -> SingleDropZoneView", async () => {
+test("Multi Zone: is Rendered with error in imageDownloader -> MultiDropZoneView", async () => {
   render(
     // @ts-ignore
-    <SingleDropZoneView
-      {...SingleDropZoneView.args}
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
       withIni
       imageDownloader={() =>
         new Promise<ImageDownloaderPromise>((resolve, reject) => {
@@ -199,11 +233,11 @@ test("Single Zone: is Rendered with error in imageDownloader -> SingleDropZoneVi
   expect(text).toBeInTheDocument();
 });
 
-test("Single Drop Zone: is Rendered without imageDownloader -> SingleDropZoneView", async () => {
+test("Multi Drop Zone: is Rendered without imageDownloader -> MultiDropZoneView", async () => {
   render(
     // @ts-ignore
-    <SingleDropZoneView
-      {...SingleDropZoneView.args}
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
       withIni
       imageDownloader={undefined}
       onDelete={(id, isFromDefault) =>
@@ -215,11 +249,11 @@ test("Single Drop Zone: is Rendered without imageDownloader -> SingleDropZoneVie
       }
     />
   );
-  const downloadIcon = await screen.getByTestId("DownloadIcon");
-  expect(downloadIcon).toBeInTheDocument();
+  const downloadIcons = await screen.getAllByTestId("DownloadIcon");
+  expect(downloadIcons).toHaveLength(2);
 
   // click remove
-  const closeIcons = await screen.getByTestId("CloseIcon");
-  userEvent.click(closeIcons);
-  await waitForElementToBeRemoved(closeIcons);
+  const closeIcons = await screen.getAllByTestId("CloseIcon");
+  userEvent.click(closeIcons[0]);
+  await waitForElementToBeRemoved(closeIcons[0]);
 });

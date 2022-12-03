@@ -244,8 +244,8 @@ export default function BlockContent(props: BlockContentType) {
                 alt="file preview"
                 src={
                   props.file.original === "selected"
-                    ? props.file.preview
-                    : `${props.file.base64}`
+                    ? `${props.file.preview.toString()}`
+                    : `${(props.file.base64 || "").toString()}`
                 }
                 sx={{
                   top: 8,

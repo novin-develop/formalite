@@ -56,7 +56,7 @@ test("Formalite: All Loading rendered", async () => {
   const RetryButton = screen.queryByRole("button", { name: "Retry" });
 
   await waitFor(async () => {
-    expect(allSkeleton).toHaveLength(49);
+    expect(allSkeleton).toHaveLength(47);
     expect(RetryButton).toBeNull();
   });
 });

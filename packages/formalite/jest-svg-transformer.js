@@ -12,16 +12,7 @@ module.exports = {
       .join("");
 
     return {
-      code: `
-const React = require('react');
-function ${name}(props) {
-  return React.createElement(
-    'svg',
-    Object.assign({}, props, {'data-file-name': ${name}.name})
-  );
-}
-module.exports = ${name};
-            `,
+      code: `${name}`,
     };
   },
 };

@@ -485,11 +485,10 @@ function useFromString() {
           xs: 12,
         },
         inputProps: {
-          label: "",
+          label: "aaaa",
           dropZoneOptions: {
             maxSize: 3145728,
           },
-          helperText: `Allowed *.jpeg, *.jpg, *.png, *.gif`,
         },
         showPreview: false,
         imageDownloader,
@@ -518,7 +517,6 @@ function useFromString() {
           dropZoneOptions: {
             maxSize: 3145728,
           },
-          helperText: `Allowed *.jpeg, *.jpg, *.png, *.gif`,
         },
         isSmallView: true,
         showPreview: true,

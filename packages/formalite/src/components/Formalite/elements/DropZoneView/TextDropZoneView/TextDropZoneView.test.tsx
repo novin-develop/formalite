@@ -52,11 +52,10 @@ test("Text Drop Zone: is Rendered -> TextDropZoneView", async () => {
     expect(textView).toBeInTheDocument();
     expect(icon).toBeInTheDocument();
   });
-  await waitFor(async () => {
-    userEvent.type(textView, "some text");
-    expect(textView).toHaveValue("some text");
-  });
   userEvent.click(icon);
+  await waitFor(async () => {
+    expect(screen.queryByText("retry")).not.toBeInTheDocument();
+  });
 });
 
 test("Text Drop Zone: is Rendered with ini data-> TextDropZoneView", async () => {
@@ -116,11 +115,6 @@ test("Text Drop Zone: is Rendered with ini data-> TextDropZoneView", async () =>
   expect(onSelectFunc).toBeCalledTimes(1);
   expect(await screen.findByTestId("DownloadIcon")).toBeInTheDocument();
   expect(await screen.findAllByTestId("CloseIcon")).toHaveLength(2);
-
-  // click remove
-  const closeIcons = await screen.findAllByTestId("CloseIcon");
-  userEvent.click(closeIcons[1]);
-  await waitForElementToBeRemoved(closeIcons[1]);
 });
 
 test("Text Drop Zone: is Rendered with adding item without id  -> TextDropZoneView", async () => {
@@ -156,6 +150,7 @@ test("Text Drop Zone: is Rendered with adding item without id  -> TextDropZoneVi
 });
 
 test("Text Drop Zone: is Rendered with reject  -> TextDropZoneView", async () => {
+  jest.resetAllMocks();
   const onSelectFunc = jest.fn();
   render(
     // @ts-ignore
@@ -167,7 +162,7 @@ test("Text Drop Zone: is Rendered with reject  -> TextDropZoneView", async () =>
         new Promise((resolve, reject) => {
           setTimeout(() => {
             reject(new Error("some Error"));
-          }, 1);
+          }, 0);
           onSelectFunc();
         })
       }
@@ -186,6 +181,12 @@ test("Text Drop Zone: is Rendered with reject  -> TextDropZoneView", async () =>
   fireEvent.drop(fileInput);
   const text = await screen.findByText(/some Error/i);
   expect(text).toBeInTheDocument();
+  // type text
+  const textView = screen.getByRole("textbox");
+  await waitFor(async () => {
+    userEvent.type(textView, "-some text");
+    expect(textView).toHaveValue("default text-some text");
+  });
 });
 
 test("Text Drop Zone: is Rendered with error in imageDownloader -> TextDropZoneView", async () => {
@@ -212,8 +213,20 @@ test("Text Drop Zone: is Rendered without imageDownloader -> TextDropZoneView", 
       {...TextDropZoneView.args}
       withIni
       imageDownloader={undefined}
+      onDelete={(id, isFromDefault) =>
+        new Promise<void>((resolve, reject) => {
+          setTimeout(() => {
+            resolve();
+          }, 0);
+        })
+      }
     />
   );
   const text = await screen.findByText("200");
   expect(text).toBeInTheDocument();
+
+  // click remove
+  const closeIcons = await screen.getAllByRole("button");
+  userEvent.click(closeIcons[1]);
+  await waitForElementToBeRemoved(closeIcons[1]);
 });

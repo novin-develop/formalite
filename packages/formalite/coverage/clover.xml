@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1670050827860" clover="3.2.0">
-  <project timestamp="1670050827860" name="All files">
+<coverage generated="1670054999189" clover="3.2.0">
+  <project timestamp="1670054999189" name="All files">
     <metrics statements="88" coveredstatements="88" conditionals="56" coveredconditionals="56" methods="27" coveredmethods="27" elements="171" coveredelements="171" complexity="0" loc="88" ncloc="88" packages="1" files="1" classes="1"/>
     <file name="TextDropZoneView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\TextDropZoneView\TextDropZoneView.tsx">
       <metrics statements="88" coveredstatements="88" conditionals="56" coveredconditionals="56" methods="27" coveredmethods="27"/>
@@ -16,7 +16,7 @@
       <line num="23" count="9" type="stmt"/>
       <line num="24" count="9" type="stmt"/>
       <line num="26" count="9" type="stmt"/>
-      <line num="38" count="260" type="stmt"/>
+      <line num="38" count="259" type="stmt"/>
       <line num="40" count="37" type="stmt"/>
       <line num="41" count="37" type="stmt"/>
       <line num="42" count="37" type="cond" truecount="2" falsecount="0"/>
@@ -43,14 +43,14 @@
       <line num="78" count="1" type="stmt"/>
       <line num="80" count="1" type="stmt"/>
       <line num="86" count="2" type="stmt"/>
-      <line num="87" count="2" type="stmt"/>
-      <line num="88" count="4" type="stmt"/>
-      <line num="89" count="2" type="cond" truecount="1" falsecount="0"/>
-      <line num="90" count="2" type="stmt"/>
-      <line num="92" count="2" type="stmt"/>
-      <line num="93" count="2" type="stmt"/>
-      <line num="95" count="2" type="stmt"/>
-      <line num="96" count="2" type="stmt"/>
+      <line num="87" count="1" type="stmt"/>
+      <line num="88" count="2" type="stmt"/>
+      <line num="89" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="90" count="1" type="stmt"/>
+      <line num="92" count="1" type="stmt"/>
+      <line num="93" count="1" type="stmt"/>
+      <line num="95" count="1" type="stmt"/>
+      <line num="96" count="1" type="stmt"/>
       <line num="100" count="1" type="stmt"/>
       <line num="101" count="1" type="stmt"/>
       <line num="102" count="2" type="stmt"/>
@@ -59,9 +59,9 @@
       <line num="105" count="1" type="stmt"/>
       <line num="107" count="1" type="stmt"/>
       <line num="112" count="37" type="stmt"/>
-      <line num="113" count="11" type="stmt"/>
-      <line num="114" count="8" type="stmt"/>
-      <line num="115" count="8" type="cond" truecount="3" falsecount="0"/>
+      <line num="113" count="10" type="stmt"/>
+      <line num="114" count="5" type="stmt"/>
+      <line num="115" count="5" type="cond" truecount="3" falsecount="0"/>
       <line num="116" count="5" type="cond" truecount="2" falsecount="0"/>
       <line num="117" count="4" type="stmt"/>
       <line num="120" count="4" type="stmt"/>
@@ -87,11 +87,11 @@
       <line num="189" count="37" type="stmt"/>
       <line num="199" count="36" type="stmt"/>
       <line num="231" count="1" type="stmt"/>
-      <line num="242" count="29" type="stmt"/>
-      <line num="245" count="3" type="stmt"/>
+      <line num="242" count="43" type="stmt"/>
+      <line num="245" count="23" type="stmt"/>
       <line num="255" count="1" type="stmt"/>
       <line num="285" count="9" type="stmt"/>
-      <line num="286" count="29" type="stmt"/>
+      <line num="286" count="27" type="stmt"/>
     </file>
   </project>
 </coverage>

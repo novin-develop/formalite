@@ -34,6 +34,7 @@ const validation = Yup.object({
     .required("Must have friends")
     .min(2, "Minimum of 2 friends"),
   singleDropZone: Yup.array().of(Yup.mixed()).min(1, "Required"),
+  SmallDropZone: Yup.array().of(Yup.mixed()).min(1, "Required"),
   MultiDropZone: Yup.array().min(2, "Required").of(Yup.mixed()).nullable(),
   colorPicker: Yup.string().required("Required"),
   radio: Yup.string().required("Required"),
@@ -73,6 +74,7 @@ export const ErrorTestFormalite = ({
     friends: [],
     singleDropZone: [],
     MultiDropZone: [],
+    SmallDropZone: [],
     colorPicker: "",
     radio: "",
     autoComplete: [],

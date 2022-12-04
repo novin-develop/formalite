@@ -23,7 +23,7 @@ import ZIP from "./svg/files/zip.svg";
 import FILE from "./svg/files/file.svg";
 
 // ----------------------------------------------------------------------
-const FileIcon = (props: { type: string; preview: JSX.Element }) => {
+export const FileIcon = (props: { type: string; preview: JSX.Element }) => {
   switch (props.type.toLowerCase()) {
     case "mp4":
       return <img src={MP4 as any} alt="aa" />;
@@ -61,7 +61,7 @@ type BlockContentType = {
   resetDropZone?: () => void;
   required: boolean;
   uploadFunction: (file: CustomFile) => void;
-  uploadController?: AbortController;
+  uploadController: AbortController;
   isLessMd: boolean;
 };
 
@@ -75,7 +75,7 @@ const HelperSection = ({ required, file }: HelperSectionType) => {
       <Typography gutterBottom variant="h5">
         {file
           ? `${file.original === "selected" ? file.name : file.originalName} ${
-              file?.size ? ` - ${fData(file?.size)}` : ""
+              file.size ? ` - ${fData(file.size)}` : ""
             }`
           : `${t("fg-dropzone-drop-or-select-file")} ${required ? "*" : ""}`}
       </Typography>
@@ -97,8 +97,53 @@ const HelperSection = ({ required, file }: HelperSectionType) => {
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
 export default function BlockContent(props: BlockContentType) {
-  const setFile = props.setFile || (() => {});
-  const resetDropZone = props.resetDropZone || (() => {});
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+  const boxClick = (e: any) => {
+    e.stopPropagation();
+    props.uploadController.abort();
+    if (props.setFile) {
+      props.setFile((pre) => {
+        const tempArray = [...pre];
+        if (tempArray.length) {
+          tempArray[0].status = "deleting";
+        }
+        return tempArray;
+      });
+    }
+    try {
+      if (props.file) {
+        props.file.controller.abort();
+      }
+    } catch (e1) {
+      // Do nothing
+    }
+    if (props.file && props.onDelete) {
+      props
+        .onDelete(
+          props.file.uid!,
+          props.file.original === "default",
+          !props.file.errorText
+        )
+        .then(() => {
+          if (props.setFile && props.resetDropZone) {
+            props.setFile([]);
+            props.resetDropZone();
+          }
+        })
+        .catch((e1) => {
+          if (props.setFile) {
+            props.setFile((pre) => {
+              const tempArray = [...pre];
+              if (tempArray.length && tempArray[0].status) {
+                tempArray[0].status = "error";
+                tempArray[0].errorText = e1.message;
+              }
+              return tempArray;
+            });
+          }
+        });
+    }
+  };
   return (
     <Stack
       spacing={2}
@@ -128,44 +173,7 @@ export default function BlockContent(props: BlockContentType) {
                 cursor: "pointer",
               },
             })}
-            onClick={(e) => {
-              e.stopPropagation();
-              props.uploadController?.abort();
-              setFile((pre) => {
-                const tempArray = [...pre];
-                if (tempArray.length) {
-                  tempArray[0].status = "deleting";
-                }
-                return tempArray;
-              });
-              try {
-                props.file?.controller.abort();
-              } catch (e1) {
-                // Do nothing
-              }
-              if (props.onDelete) {
-                props
-                  .onDelete(
-                    props.file?.uid || "",
-                    props.file?.original === "default",
-                    !props.file?.errorText?.length
-                  )
-                  .then(() => {
-                    resetDropZone();
-                    setFile([]);
-                  })
-                  .catch((e1) => {
-                    setFile((pre) => {
-                      const tempArray = [...pre];
-                      if (tempArray.length && tempArray[0]?.status) {
-                        tempArray[0].status = "error";
-                        tempArray[0].errorText = e1.message;
-                      }
-                      return tempArray;
-                    });
-                  });
-              }
-            }}
+            onClick={boxClick}
           >
             <CloseIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
           </Box>
@@ -194,34 +202,38 @@ export default function BlockContent(props: BlockContentType) {
               <ReplayIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
             </Box>
           )}
-          {props.file.status !== "error" && props.file.original === "default" && (
-            <Box
-              sx={(theme) => ({
-                position: "absolute",
-                top: "-5px",
-                right: "25px",
-                borderRadius: "6px",
-                background: theme.palette.primary.main,
-                width: "24px",
-                color: "white",
-                height: "24px",
-                zIndex: 5,
-                "&:hover": {
-                  background: theme.palette.primary.dark,
-                  cursor: "pointer",
-                },
-              })}
-              onClick={(e) => {
-                e.stopPropagation();
-                downloadBase64(
-                  props.file?.preview || "",
-                  (props.file as OutsideFile)?.originalName || ""
-                );
-              }}
-            >
-              <DownloadIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
-            </Box>
-          )}
+          {props.file &&
+            props.file.status !== "error" &&
+            props.file.original === "default" && (
+              <Box
+                sx={(theme) => ({
+                  position: "absolute",
+                  top: "-5px",
+                  right: "25px",
+                  borderRadius: "6px",
+                  background: theme.palette.primary.main,
+                  width: "24px",
+                  color: "white",
+                  height: "24px",
+                  zIndex: 5,
+                  "&:hover": {
+                    background: theme.palette.primary.dark,
+                    cursor: "pointer",
+                  },
+                })}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  downloadBase64(
+                    props.file!.preview,
+                    (props.file as OutsideFile).originalName
+                  );
+                }}
+              >
+                <DownloadIcon
+                  sx={{ padding: "4px", boxSizing: "border-box" }}
+                />
+              </Box>
+            )}
           {props.file.status === "error" && (
             <Box
               sx={(theme) => ({
@@ -262,8 +274,8 @@ export default function BlockContent(props: BlockContentType) {
               />
             }
           />
-          {props.file?.status && (
-            <Fade in={["uploading", "deleting"].includes(props.file?.status)}>
+          {props.file.status && (
+            <Fade in={["uploading", "deleting"].includes(props.file.status)}>
               <Box
                 sx={{
                   position: "absolute",
@@ -272,14 +284,14 @@ export default function BlockContent(props: BlockContentType) {
                   padding: 2,
                 }}
               >
-                {props.file?.status === "deleting" ? (
+                {props.file.status === "deleting" ? (
                   <LinearProgress color="error" variant="indeterminate" />
                 ) : (
                   <LinearProgress
                     variant="determinate"
                     value={
                       props.file.original === "selected"
-                        ? props.file?.progress
+                        ? props.file.progress
                         : 0
                     }
                   />

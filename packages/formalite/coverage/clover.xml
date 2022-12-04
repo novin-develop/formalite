@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1670132976807" clover="3.2.0">
-  <project timestamp="1670132976807" name="All files">
-    <metrics statements="1471" coveredstatements="1179" conditionals="1033" coveredconditionals="686" methods="345" coveredmethods="253" elements="2849" coveredelements="2118" complexity="0" loc="1471" ncloc="1471" packages="33" files="61" classes="61"/>
+<coverage generated="1670154957468" clover="3.2.0">
+  <project timestamp="1670154957469" name="All files">
+    <metrics statements="1466" coveredstatements="1223" conditionals="951" coveredconditionals="666" methods="338" coveredmethods="272" elements="2755" coveredelements="2161" complexity="0" loc="1466" ncloc="1466" packages="33" files="61" classes="61"/>
     <package name="Formalite">
       <metrics statements="92" coveredstatements="72" conditionals="34" coveredconditionals="19" methods="14" coveredmethods="8"/>
       <file name="Formalite.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\Formalite.tsx">
         <metrics statements="92" coveredstatements="72" conditionals="34" coveredconditionals="19" methods="14" coveredmethods="8"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
-        <line num="21" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
-        <line num="25" count="11" type="stmt"/>
-        <line num="26" count="11" type="stmt"/>
-        <line num="27" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
-        <line num="29" count="11" type="stmt"/>
-        <line num="30" count="11" type="stmt"/>
-        <line num="31" count="11" type="stmt"/>
-        <line num="32" count="11" type="stmt"/>
-        <line num="33" count="11" type="stmt"/>
-        <line num="34" count="11" type="stmt"/>
-        <line num="35" count="11" type="stmt"/>
-        <line num="36" count="11" type="stmt"/>
-        <line num="37" count="11" type="stmt"/>
-        <line num="38" count="11" type="stmt"/>
-        <line num="39" count="11" type="stmt"/>
-        <line num="41" count="11" type="stmt"/>
-        <line num="42" count="11" type="stmt"/>
-        <line num="43" count="11" type="stmt"/>
-        <line num="45" count="11" type="stmt"/>
-        <line num="50" count="11" type="stmt"/>
-        <line num="77" count="11" type="stmt"/>
-        <line num="78" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+        <line num="27" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
+        <line num="29" count="12" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
+        <line num="31" count="12" type="stmt"/>
+        <line num="32" count="12" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="35" count="12" type="stmt"/>
+        <line num="36" count="12" type="stmt"/>
+        <line num="37" count="12" type="stmt"/>
+        <line num="38" count="12" type="stmt"/>
+        <line num="39" count="12" type="stmt"/>
+        <line num="41" count="12" type="stmt"/>
+        <line num="42" count="12" type="stmt"/>
+        <line num="43" count="12" type="stmt"/>
+        <line num="45" count="12" type="stmt"/>
+        <line num="50" count="12" type="stmt"/>
+        <line num="77" count="12" type="stmt"/>
+        <line num="78" count="12" type="stmt"/>
         <line num="79" count="21" type="cond" truecount="1" falsecount="5"/>
-        <line num="80" count="11" type="stmt"/>
-        <line num="82" count="185" type="cond" truecount="2" falsecount="0"/>
-        <line num="86" count="185" type="cond" truecount="1" falsecount="1"/>
-        <line num="87" count="185" type="cond" truecount="1" falsecount="1"/>
-        <line num="88" count="185" type="cond" truecount="2" falsecount="0"/>
-        <line num="89" count="185" type="cond" truecount="1" falsecount="1"/>
-        <line num="93" count="185" type="cond" truecount="1" falsecount="1"/>
-        <line num="95" count="2408" type="stmt"/>
-        <line num="97" count="185" type="stmt"/>
+        <line num="80" count="12" type="stmt"/>
+        <line num="82" count="210" type="cond" truecount="2" falsecount="0"/>
+        <line num="86" count="210" type="cond" truecount="1" falsecount="1"/>
+        <line num="87" count="210" type="cond" truecount="1" falsecount="1"/>
+        <line num="88" count="210" type="cond" truecount="2" falsecount="0"/>
+        <line num="89" count="210" type="cond" truecount="1" falsecount="1"/>
+        <line num="93" count="210" type="cond" truecount="1" falsecount="1"/>
+        <line num="95" count="2734" type="stmt"/>
+        <line num="97" count="210" type="stmt"/>
         <line num="101" count="0" type="stmt"/>
         <line num="102" count="0" type="stmt"/>
         <line num="103" count="0" type="stmt"/>
         <line num="105" count="0" type="stmt"/>
-        <line num="110" count="185" type="stmt"/>
+        <line num="110" count="210" type="stmt"/>
         <line num="112" count="1" type="cond" truecount="1" falsecount="2"/>
         <line num="113" count="0" type="stmt"/>
         <line num="114" count="0" type="stmt"/>
@@ -73,28 +73,28 @@
         <line num="140" count="0" type="stmt"/>
         <line num="147" count="0" type="stmt"/>
         <line num="148" count="0" type="stmt"/>
-        <line num="152" count="185" type="stmt"/>
-        <line num="153" count="49" type="cond" truecount="1" falsecount="0"/>
-        <line num="154" count="48" type="stmt"/>
-        <line num="159" count="185" type="stmt"/>
-        <line num="194" count="11" type="stmt"/>
-        <line num="195" count="235" type="stmt"/>
-        <line num="196" count="235" type="stmt"/>
-        <line num="197" count="235" type="stmt"/>
-        <line num="198" count="235" type="stmt"/>
-        <line num="199" count="235" type="stmt"/>
-        <line num="200" count="235" type="stmt"/>
-        <line num="201" count="235" type="stmt"/>
-        <line num="202" count="235" type="stmt"/>
-        <line num="203" count="235" type="stmt"/>
-        <line num="215" count="485" type="stmt"/>
-        <line num="216" count="485" type="cond" truecount="2" falsecount="0"/>
-        <line num="219" count="485" type="cond" truecount="3" falsecount="1"/>
-        <line num="220" count="485" type="stmt"/>
-        <line num="221" count="485" type="cond" truecount="1" falsecount="0"/>
-        <line num="222" count="485" type="stmt"/>
+        <line num="152" count="210" type="stmt"/>
+        <line num="153" count="57" type="cond" truecount="1" falsecount="0"/>
+        <line num="154" count="56" type="stmt"/>
+        <line num="159" count="210" type="stmt"/>
+        <line num="194" count="12" type="stmt"/>
+        <line num="195" count="260" type="stmt"/>
+        <line num="196" count="260" type="stmt"/>
+        <line num="197" count="260" type="stmt"/>
+        <line num="198" count="260" type="stmt"/>
+        <line num="199" count="260" type="stmt"/>
+        <line num="200" count="260" type="stmt"/>
+        <line num="201" count="260" type="stmt"/>
+        <line num="202" count="260" type="stmt"/>
+        <line num="203" count="260" type="stmt"/>
+        <line num="215" count="510" type="stmt"/>
+        <line num="216" count="510" type="cond" truecount="2" falsecount="0"/>
+        <line num="219" count="510" type="cond" truecount="3" falsecount="1"/>
+        <line num="220" count="510" type="stmt"/>
+        <line num="221" count="510" type="cond" truecount="1" falsecount="0"/>
+        <line num="222" count="510" type="stmt"/>
         <line num="238" count="0" type="stmt"/>
-        <line num="242" count="11" type="stmt"/>
+        <line num="242" count="12" type="stmt"/>
         <line num="243" count="0" type="stmt"/>
         <line num="244" count="0" type="stmt"/>
         <line num="249" count="0" type="stmt"/>
@@ -104,105 +104,105 @@
       <metrics statements="27" coveredstatements="26" conditionals="7" coveredconditionals="6" methods="6" coveredmethods="6"/>
       <file name="FormObserver.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\components\FormObserver.tsx">
         <metrics statements="10" coveredstatements="9" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="10" count="185" type="stmt"/>
-        <line num="12" count="185" type="stmt"/>
-        <line num="13" count="185" type="stmt"/>
-        <line num="14" count="185" type="cond" truecount="0" falsecount="1"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="210" type="stmt"/>
+        <line num="12" count="210" type="stmt"/>
+        <line num="13" count="210" type="stmt"/>
+        <line num="14" count="210" type="cond" truecount="0" falsecount="1"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="18" count="185" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
+        <line num="18" count="210" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
       </file>
       <file name="ViewError.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\components\ViewError.tsx">
         <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
         <line num="13" count="12" type="stmt"/>
         <line num="14" count="4" type="stmt"/>
         <line num="15" count="4" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
         <line num="20" count="4" type="stmt"/>
-        <line num="33" count="11" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
       </file>
       <file name="ViewPending.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\components\ViewPending.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
         <line num="9" count="29" type="stmt"/>
         <line num="10" count="29" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.config">
       <metrics statements="66" coveredstatements="63" conditionals="21" coveredconditionals="17" methods="15" coveredmethods="15"/>
       <file name="useFormaliteRef.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\config\useFormaliteRef.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="49" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="57" type="stmt"/>
       </file>
       <file name="utils.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\config\utils.ts">
         <metrics statements="63" coveredstatements="60" conditionals="21" coveredconditionals="17" methods="14" coveredmethods="14"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="19" count="3155" type="stmt"/>
-        <line num="20" count="3155" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
-        <line num="24" count="642" type="stmt"/>
-        <line num="25" count="642" type="stmt"/>
-        <line num="26" count="642" type="stmt"/>
-        <line num="27" count="830" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="19" count="3419" type="stmt"/>
+        <line num="20" count="3419" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="24" count="744" type="stmt"/>
+        <line num="25" count="744" type="stmt"/>
+        <line num="26" count="744" type="stmt"/>
+        <line num="27" count="932" type="cond" truecount="3" falsecount="0"/>
         <line num="28" count="76" type="stmt"/>
-        <line num="32" count="642" type="stmt"/>
-        <line num="35" count="11" type="stmt"/>
-        <line num="36" count="411" type="stmt"/>
-        <line num="39" count="411" type="stmt"/>
-        <line num="41" count="411" type="stmt"/>
-        <line num="42" count="411" type="stmt"/>
-        <line num="44" count="411" type="cond" truecount="10" falsecount="0"/>
+        <line num="32" count="744" type="stmt"/>
+        <line num="35" count="12" type="stmt"/>
+        <line num="36" count="497" type="stmt"/>
+        <line num="39" count="497" type="stmt"/>
+        <line num="41" count="497" type="stmt"/>
+        <line num="42" count="497" type="stmt"/>
+        <line num="44" count="497" type="cond" truecount="10" falsecount="0"/>
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
-        <line num="56" count="410" type="stmt"/>
-        <line num="58" count="410" type="stmt"/>
-        <line num="61" count="411" type="stmt"/>
-        <line num="64" count="11" type="stmt"/>
+        <line num="56" count="496" type="stmt"/>
+        <line num="58" count="496" type="stmt"/>
+        <line num="61" count="497" type="stmt"/>
+        <line num="64" count="12" type="stmt"/>
         <line num="65" count="208" type="stmt"/>
         <line num="66" count="208" type="stmt"/>
         <line num="67" count="208" type="stmt"/>
         <line num="69" count="208" type="stmt"/>
-        <line num="72" count="11" type="stmt"/>
-        <line num="73" count="203" type="stmt"/>
-        <line num="74" count="203" type="stmt"/>
-        <line num="75" count="203" type="stmt"/>
-        <line num="77" count="203" type="stmt"/>
-        <line num="80" count="11" type="stmt"/>
+        <line num="72" count="12" type="stmt"/>
+        <line num="73" count="289" type="stmt"/>
+        <line num="74" count="289" type="stmt"/>
+        <line num="75" count="289" type="stmt"/>
+        <line num="77" count="289" type="stmt"/>
+        <line num="80" count="12" type="stmt"/>
         <line num="81" count="3" type="stmt"/>
-        <line num="84" count="11" type="stmt"/>
-        <line num="85" count="99" type="stmt"/>
-        <line num="88" count="11" type="stmt"/>
+        <line num="84" count="12" type="stmt"/>
+        <line num="85" count="110" type="stmt"/>
+        <line num="88" count="12" type="stmt"/>
         <line num="89" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="97" count="0" type="stmt"/>
         <line num="100" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="107" count="0" type="stmt"/>
         <line num="110" count="2" type="stmt"/>
-        <line num="113" count="11" type="stmt"/>
+        <line num="113" count="12" type="stmt"/>
         <line num="114" count="4" type="stmt"/>
         <line num="116" count="4" type="stmt"/>
         <line num="117" count="4" type="stmt"/>
         <line num="118" count="20" type="stmt"/>
         <line num="120" count="4" type="stmt"/>
-        <line num="123" count="11" type="stmt"/>
+        <line num="123" count="12" type="stmt"/>
         <line num="124" count="42" type="stmt"/>
         <line num="125" count="42" type="stmt"/>
         <line num="130" count="42" type="cond" truecount="0" falsecount="1"/>
@@ -316,9 +316,9 @@
       <metrics statements="25" coveredstatements="10" conditionals="25" coveredconditionals="2" methods="3" coveredmethods="2"/>
       <file name="ErrorFocus.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\ErrorFocus.ts">
         <metrics statements="25" coveredstatements="10" conditionals="25" coveredconditionals="2" methods="3" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
         <line num="17" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
@@ -328,41 +328,41 @@
         <line num="29" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
-        <line num="43" count="11" type="stmt"/>
-        <line num="45" count="185" type="stmt"/>
-        <line num="47" count="185" type="stmt"/>
-        <line num="49" count="127" type="stmt"/>
-        <line num="51" count="127" type="cond" truecount="2" falsecount="2"/>
+        <line num="43" count="12" type="stmt"/>
+        <line num="45" count="210" type="stmt"/>
+        <line num="47" count="210" type="stmt"/>
+        <line num="49" count="152" type="stmt"/>
+        <line num="51" count="152" type="cond" truecount="2" falsecount="2"/>
         <line num="54" count="0" type="stmt"/>
         <line num="56" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="58" count="0" type="stmt"/>
         <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="64" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
-        <line num="83" count="185" type="stmt"/>
-        <line num="86" count="11" type="stmt"/>
+        <line num="83" count="210" type="stmt"/>
+        <line num="86" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.AutoCompleteView">
       <metrics statements="76" coveredstatements="41" conditionals="96" coveredconditionals="27" methods="18" coveredmethods="8"/>
       <file name="AutoCompleteView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\AutoCompleteView\AutoCompleteView.tsx">
         <metrics statements="76" coveredstatements="41" conditionals="96" coveredconditionals="27" methods="18" coveredmethods="8"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="29" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="30" count="11" type="stmt"/>
-        <line num="31" count="11" type="stmt"/>
-        <line num="32" count="11" type="stmt"/>
-        <line num="46" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="29" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="12" type="stmt"/>
+        <line num="31" count="12" type="stmt"/>
+        <line num="32" count="12" type="stmt"/>
+        <line num="46" count="12" type="stmt"/>
         <line num="49" count="12" type="stmt"/>
-        <line num="55" count="11" type="stmt"/>
+        <line num="55" count="12" type="stmt"/>
         <line num="59" count="42" type="stmt"/>
         <line num="60" count="7" type="stmt"/>
         <line num="62" count="7" type="cond" truecount="1" falsecount="1"/>
@@ -419,7 +419,7 @@
         <line num="176" count="0" type="stmt"/>
         <line num="178" count="0" type="cond" truecount="0" falsecount="6"/>
         <line num="182" count="5" type="stmt"/>
-        <line num="229" count="11" type="stmt"/>
+        <line num="229" count="12" type="stmt"/>
         <line num="230" count="7" type="stmt"/>
         <line num="231" count="7" type="stmt"/>
         <line num="232" count="7" type="stmt"/>
@@ -429,27 +429,27 @@
       <metrics statements="32" coveredstatements="31" conditionals="21" coveredconditionals="19" methods="5" coveredmethods="5"/>
       <file name="SkeletonBase.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\Bases\SkeletonBase.tsx">
         <metrics statements="13" coveredstatements="13" conditionals="12" coveredconditionals="10" methods="3" coveredmethods="3"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
         <line num="24" count="28" type="stmt"/>
-        <line num="39" count="11" type="stmt"/>
+        <line num="39" count="12" type="stmt"/>
         <line num="40" count="8" type="stmt"/>
-        <line num="59" count="11" type="stmt"/>
+        <line num="59" count="12" type="stmt"/>
         <line num="60" count="4" type="stmt"/>
         <line num="61" count="4" type="stmt"/>
         <line num="63" count="4" type="stmt"/>
       </file>
       <file name="TextFieldBase.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\Bases\TextFieldBase.tsx">
         <metrics statements="19" coveredstatements="18" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
         <line num="39" count="127" type="stmt"/>
         <line num="40" count="889" type="stmt"/>
         <line num="41" count="127" type="cond" truecount="1" falsecount="0"/>
@@ -470,11 +470,11 @@
       <metrics statements="6" coveredstatements="6" conditionals="33" coveredconditionals="29" methods="2" coveredmethods="2"/>
       <file name="memo.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\Bases\functions\memo.ts">
         <metrics statements="6" coveredstatements="6" conditionals="33" coveredconditionals="29" methods="2" coveredmethods="2"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="13" count="314" type="cond" truecount="7" falsecount="0"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="13" count="331" type="cond" truecount="7" falsecount="0"/>
         <line num="26" count="4" type="stmt"/>
       </file>
     </package>
@@ -482,28 +482,28 @@
       <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
       <file name="BigRadioGroupView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\BigRadioGroupView\BigRadioGroupView.tsx">
         <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
         <line num="26" count="6" type="stmt"/>
-        <line num="52" count="11" type="stmt"/>
+        <line num="52" count="12" type="stmt"/>
         <line num="56" count="60" type="stmt"/>
         <line num="58" count="10" type="stmt"/>
-        <line num="95" count="11" type="stmt"/>
+        <line num="95" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.CardNumberView">
       <metrics statements="19" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="4"/>
       <file name="CardNumberView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\CardNumberView\CardNumberView.tsx">
         <metrics statements="19" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="4"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="27" count="11" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="27" count="12" type="stmt"/>
         <line num="38" count="28" type="stmt"/>
         <line num="39" count="4" type="stmt"/>
         <line num="40" count="4" type="stmt"/>
@@ -513,7 +513,7 @@
         <line num="46" count="3" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
         <line num="65" count="4" type="stmt"/>
-        <line num="83" count="11" type="stmt"/>
+        <line num="83" count="12" type="stmt"/>
         <line num="84" count="7" type="stmt"/>
         <line num="85" count="7" type="stmt"/>
         <line num="87" count="0" type="stmt"/>
@@ -523,15 +523,15 @@
       <metrics statements="80" coveredstatements="63" conditionals="43" coveredconditionals="32" methods="12" coveredmethods="7"/>
       <file name="CheckGroupView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\CheckGroupView\CheckGroupView.tsx">
         <metrics statements="41" coveredstatements="32" conditionals="24" coveredconditionals="17" methods="6" coveredmethods="3"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="30" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
         <line num="31" count="16" type="stmt"/>
         <line num="32" count="16" type="stmt"/>
         <line num="33" count="16" type="stmt"/>
@@ -560,35 +560,35 @@
         <line num="90" count="16" type="cond" truecount="1" falsecount="0"/>
         <line num="91" count="4" type="stmt"/>
         <line num="98" count="12" type="stmt"/>
-        <line num="125" count="11" type="stmt"/>
+        <line num="125" count="12" type="stmt"/>
         <line num="126" count="15" type="stmt"/>
         <line num="127" count="15" type="stmt"/>
         <line num="128" count="15" type="stmt"/>
       </file>
       <file name="CheckGroupView.type.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\CheckGroupView\CheckGroupView.type.ts">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="55" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="56" count="11" type="stmt"/>
-        <line num="57" count="11" type="stmt"/>
-        <line num="58" count="11" type="stmt"/>
+        <line num="55" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="56" count="12" type="stmt"/>
+        <line num="57" count="12" type="stmt"/>
+        <line num="58" count="12" type="stmt"/>
       </file>
       <file name="CheckGroupViewAllViews.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\CheckGroupView\CheckGroupViewAllViews.tsx">
         <metrics statements="35" coveredstatements="27" conditionals="17" coveredconditionals="13" methods="5" coveredmethods="3"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
-        <line num="21" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
-        <line num="48" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
+        <line num="48" count="12" type="stmt"/>
         <line num="49" count="12" type="stmt"/>
         <line num="50" count="12" type="stmt"/>
         <line num="51" count="12" type="stmt"/>
         <line num="52" count="12" type="stmt"/>
         <line num="53" count="12" type="stmt"/>
         <line num="55" count="12" type="stmt"/>
-        <line num="70" count="11" type="stmt"/>
+        <line num="70" count="12" type="stmt"/>
         <line num="82" count="12" type="cond" truecount="2" falsecount="0"/>
         <line num="83" count="108" type="stmt"/>
         <line num="84" count="12" type="stmt"/>
@@ -608,16 +608,16 @@
         <line num="149" count="5" type="cond" truecount="1" falsecount="0"/>
         <line num="150" count="5" type="stmt"/>
         <line num="165" count="0" type="stmt"/>
-        <line num="181" count="11" type="stmt"/>
+        <line num="181" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.ColorPickerView">
       <metrics statements="44" coveredstatements="25" conditionals="7" coveredconditionals="3" methods="12" coveredmethods="2"/>
       <file name="ChromePicker.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\ColorPickerView\ChromePicker.tsx">
         <metrics statements="9" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -627,23 +627,23 @@
       </file>
       <file name="ColorPickerView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\ColorPickerView\ColorPickerView.tsx">
         <metrics statements="35" coveredstatements="22" conditionals="7" coveredconditionals="3" methods="9" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="44" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="44" count="12" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
-        <line num="54" count="11" type="stmt"/>
+        <line num="54" count="12" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
-        <line num="69" count="11" type="stmt"/>
+        <line num="69" count="12" type="stmt"/>
         <line num="73" count="24" type="stmt"/>
         <line num="74" count="4" type="stmt"/>
         <line num="76" count="4" type="stmt"/>
@@ -658,7 +658,7 @@
         <line num="99" count="4" type="stmt"/>
         <line num="101" count="4" type="stmt"/>
         <line num="131" count="0" type="stmt"/>
-        <line num="146" count="11" type="stmt"/>
+        <line num="146" count="12" type="stmt"/>
         <line num="147" count="7" type="stmt"/>
         <line num="148" count="7" type="stmt"/>
         <line num="150" count="0" type="stmt"/>
@@ -668,11 +668,11 @@
       <metrics statements="17" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="2"/>
       <file name="ComponentView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\ComponentView\ComponentView.tsx">
         <metrics statements="17" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
         <line num="21" count="12" type="stmt"/>
         <line num="23" count="3" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
@@ -681,7 +681,7 @@
         <line num="28" count="3" type="cond" truecount="1" falsecount="0"/>
         <line num="29" count="1" type="stmt"/>
         <line num="35" count="2" type="stmt"/>
-        <line num="41" count="11" type="stmt"/>
+        <line num="41" count="12" type="stmt"/>
         <line num="42" count="7" type="stmt"/>
         <line num="43" count="7" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
@@ -691,28 +691,28 @@
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="DatePickerLocalizationProvider.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DatePickerView\DatePickerLocalizationProvider.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
         <line num="15" count="18" type="stmt"/>
         <line num="16" count="9" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.DatePickerView.DatePickerView">
       <metrics statements="21" coveredstatements="17" conditionals="9" coveredconditionals="7" methods="4" coveredmethods="3"/>
       <file name="DatePickerView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DatePickerView\DatePickerView\DatePickerView.tsx">
         <metrics statements="21" coveredstatements="17" conditionals="9" coveredconditionals="7" methods="4" coveredmethods="3"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
         <line num="28" count="28" type="stmt"/>
         <line num="29" count="4" type="stmt"/>
         <line num="31" count="4" type="cond" truecount="1" falsecount="0"/>
@@ -722,7 +722,7 @@
         <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="47" count="0" type="stmt"/>
         <line num="52" count="3" type="stmt"/>
-        <line num="82" count="11" type="stmt"/>
+        <line num="82" count="12" type="stmt"/>
         <line num="83" count="7" type="stmt"/>
         <line num="84" count="7" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
@@ -732,14 +732,14 @@
       <metrics statements="21" coveredstatements="17" conditionals="9" coveredconditionals="7" methods="4" coveredmethods="3"/>
       <file name="DateTimePickerView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DatePickerView\DateTimePickerView\DateTimePickerView.tsx">
         <metrics statements="21" coveredstatements="17" conditionals="9" coveredconditionals="7" methods="4" coveredmethods="3"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
         <line num="28" count="28" type="stmt"/>
         <line num="29" count="4" type="stmt"/>
         <line num="31" count="4" type="cond" truecount="1" falsecount="0"/>
@@ -749,7 +749,7 @@
         <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="47" count="0" type="stmt"/>
         <line num="52" count="3" type="stmt"/>
-        <line num="82" count="11" type="stmt"/>
+        <line num="82" count="12" type="stmt"/>
         <line num="83" count="7" type="stmt"/>
         <line num="84" count="7" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
@@ -759,14 +759,14 @@
       <metrics statements="21" coveredstatements="17" conditionals="9" coveredconditionals="7" methods="4" coveredmethods="3"/>
       <file name="TimePickerView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DatePickerView\TimePickerView\TimePickerView.tsx">
         <metrics statements="21" coveredstatements="17" conditionals="9" coveredconditionals="7" methods="4" coveredmethods="3"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
         <line num="28" count="28" type="stmt"/>
         <line num="29" count="4" type="stmt"/>
         <line num="31" count="4" type="cond" truecount="1" falsecount="0"/>
@@ -776,53 +776,53 @@
         <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="47" count="0" type="stmt"/>
         <line num="51" count="3" type="stmt"/>
-        <line num="81" count="11" type="stmt"/>
+        <line num="81" count="12" type="stmt"/>
         <line num="82" count="7" type="stmt"/>
         <line num="83" count="7" type="stmt"/>
         <line num="85" count="0" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.DropZoneView">
-      <metrics statements="21" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="4"/>
+      <metrics statements="21" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="10"/>
       <file name="utils.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\utils.ts">
-        <metrics statements="21" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="4"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="32" count="11" type="stmt"/>
-        <line num="35" count="122" type="stmt"/>
-        <line num="43" count="11" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
+        <metrics statements="21" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="10"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="35" count="12" type="stmt"/>
+        <line num="38" count="149" type="stmt"/>
+        <line num="47" count="12" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.DropZoneView.AvatarDropZoneView">
       <metrics statements="70" coveredstatements="39" conditionals="58" coveredconditionals="29" methods="13" coveredmethods="4"/>
       <file name="AvatarDropZoneView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\AvatarDropZoneView\AvatarDropZoneView.tsx">
         <metrics statements="70" coveredstatements="39" conditionals="58" coveredconditionals="29" methods="13" coveredmethods="4"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="29" count="11" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="29" count="12" type="stmt"/>
         <line num="42" count="72" type="stmt"/>
         <line num="44" count="40" type="stmt"/>
         <line num="45" count="16" type="cond" truecount="1" falsecount="1"/>
@@ -879,7 +879,7 @@
         <line num="169" count="8" type="cond" truecount="3" falsecount="0"/>
         <line num="170" count="4" type="stmt"/>
         <line num="177" count="4" type="stmt"/>
-        <line num="213" count="11" type="stmt"/>
+        <line num="213" count="12" type="stmt"/>
         <line num="214" count="7" type="stmt"/>
         <line num="215" count="7" type="stmt"/>
         <line num="217" count="0" type="stmt"/>
@@ -889,15 +889,15 @@
       <metrics statements="45" coveredstatements="26" conditionals="88" coveredconditionals="36" methods="12" coveredmethods="6"/>
       <file name="AvatarComponent.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\AvatarDropZoneView\elements\AvatarComponent.tsx">
         <metrics statements="13" coveredstatements="13" conditionals="41" coveredconditionals="26" methods="2" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="36" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="36" count="12" type="stmt"/>
         <line num="50" count="40" type="stmt"/>
         <line num="51" count="4" type="stmt"/>
         <line num="52" count="4" type="stmt"/>
@@ -905,19 +905,19 @@
       </file>
       <file name="AvatarElement.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\AvatarDropZoneView\elements\AvatarElement.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="33" count="11" type="stmt"/>
-        <line num="50" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
+        <line num="50" count="12" type="stmt"/>
       </file>
       <file name="DeleteIconButton.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\AvatarDropZoneView\elements\DeleteIconButton.tsx">
         <metrics statements="26" coveredstatements="7" conditionals="45" coveredconditionals="8" methods="7" coveredmethods="2"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
         <line num="23" count="24" type="stmt"/>
         <line num="25" count="4" type="stmt"/>
         <line num="30" count="6" type="stmt"/>
@@ -943,204 +943,199 @@
       </file>
     </package>
     <package name="Formalite.elements.DropZoneView.Components">
-      <metrics statements="143" coveredstatements="107" conditionals="186" coveredconditionals="124" methods="46" coveredmethods="26"/>
+      <metrics statements="138" coveredstatements="138" conditionals="104" coveredconditionals="104" methods="39" coveredmethods="39"/>
       <file name="BlockContent.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\Components\BlockContent.tsx">
-        <metrics statements="59" coveredstatements="45" conditionals="122" coveredconditionals="83" methods="16" coveredmethods="10"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
-        <line num="21" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
-        <line num="26" count="11" type="stmt"/>
-        <line num="27" count="17" type="cond" truecount="9" falsecount="7"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="49" count="15" type="stmt"/>
-        <line num="70" count="71" type="stmt"/>
-        <line num="71" count="71" type="stmt"/>
-        <line num="73" count="71" type="stmt"/>
-        <line num="99" count="11" type="stmt"/>
-        <line num="100" count="72" type="cond" truecount="2" falsecount="0"/>
-        <line num="101" count="71" type="cond" truecount="2" falsecount="0"/>
-        <line num="102" count="71" type="stmt"/>
-        <line num="116" count="16" type="stmt"/>
-        <line num="132" count="2" type="stmt"/>
-        <line num="133" count="2" type="cond" truecount="3" falsecount="1"/>
-        <line num="134" count="2" type="stmt"/>
-        <line num="135" count="2" type="stmt"/>
-        <line num="136" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="137" count="2" type="stmt"/>
-        <line num="139" count="2" type="stmt"/>
-        <line num="141" count="2" type="stmt"/>
-        <line num="142" count="2" type="cond" truecount="3" falsecount="1"/>
-        <line num="146" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="147" count="2" type="stmt"/>
-        <line num="154" count="2" type="stmt"/>
-        <line num="155" count="2" type="stmt"/>
-        <line num="158" count="0" type="stmt"/>
-        <line num="159" count="0" type="stmt"/>
-        <line num="160" count="0" type="cond" truecount="0" falsecount="7"/>
-        <line num="161" count="0" type="stmt"/>
-        <line num="162" count="0" type="stmt"/>
-        <line num="164" count="0" type="stmt"/>
-        <line num="174" count="3" type="stmt"/>
-        <line num="190" count="0" type="stmt"/>
-        <line num="191" count="0" type="stmt"/>
-        <line num="199" count="7" type="stmt"/>
-        <line num="215" count="0" type="stmt"/>
-        <line num="216" count="0" type="stmt"/>
-        <line num="227" count="3" type="stmt"/>
+        <metrics statements="61" coveredstatements="61" conditionals="61" coveredconditionals="61" methods="14" coveredmethods="14"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+        <line num="27" count="50" type="cond" truecount="16" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="47" count="14" type="stmt"/>
+        <line num="49" count="29" type="stmt"/>
+        <line num="70" count="113" type="stmt"/>
+        <line num="71" count="113" type="stmt"/>
+        <line num="73" count="113" type="stmt"/>
+        <line num="99" count="12" type="stmt"/>
+        <line num="100" count="114" type="stmt"/>
+        <line num="114" count="23" type="stmt"/>
+        <line num="130" count="3" type="stmt"/>
+        <line num="131" count="3" type="stmt"/>
+        <line num="132" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="133" count="3" type="stmt"/>
+        <line num="134" count="3" type="stmt"/>
+        <line num="135" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="136" count="3" type="stmt"/>
+        <line num="138" count="3" type="stmt"/>
+        <line num="141" count="3" type="stmt"/>
+        <line num="142" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="143" count="3" type="stmt"/>
+        <line num="148" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="149" count="3" type="stmt"/>
+        <line num="156" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="157" count="2" type="stmt"/>
+        <line num="158" count="2" type="stmt"/>
+        <line num="162" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="163" count="1" type="stmt"/>
+        <line num="164" count="1" type="stmt"/>
+        <line num="165" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="166" count="1" type="stmt"/>
+        <line num="167" count="1" type="stmt"/>
+        <line num="169" count="1" type="stmt"/>
+        <line num="180" count="7" type="stmt"/>
+        <line num="196" count="1" type="stmt"/>
+        <line num="197" count="1" type="stmt"/>
+        <line num="207" count="10" type="stmt"/>
+        <line num="223" count="1" type="stmt"/>
+        <line num="224" count="1" type="stmt"/>
+        <line num="237" count="7" type="stmt"/>
       </file>
       <file name="MultiFilePreview.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\Components\MultiFilePreview.tsx">
-        <metrics statements="66" coveredstatements="44" conditionals="55" coveredconditionals="32" methods="25" coveredmethods="11"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
-        <line num="25" count="11" type="stmt"/>
-        <line num="26" count="11" type="stmt"/>
-        <line num="27" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
-        <line num="29" count="11" type="stmt"/>
-        <line num="32" count="11" type="stmt"/>
-        <line num="33" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="48" count="11" type="stmt"/>
-        <line num="49" count="94" type="cond" truecount="1" falsecount="1"/>
-        <line num="50" count="94" type="stmt"/>
-        <line num="51" count="94" type="stmt"/>
-        <line num="52" count="94" type="stmt"/>
-        <line num="53" count="94" type="stmt"/>
-        <line num="54" count="94" type="stmt"/>
-        <line num="55" count="94" type="stmt"/>
-        <line num="57" count="94" type="stmt"/>
-        <line num="59" count="94" type="stmt"/>
-        <line num="63" count="3" type="stmt"/>
-        <line num="64" count="3" type="stmt"/>
-        <line num="65" count="3" type="stmt"/>
-        <line num="66" count="3" type="stmt"/>
-        <line num="67" count="6" type="cond" truecount="1" falsecount="0"/>
-        <line num="69" count="3" type="stmt"/>
-        <line num="70" count="3" type="stmt"/>
-        <line num="72" count="3" type="stmt"/>
-        <line num="75" count="3" type="stmt"/>
-        <line num="81" count="3" type="stmt"/>
-        <line num="82" count="6" type="stmt"/>
-        <line num="83" count="3" type="stmt"/>
-        <line num="84" count="3" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="90" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="95" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="103" count="94" type="stmt"/>
-        <line num="104" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="109" count="94" type="stmt"/>
-        <line num="115" count="134" type="stmt"/>
-        <line num="116" count="134" type="stmt"/>
-        <line num="117" count="134" type="cond" truecount="0" falsecount="1"/>
-        <line num="118" count="0" type="stmt"/>
-        <line num="131" count="0" type="stmt"/>
-        <line num="168" count="0" type="stmt"/>
-        <line num="178" count="0" type="stmt"/>
-        <line num="181" count="0" type="stmt"/>
-        <line num="190" count="0" type="stmt"/>
-        <line num="199" count="0" type="stmt"/>
-        <line num="202" count="0" type="stmt"/>
-        <line num="214" count="134" type="stmt"/>
-        <line num="229" count="101" type="stmt"/>
-        <line num="317" count="0" type="stmt"/>
-        <line num="326" count="3" type="stmt"/>
-        <line num="336" count="0" type="stmt"/>
+        <metrics statements="59" coveredstatements="59" conditionals="34" coveredconditionals="34" methods="20" coveredmethods="20"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+        <line num="27" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
+        <line num="29" count="12" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
+        <line num="31" count="12" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
+        <line num="34" count="130" type="stmt"/>
+        <line num="35" count="128" type="stmt"/>
+        <line num="36" count="128" type="stmt"/>
+        <line num="37" count="128" type="stmt"/>
+        <line num="38" count="128" type="stmt"/>
+        <line num="39" count="128" type="stmt"/>
+        <line num="40" count="128" type="stmt"/>
+        <line num="42" count="128" type="stmt"/>
+        <line num="44" count="128" type="stmt"/>
+        <line num="48" count="5" type="stmt"/>
+        <line num="49" count="5" type="stmt"/>
+        <line num="50" count="5" type="stmt"/>
+        <line num="51" count="5" type="stmt"/>
+        <line num="52" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="54" count="5" type="stmt"/>
+        <line num="55" count="5" type="stmt"/>
+        <line num="57" count="6" type="stmt"/>
+        <line num="60" count="5" type="stmt"/>
+        <line num="62" count="4" type="stmt"/>
+        <line num="63" count="9" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="65" count="4" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="84" count="128" type="stmt"/>
+        <line num="85" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="90" count="128" type="stmt"/>
+        <line num="96" count="170" type="stmt"/>
+        <line num="97" count="170" type="stmt"/>
+        <line num="98" count="170" type="cond" truecount="1" falsecount="0"/>
+        <line num="99" count="24" type="stmt"/>
+        <line num="112" count="29" type="stmt"/>
+        <line num="152" count="1" type="stmt"/>
+        <line num="168" count="1" type="stmt"/>
+        <line num="186" count="146" type="stmt"/>
+        <line num="201" count="111" type="stmt"/>
+        <line num="287" count="1" type="stmt"/>
+        <line num="296" count="4" type="stmt"/>
+        <line num="306" count="1" type="stmt"/>
       </file>
       <file name="RejectionFiles.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\Components\RejectionFiles.tsx">
         <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="4" coveredmethods="4"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="20" count="20" type="stmt"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="29" count="20" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="20" count="29" type="stmt"/>
+        <line num="21" count="29" type="stmt"/>
+        <line num="29" count="29" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
       </file>
       <file name="SmallBlockContent.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\Components\SmallBlockContent.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="29" type="stmt"/>
-        <line num="8" count="29" type="stmt"/>
-        <line num="52" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="30" type="stmt"/>
+        <line num="8" count="30" type="stmt"/>
+        <line num="52" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.DropZoneView.MultiDropZoneView">
       <metrics statements="94" coveredstatements="94" conditionals="59" coveredconditionals="59" methods="28" coveredmethods="28"/>
       <file name="MultiDropZoneView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\MultiDropZoneView\MultiDropZoneView.tsx">
         <metrics statements="94" coveredstatements="94" conditionals="59" coveredconditionals="59" methods="28" coveredmethods="28"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
-        <line num="21" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
-        <line num="29" count="11" type="stmt"/>
-        <line num="30" count="11" type="stmt"/>
-        <line num="31" count="11" type="stmt"/>
-        <line num="33" count="58" type="stmt"/>
-        <line num="52" count="11" type="stmt"/>
-        <line num="57" count="385" type="stmt"/>
-        <line num="65" count="64" type="cond" truecount="2" falsecount="0"/>
-        <line num="66" count="448" type="stmt"/>
-        <line num="67" count="128" type="cond" truecount="2" falsecount="0"/>
-        <line num="68" count="64" type="stmt"/>
-        <line num="71" count="64" type="stmt"/>
-        <line num="72" count="64" type="stmt"/>
-        <line num="73" count="64" type="stmt"/>
-        <line num="75" count="64" type="stmt"/>
-        <line num="76" count="14" type="cond" truecount="6" falsecount="0"/>
-        <line num="78" count="64" type="stmt"/>
-        <line num="83" count="64" type="stmt"/>
-        <line num="85" count="64" type="stmt"/>
-        <line num="89" count="30" type="stmt"/>
-        <line num="90" count="30" type="stmt"/>
-        <line num="91" count="30" type="cond" truecount="1" falsecount="0"/>
-        <line num="92" count="45" type="stmt"/>
-        <line num="93" count="30" type="cond" truecount="1" falsecount="0"/>
-        <line num="94" count="30" type="stmt"/>
-        <line num="97" count="30" type="stmt"/>
-        <line num="101" count="64" type="stmt"/>
-        <line num="102" count="3" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
+        <line num="29" count="12" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
+        <line num="31" count="12" type="stmt"/>
+        <line num="33" count="92" type="stmt"/>
+        <line num="52" count="12" type="stmt"/>
+        <line num="57" count="590" type="stmt"/>
+        <line num="65" count="98" type="cond" truecount="2" falsecount="0"/>
+        <line num="66" count="686" type="stmt"/>
+        <line num="67" count="196" type="cond" truecount="2" falsecount="0"/>
+        <line num="68" count="98" type="stmt"/>
+        <line num="71" count="98" type="stmt"/>
+        <line num="72" count="98" type="stmt"/>
+        <line num="73" count="98" type="stmt"/>
+        <line num="75" count="98" type="stmt"/>
+        <line num="76" count="21" type="cond" truecount="6" falsecount="0"/>
+        <line num="78" count="98" type="stmt"/>
+        <line num="83" count="98" type="stmt"/>
+        <line num="85" count="98" type="stmt"/>
+        <line num="89" count="36" type="stmt"/>
+        <line num="90" count="36" type="stmt"/>
+        <line num="91" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="92" count="54" type="stmt"/>
+        <line num="93" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="94" count="36" type="stmt"/>
+        <line num="97" count="36" type="stmt"/>
+        <line num="101" count="98" type="stmt"/>
+        <line num="102" count="11" type="stmt"/>
         <line num="105" count="1" type="stmt"/>
         <line num="106" count="1" type="stmt"/>
         <line num="107" count="3" type="stmt"/>
@@ -1148,87 +1143,87 @@
         <line num="109" count="1" type="stmt"/>
         <line num="110" count="1" type="stmt"/>
         <line num="112" count="1" type="stmt"/>
-        <line num="118" count="2" type="stmt"/>
-        <line num="119" count="2" type="stmt"/>
-        <line num="120" count="4" type="stmt"/>
-        <line num="121" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="122" count="2" type="stmt"/>
-        <line num="124" count="2" type="stmt"/>
-        <line num="125" count="2" type="stmt"/>
-        <line num="127" count="2" type="stmt"/>
-        <line num="128" count="2" type="stmt"/>
-        <line num="132" count="1" type="stmt"/>
-        <line num="133" count="1" type="stmt"/>
-        <line num="134" count="3" type="stmt"/>
-        <line num="135" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="136" count="1" type="stmt"/>
-        <line num="137" count="1" type="stmt"/>
-        <line num="139" count="1" type="stmt"/>
-        <line num="144" count="64" type="stmt"/>
-        <line num="145" count="17" type="stmt"/>
-        <line num="146" count="22" type="stmt"/>
-        <line num="147" count="22" type="cond" truecount="3" falsecount="0"/>
-        <line num="148" count="16" type="cond" truecount="2" falsecount="0"/>
-        <line num="149" count="14" type="stmt"/>
-        <line num="152" count="14" type="stmt"/>
-        <line num="153" count="14" type="stmt"/>
-        <line num="155" count="6" type="stmt"/>
-        <line num="165" count="6" type="stmt"/>
+        <line num="118" count="7" type="stmt"/>
+        <line num="119" count="7" type="stmt"/>
+        <line num="120" count="9" type="stmt"/>
+        <line num="121" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="122" count="7" type="stmt"/>
+        <line num="124" count="7" type="stmt"/>
+        <line num="125" count="7" type="stmt"/>
+        <line num="127" count="7" type="stmt"/>
+        <line num="128" count="7" type="stmt"/>
+        <line num="132" count="3" type="stmt"/>
+        <line num="133" count="3" type="stmt"/>
+        <line num="134" count="8" type="stmt"/>
+        <line num="135" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="136" count="3" type="stmt"/>
+        <line num="137" count="3" type="stmt"/>
+        <line num="139" count="3" type="stmt"/>
+        <line num="144" count="98" type="stmt"/>
+        <line num="145" count="25" type="stmt"/>
+        <line num="146" count="28" type="stmt"/>
+        <line num="147" count="28" type="cond" truecount="3" falsecount="0"/>
+        <line num="148" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="149" count="16" type="stmt"/>
+        <line num="152" count="16" type="stmt"/>
+        <line num="153" count="16" type="stmt"/>
+        <line num="155" count="8" type="stmt"/>
+        <line num="165" count="8" type="stmt"/>
         <line num="168" count="8" type="stmt"/>
         <line num="173" count="8" type="stmt"/>
-        <line num="176" count="2" type="stmt"/>
-        <line num="186" count="2" type="stmt"/>
-        <line num="193" count="64" type="stmt"/>
-        <line num="194" count="64" type="stmt"/>
-        <line num="195" count="64" type="stmt"/>
-        <line num="196" count="64" type="stmt"/>
-        <line num="197" count="64" type="stmt"/>
-        <line num="198" count="64" type="stmt"/>
-        <line num="199" count="64" type="stmt"/>
-        <line num="203" count="4" type="stmt"/>
-        <line num="204" count="3" type="stmt"/>
-        <line num="214" count="4" type="stmt"/>
-        <line num="215" count="4" type="stmt"/>
-        <line num="219" count="64" type="cond" truecount="1" falsecount="0"/>
+        <line num="176" count="4" type="stmt"/>
+        <line num="186" count="4" type="stmt"/>
+        <line num="193" count="98" type="stmt"/>
+        <line num="194" count="98" type="stmt"/>
+        <line num="195" count="98" type="stmt"/>
+        <line num="196" count="98" type="stmt"/>
+        <line num="197" count="98" type="stmt"/>
+        <line num="198" count="98" type="stmt"/>
+        <line num="199" count="98" type="stmt"/>
+        <line num="203" count="10" type="stmt"/>
+        <line num="204" count="9" type="stmt"/>
+        <line num="214" count="10" type="stmt"/>
+        <line num="215" count="10" type="stmt"/>
+        <line num="219" count="98" type="cond" truecount="1" falsecount="0"/>
         <line num="220" count="6" type="stmt"/>
-        <line num="230" count="58" type="stmt"/>
-        <line num="246" count="58" type="stmt"/>
-        <line num="272" count="87" type="stmt"/>
-        <line num="275" count="6" type="stmt"/>
-        <line num="285" count="2" type="stmt"/>
-        <line num="312" count="11" type="stmt"/>
-        <line num="313" count="31" type="stmt"/>
+        <line num="230" count="92" type="stmt"/>
+        <line num="246" count="92" type="stmt"/>
+        <line num="273" count="120" type="stmt"/>
+        <line num="276" count="17" type="stmt"/>
+        <line num="286" count="3" type="stmt"/>
+        <line num="313" count="12" type="stmt"/>
+        <line num="314" count="47" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.DropZoneView.SingleDropZoneView">
       <metrics statements="77" coveredstatements="77" conditionals="60" coveredconditionals="60" methods="16" coveredmethods="16"/>
       <file name="SingleDropZoneView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\SingleDropZoneView\SingleDropZoneView.tsx">
         <metrics statements="77" coveredstatements="77" conditionals="60" coveredconditionals="60" methods="16" coveredmethods="16"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
-        <line num="21" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
-        <line num="30" count="42" type="stmt"/>
-        <line num="49" count="11" type="stmt"/>
-        <line num="53" count="277" type="stmt"/>
-        <line num="55" count="230" type="stmt"/>
-        <line num="56" count="92" type="cond" truecount="2" falsecount="0"/>
-        <line num="57" count="46" type="stmt"/>
-        <line num="58" count="46" type="stmt"/>
-        <line num="59" count="46" type="stmt"/>
-        <line num="60" count="46" type="stmt"/>
-        <line num="61" count="46" type="stmt"/>
-        <line num="62" count="46" type="stmt"/>
-        <line num="64" count="46" type="stmt"/>
-        <line num="65" count="9" type="cond" truecount="6" falsecount="0"/>
-        <line num="68" count="46" type="stmt"/>
-        <line num="69" count="3" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
+        <line num="30" count="51" type="stmt"/>
+        <line num="49" count="12" type="stmt"/>
+        <line num="53" count="331" type="stmt"/>
+        <line num="55" count="275" type="stmt"/>
+        <line num="56" count="110" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="55" type="stmt"/>
+        <line num="58" count="55" type="stmt"/>
+        <line num="59" count="55" type="stmt"/>
+        <line num="60" count="55" type="stmt"/>
+        <line num="61" count="55" type="stmt"/>
+        <line num="62" count="55" type="stmt"/>
+        <line num="64" count="55" type="stmt"/>
+        <line num="65" count="10" type="cond" truecount="6" falsecount="0"/>
+        <line num="68" count="55" type="stmt"/>
+        <line num="69" count="5" type="stmt"/>
         <line num="72" count="1" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
         <line num="74" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -1243,18 +1238,18 @@
         <line num="93" count="2" type="stmt"/>
         <line num="95" count="2" type="stmt"/>
         <line num="96" count="2" type="stmt"/>
-        <line num="100" count="1" type="stmt"/>
-        <line num="101" count="1" type="stmt"/>
-        <line num="102" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="107" count="1" type="stmt"/>
-        <line num="108" count="1" type="stmt"/>
-        <line num="110" count="1" type="stmt"/>
-        <line num="115" count="46" type="stmt"/>
-        <line num="116" count="12" type="stmt"/>
-        <line num="117" count="12" type="stmt"/>
-        <line num="118" count="12" type="cond" truecount="11" falsecount="0"/>
-        <line num="119" count="6" type="stmt"/>
-        <line num="120" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="100" count="2" type="stmt"/>
+        <line num="101" count="2" type="stmt"/>
+        <line num="102" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="107" count="2" type="stmt"/>
+        <line num="108" count="2" type="stmt"/>
+        <line num="110" count="2" type="stmt"/>
+        <line num="115" count="55" type="stmt"/>
+        <line num="116" count="13" type="stmt"/>
+        <line num="117" count="13" type="stmt"/>
+        <line num="118" count="13" type="cond" truecount="11" falsecount="0"/>
+        <line num="119" count="7" type="stmt"/>
+        <line num="120" count="7" type="cond" truecount="2" falsecount="0"/>
         <line num="121" count="5" type="stmt"/>
         <line num="123" count="2" type="stmt"/>
         <line num="133" count="2" type="stmt"/>
@@ -1262,43 +1257,43 @@
         <line num="137" count="3" type="stmt"/>
         <line num="142" count="3" type="stmt"/>
         <line num="143" count="3" type="stmt"/>
-        <line num="146" count="1" type="stmt"/>
-        <line num="156" count="1" type="stmt"/>
-        <line num="157" count="1" type="stmt"/>
-        <line num="163" count="46" type="stmt"/>
-        <line num="164" count="46" type="stmt"/>
-        <line num="165" count="46" type="stmt"/>
-        <line num="166" count="46" type="stmt"/>
-        <line num="167" count="46" type="stmt"/>
-        <line num="168" count="46" type="stmt"/>
-        <line num="169" count="46" type="stmt"/>
-        <line num="174" count="3" type="stmt"/>
-        <line num="183" count="3" type="stmt"/>
-        <line num="184" count="3" type="stmt"/>
-        <line num="188" count="46" type="cond" truecount="1" falsecount="0"/>
+        <line num="146" count="2" type="stmt"/>
+        <line num="156" count="2" type="stmt"/>
+        <line num="157" count="2" type="stmt"/>
+        <line num="163" count="55" type="stmt"/>
+        <line num="164" count="55" type="stmt"/>
+        <line num="165" count="55" type="stmt"/>
+        <line num="166" count="55" type="stmt"/>
+        <line num="167" count="55" type="stmt"/>
+        <line num="168" count="55" type="stmt"/>
+        <line num="169" count="55" type="stmt"/>
+        <line num="174" count="4" type="stmt"/>
+        <line num="183" count="4" type="stmt"/>
+        <line num="184" count="4" type="stmt"/>
+        <line num="188" count="55" type="cond" truecount="1" falsecount="0"/>
         <line num="189" count="4" type="stmt"/>
-        <line num="196" count="42" type="stmt"/>
+        <line num="196" count="51" type="stmt"/>
         <line num="232" count="2" type="stmt"/>
-        <line num="268" count="11" type="stmt"/>
-        <line num="269" count="22" type="stmt"/>
+        <line num="268" count="12" type="stmt"/>
+        <line num="269" count="23" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.DropZoneView.TextDropZoneView">
       <metrics statements="88" coveredstatements="88" conditionals="56" coveredconditionals="56" methods="27" coveredmethods="27"/>
       <file name="TextDropZoneView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\DropZoneView\TextDropZoneView\TextDropZoneView.tsx">
         <metrics statements="88" coveredstatements="88" conditionals="56" coveredconditionals="56" methods="27" coveredmethods="27"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
-        <line num="21" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
-        <line num="23" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
-        <line num="26" count="11" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
         <line num="38" count="259" type="stmt"/>
         <line num="40" count="37" type="stmt"/>
         <line num="41" count="37" type="stmt"/>
@@ -1373,7 +1368,7 @@
         <line num="242" count="43" type="stmt"/>
         <line num="245" count="23" type="stmt"/>
         <line num="255" count="1" type="stmt"/>
-        <line num="285" count="11" type="stmt"/>
+        <line num="285" count="12" type="stmt"/>
         <line num="286" count="27" type="stmt"/>
       </file>
     </package>
@@ -1381,17 +1376,17 @@
       <metrics statements="33" coveredstatements="33" conditionals="19" coveredconditionals="19" methods="9" coveredmethods="9"/>
       <file name="EditorView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\EditorView.tsx">
         <metrics statements="28" coveredstatements="28" conditionals="17" coveredconditionals="17" methods="8" coveredmethods="8"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
-        <line num="33" count="11" type="stmt"/>
-        <line num="35" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
+        <line num="35" count="12" type="stmt"/>
         <line num="37" count="96" type="stmt"/>
         <line num="38" count="16" type="stmt"/>
         <line num="39" count="16" type="stmt"/>
@@ -1407,38 +1402,38 @@
         <line num="80" count="15" type="stmt"/>
         <line num="99" count="15" type="stmt"/>
         <line num="123" count="8" type="stmt"/>
-        <line num="143" count="11" type="stmt"/>
+        <line num="143" count="12" type="stmt"/>
         <line num="144" count="13" type="stmt"/>
       </file>
       <file name="EditorViewStyle.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\EditorViewStyle.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
         <line num="3" count="15" type="stmt"/>
-        <line num="29" count="11" type="stmt"/>
+        <line num="29" count="12" type="stmt"/>
       </file>
       <file name="editorCss.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\editorCss.ts">
         <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="3" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="3" count="12" type="cond" truecount="2" falsecount="0"/>
       </file>
     </package>
     <package name="Formalite.elements.EditorView.Editor">
       <metrics statements="28" coveredstatements="28" conditionals="20" coveredconditionals="20" methods="7" coveredmethods="7"/>
       <file name="EditorToolbar.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\Editor\EditorToolbar.tsx">
         <metrics statements="22" coveredstatements="22" conditionals="18" coveredconditionals="18" methods="6" coveredmethods="6"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
-        <line num="37" count="11" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
+        <line num="37" count="12" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
-        <line num="41" count="11" type="stmt"/>
+        <line num="41" count="12" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
-        <line num="46" count="11" type="stmt"/>
-        <line num="78" count="11" type="stmt"/>
+        <line num="46" count="12" type="stmt"/>
+        <line num="78" count="12" type="stmt"/>
         <line num="79" count="4" type="stmt"/>
         <line num="80" count="4" type="stmt"/>
         <line num="81" count="4" type="stmt"/>
@@ -1447,41 +1442,41 @@
         <line num="91" count="20" type="stmt"/>
         <line num="101" count="56" type="stmt"/>
         <line num="110" count="24" type="stmt"/>
-        <line num="189" count="11" type="stmt"/>
+        <line num="189" count="12" type="stmt"/>
       </file>
       <file name="EditorToolbarStyle.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\EditorView\Editor\EditorToolbarStyle.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
-        <line num="135" count="11" type="stmt"/>
+        <line num="135" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.GroupView">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="GroupView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\GroupView\GroupView.tsx">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="22" count="11" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
         <line num="33" count="90" type="stmt"/>
         <line num="34" count="10" type="stmt"/>
-        <line num="49" count="11" type="stmt"/>
+        <line num="49" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.PriceView">
       <metrics statements="21" coveredstatements="21" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7"/>
       <file name="PriceView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\PriceView\PriceView.tsx">
         <metrics statements="21" coveredstatements="21" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="25" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
         <line num="34" count="112" type="stmt"/>
         <line num="35" count="16" type="stmt"/>
         <line num="37" count="16" type="stmt"/>
@@ -1495,7 +1490,7 @@
         <line num="75" count="16" type="stmt"/>
         <line num="86" count="10" type="cond" truecount="1" falsecount="0"/>
         <line num="87" count="10" type="stmt"/>
-        <line num="98" count="11" type="stmt"/>
+        <line num="98" count="12" type="stmt"/>
         <line num="99" count="19" type="stmt"/>
       </file>
     </package>
@@ -1503,21 +1498,21 @@
       <metrics statements="74" coveredstatements="74" conditionals="30" coveredconditionals="30" methods="14" coveredmethods="14"/>
       <file name="RadioGroupView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\RadioGroupView\RadioGroupView.tsx">
         <metrics statements="42" coveredstatements="42" conditionals="18" coveredconditionals="18" methods="9" coveredmethods="9"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="30" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
         <line num="34" count="8" type="stmt"/>
         <line num="35" count="8" type="stmt"/>
         <line num="36" count="16" type="stmt"/>
         <line num="38" count="8" type="stmt"/>
-        <line num="41" count="11" type="stmt"/>
-        <line num="43" count="11" type="stmt"/>
+        <line num="41" count="12" type="stmt"/>
+        <line num="43" count="12" type="stmt"/>
         <line num="53" count="27" type="cond" truecount="2" falsecount="0"/>
         <line num="54" count="189" type="stmt"/>
         <line num="55" count="27" type="stmt"/>
@@ -1541,34 +1536,34 @@
         <line num="106" count="27" type="cond" truecount="1" falsecount="0"/>
         <line num="107" count="4" type="stmt"/>
         <line num="114" count="23" type="stmt"/>
-        <line num="140" count="11" type="stmt"/>
+        <line num="140" count="12" type="stmt"/>
         <line num="141" count="21" type="stmt"/>
         <line num="142" count="21" type="stmt"/>
         <line num="143" count="21" type="stmt"/>
       </file>
       <file name="RadioGroupView.type.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\RadioGroupView\RadioGroupView.type.ts">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="57" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="58" count="11" type="stmt"/>
-        <line num="59" count="11" type="stmt"/>
-        <line num="60" count="11" type="stmt"/>
+        <line num="57" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="58" count="12" type="stmt"/>
+        <line num="59" count="12" type="stmt"/>
+        <line num="60" count="12" type="stmt"/>
       </file>
       <file name="RadioGroupViewAllViews.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\RadioGroupView\RadioGroupViewAllViews.tsx">
         <metrics statements="28" coveredstatements="28" conditionals="10" coveredconditionals="10" methods="4" coveredmethods="4"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="20" count="11" type="stmt"/>
-        <line num="39" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="39" count="12" type="stmt"/>
         <line num="40" count="23" type="stmt"/>
         <line num="41" count="23" type="stmt"/>
         <line num="42" count="23" type="stmt"/>
         <line num="43" count="23" type="stmt"/>
         <line num="44" count="23" type="stmt"/>
         <line num="46" count="23" type="stmt"/>
-        <line num="61" count="11" type="stmt"/>
+        <line num="61" count="12" type="stmt"/>
         <line num="73" count="184" type="stmt"/>
         <line num="74" count="46" type="stmt"/>
         <line num="75" count="23" type="cond" truecount="1" falsecount="0"/>
@@ -1582,26 +1577,26 @@
         <line num="133" count="14" type="cond" truecount="1" falsecount="0"/>
         <line num="134" count="12" type="stmt"/>
         <line num="148" count="2" type="stmt"/>
-        <line num="164" count="11" type="stmt"/>
+        <line num="164" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.RepeaterView">
       <metrics statements="26" coveredstatements="26" conditionals="16" coveredconditionals="16" methods="10" coveredmethods="10"/>
       <file name="RepeaterView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\RepeaterView\RepeaterView.tsx">
         <metrics statements="26" coveredstatements="26" conditionals="16" coveredconditionals="16" methods="10" coveredmethods="10"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="34" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
         <line num="35" count="67" type="stmt"/>
         <line num="37" count="67" type="stmt"/>
-        <line num="46" count="11" type="stmt"/>
+        <line num="46" count="12" type="stmt"/>
         <line num="57" count="243" type="stmt"/>
         <line num="58" count="27" type="stmt"/>
         <line num="60" count="27" type="stmt"/>
@@ -1614,22 +1609,22 @@
         <line num="148" count="1" type="stmt"/>
         <line num="149" count="2" type="stmt"/>
         <line num="153" count="1" type="stmt"/>
-        <line num="177" count="11" type="stmt"/>
+        <line num="177" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.SelectView">
       <metrics statements="81" coveredstatements="81" conditionals="37" coveredconditionals="37" methods="16" coveredmethods="16"/>
       <file name="SelectView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\SelectView\SelectView.tsx">
         <metrics statements="35" coveredstatements="35" conditionals="16" coveredconditionals="16" methods="6" coveredmethods="6"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="13" count="11" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="27" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="27" count="12" type="stmt"/>
         <line num="29" count="180" type="stmt"/>
         <line num="30" count="30" type="stmt"/>
         <line num="31" count="30" type="stmt"/>
@@ -1652,30 +1647,30 @@
         <line num="81" count="30" type="cond" truecount="1" falsecount="0"/>
         <line num="82" count="2" type="stmt"/>
         <line num="89" count="28" type="stmt"/>
-        <line num="114" count="11" type="stmt"/>
+        <line num="114" count="12" type="stmt"/>
         <line num="115" count="22" type="stmt"/>
         <line num="116" count="22" type="stmt"/>
         <line num="117" count="22" type="stmt"/>
       </file>
       <file name="SelectView.type.ts" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\SelectView\SelectView.type.ts">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="51" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="52" count="11" type="stmt"/>
-        <line num="53" count="11" type="stmt"/>
-        <line num="54" count="11" type="stmt"/>
+        <line num="51" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="12" type="stmt"/>
+        <line num="53" count="12" type="stmt"/>
+        <line num="54" count="12" type="stmt"/>
       </file>
       <file name="SelectViewAllViews.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\SelectView\SelectViewAllViews.tsx">
         <metrics statements="42" coveredstatements="42" conditionals="19" coveredconditionals="19" methods="9" coveredmethods="9"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="16" count="11" type="stmt"/>
-        <line num="19" count="11" type="stmt"/>
-        <line num="24" count="11" type="stmt"/>
-        <line num="25" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
-        <line num="35" count="11" type="stmt"/>
-        <line num="51" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="24" count="12" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
+        <line num="35" count="12" type="stmt"/>
+        <line num="51" count="12" type="stmt"/>
         <line num="62" count="301" type="stmt"/>
         <line num="63" count="43" type="stmt"/>
         <line num="64" count="172" type="stmt"/>
@@ -1707,36 +1702,36 @@
         <line num="173" count="16" type="cond" truecount="1" falsecount="0"/>
         <line num="174" count="14" type="stmt"/>
         <line num="176" count="2" type="stmt"/>
-        <line num="184" count="11" type="stmt"/>
+        <line num="184" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.SwitchGroupView">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="SwitchGroupView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\SwitchGroupView\SwitchGroupView.tsx">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="18" count="12" type="stmt"/>
         <line num="22" count="72" type="stmt"/>
         <line num="24" count="12" type="stmt"/>
-        <line num="40" count="11" type="stmt"/>
+        <line num="40" count="12" type="stmt"/>
       </file>
     </package>
     <package name="Formalite.elements.TextView">
       <metrics statements="26" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="4" coveredmethods="4"/>
       <file name="TextView.tsx" path="F:\Projects\GITHUB\formalite\packages\formalite\src\components\Formalite\elements\TextView\TextView.tsx">
         <metrics statements="26" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="4" coveredmethods="4"/>
-        <line num="1" count="11" type="stmt"/>
-        <line num="2" count="11" type="stmt"/>
-        <line num="3" count="11" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="10" count="11" type="stmt"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
+        <line num="2" count="12" type="stmt"/>
+        <line num="3" count="12" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="28" count="12" type="stmt"/>
         <line num="29" count="330" type="stmt"/>
         <line num="30" count="66" type="stmt"/>
         <line num="33" count="66" type="stmt"/>
@@ -1751,7 +1746,7 @@
         <line num="68" count="2" type="stmt"/>
         <line num="69" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="70" count="2" type="stmt"/>
-        <line num="90" count="11" type="stmt"/>
+        <line num="90" count="12" type="stmt"/>
         <line num="91" count="88" type="stmt"/>
       </file>
     </package>

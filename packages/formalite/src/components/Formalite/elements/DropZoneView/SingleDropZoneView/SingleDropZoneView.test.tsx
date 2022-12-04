@@ -6,12 +6,15 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { MultiDropZoneView } from "@components/Formalite/elements/DropZoneView/MultiDropZoneView/MultiDropZoneView.stories";
+import fetchMock from "jest-fetch-mock";
 import { render, screen } from "../../../../../config/test-utils";
 import { ImageDownloaderPromise } from "../Components/Global.type";
 import { SingleDropZoneView } from "./SingleDropZoneView.stories";
 
 beforeEach(() => {
   jest.resetAllMocks();
+  fetchMock.resetMocks();
   jest.useFakeTimers();
   act(() => {
     jest.advanceTimersByTime(0);
@@ -167,7 +170,7 @@ test("Single Drop Zone: is Rendered with reject  -> SingleDropZoneView", async (
 
   // select file for upload
   const fileInput = screen.getByTestId("drop-input");
-  const file = new File(["file"], "ping.json", {
+  const file = new File(["file"], "ping.png", {
     type: "application/json",
   });
   window.URL.createObjectURL = jest.fn().mockImplementation(() => "url");
@@ -180,6 +183,14 @@ test("Single Drop Zone: is Rendered with reject  -> SingleDropZoneView", async (
 
   const text = await screen.findByText(/some Error/i);
   expect(text).toBeInTheDocument();
+
+  // retry
+  const retryIcon = await screen.findByTestId("ReplayIcon");
+  userEvent.click(retryIcon);
+  const retryIconAfter = await screen.findByTestId("ReplayIcon");
+  await waitFor(async () => {
+    expect(retryIconAfter).toBeInTheDocument();
+  });
 });
 
 test("Single Zone: is Rendered with error in imageDownloader -> SingleDropZoneView", async () => {
@@ -222,4 +233,52 @@ test("Single Drop Zone: is Rendered without imageDownloader -> SingleDropZoneVie
   const closeIcons = await screen.getByTestId("CloseIcon");
   userEvent.click(closeIcons);
   await waitForElementToBeRemoved(closeIcons);
+});
+
+test("Single Drop Zone: is Rendered when delete get rejected -> SingleDropZoneView", async () => {
+  const a = fetchMock.mockResponseOnce(
+    JSON.stringify({ rates: { CAD: 1.42 } })
+  );
+  window.URL.createObjectURL = jest.fn();
+  render(
+    // @ts-ignore
+    <SingleDropZoneView
+      {...SingleDropZoneView.args}
+      withIni
+      imageDownloader={undefined}
+      onDelete={(id, isFromDefault) =>
+        new Promise<void>((res, rej) => {
+          setTimeout(() => {
+            rej(new Error("some Error"));
+          }, 0);
+        })
+      }
+    />
+  );
+  const downloadIcon = screen.getByTestId("DownloadIcon");
+  expect(downloadIcon).toBeInTheDocument();
+
+  userEvent.click(downloadIcon);
+  expect(a).toBeCalledTimes(1);
+
+  // click remove
+  const closeIcons = await screen.getByTestId("CloseIcon");
+  userEvent.click(closeIcons);
+  const text = await screen.findByText(/some Error/i);
+  expect(text).toBeInTheDocument();
+
+  // select file for upload
+  const fileInput = screen.getByTestId("drop-input");
+  const file = new File(["file"], "ping.json", {
+    type: "application/json",
+  });
+  window.URL.createObjectURL = jest.fn().mockImplementation(() => "url");
+  Object.defineProperty(fileInput, "files", {
+    value: [file],
+  });
+  fireEvent.dragEnter(fileInput);
+  fireEvent.dragOver(fileInput);
+  fireEvent.drop(fileInput);
+
+  // aa
 });

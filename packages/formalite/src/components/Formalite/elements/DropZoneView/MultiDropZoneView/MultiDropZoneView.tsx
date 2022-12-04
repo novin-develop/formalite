@@ -260,6 +260,7 @@ const MultiDropZoneView = <T extends FormikValues>(
           <SmallBlockContent required={isRequired} />
         ) : (
           <BlockContent
+            uploadController={new AbortController()}
             file={null}
             required={isRequired}
             uploadFunction={uploadFunction}

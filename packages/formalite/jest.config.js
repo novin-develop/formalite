@@ -35,4 +35,6 @@ module.exports = {
     ],
     "\\.svg$": "<rootDir>/jest-svg-transformer.js",
   },
+  automock: false,
+  resetMocks: false,
 };

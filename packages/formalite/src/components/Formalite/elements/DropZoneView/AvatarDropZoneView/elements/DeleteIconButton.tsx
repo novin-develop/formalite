@@ -24,7 +24,7 @@ export const DeleteIconButton = <T extends FormikValues>(
 
   return (
     <Grow
-      in={file[0] && !["uploading", "deleting"].includes(file[0]?.status || "")}
+      in={file[0] && !["uploading", "deleting"].includes(file[0].status || "")}
     >
       <IconButton
         sx={(theme) => ({

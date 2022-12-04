@@ -1,7 +1,6 @@
 import { act } from "react-dom/test-utils";
 import { ImageDownloaderPromise } from "@components/Formalite";
 import { render, screen } from "@config/test-utils";
-import { SingleDropZoneView } from "@components/Formalite/elements/DropZoneView/SingleDropZoneView/SingleDropZoneView.stories";
 import {
   fireEvent,
   waitFor,
@@ -10,9 +9,11 @@ import {
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { MultiDropZoneView } from "@components/Formalite/elements/DropZoneView/MultiDropZoneView/MultiDropZoneView.stories";
+import fetchMock from "jest-fetch-mock";
 
 beforeEach(() => {
   jest.resetAllMocks();
+  fetchMock.resetMocks();
   jest.useFakeTimers();
   act(() => {
     jest.advanceTimersByTime(0);
@@ -75,7 +76,7 @@ test("Small Drop Zone: is Rendered -> MultiDropZoneView", async () => {
   });
 });
 
-test("Multi Drop Zone: is Rendered with ini data-> MultiDropZoneView", async () => {
+test("Multi Drop Zone: is Rendered with ini data -> MultiDropZoneView", async () => {
   const onSelectFunc = jest.fn();
   const onDeleteFunc = jest.fn();
   render(
@@ -179,8 +180,11 @@ test("Multi Drop Zone: is Rendered with adding item without id -> MultiDropZoneV
 });
 
 test("Multi Drop Zone: is Rendered with reject  -> MultiDropZoneView", async () => {
-  jest.resetAllMocks();
   const onSelectFunc = jest.fn();
+  const a = fetchMock.mockResponseOnce(
+    JSON.stringify({ rates: { CAD: 1.42 } })
+  );
+
   render(
     // @ts-ignore
     <MultiDropZoneView
@@ -214,6 +218,79 @@ test("Multi Drop Zone: is Rendered with reject  -> MultiDropZoneView", async () 
 
   const text = await screen.findByText(/some Error/i);
   expect(text).toBeInTheDocument();
+
+  const retryIcon = await screen.findByTestId("ReplayIcon");
+  userEvent.click(retryIcon);
+  const retryIconAfter = await screen.findByTestId("ReplayIcon");
+  expect(retryIconAfter).toBeInTheDocument();
+
+  const text2 = await screen.findByText(/some Error/i);
+  expect(text2).toBeInTheDocument();
+
+  const downloadIcon = await screen.getAllByTestId("DownloadIcon")[0];
+  userEvent.click(downloadIcon);
+  expect(a).toBeCalledTimes(1);
+});
+
+test("Multi Drop Zone: is Rendered with reject in showPreview -> MultiDropZoneView", async () => {
+  const onSelectFunc = jest.fn();
+  const a = fetchMock.mockResponseOnce(
+    JSON.stringify({ rates: { CAD: 1.42 } })
+  );
+
+  render(
+    // @ts-ignore
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
+      withIni
+      showPreview
+      imageDownloader={TestImageDownloader}
+      onUpload={(file, progress) =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            reject(new Error("some Errors"));
+          }, 0);
+          onSelectFunc();
+        })
+      }
+      onDelete={(id, isFromDefault) =>
+        new Promise<void>((resolve, reject) => {
+          setTimeout(() => {
+            resolve();
+          }, 0);
+        })
+      }
+    />
+  );
+
+  // select file for upload
+  const fileInput = screen.getByTestId("drop-input");
+  const file = new File(["file"], "ping.json", {
+    type: "application/json",
+  });
+  window.URL.createObjectURL = jest.fn().mockImplementation(() => "url");
+  Object.defineProperty(fileInput, "files", {
+    value: [file],
+  });
+  fireEvent.dragEnter(fileInput);
+  fireEvent.dragOver(fileInput);
+  fireEvent.drop(fileInput);
+
+  const text = await screen.findByText(/some Errors/i);
+  expect(text).toBeInTheDocument();
+
+  const retryIcon = await screen.findByTestId("ReplayIcon");
+  userEvent.click(retryIcon);
+  const retryIconAfter = await screen.findByTestId("ReplayIcon");
+  expect(retryIconAfter).toBeInTheDocument();
+
+  const text2 = await screen.findByText(/some Errors/i);
+  expect(text2).toBeInTheDocument();
+
+  // click remove
+  const closeIcons = await screen.getAllByTestId("CloseIcon");
+  userEvent.click(closeIcons[0]);
+  await waitForElementToBeRemoved(closeIcons[0]);
 });
 
 test("Multi Zone: is Rendered with error in imageDownloader -> MultiDropZoneView", async () => {
@@ -274,9 +351,9 @@ test("Multi Drop Zone: is Rendered without imageDownloader -> MultiDropZoneView"
       withIni
       imageDownloader={undefined}
       onDelete={(id, isFromDefault) =>
-        new Promise<void>((resolve, reject) => {
+        new Promise<void>((res, rej) => {
           setTimeout(() => {
-            resolve();
+            res();
           }, 0);
         })
       }
@@ -289,4 +366,30 @@ test("Multi Drop Zone: is Rendered without imageDownloader -> MultiDropZoneView"
   const closeIcons = await screen.getAllByTestId("CloseIcon");
   userEvent.click(closeIcons[0]);
   await waitForElementToBeRemoved(closeIcons[0]);
+});
+
+test("Multi Drop Zone: is Rendered without imageDownloader and reject delete -> MultiDropZoneView", async () => {
+  render(
+    // @ts-ignore
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
+      withIni
+      imageDownloader={undefined}
+      onDelete={(id, isFromDefault) =>
+        new Promise<void>((res, rej) => {
+          setTimeout(() => {
+            rej(new Error("some Error"));
+          }, 0);
+        })
+      }
+    />
+  );
+  const downloadIcons = await screen.getAllByTestId("DownloadIcon");
+  expect(downloadIcons).toHaveLength(2);
+
+  // click remove
+  const closeIcons = await screen.getAllByTestId("CloseIcon");
+  userEvent.click(closeIcons[0]);
+  const text = await screen.findByText(/some Error/i);
+  expect(text).toBeInTheDocument();
 });

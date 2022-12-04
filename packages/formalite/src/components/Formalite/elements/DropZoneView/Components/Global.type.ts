@@ -2,7 +2,7 @@ export interface CustomFile extends File {
   original: "selected";
   path?: string;
   preview: string;
-  status?: string;
+  status: string;
   progress?: number;
   uid?: string;
   errorText?: string;
@@ -14,7 +14,7 @@ export interface OutsideFile {
   uid?: string;
   preview: string;
   base64?: string | ArrayBuffer | null;
-  originalName?: string;
+  originalName: string;
   size?: number;
   errorText?: string;
   controller: AbortController;

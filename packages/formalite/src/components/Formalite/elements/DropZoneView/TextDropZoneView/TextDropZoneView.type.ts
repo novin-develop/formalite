@@ -61,7 +61,7 @@ export interface TextDropZoneViewType extends BaseViewType {
    * @param isSuccess > Tells you delete was Success
    */
   onDelete: (
-    id: string,
+    id: string | undefined,
     isFromDefault: boolean,
     isSuccess: boolean
   ) => Promise<void>;
@@ -99,7 +99,7 @@ export interface UploadTextFileProps extends DropzoneOptions {
   files: (CustomFile | OutsideFile)[];
   showPreview: boolean;
   onRemove: (
-    id: string,
+    id: string | undefined,
     isFromDefault: boolean,
     isSuccess: boolean
   ) => Promise<void>;

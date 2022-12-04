@@ -461,7 +461,6 @@ function useFromString() {
           dropZoneOptions: {
             maxSize: 3145728,
           },
-          helperText: `Allowed *.jpeg, *.jpg, *.png, *.gif`,
         },
         showPreview: false,
         imageDownloader,

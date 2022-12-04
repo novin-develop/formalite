@@ -57,8 +57,8 @@ type BlockContentType = {
     isFromDefault: boolean,
     isSuccess: boolean
   ) => Promise<void>;
-  setFile: Dispatch<SetStateAction<(CustomFile | OutsideFile)[]>>;
-  resetDropZone: () => void;
+  setFile?: Dispatch<SetStateAction<(CustomFile | OutsideFile)[]>>;
+  resetDropZone?: () => void;
   required: boolean;
   uploadFunction: (file: CustomFile) => void;
   uploadController?: AbortController;
@@ -97,6 +97,8 @@ const HelperSection = ({ required, file }: HelperSectionType) => {
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
 export default function BlockContent(props: BlockContentType) {
+  const setFile = props.setFile || (() => {});
+  const resetDropZone = props.resetDropZone || (() => {});
   return (
     <Stack
       spacing={2}
@@ -129,7 +131,7 @@ export default function BlockContent(props: BlockContentType) {
             onClick={(e) => {
               e.stopPropagation();
               props.uploadController?.abort();
-              props.setFile((pre) => {
+              setFile((pre) => {
                 const tempArray = [...pre];
                 if (tempArray.length) {
                   tempArray[0].status = "deleting";
@@ -149,11 +151,11 @@ export default function BlockContent(props: BlockContentType) {
                     !props.file?.errorText?.length
                   )
                   .then(() => {
-                    props.resetDropZone();
-                    props.setFile([]);
+                    resetDropZone();
+                    setFile([]);
                   })
                   .catch((e1) => {
-                    props.setFile((pre) => {
+                    setFile((pre) => {
                       const tempArray = [...pre];
                       if (tempArray.length && tempArray[0]?.status) {
                         tempArray[0].status = "error";

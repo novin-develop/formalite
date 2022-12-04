@@ -233,6 +233,39 @@ test("Multi Zone: is Rendered with error in imageDownloader -> MultiDropZoneView
   expect(text).toBeInTheDocument();
 });
 
+test("Multi Zone: Drop Reject -> MultiDropZoneView", async () => {
+  render(
+    // @ts-ignore
+    <MultiDropZoneView
+      {...MultiDropZoneView.args}
+      withIni
+      isSmallView
+      inputProps={{
+        label: "aaa",
+        dropZoneOptions: {
+          accept: {
+            "image/png": [".svg,.png"],
+          },
+        },
+      }}
+    />
+  );
+  // select file for upload
+  const fileInput = screen.getByTestId("drop-input");
+  const file = new File(["file"], "ping.json", {
+    type: "application/json",
+  });
+  window.URL.createObjectURL = jest.fn().mockImplementation(() => "url");
+  Object.defineProperty(fileInput, "files", {
+    value: [file],
+  });
+  fireEvent.dragEnter(fileInput);
+  fireEvent.dragOver(fileInput);
+  fireEvent.drop(fileInput);
+
+  expect(await screen.findByText(/File type must be/i)).toBeInTheDocument();
+});
+
 test("Multi Drop Zone: is Rendered without imageDownloader -> MultiDropZoneView", async () => {
   render(
     // @ts-ignore

@@ -61,14 +61,12 @@ const MultiDropZoneView = <T extends FormikValues>(
     layoutProps,
     onDelete,
     imageDownloader,
-    showPreview = false,
+    showPreview,
     isSmallView = false,
   } = allData;
   const { dropZoneOptions = {}, helperText } = inputProps;
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>(
-    fixDropZoneDefaultValue(
-      getData({ source: formik.values, key: name }) || []
-    ) || []
+    fixDropZoneDefaultValue(getData({ source: formik.values, key: name }) || [])
   );
   const ref = useRef<HTMLInputElement>(null);
   const theme = useTheme();
@@ -263,8 +261,6 @@ const MultiDropZoneView = <T extends FormikValues>(
         ) : (
           <BlockContent
             file={null}
-            setFile={() => {}}
-            resetDropZone={() => {}}
             required={isRequired}
             uploadFunction={uploadFunction}
             isLessMd={isLessMd}
@@ -282,7 +278,7 @@ const MultiDropZoneView = <T extends FormikValues>(
 
       <MultiFilePreview
         files={file}
-        showPreview={showPreview}
+        showPreview={!!showPreview}
         onRemove={onDelete}
         setFile={setFile}
         setToFormik={(newValue) => {

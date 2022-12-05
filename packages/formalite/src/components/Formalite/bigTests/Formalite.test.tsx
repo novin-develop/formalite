@@ -2,8 +2,13 @@ import { act } from "react-dom/test-utils";
 import React from "react";
 import { ComponentStory } from "@storybook/react";
 import { render, screen } from "@config/test-utils";
-import { waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import {
+  fireEvent,
+  waitFor,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import moment from "moment";
 import { ErrorTestFormalite } from "./ErrorTestFromalite";
 import { TestFormalite } from "./TestFormalite";
 
@@ -31,10 +36,31 @@ beforeEach(() => {
 });
 
 /// -------------------------Error
-test("Formalite: All component must have error", async () => {
+test("Formalite: All component must have error with timeView", async () => {
   render(<AllBaseError themeMode="light" />);
 
   const submitButton = screen.getByRole("button", { name: "Submit" });
+
+  const timeView = screen.getByRole("textbox", { name: /Choose time/ });
+  userEvent.click(timeView);
+  fireEvent.click(screen.getByRole("button", { name: "PM" }));
+  userEvent.click(screen.getByRole("button", { name: "Cancel" }));
+  await waitForElementToBeRemoved(screen.getByRole("dialog"));
+
+  const dateTimeView = screen.getAllByRole("textbox", { name: /Choose date/ });
+  userEvent.click(dateTimeView[1]);
+  fireEvent.click(
+    screen.getByRole("button", { name: moment().format("MMM 10, YYYY") })
+  );
+  userEvent.click(screen.getByRole("button", { name: "Cancel" }));
+  await waitForElementToBeRemoved(screen.getByRole("dialog"));
+
+  userEvent.click(dateTimeView[0]);
+  fireEvent.click(
+    screen.getByRole("button", { name: moment().format("MMM 10, YYYY") })
+  );
+  userEvent.click(screen.getByRole("button", { name: "Cancel" }));
+  await waitForElementToBeRemoved(screen.getByRole("dialog"));
 
   userEvent.click(submitButton);
 
@@ -45,6 +71,7 @@ test("Formalite: All component must have error", async () => {
   expect(allErrorTexts).toHaveLength(20);
 });
 
+/// -----------------------------Loading
 test("Formalite: All Loading rendered", async () => {
   let allSkeleton: HTMLCollectionOf<Element>;
 
@@ -60,7 +87,7 @@ test("Formalite: All Loading rendered", async () => {
     expect(RetryButton).toBeNull();
   });
 });
-
+/// --------------------------------DARK
 test("Formalite: Dark Mode and rtl rendered", async () => {
   render(<AllBase themeMode="dark" direction="rtl" />);
   const allTextViews = screen.getAllByRole("textbox");

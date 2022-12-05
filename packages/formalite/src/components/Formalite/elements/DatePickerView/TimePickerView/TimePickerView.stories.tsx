@@ -30,9 +30,9 @@ export default {
 
 const Template: ComponentStory<typeof TestTimePickerView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestTimePickerView {...args} lang={locale} />;
+  return <TestTimePickerView {...args} lang={globals?.locale} />;
 };
 
 export const TimePicker = Template.bind({});
@@ -48,8 +48,9 @@ TimePicker.args = {
   // datePickerProps: {
   //   mask: "____/__/__",
   // },
-  onChange: (date) =>
-    console.log("test time Picker onChage", date),
+  onChange: (date) => {
+    // console.log("test time Picker onChage", date);
+  },
 };
 TimePicker.storyName = "Time picker";
 TimePicker.parameters = {

@@ -1,9 +1,7 @@
 import React from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { Grid, TextField } from "@mui/material";
-
 import { checkIsRequired, getData } from "@components/Formalite/config/utils";
 import { Language } from "@components/base/model";
 import { ObjectSchema } from "yup";
@@ -80,9 +78,5 @@ const DateTimePickerView = <T extends FormikValues>(
   );
 };
 export default React.memo(DateTimePickerView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof DateTimePickerView;

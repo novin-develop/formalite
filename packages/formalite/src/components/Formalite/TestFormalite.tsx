@@ -330,7 +330,7 @@ function useFromString(
               placeholder: "some other title",
               disabled,
               onChange: (value) => {
-                console.log(value);
+                // console.log(value);
               },
             },
           },
@@ -359,7 +359,7 @@ function useFromString(
         inputProps: {
           label: "Price",
           onChange: (value) => {
-            console.log(value);
+            // console.log(value);
           },
         },
       },
@@ -473,7 +473,9 @@ function useFromString(
         // datePickerProps: {
         //   mask: "____/__/__",
         // },
-        onChange: (date) => console.log("test datePicker onChange", date),
+        onChange: (date) => {
+          // console.log("test datePicker onChange", date)
+        },
       },
       dateTimePicker: {
         type: ViewTypes.DateTimePickerView,
@@ -486,7 +488,9 @@ function useFromString(
           helperText: "helper text",
         },
         datePickerProps: {},
-        onChange: (date) => console.log("test dateTimePicker onChange", date),
+        onChange: (date) => {
+          console.log("test dateTimePicker onChange", date);
+        },
       },
       timePicker: {
         type: ViewTypes.TimePickerView,
@@ -499,7 +503,9 @@ function useFromString(
           helperText: "helper text",
         },
         timePickerProps: {},
-        onChange: (date) => console.log("test timePicker onChange", date),
+        onChange: (date) => {
+          console.log("test timePicker onChange", date);
+        },
       },
       editor: {
         type: ViewTypes.EditorView,
@@ -670,7 +676,6 @@ function useFromString(
           }),
         onDelete: (id, isFromDefault, isSuccess) =>
           new Promise<void>((resolve, reject) => {
-            console.log(isSuccess);
             setTimeout(() => {
               resolve();
             }, 2000);
@@ -760,7 +765,7 @@ function useFromString(
         inputProps: {
           label: "CheckGroupView",
           onChange: (value, additionalData) => {
-            console.log(value, additionalData);
+            // console.log(value, additionalData);
           },
         },
       },

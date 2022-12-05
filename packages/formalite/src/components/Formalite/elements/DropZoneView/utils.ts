@@ -4,6 +4,7 @@ import {
 } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
 
 // outside library
+/* istanbul ignore next */
 export const dropzoneImageDownloader = (
   filePath: string,
   controller: AbortController

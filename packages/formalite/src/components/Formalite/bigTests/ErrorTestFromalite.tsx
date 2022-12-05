@@ -18,6 +18,7 @@ import Formalite from "../Formalite";
 
 const validation = Yup.object({
   avatar: Yup.array().of(Yup.mixed()).nullable().min(1, "Required"),
+  avatar2: Yup.array().of(Yup.mixed()).nullable().min(1, "Required"),
   title: Yup.string().required("Required"),
   password: Yup.string().required("Required"),
   price: Yup.string().required("Required"),
@@ -66,6 +67,7 @@ export const ErrorTestFormalite = ({
   const formRef = useFormaliteRef<ValidationType>();
   const iniValues: ValidationType = {
     avatar: [],
+    avatar2: [],
     title: "",
     password: "",
     price: "",
@@ -149,6 +151,33 @@ function useFromString() {
   return useMemo<MainType>(() => {
     return {
       avatar: {
+        type: ViewTypes.AvatarDropZoneView,
+        layoutProps: {
+          md: 3,
+          xs: 12,
+        },
+        inputProps: {
+          label: "aaa",
+          dropZoneOptions: {
+            maxSize: 3145728,
+          },
+        },
+        showPreview: false,
+        imageDownloader,
+        onUpload: (file, progress) =>
+          new Promise<string>((resolve, reject) => {
+            setTimeout(() => {
+              resolve("aaa");
+            }, 1);
+          }),
+        onDelete: (id, isFromDefault, isSuccess) =>
+          new Promise<void>((resolve, reject) => {
+            setTimeout(() => {
+              resolve();
+            }, 1);
+          }),
+      },
+      avatar2: {
         type: ViewTypes.AvatarDropZoneView,
         layoutProps: {
           md: 3,

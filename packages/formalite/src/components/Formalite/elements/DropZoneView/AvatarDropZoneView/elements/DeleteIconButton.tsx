@@ -24,7 +24,7 @@ export const DeleteIconButton = <T extends FormikValues>(
 
   return (
     <Grow
-      in={file[0] && !["uploading", "deleting"].includes(file[0].status || "")}
+      in={file[0] && !["uploading", "deleting"].includes(`${file[0].status}`)}
     >
       <IconButton
         sx={(theme) => ({
@@ -44,7 +44,7 @@ export const DeleteIconButton = <T extends FormikValues>(
         size="small"
         onClick={(e) => {
           e.stopPropagation();
-          uploadController?.abort();
+          uploadController.abort();
           setFile((pre) => {
             const tempArray = [...pre];
             if (tempArray.length) {
@@ -53,15 +53,15 @@ export const DeleteIconButton = <T extends FormikValues>(
             return tempArray;
           });
           try {
-            file[0]?.controller.abort();
+            file[0].controller.abort();
           } catch (e1) {
             // Do nothing
           }
           if (onDelete) {
             onDelete(
-              file[0]?.uid || "",
-              file[0]?.original === "default",
-              !!file[0]?.errorText?.length
+              file[0].uid!,
+              file[0].original === "default",
+              !!file[0].errorText
             )
               .then(() => {
                 formik.setFieldValue(name, {});
@@ -70,7 +70,7 @@ export const DeleteIconButton = <T extends FormikValues>(
               .catch((e1) => {
                 setFile((pre) => {
                   const tempArray = [...pre];
-                  if (tempArray.length && tempArray[0]?.status) {
+                  if (tempArray.length && tempArray[0].status) {
                     tempArray[0].status = "error";
                     tempArray[0].errorText = e1.message;
                   }

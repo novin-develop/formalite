@@ -42,7 +42,7 @@ test("Formalite: All component must have error", async () => {
   await waitForElementToBeRemoved(avatarHelper);
 
   const allErrorTexts = screen.getAllByText(/Required/i);
-  expect(allErrorTexts).toHaveLength(19);
+  expect(allErrorTexts).toHaveLength(20);
 });
 
 test("Formalite: All Loading rendered", async () => {

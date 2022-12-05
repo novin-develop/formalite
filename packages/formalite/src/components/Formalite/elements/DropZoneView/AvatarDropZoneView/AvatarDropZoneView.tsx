@@ -55,7 +55,7 @@ const AvatarDropZone = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
+            tempArray[0].status &&
             tempArray[0].original === "selected"
           ) {
             tempArray[0].progress = progress;
@@ -83,8 +83,8 @@ const AvatarDropZone = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
-            tempArray[0]?.original === "selected"
+            tempArray[0].status &&
+            tempArray[0].original === "selected"
           ) {
             tempArray[0].status = "error";
             tempArray[0].errorText = e.message;
@@ -190,7 +190,7 @@ const AvatarDropZone = <T extends FormikValues>(
       />
 
       {(fileRejections.length > 0 ||
-        (typeof file[0] === "object" && file[0]?.status === "error")) && (
+        (typeof file[0] === "object" && file[0].status === "error")) && (
         <RejectionFiles fileRejections={fileRejections} fileState={file[0]} />
       )}
 
@@ -211,9 +211,5 @@ const AvatarDropZone = <T extends FormikValues>(
 };
 
 export default React.memo(AvatarDropZone, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof AvatarDropZone;

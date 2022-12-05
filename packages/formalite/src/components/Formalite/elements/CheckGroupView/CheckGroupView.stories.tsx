@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestCheckGroupView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestCheckGroupView {...args} lang={locale} />;
+  return <TestCheckGroupView {...args} lang={globals?.locale} />;
 };
 
 export const Base = Template.bind({});
@@ -48,6 +48,7 @@ Base.args = {
   inputProps: {
     label: "Title",
     helperText: "HelperText",
+    onChange: () => {},
   },
   dataFetching: {
     type: FetchingDataEnum.MANUAL,

@@ -1,8 +1,6 @@
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
-import { Grid, Skeleton, TextField } from "@mui/material";
+import { Grid } from "@mui/material";
 import React, { useMemo } from "react";
-import { getData, showErrorMessage } from "@components/Formalite/config/utils";
 import { IMaskInput } from "react-imask";
 import { CardNumberViewType } from "@components/Formalite/elements/CardNumberView/CardNumberView.type";
 import { TextFieldBase } from "@components/Formalite/elements/Bases/TextFieldBase";
@@ -81,9 +79,5 @@ const CartNumberView = <T extends FormikValues>(
   );
 };
 export default React.memo(CartNumberView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof CartNumberView;

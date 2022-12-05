@@ -92,6 +92,7 @@ const ColorPickerView = <T extends FormikValues>(
   };
 
   const handleColorChange = (selectedColor: string) => {
+    console.log("aaa");
     formik.setFieldValue(name, selectedColor);
   };
 
@@ -112,7 +113,10 @@ const ColorPickerView = <T extends FormikValues>(
             InputProps={{
               startAdornment: !!colorPicked && (
                 <InputAdornment position="start">
-                  <ColorPickerViewStartAdornment colorPicker={colorPicked} />
+                  <ColorPickerViewStartAdornment
+                    colorPicker={colorPicked}
+                    data-testid="colorCircle"
+                  />
                 </InputAdornment>
               ),
               endAdornment: !!colorPicked && (
@@ -144,9 +148,5 @@ const ColorPickerView = <T extends FormikValues>(
 };
 
 export default React.memo(ColorPickerView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof ColorPickerView;

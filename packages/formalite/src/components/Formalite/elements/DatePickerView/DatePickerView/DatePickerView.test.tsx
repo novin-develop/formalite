@@ -7,6 +7,7 @@ import React from "react";
 import { DatePicker } from "./DatePickerView.stories";
 
 beforeEach(() => {
+  jest.resetAllMocks();
   jest.useFakeTimers();
   act(() => {
     jest.advanceTimersByTime(0);
@@ -30,4 +31,17 @@ test("Date Picker View: is Rendered -> DatePickerView", async () => {
   await waitFor(async () => {
     expect(textView).toHaveValue(`${moment().set("date", 10).format("L")}`);
   });
+});
+
+test("Date Picker View: is Rendered in fa -> DatePickerView", async () => {
+  // @ts-ignore
+  render(<DatePicker {...DatePicker.args} lang="fa" />);
+
+  const textView = await screen.findByRole("textbox", { name: /Choose date/ });
+
+  await waitFor(async () => {
+    userEvent.click(textView);
+  });
+
+  expect(await screen.findByRole("dialog"));
 });

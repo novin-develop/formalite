@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof TestDatePickerView> = (
   args,
   { globals }
 ) => {
-  return <TestDatePickerView {...args} lang={globals?.locale} />;
+  return <TestDatePickerView {...args} lang={args.lang || globals?.locale} />;
 };
 
 export const DatePicker = Template.bind({});

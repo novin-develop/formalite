@@ -39,9 +39,5 @@ const ComponentView = <T extends FormikValues>(
   );
 };
 export default React.memo(ComponentView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof ComponentView;

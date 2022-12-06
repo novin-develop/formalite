@@ -117,7 +117,12 @@ export const ErrorTestFormalite = ({
               }}
               {...props}
             />
-            <Button onClick={() => formRef.current?.callSubmit()}>
+            <Button
+              onClick={() => {
+                formRef.current?.formik.setSubmitting(true);
+                formRef.current?.callSubmit();
+              }}
+            >
               Submit
             </Button>
           </Container>

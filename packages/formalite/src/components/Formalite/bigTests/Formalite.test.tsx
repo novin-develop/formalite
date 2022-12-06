@@ -9,6 +9,7 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import moment from "moment";
+import { ErrorRepeaterFormalite } from "@components/Formalite/bigTests/ErrorRepeaterFormalite";
 import { ErrorTestFormalite } from "./ErrorTestFromalite";
 import { TestFormalite } from "./TestFormalite";
 
@@ -27,12 +28,36 @@ const TemplateError: ComponentStory<typeof ErrorTestFormalite> = (
 
 const AllBaseError = TemplateError.bind({});
 
+const TemplateRepeaterError: ComponentStory<typeof ErrorTestFormalite> = (
+  args,
+  { globals }
+) => {
+  // @ts-ignore
+  return <ErrorRepeaterFormalite {...args} lang={globals?.locale || "en"} />;
+};
+
+const AllBaseRepeaterError = TemplateRepeaterError.bind({});
+
 beforeEach(() => {
   jest.resetAllMocks();
   jest.useFakeTimers();
   act(() => {
     jest.advanceTimersByTime(100);
   });
+});
+/// ----------------------------Error in array
+
+test("Formalite: Test Error in Repeater", async () => {
+  render(<AllBaseRepeaterError themeMode="light" />);
+
+  const submitButton = screen.getByRole("button", { name: "Submit" });
+  userEvent.click(submitButton);
+
+  const allErrorTexts = await screen.findAllByText(/Required/i);
+  expect(allErrorTexts).toHaveLength(3);
+
+  userEvent.click(submitButton);
+  expect(allErrorTexts).toHaveLength(3);
 });
 
 /// -------------------------Error

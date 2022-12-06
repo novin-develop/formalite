@@ -89,6 +89,8 @@ export const getDefaultValue = (type: ViewTypes) => {
   if (
     [
       ViewTypes.MultiDropZoneView,
+      ViewTypes.SingleDropZoneView,
+      ViewTypes.AvatarDropZoneView,
       ViewTypes.CheckGroupView,
       ViewTypes.SwitchGroupView,
       ViewTypes.RepeaterView,
@@ -125,7 +127,7 @@ export const checkRegex = ({
   text,
 }: {
   regexs: (RegExp | undefined)[] | undefined;
-  text: string | undefined;
+  text: string;
 }) => {
   if (!regexs) {
     return true;
@@ -133,7 +135,7 @@ export const checkRegex = ({
   // const allRegexs = regexs.filter((item) => !!item);
   let testResult = true;
   regexs.forEach((item) => {
-    if (item && !item.test(text || "")) {
+    if (item && !item.test(text)) {
       testResult = false;
     }
   });

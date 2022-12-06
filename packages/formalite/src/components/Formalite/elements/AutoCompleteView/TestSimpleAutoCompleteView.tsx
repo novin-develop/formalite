@@ -62,6 +62,7 @@ export const TestSimpleAutoCompleteView = ({
         <button
           type="button"
           onClick={() => {
+            formRef.current?.formik.setSubmitting(true);
             formRef.current?.callSubmit();
           }}
         >

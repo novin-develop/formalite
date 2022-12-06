@@ -26,10 +26,10 @@ export const baseMemo = (
       getData({ source: prevProps.formik.values, key: item }) ===
       getData({ source: nextProps.formik.values, key: item })
   ) &&
-  prevProps.allData?.inputProps?.disabled ===
-    nextProps.allData?.inputProps?.disabled &&
+  prevProps.allData.inputProps?.disabled ===
+    nextProps.allData.inputProps?.disabled &&
   prevProps.loading === nextProps.loading &&
   compare(
-    prevProps.allData?.renderDependency,
-    nextProps.allData?.renderDependency
+    prevProps.allData.renderDependency,
+    nextProps.allData.renderDependency
   );

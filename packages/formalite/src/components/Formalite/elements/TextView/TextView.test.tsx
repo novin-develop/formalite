@@ -88,3 +88,25 @@ test("TextView: mustRegex is working -> TextView", async () => {
   });
   expect(TextView).toHaveValue("123123");
 });
+
+test("TextView: textView onChange error -> TextView", async () => {
+  render(
+    // @ts-ignore
+    <Simple
+      {...Simple.args}
+      inputProps={{
+        onChange: () => {
+          throw new Error("this Error is OK");
+        },
+      }}
+    />
+  );
+
+  const textBox = screen.getByRole("textbox");
+
+  await waitFor(async () => {
+    userEvent.type(textBox, "s");
+  });
+
+  expect(textBox).toBeInTheDocument();
+});

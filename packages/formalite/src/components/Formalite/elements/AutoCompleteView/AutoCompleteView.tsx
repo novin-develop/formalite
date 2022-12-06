@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import { Autocomplete, Grid, TextField } from "@mui/material";
 import compare from "react-fast-compare";
-
 import { TextViewSkeleton } from "@components/Formalite/elements/Bases/SkeletonBase";
 import { checkIsRequired, getData } from "@components/Formalite/config/utils";
 import ViewError from "@components/Formalite/components/ViewError";
@@ -13,8 +11,8 @@ import { ObjectSchema } from "yup";
 import { baseMemo } from "../Bases/functions/memo";
 import type {
   AutoCompleteViewOptionsDataType,
-  AutoCompleteViewType,
   AutoCompleteViewOptionsType,
+  AutoCompleteViewType,
   SingleAutoCompleteViewOptionType,
 } from "./AutoCompleteView.type";
 
@@ -59,7 +57,7 @@ const AutoCompleteView = <T extends FormikValues>(
     props;
   const { label, helperText, ...inputProps } = allData.inputProps;
 
-  const { onChange, ...autoCompleteProps } = allData.autoCompleteProps || {};
+  const { onChange, ...autoCompleteProps } = allData.autoCompleteProps;
 
   const [optionsStatus, setOptionsStatus] = useState<OptionsStateType>({
     status: OptionsStateEnum.PENDING,
@@ -73,7 +71,7 @@ const AutoCompleteView = <T extends FormikValues>(
       return formikData.map((value: string) => {
         return (
           options.find((option) =>
-            autoCompleteProps?.freeSolo
+            autoCompleteProps.freeSolo
               ? option.label === value
               : option.key === value
           ) || { key: value, label: value }
@@ -85,23 +83,22 @@ const AutoCompleteView = <T extends FormikValues>(
 
   // eslint-disable-next-line sonarjs/cognitive-complexity
   const handleOptionsChange = (value: AutoCompleteNewValue) => {
-    const isFreeSolo = autoCompleteProps?.freeSolo;
-    const isMultiple = autoCompleteProps?.multiple;
+    const isFreeSolo = autoCompleteProps.freeSolo;
+    const isMultiple = autoCompleteProps.multiple;
     let finalValue;
     if (isMultiple && value instanceof Array) {
-      const newValues = value.map((oldValue) => {
+      finalValue = value.map((oldValue) => {
         if (typeof oldValue === "string") {
           return oldValue;
         }
         return isFreeSolo ? oldValue.label : oldValue.key;
       });
-      finalValue = newValues;
     } else if (value instanceof Object && !(value instanceof Array)) {
       finalValue = isFreeSolo ? value.label : value.key;
     } else if (typeof value === "string") {
       finalValue = value;
     } else if (!value) {
-      finalValue = isMultiple ? [] : "";
+      finalValue = "";
     }
     formik.setFieldValue(name, finalValue);
     if (onChange) {
@@ -169,15 +166,16 @@ const AutoCompleteView = <T extends FormikValues>(
           options={handleOptionsData(optionsStatus.data)}
           onChange={(_, value) => handleOptionsChange(value)}
           isOptionEqualToValue={(option, value) => {
-            if (typeof value === "string") {
-              if (autoCompleteProps?.freeSolo) {
-                return option.label === value;
-              }
-              return option.key === value;
-            }
-            return autoCompleteProps?.freeSolo
-              ? option.label === value.label
-              : option.key === value.key;
+            // if (typeof value === "string") {
+            //   if (autoCompleteProps.freeSolo) {
+            //     return option.label === value;
+            //   }
+            //   return option.key === value;
+            // }
+            // return autoCompleteProps.freeSolo
+            //   ? option.label === value.label
+            //   : option.key === value.key;
+            return option.key === value.key;
           }}
           renderInput={(params) => (
             <TextField
@@ -201,12 +199,12 @@ const AutoCompleteView = <T extends FormikValues>(
               {...params}
               {...inputProps}
               InputProps={{
-                ...(params.InputProps ? params.InputProps : {}),
-                ...(inputProps.InputProps ? inputProps.InputProps : {}),
+                ...params.InputProps,
+                ...inputProps.InputProps,
               }}
             />
           )}
-          {...(autoCompleteProps || {})}
+          {...autoCompleteProps}
         />
       )}
       {optionsStatus.status === OptionsStateEnum.PENDING && (
@@ -216,9 +214,9 @@ const AutoCompleteView = <T extends FormikValues>(
         <ViewError
           error={optionsStatus.error}
           reloadFunction={
-            allData?.dataFetching.type === FetchingDataEnum.AUTOMATIC
+            allData.dataFetching.type === FetchingDataEnum.AUTOMATIC
               ? loadFunction
-              : allData?.dataFetching.onRetry
+              : allData.dataFetching.onRetry
           }
           label={label}
         />

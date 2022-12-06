@@ -40,13 +40,13 @@ test("Formalite: All component must have error with timeView", async () => {
   render(<AllBaseError themeMode="light" />);
 
   const submitButton = screen.getByRole("button", { name: "Submit" });
-
+  // ----------
   const timeView = screen.getByRole("textbox", { name: /Choose time/ });
   userEvent.click(timeView);
   fireEvent.click(screen.getByRole("button", { name: "PM" }));
   userEvent.click(screen.getByRole("button", { name: "Cancel" }));
   await waitForElementToBeRemoved(screen.getByRole("dialog"));
-
+  // ----------
   const dateTimeView = screen.getAllByRole("textbox", { name: /Choose date/ });
   userEvent.click(dateTimeView[1]);
   fireEvent.click(
@@ -54,7 +54,7 @@ test("Formalite: All component must have error with timeView", async () => {
   );
   userEvent.click(screen.getByRole("button", { name: "Cancel" }));
   await waitForElementToBeRemoved(screen.getByRole("dialog"));
-
+  // ----------
   userEvent.click(dateTimeView[0]);
   fireEvent.click(
     screen.getByRole("button", { name: moment().format("MMM 10, YYYY") })

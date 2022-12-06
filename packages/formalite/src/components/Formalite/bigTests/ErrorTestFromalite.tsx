@@ -333,7 +333,6 @@ function useFromString() {
         },
         inputProps: {
           label: "Title of Simple view",
-          helperText: "Helper text",
         },
         autoCompleteProps: {
           freeSolo: true,

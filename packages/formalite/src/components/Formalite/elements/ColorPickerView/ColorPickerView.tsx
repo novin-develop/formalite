@@ -92,7 +92,6 @@ const ColorPickerView = <T extends FormikValues>(
   };
 
   const handleColorChange = (selectedColor: string) => {
-    console.log("aaa");
     formik.setFieldValue(name, selectedColor);
   };
 

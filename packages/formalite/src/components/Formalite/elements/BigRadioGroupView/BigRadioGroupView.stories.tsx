@@ -20,7 +20,6 @@ export default {
   },
   decorators: [
     (Story) => {
-
       return (
         <PaddingContainer>
           <Story />
@@ -32,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestBigRadioGroupView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestBigRadioGroupView {...args} lang={locale} />;
+  return <TestBigRadioGroupView {...args} lang={globals?.locale} />;
 };
 
 export const Base = Template.bind({});

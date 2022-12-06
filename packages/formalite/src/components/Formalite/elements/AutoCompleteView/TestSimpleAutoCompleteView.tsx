@@ -11,17 +11,27 @@ const validation = Yup.object({
 }).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
-const iniValues: ValidationType = {
+const iniValueNull: ValidationType = {
   title: "",
+};
+
+const iniValues: ValidationType = {
+  title: "one",
 };
 
 type TestSimpleAutoCompleteViewProps = Omit<AutoCompleteViewType, "type"> & {
   lang?: Language;
+  withExtra?: boolean;
+  withIni?: boolean;
+  withSubmit?: boolean;
   // mode?: "complex " | "freesolo" | "multiple" | "simple"
 };
 
 export const TestSimpleAutoCompleteView = ({
   lang = "en",
+  withExtra = false,
+  withIni = false,
+  withSubmit = false,
   ...props
 }: TestSimpleAutoCompleteViewProps) => {
   const formRef = useFormaliteRef<ValidationType>();
@@ -36,15 +46,28 @@ export const TestSimpleAutoCompleteView = ({
   }, [props]);
 
   return (
-    <Formalite<ValidationType>
-      lang={lang}
-      formString={formString}
-      initialValues={iniValues}
-      validationSchema={validation}
-      formRef={formRef}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-    />
+    <>
+      <Formalite<ValidationType>
+        lang={lang}
+        formString={formString}
+        initialValues={withIni ? iniValues : iniValueNull}
+        validationSchema={validation}
+        formRef={formRef}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      />
+      {withExtra ? <span>extra text</span> : null}
+      {withSubmit ? (
+        <button
+          type="button"
+          onClick={() => {
+            formRef.current?.callSubmit();
+          }}
+        >
+          submit
+        </button>
+      ) : null}
+    </>
   );
 };

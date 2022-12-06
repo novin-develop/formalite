@@ -54,10 +54,10 @@ test("Formalite: Test Error in Repeater", async () => {
   userEvent.click(submitButton);
 
   const allErrorTexts = await screen.findAllByText(/Required/i);
-  expect(allErrorTexts).toHaveLength(3);
+  expect(allErrorTexts).toHaveLength(2);
 
   userEvent.click(submitButton);
-  expect(allErrorTexts).toHaveLength(3);
+  expect(allErrorTexts).toHaveLength(2);
 });
 
 /// -------------------------Error

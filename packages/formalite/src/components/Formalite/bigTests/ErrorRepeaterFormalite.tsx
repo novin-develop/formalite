@@ -1,16 +1,14 @@
 /* eslint-disable sonarjs/no-identical-functions */
-import React, { useMemo, useState } from "react";
-import { Button, Container, Typography } from "@mui/material";
+import React, { useMemo } from "react";
+import { Button, Container } from "@mui/material";
 import * as Yup from "yup";
 import {
   FormalitePropsType,
   MainType,
   ViewTypes,
 } from "@components/Formalite/Formalite.type";
-import { ImageDownloaderPromise } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
-import { FetchingDataEnum, Language, Theme } from "@components/base/model";
+import { Language, Theme } from "@components/base/model";
 import { RTL } from "@components/base/RTL";
-import { getDirectionFromLang } from "@config/utils";
 import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
 import { PaddingContainer } from "@components/base/PaddingContainer";
 import ThemeProvider from "@themes/index";
@@ -103,22 +101,43 @@ function useFromString() {
         buttonText: "Custom text",
         options: {
           name: {
-            type: ViewTypes.TextView,
+            type: ViewTypes.EditorView,
             layoutProps: {
               xs: 6,
             },
             inputProps: {
               label: "Name",
             },
+            editorProps: {
+              isToolbarSimple: false,
+              label: "Editor",
+            },
           },
           family: {
-            type: ViewTypes.TextView,
+            type: ViewTypes.TextDropZoneView,
             layoutProps: {
-              xs: 6,
+              md: 3,
+              xs: 12,
             },
             inputProps: {
-              label: "Family",
+              label: "aaa",
+              dropZoneOptions: {
+                maxSize: 3145728,
+              },
             },
+            showPreview: false,
+            onUpload: (file, progress) =>
+              new Promise<string>((resolve, reject) => {
+                setTimeout(() => {
+                  resolve("aaa");
+                }, 1);
+              }),
+            onDelete: (id, isFromDefault, isSuccess) =>
+              new Promise<void>((resolve, reject) => {
+                setTimeout(() => {
+                  resolve();
+                }, 1);
+              }),
           },
         },
       },

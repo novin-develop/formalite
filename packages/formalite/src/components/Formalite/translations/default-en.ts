@@ -1,17 +1,19 @@
 export const en = {
-  "fg-toggle-password-visibility": "Toggle password visibility",
-  "fg-repeator-remove": "Remove",
-  "fg-repeator-add": "Add",
-  "fg-dropzone-drop-or-select-file": "Drop or Select file",
-  "fg-dropzone-drop-files-here-or-click": "Drop files here or click",
-  "fg-dropzone-browse": "browse",
-  "fg-dropzone-select-thorough-your-machine": "thorough your machine",
-  "fg-something-went-wrong": "Something went wrong!",
+  textview_toggle_password_visibility: "Toggle password visibility",
 
-  "error-boundary-title": "Oops!",
-  "error-boundary-body": "There is a problem in loading!",
-  "error-boundary-btn": "Retry",
+  repeater_remove_btn: "Remove",
+  repeater_add_btn: "Add",
 
-  avatar_dropZone_update_photo: "Update photo",
-  avatar_dropZone_upload_photo: "Upload photo",
+  dropzone_drop_or_select_file: "Drop or Select file",
+  dropzone_drop_files_here_or_click: "Drop files here or click",
+  dropzone_browse: "browse",
+  dropzone_select_thorough_your_machine: "thorough your machine",
+  dropzone_avatar_update_photo: "Update photo",
+  dropzone_avatar_upload_photo: "Upload photo",
+
+  general_something_went_wrong: "Something went wrong!",
+
+  error_boundary_title: "Oops!",
+  error_boundary_body: "There is a problem in loading!",
+  error_boundary_btn: "Retry",
 };

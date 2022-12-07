@@ -19,9 +19,9 @@ import { Language } from "@components/base/model";
 import { useI18nContext } from "@components/base/I18nProvider";
 import { ObjectSchema } from "yup";
 
-type RepeaterViewProps<T> = {
+export type RepeaterViewProps<T> = {
   allData: RepeaterViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -58,11 +58,11 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
   const { t } = useI18nContext();
 
   return (
-    <Grid item {...allData.layoutProps} id={name}>
+    <Grid item {...allData.layoutProps} id={String(name)}>
       <Grid item xs={12}>
         <CustomDivider />
       </Grid>
-      <FieldArray name={name}>
+      <FieldArray name={String(name)}>
         {({ remove, push }) => (
           <Grid container direction="column">
             <TransitionGroup>
@@ -88,7 +88,7 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
                             validationSchema,
                             translator,
                             repItem: {
-                              name,
+                              name: String(name),
                               index,
                             },
                           })}
@@ -113,7 +113,7 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
                           >
                             <DeleteOutlineOutlinedIcon />
                             <Box component="span">
-                              {t("fg-repeator-remove")}
+                              {t("repeater_remove_btn")}
                             </Box>
                           </Button>
                         </Grid>
@@ -154,7 +154,7 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
                     }}
                   >
                     <AddIcon />
-                    {allData.buttonText || t("fg-repeator-add")}
+                    {allData.buttonText || t("repeater_add_btn")}
                   </Button>
                 </Grid>
               </Grid>

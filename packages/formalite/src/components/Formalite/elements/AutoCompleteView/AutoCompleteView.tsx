@@ -16,9 +16,9 @@ import type {
   SingleAutoCompleteViewOptionType,
 } from "./AutoCompleteView.type";
 
-interface AutoCompleteViewProps<T> {
+export interface AutoCompleteViewProps<T> {
   allData: AutoCompleteViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -100,7 +100,7 @@ const AutoCompleteView = <T extends FormikValues>(
     } else if (!value) {
       finalValue = "";
     }
-    formik.setFieldValue(name, finalValue);
+    formik.setFieldValue(String(name), finalValue);
     if (onChange) {
       onChange(finalValue);
     }
@@ -179,11 +179,11 @@ const AutoCompleteView = <T extends FormikValues>(
           }}
           renderInput={(params) => (
             <TextField
-              name={name}
+              name={String(name)}
               required={checkIsRequired({
                 schema: validationSchema,
                 formikValues: formik.values,
-                key: name,
+                key: String(name),
               })}
               error={
                 getData({ source: formik.touched, key: name }) &&

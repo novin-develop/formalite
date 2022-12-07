@@ -7,8 +7,16 @@ import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
 import type { AvatarDropZoneViewType } from "./AvatarDropZoneView.type";
 
 const validation = Yup.object({
-  title: Yup.array().of(Yup.mixed()).nullable(),
+  title: Yup.array()
+    .of(
+      Yup.object({
+        preview: Yup.string().required(),
+        uid: Yup.string().required(),
+      })
+    )
+    .nullable(),
 }).required();
+
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValueNull = { title: [] };

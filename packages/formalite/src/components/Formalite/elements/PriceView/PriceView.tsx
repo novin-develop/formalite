@@ -7,9 +7,9 @@ import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { TextFieldBase } from "@components/Formalite/elements/Bases/TextFieldBase";
 import { ObjectSchema } from "yup";
 
-type PriceViewProps<T> = {
+export type PriceViewProps<T> = {
   allData: PriceViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -79,7 +79,7 @@ const PriceView = <T extends FormikValues>(props: PriceViewProps<T>) => {
         loading={loading}
         validationSchema={validationSchema}
         translator={translator}
-        name={name}
+        name={String(name)}
         mustRegex={[allData.mustRegex, formMustRegex]}
         {...inputProps}
         onChange={(value) => {

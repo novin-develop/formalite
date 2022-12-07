@@ -18,9 +18,9 @@ import { TextFieldBase } from "../Bases/TextFieldBase";
 import { ColorPickerViewType } from "./ColorPickerView.type";
 import { ChromePickerComponent } from "./ChromePicker";
 
-interface ColorPickerViewProps<T> {
+export interface ColorPickerViewProps<T> {
   allData: ColorPickerViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -92,7 +92,7 @@ const ColorPickerView = <T extends FormikValues>(
   };
 
   const handleColorChange = (selectedColor: string) => {
-    formik.setFieldValue(name, selectedColor);
+    formik.setFieldValue(String(name), selectedColor);
   };
 
   const id = chromePicker.isOpen ? "chorom-color-picker-popper" : undefined;
@@ -108,7 +108,7 @@ const ColorPickerView = <T extends FormikValues>(
             loading={loading}
             validationSchema={validationSchema}
             translator={translator}
-            name={name}
+            name={String(name)}
             InputProps={{
               startAdornment: !!colorPicked && (
                 <InputAdornment position="start">
@@ -119,7 +119,7 @@ const ColorPickerView = <T extends FormikValues>(
                 </InputAdornment>
               ),
               endAdornment: !!colorPicked && (
-                <ColorPickerViewCleaner formik={formik} name={name} />
+                <ColorPickerViewCleaner formik={formik} name={String(name)} />
               ),
               onClick: handleClick,
             }}

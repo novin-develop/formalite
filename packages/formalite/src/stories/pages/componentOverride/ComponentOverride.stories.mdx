@@ -1,0 +1,95 @@
+import { Canvas,Meta,Story,Source } from '@storybook/addon-docs';
+import { TextViewOverrideCode } from "./TextViewOverride.code"
+import { TextViewOverride } from "./TextViewOverride"
+
+<Meta title="Intro/Component Override" />
+
+<style>{`
+  table {
+      width:100%;
+  }
+  .red {
+    color:red
+  }
+`}</style>
+
+# Component Overriding
+
+You can override all input component with `components` props in Formalite
+
+###### components list with there defaults
+
+| Name                    | Component props Type                   | Default                       | Description |
+| ----------------------- | -------------------------------------- | ----------------------------- | ----------- |
+| TextView                | <code>TextViewType</code>              | FormaliteTextView             | Override textView and passwordView component |
+| PriceView               | <code>PriceViewType</code>             | FormalitePriceView            | Override PriceView component |
+| CardNumberView          | <code>CardNumberViewType</code>        | FormaliteCardNumberView       | Override CardNumberView component |
+| SelectView              | <code>SelectViewType</code>            | FormaliteSelectView           | Override SelectView component |
+| ComponentView           | <code>ComponentViewType</code>         | FormaliteComponentView        | Override ComponentView component |
+| RepeaterView            | <code>RepeaterViewType</code>          | FormaliteRepeaterView         | Override RepeaterView component |
+| SingleDropZoneView      | <code>SingleDropZoneViewType</code>    | FormaliteSingleDropZoneView   | Override SingleDropZoneView component |
+| AvatarDropZoneView      | <code>AvatarDropZoneViewType</code>    | FormaliteAvatarDropZoneView   | Override AvatarDropZoneView component |
+| MultiDropZoneView       | <code>MultiDropZoneViewType</code>     | FormaliteMultiDropZoneView    | Override MultiDropZoneView component |
+| TextDropZoneView        | <code>TextDropZoneViewType</code>      | FormaliteTextDropZoneView     | Override TextDropZoneView component |
+| ColorPickerView         | <code>ColorPickerViewType</code>       | FormaliteColorPickerView      | Override ColorPickerView component |
+| RadioGroupView          | <code>RadioGroupViewType</code>        | FormaliteRadioGroupView       | Override RadioGroupView component |
+| AutoCompleteView        | <code>AutoCompleteViewType</code>      | FormaliteAutoCompleteView     | Override AutoCompleteView component |
+| DatePickerView          | <code>DatePickerViewType</code>        | FormaliteDatePickerView       | Override DatePickerView component |
+| DateTimePickerView      | <code>DateTimePickerViewType</code>    | FormaliteDateTimePickerView   | Override DateTimePickerView component |
+| TimePickerView          | <code>TimePickerViewType</code>        | FormaliteTimePickerView       | Override TimePickerView component |
+| CheckGroupView          | <code>CheckGroupViewType</code>        | FormaliteCheckGroupView       | Override CheckGroupView component |
+| SwitchGroupView         | <code>SwitchGroupViewType</code>       | FormaliteSwitchGroupView      | Override SwitchGroupView component |
+| BigRadioGroupView       | <code>BigRadioGroupViewType</code>     | FormaliteBigRadioGroupView    | Override BigRadioGroupView component |
+| EditorView              | <code>EditorViewType</code>            | FormaliteEditorView           | Override EditorView component |
+| GroupView               | <code>GroupViewType</code>             | FormaliteGroupView            | Override GroupView component |
+
+<br />
+
+## Usage
+
+In this usage developer changes backgroundColor of TextView Component.
+
+```js
+import { Formalite, FormaliteTextView } from "@novin-dev/formalite";
+
+export const TextView = () => {
+ return (
+   <Formalite
+     lang="en"
+     formString={someFromString}
+     initialValues={someIniValues}
+     validationSchema={someValidation}
+     formRef={formRef}
+     onSubmit={(values) => {
+       console.log(values);
+     }}
+     components={{
+       TextView : props => (
+         <div style={{ backgroundColor: '#042859' }}>
+           <FormaliteTextView {...props} />
+         </div>
+      )
+     }}
+   />
+ );
+};
+```
+
+## Example
+
+Change MUI TextView to HTML TextView with some of the functionalities 
+
+<Canvas>
+  <Story
+    style={{width:"100%"}} 
+    name="Component Override"
+    parameters={{ docs: { source: { 
+        code: TextViewOverrideCode,
+        language: "javascript",
+        type: "auto"
+      }} 
+    }}>
+    <TextViewOverride/>
+  </Story>
+</Canvas> 
+

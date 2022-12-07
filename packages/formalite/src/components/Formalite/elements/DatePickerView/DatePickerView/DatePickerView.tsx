@@ -10,9 +10,9 @@ import DatePickerLocalizationProvider from "../DatePickerLocalizationProvider";
 import type { DatePickerViewType } from "./DatePickerView.type";
 import { TextViewSkeleton } from "../../Bases/SkeletonBase";
 
-interface DatePickerViewProps<T> {
+export interface DatePickerViewProps<T> {
   allData: DatePickerViewType;
-  name: string;
+  name: keyof T;
   lang: Language;
   formik: FormikProps<T>;
   loading: boolean;
@@ -40,7 +40,7 @@ const DatePickerView = <T extends FormikValues>(
           label={label}
           value={getData({ source: formik.values, key: name })}
           onChange={(date: Date | null) => {
-            formik.setFieldValue(name, date);
+            formik.setFieldValue(String(name), date);
             if (allData.onChange) {
               allData.onChange(date);
             }
@@ -50,11 +50,11 @@ const DatePickerView = <T extends FormikValues>(
           renderInput={({ error, ...restParams }) => (
             <TextField
               fullWidth
-              name={name}
+              name={String(name)}
               required={checkIsRequired({
                 schema: validationSchema,
                 formikValues: formik.values,
-                key: name,
+                key: String(name),
               })}
               error={
                 error ||

@@ -7,9 +7,9 @@ import { TextFieldBase } from "@components/Formalite/elements/Bases/TextFieldBas
 import { baseMemo } from "@components/Formalite/elements/Bases/functions/memo";
 import { ObjectSchema } from "yup";
 
-type CartNumberViewProps<T> = {
+export type CartNumberViewProps<T> = {
   allData: CardNumberViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -67,7 +67,7 @@ const CartNumberView = <T extends FormikValues>(
         loading={loading}
         validationSchema={validationSchema}
         translator={translator}
-        name={name}
+        name={String(name)}
         mustRegex={[allData.mustRegex, formMustRegex]}
         {...inputProps}
         InputProps={{

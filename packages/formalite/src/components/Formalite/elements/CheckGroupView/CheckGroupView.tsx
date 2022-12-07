@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import compare from "react-fast-compare";
 import { Grid } from "@mui/material";
-
 import {
   CheckGroupViewType,
   CheckGroupStateEnum,
@@ -17,9 +15,9 @@ import CheckGroupViewAllViews, {
 import { FetchingDataEnum } from "@components/base/model";
 import { ObjectSchema } from "yup";
 
-type CheckGroupViewProps<T> = {
+export type CheckGroupViewProps<T> = {
   allData: CheckGroupViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -107,7 +105,7 @@ const CheckGroupView = <T extends FormikValues>({
         formik={formik}
         validationSchema={validationSchema}
         translator={translator}
-        name={name}
+        name={String(name)}
         dataStatus={dataStatus}
         allInputProps={allData.inputProps}
         labelProps={allData.labelProps}

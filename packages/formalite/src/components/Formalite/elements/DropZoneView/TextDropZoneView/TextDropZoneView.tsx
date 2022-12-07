@@ -92,7 +92,7 @@ const TextDropZoneView = <T extends FormikValues>(
             tempArray[index].status = "done";
             (tempArray[index] as CustomFile).progress = 100;
           }
-          formik.setFieldValue(`${name}.files`, tempArray);
+          formik.setFieldValue(`${String(name)}.files`, tempArray);
           return tempArray;
         });
       })
@@ -187,13 +187,13 @@ const TextDropZoneView = <T extends FormikValues>(
   });
 
   return (
-    <Grid item {...allData.layoutProps} {...getRootProps()} id={name}>
+    <Grid item {...allData.layoutProps} {...getRootProps()} id={String(name)}>
       <TextFieldBase
         formik={formik}
         loading={loading}
         validationSchema={validationSchema}
         translator={translator}
-        name={`${name}.text`}
+        name={`${String(name)}.text`}
         mustRegex={[allData.mustRegex, formMustRegex]}
         {...inputProps}
         sx={(theme) => ({
@@ -223,7 +223,10 @@ const TextDropZoneView = <T extends FormikValues>(
                 }
                 color={
                   getData({ source: formik.touched, key: name }) &&
-                  getData({ source: formik.errors, key: `${name}.files` })
+                  getData({
+                    source: formik.errors,
+                    key: `${String(name)}.files`,
+                  })
                     ? "error"
                     : "default"
                 }
@@ -252,7 +255,7 @@ const TextDropZoneView = <T extends FormikValues>(
             onRemove={onDelete}
             setFile={setFile}
             setToFormik={(newValue) => {
-              formik.setFieldValue(`${name}.files`, newValue);
+              formik.setFieldValue(`${String(name)}.files`, newValue);
             }}
             uploadFunction={uploadFunction}
             uploadController={uploadController}
@@ -266,13 +269,16 @@ const TextDropZoneView = <T extends FormikValues>(
           <FormHelperText
             error={
               !!getData({ source: formik.touched, key: name }) &&
-              !!getData({ source: formik.errors, key: `${name}.files` })
+              !!getData({ source: formik.errors, key: `${String(name)}.files` })
             }
           >
             {getData({ source: formik.touched, key: name }) &&
-            getData({ source: formik.errors, key: `${name}.files` })
+            getData({ source: formik.errors, key: `${String(name)}.files` })
               ? translator(
-                  getData({ source: formik.errors, key: `${name}.files` })
+                  getData({
+                    source: formik.errors,
+                    key: `${String(name)}.files`,
+                  })
                 )
               : helperText}
           </FormHelperText>

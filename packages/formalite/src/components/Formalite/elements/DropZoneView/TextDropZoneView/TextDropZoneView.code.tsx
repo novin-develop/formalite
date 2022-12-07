@@ -9,11 +9,22 @@ import {
 } from "@novin-dev/formalite";
 import type { MainType } from "@novin-dev/formalite";
 
-const validation = Yup.object({});
+const validation = Yup.object({
+  title: Yup.array()
+    .of(
+      Yup.object({
+        preview: Yup.string().required(),
+        uid: Yup.string().required(),
+      })
+    )
+    .nullable(),
+}).required();
 
 type ValidationType = Yup.InferType<typeof validation>;
 
-const iniValues: ValidationType = {};
+const iniValues: ValidationType = {
+  title: null,
+};
 
 export const TextDropZoneView = () => {
   const formRef = useFormaliteRef<ValidationType>();

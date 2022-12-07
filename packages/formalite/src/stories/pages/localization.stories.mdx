@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Intro/Localization" />
+
+# Localization
+
+You can change text of Formalite with `localization` props
+
+hint: Languages `en` and `fa` are pre Supported.
+
+#### Example
+
+```js
+import { Formalite, FormaliteTextView } from "@novin-dev/formalite";
+
+export const TextView = () => {
+ return (
+   <Formalite
+     lang="ar"
+     formString={someFromString}
+     initialValues={someIniValues}
+     validationSchema={someValidation}
+     formRef={formRef}
+     onSubmit={(values) => {
+       console.log(values);
+     }}
+     localization={{
+       ar:{
+          textview_toggle_password_visibility: "تبديل رؤية كلمة المرور",
+          repeater_remove_btn: "إزالة",
+          repeater_add_btn: "يضيف",
+          dropzone_drop_or_select_file: "إفلات أو تحديد ملف",
+          dropzone_drop_files_here_or_click: "قم بإسقاط الملفات هنا أو انقر فوق",
+          dropzone_browse: "تصفح",
+          dropzone_select_thorough_your_machine: "شامل جهازك",
+          dropzone_avatar_update_photo: "تحديث الصورة",
+          dropzone_avatar_upload_photo: "حمل الصورة",
+          general_something_went_wrong: "هناك خطأ ما!",
+          error_boundary_title: "اوه!",
+          error_boundary_body: "هناك مشكلة في التحميل!",
+          error_boundary_btn: "أعد المحاولة",
+       }
+     }}
+   />
+ );
+};
+
+```
+
+

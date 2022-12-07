@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Tooltip } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -13,9 +13,9 @@ import { Language } from "@components/base/model";
 import { ObjectSchema } from "yup";
 import { TextViewType } from "./TextView.type";
 
-type TextViewProps<T> = {
+export type TextViewProps<T> = {
   allData: TextViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -43,7 +43,7 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
         loading={loading}
         validationSchema={validationSchema}
         translator={props.translator}
-        name={name}
+        name={String(name)}
         mustRegex={[allData.mustRegex, props.formMustRegex]}
         inputRef={mainRef}
         type={
@@ -56,27 +56,29 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
                 ...InputProps,
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label={t("fg-toggle-password-visibility")}
-                      onClick={() => {
-                        setShowPassword(!showPassword);
-                        if (mainRef.current) {
-                          mainRef.current.blur();
-                        }
-                      }}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        if (mainRef.current) {
-                          mainRef.current.focus();
-                        }
-                      }}
-                    >
-                      {showPassword ? (
-                        <VisibilityOutlinedIcon />
-                      ) : (
-                        <VisibilityOffOutlinedIcon />
-                      )}
-                    </IconButton>
+                    <Tooltip title={t("textview_toggle_password_visibility")}>
+                      <IconButton
+                        aria-label={t("fg-toggle-password-visibility")}
+                        onClick={() => {
+                          setShowPassword(!showPassword);
+                          if (mainRef.current) {
+                            mainRef.current.blur();
+                          }
+                        }}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          if (mainRef.current) {
+                            mainRef.current.focus();
+                          }
+                        }}
+                      >
+                        {showPassword ? (
+                          <VisibilityOutlinedIcon />
+                        ) : (
+                          <VisibilityOffOutlinedIcon />
+                        )}
+                      </IconButton>
+                    </Tooltip>
                   </InputAdornment>
                 ),
               }

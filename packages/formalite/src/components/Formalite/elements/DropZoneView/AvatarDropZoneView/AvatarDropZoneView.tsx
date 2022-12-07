@@ -1,5 +1,4 @@
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import { Language } from "@components/base/model";
 import { FormControl, FormHelperText, Grid } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
@@ -14,9 +13,9 @@ import { getNameFromUrl } from "@config/utils";
 import { ObjectSchema } from "yup";
 import { AvatarDropZoneViewType } from "./AvatarDropZoneView.type";
 
-type AvatarDropZoneViewProps<T> = {
+export type AvatarDropZoneViewProps<T> = {
   allData: AvatarDropZoneViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -74,7 +73,7 @@ const AvatarDropZone = <T extends FormikValues>(
             tempArray[0].status = "done";
             tempArray[0].progress = 100;
           }
-          formik.setFieldValue(name, tempArray);
+          formik.setFieldValue(String(name), tempArray);
           return tempArray;
         });
       })
@@ -175,10 +174,10 @@ const AvatarDropZone = <T extends FormikValues>(
   }
 
   return (
-    <Grid item {...allData.layoutProps} id={name}>
+    <Grid item {...allData.layoutProps} id={String(name)}>
       <AvatarComponent<T>
         formik={formik}
-        name={name}
+        name={String(name)}
         file={file}
         uploadController={uploadController}
         setFile={setFile}

@@ -1,17 +1,19 @@
 export const fa = {
-  "fg-toggle-password-visibility": "تغییر نمایش رمز عبور",
-  "fg-repeator-remove": "حذف",
-  "fg-repeator-add": "افزودن",
-  "fg-dropzone-drop-or-select-file": "فایل را رها یا انتخاب کنید",
-  "fg-dropzone-drop-files-here-or-click": "فایل‌ها را اینجا رها کنید یا با",
-  "fg-dropzone-browse": "مرور",
-  "fg-dropzone-select-thorough-your-machine": "از سیستم خودتان انتخاب کنید",
-  "fg-something-went-wrong": "خطایی روی داده است!",
+  textview_toggle_password_visibility: "تغییر نمایش رمز عبور",
 
-  "error-boundary-title": "اوه!",
-  "error-boundary-body": "خطایی روی داده است",
-  "error-boundary-btn": "تلاش مجدد",
+  repeater_remove_btn: "حذف",
+  repeater_add_btn: "افزودن",
 
-  avatar_dropZone_update_photo: "به روز رسانی تصویر",
-  avatar_dropZone_upload_photo: "آپلود تصویر",
+  dropzone_drop_or_select_file: "فایل را رها یا انتخاب کنید",
+  dropzone_drop_files_here_or_click: "فایل‌ها را اینجا رها کنید یا با",
+  dropzone_browse: "مرور",
+  dropzone_select_thorough_your_machine: "از سیستم خودتان انتخاب کنید",
+  dropzone_avatar_update_photo: "به روز رسانی تصویر",
+  dropzone_avatar_upload_photo: "آپلود تصویر",
+
+  general_something_went_wrong: "خطایی روی داده است!",
+
+  error_boundary_title: "اوه!",
+  error_boundary_body: "خطایی روی داده است",
+  error_boundary_btn: "تلاش مجدد",
 };

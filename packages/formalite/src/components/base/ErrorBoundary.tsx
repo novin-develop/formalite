@@ -36,11 +36,11 @@ const FallBack = ({ error, resetErrorBoundary }: FallbackProps) => {
         alignItems="center"
       >
         <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
-          {t("error-boundary-title")}
+          {t("error_boundary_title")}
         </Typography>
-        <Typography variant="body1">{t("error-boundary-body")}</Typography>
+        <Typography variant="body1">{t("error_boundary_body")}</Typography>
         <FallBackButton color="error" onClick={() => resetErrorBoundary()}>
-          {t("error-boundary-btn")}
+          {t("error_boundary_btn")}
         </FallBackButton>
       </Box>
     </FallBackContainer>

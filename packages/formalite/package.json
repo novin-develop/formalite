@@ -1,6 +1,6 @@
 {
   "name": "@novin-dev/formalite",
-  "version": "0.2.4",
+  "version": "0.4.0",
   "description": "Generate MUI form with few line of code",
   "author": "Mostafa Roosta <mostafaroosta74@gmail.com>",
   "homepage": "https://formalite.novin.dev",
@@ -20,11 +20,11 @@
     "url": "git+https://github.com/novin-develop/formalite.git"
   },
   "keywords": [
-    "from",
+    "fromalite",
     "formik",
     "material-form",
     "material",
-    "fromalite",
+    "form",
     "from-generator"
   ],
   "scripts": {
@@ -150,5 +150,5 @@
     "yup": "0.32.11",
     "lodash-es": "^4.17.21"
   },
-  "gitHead": "2a8f7594dd72c5c70bec2af94092108fa3362e3c"
+  "gitHead": "46b2bb89867774f3fee58376e59f997240227636"
 }

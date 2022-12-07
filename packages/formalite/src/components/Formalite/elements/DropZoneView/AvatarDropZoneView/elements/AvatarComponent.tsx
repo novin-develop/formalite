@@ -111,8 +111,8 @@ export const AvatarComponent = <T extends FormikValues>(
           <AddAPhotoIcon sx={{ width: 24, height: 24, mb: 1 }} />
           <Typography variant="caption">
             {file[0]
-              ? t("avatar_dropZone_update_photo")
-              : t("avatar_dropZone_upload_photo")}
+              ? t("dropzone_avatar_update_photo")
+              : t("dropzone_avatar_upload_photo")}
           </Typography>
         </PlaceholderStyle>
       </DropZoneStyle>

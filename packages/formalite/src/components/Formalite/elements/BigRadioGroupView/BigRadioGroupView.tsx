@@ -1,6 +1,5 @@
 import React from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import {
   BigRadioGroupViewOptionType,
   BigRadioGroupViewType,
@@ -11,9 +10,9 @@ import { FormatOptionFnType } from "@components/Formalite/elements/RadioGroupVie
 import { Box } from "@mui/material";
 import { ObjectSchema } from "yup";
 
-type BigRadioGroupViewProps<T> = {
+export type BigRadioGroupViewProps<T> = {
   allData: BigRadioGroupViewType;
-  name: string;
+  name: keyof T;
   formik: FormikProps<T>;
   loading: boolean;
   validationSchema: ObjectSchema<any>;
@@ -57,8 +56,8 @@ const BigRadioGroupView = <T extends FormikValues>(
 
   return (
     <RadioGroupView<T>
-      key={name}
-      name={name}
+      key={String(name)}
+      name={String(name)}
       allData={{
         ...allData,
         inputProps: {

@@ -19,7 +19,7 @@ jobs:
       - name: npm install, make test-coverage
         run: |
           npm i -g lerna@3 && lerna bootstrap
-
+          npm run test:story-cover
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:

@@ -113,48 +113,53 @@ const SingleDropZoneView = <T extends FormikValues>(
   }, []);
 
   useEffect(() => {
-    const firstData = getData({ source: formik.values, key: name })[0];
-    const controller = new AbortController();
-    if (firstData?.original !== "selected" && !!firstData?.preview) {
-      setPreventDefault(true);
-      if (imageDownloader) {
-        imageDownloader(firstData.preview, controller)
-          .then((res) => {
-            const data = Object.assign(firstData, {
-              original: "default",
-              status: "done",
-              base64: res.base64,
-              preview: res.base64,
-              originalName: res.originalName,
-              size: res.size,
-              errorText: "",
-              controller,
+    if (
+      getData({ source: formik.values, key: name }) &&
+      getData({ source: formik.values, key: name }).length
+    ) {
+      const firstData = getData({ source: formik.values, key: name })[0];
+      const controller = new AbortController();
+      if (firstData.original !== "selected" && !!firstData.preview) {
+        setPreventDefault(true);
+        if (imageDownloader) {
+          imageDownloader(firstData.preview, controller)
+            .then((res) => {
+              const data = Object.assign(firstData, {
+                original: "default",
+                status: "done",
+                base64: res.base64,
+                preview: res.base64,
+                originalName: res.originalName,
+                size: res.size,
+                errorText: "",
+                controller,
+              });
+              setFile([data]);
+              setPreventDefault(false);
+            })
+            .catch((e) => {
+              const data = Object.assign(firstData, {
+                original: "default",
+                status: "error",
+                errorText: e.message,
+              } as OutsideFile);
+              setFile([data]);
+              setPreventDefault(false);
             });
-            setFile([data]);
-            setPreventDefault(false);
-          })
-          .catch((e) => {
-            const data = Object.assign(firstData, {
-              original: "default",
-              status: "error",
-              errorText: e.message,
-            } as OutsideFile);
-            setFile([data]);
-            setPreventDefault(false);
+        } else {
+          const data = Object.assign(firstData, {
+            original: "default",
+            status: "done",
+            base64: firstData.preview,
+            preview: firstData.preview,
+            originalName: getNameFromUrl(firstData.preview),
+            size: 0,
+            errorText: "",
+            controller,
           });
-      } else {
-        const data = Object.assign(firstData, {
-          original: "default",
-          status: "done",
-          base64: firstData.preview,
-          preview: firstData.preview,
-          originalName: getNameFromUrl(firstData.preview),
-          size: 0,
-          errorText: "",
-          controller,
-        });
-        setFile([data]);
-        setPreventDefault(false);
+          setFile([data]);
+          setPreventDefault(false);
+        }
       }
     }
   }, [formik.values]);

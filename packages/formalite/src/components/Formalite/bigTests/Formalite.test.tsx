@@ -10,7 +10,6 @@ import {
 import userEvent from "@testing-library/user-event";
 import moment from "moment";
 import { ErrorRepeaterFormalite } from "@components/Formalite/bigTests/ErrorRepeaterFormalite";
-import { FirstExtraComponent } from "@components/Formalite/bigTests/ExtraFormaliteForm";
 import { ErrorTestFormalite } from "./ErrorTestFromalite";
 import { TestFormalite } from "./TestFormalite";
 
@@ -130,34 +129,13 @@ test("Formalite: Dark Mode and rtl rendered", async () => {
     expect(RetryButton).toBeNull();
   });
 });
-
-// -----==============-----------------=======================---- Extras
-
-test("Formalite: First Extra", async () => {
-  render(<FirstExtraComponent themeMode="dark" direction="rtl" />);
-  const allTextViews = screen.getAllByRole("textbox");
+/// -------------------------------- RESET
+test("Formalite: Rest Form", async () => {
+  render(<AllBase themeMode="dark" direction="rtl" />);
 
   await waitFor(async () => {
-    expect(allTextViews).toHaveLength(1);
+    userEvent.click(screen.getByRole("button", { name: "rest" }));
   });
-});
 
-test("Formalite: First Extra 2", async () => {
-  render(
-    <FirstExtraComponent
-      themeMode="dark"
-      direction="rtl"
-      onSubmit={() => {
-        throw new Error("some Error");
-      }}
-    />
-  );
-  const allTextViews = screen.getAllByRole("textbox");
-
-  await waitFor(async () => {
-    expect(allTextViews).toHaveLength(1);
-  });
-  await waitFor(async () => {
-    userEvent.click(screen.getByRole("button", { name: "Submit" }));
-  });
+  expect(screen.queryByText(/retry/i)).toBeNull();
 });

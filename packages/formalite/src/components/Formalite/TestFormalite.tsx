@@ -162,6 +162,7 @@ export const TestFormalite = ({
                 disabled,
                 selectOptions
               )}
+              translator={() => "aaa"}
               initialValues={iniValues}
               validationSchema={validation}
               formRef={formRef}
@@ -196,6 +197,13 @@ export const TestFormalite = ({
               }}
             >
               Submit
+            </Button>
+            <Button
+              onClick={() => {
+                formRef.current?.callRest();
+              }}
+            >
+              Rest Form
             </Button>
             <Button
               onClick={() => {

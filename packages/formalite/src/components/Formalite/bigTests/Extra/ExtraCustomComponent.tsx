@@ -2,38 +2,45 @@ import * as Yup from "yup";
 import { Language, Theme } from "@components/base/model";
 import {
   FormalitePropsType,
+  FormaliteTextView,
   MainType,
   useFormaliteRef,
   ViewTypes,
 } from "@components/Formalite";
+import React, { useMemo, useState } from "react";
 import ThemeProvider from "@themes/index";
 import { RTL } from "@components/base/RTL";
 import { PaddingContainer } from "@components/base/PaddingContainer";
 import { Button, Container } from "@mui/material";
 import Formalite from "@components/Formalite/Formalite";
-import React, { useMemo } from "react";
 import { ComponentStory } from "@storybook/react";
-import { ErrorTestFormalite } from "@components/Formalite/bigTests/ErrorTestFromalite";
-import { ErrorRepeaterFormalite } from "@components/Formalite/bigTests/ErrorRepeaterFormalite";
+import { Simulate } from "react-dom/test-utils";
+import input = Simulate.input;
 
-/// ============================================== first EXTRA
-const firstValidation = Yup.object({
+const customComponentValidation = Yup.object({
   title: Yup.string().required("Required"),
 }).required("Required");
 
-type FirstValidationType = Yup.InferType<typeof firstValidation>;
+type CustomComponentValidationType = Yup.InferType<
+  typeof customComponentValidation
+>;
 
-type FirstExtraProps = {
+type CustomComponentExtraProps = {
   themeMode: Theme;
   lang?: Language;
   direction?: "ltr" | "rtl";
-} & Partial<FormalitePropsType<FirstValidationType>>;
+} & Partial<FormalitePropsType<CustomComponentValidationType>>;
 
-const FirstExtra = ({ themeMode, lang = "en", ...props }: FirstExtraProps) => {
-  const formRef = useFormaliteRef<FirstValidationType>();
-  const iniValues: FirstValidationType = {
+const CustomComponentExtra = ({
+  themeMode,
+  lang = "en",
+  ...props
+}: CustomComponentExtraProps) => {
+  const formRef = useFormaliteRef<CustomComponentValidationType>();
+  const iniValues: CustomComponentValidationType = {
     title: "aa",
   };
+  const [loading, setLoading] = useState(false);
 
   return (
     <ThemeProvider
@@ -43,17 +50,22 @@ const FirstExtra = ({ themeMode, lang = "en", ...props }: FirstExtraProps) => {
       <RTL direction={props.direction || "ltr"}>
         <PaddingContainer>
           <Container>
-            <Formalite<FirstValidationType>
-              loading={props.loading || false}
-              lang={lang}
+            <Formalite<CustomComponentValidationType>
+              loading={loading}
               isUpdateMode
               formString={useFromString()}
               initialValues={iniValues}
-              validationSchema={firstValidation}
+              validationSchema={customComponentValidation}
               formRef={formRef}
-              formMustRegex={
-                /^[a-zA-Z0-9 /?\n><;:,{}[\]\-_+=!@#$%^&*|'.\\()~`"]*$/
-              }
+              components={{
+                // eslint-disable-next-line react/no-unstable-nested-components
+                TextView: (props1) => (
+                  <div style={{ backgroundColor: "#042859" }}>
+                    <FormaliteTextView {...props1} />
+                  </div>
+                ),
+              }}
+              translator={() => "aaa"}
               onSubmit={(values) => {
                 console.log(values);
               }}
@@ -67,6 +79,20 @@ const FirstExtra = ({ themeMode, lang = "en", ...props }: FirstExtraProps) => {
             >
               Submit
             </Button>
+            <Button
+              onClick={() => {
+                setLoading((pre) => !pre);
+              }}
+            >
+              setLoading
+            </Button>
+            <Button
+              onClick={() => {
+                formRef.current?.callRest();
+              }}
+            >
+              rest
+            </Button>
           </Container>
         </PaddingContainer>
       </RTL>
@@ -77,7 +103,7 @@ const FirstExtra = ({ themeMode, lang = "en", ...props }: FirstExtraProps) => {
 function useFromString() {
   return useMemo<MainType>(() => {
     return {
-      avatar: {
+      title: {
         type: ViewTypes.TextView,
         layoutProps: {
           md: 3,
@@ -91,13 +117,12 @@ function useFromString() {
     };
   }, []);
 }
-const FirstTemplate: ComponentStory<typeof FirstExtra> = (
+const CustomComponentTemplate: ComponentStory<typeof CustomComponentExtra> = (
   args,
   { globals }
 ) => {
   // @ts-ignore
-  return <FirstExtra {...args} lang={globals?.locale || "en"} />;
+  return <CustomComponentExtra {...args} lang={globals?.locale || "en"} />;
 };
 
-export const FirstExtraComponent = FirstTemplate.bind({});
-// ---------------------------------------------------END OF FIRST
+export const CustomComponentExtraComponent = CustomComponentTemplate.bind({});

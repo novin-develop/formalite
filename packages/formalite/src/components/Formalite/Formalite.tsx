@@ -8,6 +8,7 @@ import { Grid } from "@mui/material";
 import { FormikProps, FormikProvider, FormikValues, useFormik } from "formik";
 import {
   getDefaultValue,
+  resetFormFunction,
   showErrorMessage,
 } from "@components/Formalite/config/utils";
 import { I18nProvider, Resources } from "@components/base/I18nProvider";
@@ -80,8 +81,7 @@ let GResolve: (value: unknown) => void;
 let GReject: (reason?: any) => void;
 
 const gridStyle = { overflow: "hidden" };
-const defaultTranslator = (input: string | { [key: string]: unknown }) =>
-  typeof input === "object" ? input?.key : input;
+const defaultTranslator = (input: string) => input;
 const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
   const {
     offsetScroll = 0,
@@ -122,22 +122,16 @@ const Formalite = <T extends FormikValues>(props: FormalitePropsType<T>) => {
         GReject = reject;
       }
 
-      formik
-        .validateForm()
-        .then((res) => {
-          if (Object.keys(res).length && reject) {
-            reject("Form Data Is Not Valid");
-          }
-          formik.handleSubmit();
-        })
-        .catch((e) => {
-          showErrorMessage(e);
-        });
+      formik.validateForm().then((res) => {
+        if (Object.keys(res).length && reject) {
+          reject("Form Data Is Not Valid");
+        }
+        formik.handleSubmit();
+      });
     },
     callRest: () => {
-      formik.resetForm({ values: {} as T });
-      // formik.setValues({} as T);
-      // TODO check if works
+      // Problem or not: this rest form dose not rest DropZones
+      formik.setValues(resetFormFunction(formString) as T);
     },
     formik,
     addRow: (name) => {

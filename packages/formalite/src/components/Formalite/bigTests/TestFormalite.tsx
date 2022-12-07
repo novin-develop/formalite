@@ -143,6 +143,13 @@ export const TestFormalite = ({
               }}
               {...props}
             />
+            <Button
+              onClick={() => {
+                formRef.current?.callRest();
+              }}
+            >
+              rest
+            </Button>
           </Container>
         </PaddingContainer>
       </RTL>

@@ -174,6 +174,39 @@ test("Repeater View: with switch and date -> RepeaterView", async () => {
             label: "Family",
           },
         },
+        textImage: {
+          type: ViewTypes.TextDropZoneView,
+          layoutProps: {
+            md: 12,
+            xs: 12,
+          },
+          inputProps: {
+            label: "singleDropZone",
+            dropZoneOptions: {
+              maxSize: 3145728,
+              accept: {
+                "image/png": [".png"],
+              },
+            },
+            helperText: `Allowed *.jpeg, *.jpg, *.png, *.gif `,
+          },
+          onUpload: (file, progress) =>
+            new Promise<string>((resolve, reject) => {
+              setTimeout(() => {
+                progress(50);
+              }, 1000);
+              setTimeout(() => {
+                resolve(new Date().getTime().toString());
+                // reject(new Error("aaaa"));
+              }, 2000);
+            }),
+          onDelete: (id, isFromDefault, isSuccess) =>
+            new Promise<void>((resolve, reject) => {
+              setTimeout(() => {
+                resolve();
+              }, 2000);
+            }),
+        },
       }}
     />
   );

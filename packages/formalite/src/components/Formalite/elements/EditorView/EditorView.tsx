@@ -120,7 +120,9 @@ const EditorView = <T extends FormikValues>(props: EditorViewProps<T>) => {
               editor.getLength() > 1 ? value : formik.initialValues[name]
             );
           }} */
-          onChange={(value: string) => formik.setFieldValue(name, value)}
+          onChange={(value: string) =>
+            formik.setFieldValue(String(name), value)
+          }
           // onBlur={() => formik.setFieldValue(name, editorValue)}
           {...editorProps}
         />

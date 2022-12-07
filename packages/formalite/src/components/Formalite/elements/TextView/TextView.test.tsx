@@ -37,7 +37,7 @@ test("TextView: is Rendered and click icon -> PasswordView", async () => {
   });
 
   const PasswordViewIcon = screen.getByRole("button", {
-    name: /Toggle password visibility/i,
+    name: /fg-toggle-password-visibility/i,
   });
 
   await waitFor(async () => {
@@ -65,7 +65,7 @@ test("TextView: is focus are correct -> PasswordView", async () => {
   expect(PasswordView).toHaveFocus();
 
   const PasswordViewIcon = screen.getByRole("button", {
-    name: /Toggle password visibility/i,
+    name: /fg-toggle-password-visibility/i,
   });
 
   await waitFor(async () => {

@@ -2,8 +2,9 @@ import { FormikErrors, FormikTouched, FormikValues } from "formik";
 import Condition from "yup/lib/Condition";
 import numeral from "numeral";
 import { get } from "lodash-es";
-import { ViewTypes } from "@components/Formalite/Formalite.type";
+import { MainType, ViewTypes } from "@components/Formalite/Formalite.type";
 import { ObjectSchema } from "yup";
+import { GroupViewType } from "@components/Formalite/elements/GroupView/GroupView.type";
 
 type GetDataProps = {
   source?: FormikTouched<unknown> | FormikErrors<unknown> | unknown;
@@ -109,6 +110,13 @@ export const getDefaultValue = (type: ViewTypes) => {
     return null;
   }
 
+  if (ViewTypes.TextDropZoneView === type) {
+    return {
+      text: "",
+      files: [],
+    };
+  }
+
   return "";
 };
 
@@ -140,4 +148,18 @@ export const checkRegex = ({
     }
   });
   return testResult;
+};
+
+export const resetFormFunction = (formString: MainType) => {
+  let result: { [key: string]: any } = {};
+  Object.keys(formString).forEach((item) => {
+    if (formString[item].type === ViewTypes.GroupView) {
+      result = {
+        ...result,
+        ...resetFormFunction((formString[item] as GroupViewType).options),
+      };
+    }
+    result[item] = getDefaultValue(formString[item].type);
+  });
+  return result;
 };

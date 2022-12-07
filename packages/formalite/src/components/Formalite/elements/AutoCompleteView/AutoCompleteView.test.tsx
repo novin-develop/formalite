@@ -36,7 +36,12 @@ test("FreeSolo Auto Complete: is Rendered -> AutoCompleteView", async () => {
   const textBox = screen.getByRole("combobox");
   // -------------------------- set input
   await waitFor(async () => {
-    userEvent.type(textBox, "some text{enter}");
+    userEvent.type(textBox, "one{enter}");
+  });
+  expect(textBox).toHaveValue("one");
+  // -------------------------- set input
+  await waitFor(async () => {
+    userEvent.type(textBox, "{backspace}{backspace}{backspace}some text{tab}");
   });
   expect(textBox).toHaveValue("some text");
   // -------------------------- click on X

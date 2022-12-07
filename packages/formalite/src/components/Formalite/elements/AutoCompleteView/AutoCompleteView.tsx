@@ -162,7 +162,7 @@ const AutoCompleteView = <T extends FormikValues>(
     <Grid item {...allData.layoutProps}>
       {optionsStatus.status === OptionsStateEnum.READY && (
         <Autocomplete
-          value={handleGetValue()}
+          value={handleGetValue() || []}
           options={handleOptionsData(optionsStatus.data)}
           onChange={(_, value) => handleOptionsChange(value)}
           isOptionEqualToValue={(option, value) => {
@@ -176,6 +176,12 @@ const AutoCompleteView = <T extends FormikValues>(
             //   ? option.label === value.label
             //   : option.key === value.key;
             return option.key === value.key;
+          }}
+          getOptionLabel={(option: any) => {
+            if (option.label) {
+              return option.label as string;
+            }
+            return "";
           }}
           renderInput={(params) => (
             <TextField

@@ -19,7 +19,7 @@ const getElement = <T>({ keys, errors }: GetElementPropsType<T>) => {
     for (let i = 0; i < (errors[keys[0]] as typeof errors[]).length; i += 1) {
       try {
         newKey = `${keys[0].toString()}.${i}.${
-          Object.keys((errors[keys[0]] as any[])?.[i])?.[0]
+          Object.keys((errors[keys[0]] as any[])[i])[0]
         }`;
         break;
       } catch (e) {
@@ -43,14 +43,13 @@ const getElement = <T>({ keys, errors }: GetElementPropsType<T>) => {
 const ErrorFocus = <T>(props: PropTypes) => {
   // Get the context for the Formik form this component is rendered into.
   const { isSubmitting, isValidating, errors } = useFormikContext<T>();
-
   useEffect(() => {
     // Get all keys of the error messages.
     const keys = Object.keys(errors) as Array<keyof typeof errors>;
     // Whenever there are errors and the form is submitting but finished validating.
-    if (keys.length > 0 && isSubmitting && !isValidating) {
+    // replace !isValidating with isValidating5
+    if (keys.length > 0 && isSubmitting && isValidating) {
       // We grab the first input element that error by its name.
-
       const errorElement = getElement<T>({ keys, errors });
 
       if (errorElement) {

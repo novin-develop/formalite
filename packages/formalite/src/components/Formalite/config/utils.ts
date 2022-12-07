@@ -1,10 +1,10 @@
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import Condition from "yup/lib/Condition";
 import numeral from "numeral";
-import { ViewTypes } from "@components/Formalite/Formalite.type";
+import { get } from "lodash-es";
+import { MainType, ViewTypes } from "@components/Formalite/Formalite.type";
 import { ObjectSchema } from "yup";
-import get from "./loadashGet/get";
+import { GroupViewType } from "@components/Formalite/elements/GroupView/GroupView.type";
 
 type GetDataProps = {
   source?: FormikTouched<unknown> | FormikErrors<unknown> | unknown;
@@ -79,7 +79,7 @@ export const checkIsMin = ({
 };
 
 export const showErrorMessage = (error: any) => {
-  console.error("Formalite Error", error);
+  console.info("Formalite Error", error);
 };
 
 export function fData(number: string | number) {
@@ -90,6 +90,8 @@ export const getDefaultValue = (type: ViewTypes) => {
   if (
     [
       ViewTypes.MultiDropZoneView,
+      ViewTypes.SingleDropZoneView,
+      ViewTypes.AvatarDropZoneView,
       ViewTypes.CheckGroupView,
       ViewTypes.SwitchGroupView,
       ViewTypes.RepeaterView,
@@ -106,6 +108,13 @@ export const getDefaultValue = (type: ViewTypes) => {
     ].includes(type)
   ) {
     return null;
+  }
+
+  if (ViewTypes.TextDropZoneView === type) {
+    return {
+      text: "",
+      files: [],
+    };
   }
 
   return "";
@@ -126,7 +135,7 @@ export const checkRegex = ({
   text,
 }: {
   regexs: (RegExp | undefined)[] | undefined;
-  text: string | undefined;
+  text: string;
 }) => {
   if (!regexs) {
     return true;
@@ -134,9 +143,23 @@ export const checkRegex = ({
   // const allRegexs = regexs.filter((item) => !!item);
   let testResult = true;
   regexs.forEach((item) => {
-    if (item && !item.test(text || "")) {
+    if (item && !item.test(text)) {
       testResult = false;
     }
   });
   return testResult;
+};
+
+export const resetFormFunction = (formString: MainType) => {
+  let result: { [key: string]: any } = {};
+  Object.keys(formString).forEach((item) => {
+    if (formString[item].type === ViewTypes.GroupView) {
+      result = {
+        ...result,
+        ...resetFormFunction((formString[item] as GroupViewType).options),
+      };
+    }
+    result[item] = getDefaultValue(formString[item].type);
+  });
+  return result;
 };

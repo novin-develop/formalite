@@ -11,7 +11,7 @@ const validation = Yup.object({
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {
-  title: "",
+  title: "test",
 };
 
 type TestEditorViewProps = Omit<EditorViewType, "type"> & {

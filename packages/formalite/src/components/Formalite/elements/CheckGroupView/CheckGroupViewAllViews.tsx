@@ -11,7 +11,6 @@ import {
 import { getData, checkIsRequired } from "@components/Formalite/config/utils";
 import React from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import {
   CheckGroupInputPropsType,
   CheckGroupStateEnum,
@@ -110,7 +109,7 @@ const CheckGroupViewAllViews = <T extends FormikValues>(
                 label={value.label}
                 control={
                   <TargetComponent
-                    checked={formikValue?.includes(key)}
+                    checked={formikValue.includes(key)}
                     {...value.props}
                     name={name}
                     onChange={(event) => {

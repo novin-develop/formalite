@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestTextDropZoneView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestTextDropZoneView {...args} lang={locale} />;
+  return <TestTextDropZoneView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const TextDropZoneView = Template.bind({});
@@ -57,8 +57,8 @@ TextDropZoneView.args = {
         progress(50);
       }, 1000);
       setTimeout(() => {
-        resolve(new Date().getTime().toString());
-        // reject(new Error("aaaa"));
+        // resolve(new Date().getTime().toString());
+        reject(new Error("aaaa"));
       }, 2000);
     }),
   onDelete: (id, isFromDefault) =>

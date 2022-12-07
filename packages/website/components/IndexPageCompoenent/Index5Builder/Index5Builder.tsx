@@ -2,9 +2,10 @@ import { Divider, Grid, Tab, Tabs, Typography } from "@mui/material";
 import * as React from "react";
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import BuilderTab from "./tabs/BuilderTab";
 import CodeTab from "./tabs/CodeTab";
+import { DrawerComponent, RefDrawer } from "./components/editDrower/DrawerComponent";
 
 export type layoutViewType = {
   id:string,
@@ -18,8 +19,8 @@ enum BuilderTabEnum  {
 
 export const Index5Builder = () => {
   const [layoutView,setLayoutView] = useState<layoutViewType>([]);
-
   const [selectedTab,setSelectedTab] = useState<BuilderTabEnum>(BuilderTabEnum.BUILDER)
+
   return (
     <Grid container justifyContent={"center"} justifyItems={"center"} spacing={2} >
       <Grid item xs={12} style={{textAlign:"center"}}>

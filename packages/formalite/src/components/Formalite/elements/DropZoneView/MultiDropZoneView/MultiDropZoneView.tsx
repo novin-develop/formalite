@@ -61,14 +61,12 @@ const MultiDropZoneView = <T extends FormikValues>(
     layoutProps,
     onDelete,
     imageDownloader,
-    showPreview = false,
+    showPreview,
     isSmallView = false,
   } = allData;
   const { dropZoneOptions = {}, helperText } = inputProps;
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>(
-    fixDropZoneDefaultValue(
-      getData({ source: formik.values, key: name }) || []
-    ) || []
+    fixDropZoneDefaultValue(getData({ source: formik.values, key: name }) || [])
   );
   const ref = useRef<HTMLInputElement>(null);
   const theme = useTheme();
@@ -91,7 +89,7 @@ const MultiDropZoneView = <T extends FormikValues>(
     setFile((pre) => {
       const temp = [...pre];
       if (item.original === "default") {
-        const index = pre.findIndex((i) => i?.uid === item?.uid);
+        const index = pre.findIndex((i) => i.uid === item.uid);
         if (index > -1) {
           temp[index] = newData;
         }
@@ -106,7 +104,7 @@ const MultiDropZoneView = <T extends FormikValues>(
       (progress) => {
         setFile((pre) => {
           const tempArray = [...pre];
-          const index = pre.findIndex((i) => i?.uid === item?.uid);
+          const index = pre.findIndex((i) => i.uid === item.uid);
           if (tempArray[index].original === "selected") {
             (tempArray[index] as CustomFile).progress = progress;
             (tempArray[index] as CustomFile).status = "uploading";
@@ -119,7 +117,7 @@ const MultiDropZoneView = <T extends FormikValues>(
       .then((resId) => {
         setFile((pre) => {
           const tempArray = [...pre];
-          const index = pre.findIndex((i) => i?.uid === item?.uid);
+          const index = pre.findIndex((i) => i.uid === item.uid);
           if (tempArray[index].original === "selected") {
             tempArray[index].uid =
               resId || `${Date.now()}*${tempArray[index].uid}`;
@@ -133,7 +131,7 @@ const MultiDropZoneView = <T extends FormikValues>(
       .catch((e) => {
         setFile((pre) => {
           const tempArray = [...pre];
-          const index = pre.findIndex((i) => i?.uid === item?.uid);
+          const index = pre.findIndex((i) => i.uid === item.uid);
           if (tempArray[index].original === "selected") {
             tempArray[index].status = "error";
             tempArray[index].errorText = e.message;
@@ -152,7 +150,7 @@ const MultiDropZoneView = <T extends FormikValues>(
             status: "downloading",
           } as OutsideFile);
           handleSetFile(item, newDataForDefaults);
-          imageDownloader(item.preview || "", item.controller)
+          imageDownloader(item.preview, item.controller)
             .then((res) => {
               const newData = Object.assign(item, {
                 original: "default",
@@ -257,14 +255,13 @@ const MultiDropZoneView = <T extends FormikValues>(
           }),
         })}
       >
-        <input {...getInputProps()} ref={inputRef} />
+        <input {...getInputProps()} ref={inputRef} data-testid="drop-input" />
         {isSmallView ? (
           <SmallBlockContent required={isRequired} />
         ) : (
           <BlockContent
+            uploadController={new AbortController()}
             file={null}
-            setFile={() => {}}
-            resetDropZone={() => {}}
             required={isRequired}
             uploadFunction={uploadFunction}
             isLessMd={isLessMd}
@@ -282,7 +279,7 @@ const MultiDropZoneView = <T extends FormikValues>(
 
       <MultiFilePreview
         files={file}
-        showPreview={showPreview}
+        showPreview={!!showPreview}
         onRemove={onDelete}
         setFile={setFile}
         setToFormik={(newValue) => {
@@ -314,9 +311,5 @@ const MultiDropZoneView = <T extends FormikValues>(
 };
 
 export default React.memo(MultiDropZoneView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof MultiDropZoneView;

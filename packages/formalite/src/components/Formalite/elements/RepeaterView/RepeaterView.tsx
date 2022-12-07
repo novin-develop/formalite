@@ -66,7 +66,8 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
         {({ remove, push }) => (
           <Grid container direction="column">
             <TransitionGroup>
-              {getData({ source: formik.values, key: name })?.length > 0 &&
+              {getData({ source: formik.values, key: name }) &&
+                getData({ source: formik.values, key: name }).length > 0 &&
                 (getData({ source: formik.values, key: name }) as object[]).map(
                   (obj, index) => (
                     // eslint-disable-next-line react/no-array-index-key
@@ -162,9 +163,7 @@ const RepeaterView = <T extends FormikValues>(props: RepeaterViewProps<T>) => {
 
             {!Array.isArray(getData({ source: formik.errors, key: name })) &&
             getData({ source: formik.touched, key: name }) ? (
-              <FormHelperText
-                sx={(theme) => ({ color: theme.palette.error.main })}
-              >
+              <FormHelperText error>
                 {translator(getData({ source: formik.errors, key: name }))}
               </FormHelperText>
             ) : (

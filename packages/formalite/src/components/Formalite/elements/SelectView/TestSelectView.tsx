@@ -12,7 +12,7 @@ const validation = Yup.object({
 type ValidationType = Yup.InferType<typeof validation>;
 
 const iniValues: ValidationType = {
-  title: "1",
+  title: "one",
 };
 
 type TestSelectViewProps = Omit<SelectViewType, "type"> & {

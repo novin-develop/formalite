@@ -34,9 +34,9 @@ export default {
 
 const Template: ComponentStory<typeof TestSimpleAutoCompleteView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestSimpleAutoCompleteView {...args} lang={locale} />;
+  return <TestSimpleAutoCompleteView {...args} lang={globals?.locale} />;
 };
 
 export const SimpleAutoCompleteView = Template.bind({});
@@ -53,7 +53,7 @@ SimpleAutoCompleteView.args = {
     freeSolo: false,
     multiple: false,
     onChange: (value) => {
-      console.log(value);
+      // console.log(value);
     },
   },
   dataFetching: {
@@ -92,13 +92,12 @@ FreeSoloAutoCompleteView.args = {
   },
   inputProps: {
     label: "Title of Free Solo view",
-    helperText: "Helper text",
   },
   autoCompleteProps: {
     freeSolo: true,
     multiple: false,
     onChange: (value) => {
-      console.log(value);
+      // console.log(value);
     },
   },
   dataFetching: {

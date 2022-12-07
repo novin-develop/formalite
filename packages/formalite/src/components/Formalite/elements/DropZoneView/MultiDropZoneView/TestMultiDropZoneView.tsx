@@ -32,12 +32,16 @@ const iniValues: ValidationType = {
   ],
 };
 
+const iniValueNull = { title: [] };
+
 type TestMultiDropZoneViewProps = Omit<MultiDropZoneViewType, "type"> & {
   lang?: Language;
+  withIni?: boolean;
 };
 
 export const TestMultiDropZoneView = ({
   lang = "en",
+  withIni = true,
   ...props
 }: TestMultiDropZoneViewProps) => {
   const formRef = useFormaliteRef<ValidationType>();
@@ -55,7 +59,7 @@ export const TestMultiDropZoneView = ({
     <Formalite<ValidationType>
       lang={lang}
       formString={formString}
-      initialValues={iniValues}
+      initialValues={withIni ? iniValues : iniValueNull}
       validationSchema={validation}
       formRef={formRef}
       onSubmit={(values) => {

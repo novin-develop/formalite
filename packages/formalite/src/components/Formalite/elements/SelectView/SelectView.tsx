@@ -102,9 +102,9 @@ const SelectView = <T extends FormikValues>(props: SelectViewProps<T>) => {
         dataStatus={dataStatus}
         allInputProps={allData.inputProps}
         loadFunction={
-          allData?.dataFetching.type === FetchingDataEnum.AUTOMATIC
+          allData.dataFetching.type === FetchingDataEnum.AUTOMATIC
             ? loadFunction
-            : allData?.dataFetching.onRetry
+            : allData.dataFetching.onRetry
         }
         {...inputProps}
       />

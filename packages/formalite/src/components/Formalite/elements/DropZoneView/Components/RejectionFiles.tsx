@@ -29,13 +29,13 @@ export default function RejectionFiles({ fileRejections, fileState }: Props) {
         bgcolor: (theme) => alpha(theme.palette.error.main, 0.08),
       }}
     >
-      {fileState?.errorText && (
+      {fileState && fileState.errorText && (
         <Box sx={{ my: 1 }}>
           <Typography variant="subtitle2" noWrap>
             {fileState.original === "default"
               ? fileState.originalName
               : fileState.name}{" "}
-            - {fData(fileState?.size || 0)}
+            - {fData(fileState.size || 0)}
           </Typography>
           <Typography variant="caption" component="p">
             - {fileState.errorText}

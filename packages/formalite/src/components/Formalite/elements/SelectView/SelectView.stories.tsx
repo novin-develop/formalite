@@ -29,11 +29,8 @@ export default {
   ],
 } as ComponentMeta<typeof TestSelectView>;
 
-const Template: ComponentStory<typeof TestSelectView> = (
-  args,
-  { globals: { locale } }
-) => {
-  return <TestSelectView {...args} lang={locale} />;
+const Template: ComponentStory<typeof TestSelectView> = (args, { globals }) => {
+  return <TestSelectView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const Base = Template.bind({});
@@ -65,6 +62,9 @@ Base.args = {
   inputProps: {
     label: "Select Title",
     helperText: "HelperText",
+    onChange: () => {
+      throw new Error("This Error is OK");
+    },
   },
 };
 Base.storyName = "Base";

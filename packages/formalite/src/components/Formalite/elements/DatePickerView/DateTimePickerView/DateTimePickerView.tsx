@@ -78,9 +78,5 @@ const DateTimePickerView = <T extends FormikValues>(
   );
 };
 export default React.memo(DateTimePickerView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof DateTimePickerView;

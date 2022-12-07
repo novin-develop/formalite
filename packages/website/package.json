@@ -25,7 +25,9 @@
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0",
     "react-perfect-scrollbar": "^1.5.8",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "react-simple-code-editor": "^0.13.1",
+    "prismjs" : "^1.29.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.186",

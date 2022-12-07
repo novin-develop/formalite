@@ -79,9 +79,5 @@ const CartNumberView = <T extends FormikValues>(
   );
 };
 export default React.memo(CartNumberView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof CartNumberView;

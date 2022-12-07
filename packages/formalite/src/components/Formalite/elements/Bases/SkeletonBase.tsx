@@ -67,8 +67,8 @@ export const AvatarViewSkeleton = ({
       <Skeleton
         variant="circular"
         animation="wave"
-        width={height || 126}
-        height={height || 126}
+        width={height}
+        height={height}
       />
       {hasHelper && (
         <>

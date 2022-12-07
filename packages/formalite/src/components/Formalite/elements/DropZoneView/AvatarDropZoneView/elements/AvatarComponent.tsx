@@ -15,6 +15,8 @@ import { DropzoneRootProps } from "react-dropzone";
 import { DeleteIconButton } from "@components/Formalite/elements/DropZoneView/AvatarDropZoneView/elements/DeleteIconButton";
 import { useI18nContext } from "@components/base/I18nProvider";
 import { Theme } from "@mui/material/styles";
+import { getExtensionFromUrl } from "@config/utils";
+import { FileIcon } from "@components/Formalite/elements/DropZoneView/Components/BlockContent";
 
 type AvatarComponentPropsType<T> = {
   formik: FormikProps<T>;
@@ -74,10 +76,21 @@ export const AvatarComponent = <T extends FormikValues>(
           ...(isDragActive && { opacity: 0.72 }),
         }}
       >
-        <input {...getInputProps()} />
+        <input {...getInputProps()} data-testid="drop-input" />
 
         {file[0] && (
-          <Image alt="avatar" src={file[0]?.preview} sx={{ zIndex: 8 }} />
+          <FileIcon
+            type={getExtensionFromUrl(file[0])}
+            preview={
+              <Image
+                alt="file preview"
+                src={file[0].preview}
+                sx={{
+                  zIndex: 8,
+                }}
+              />
+            }
+          />
         )}
 
         <PlaceholderStyle
@@ -114,7 +127,7 @@ export const AvatarComponent = <T extends FormikValues>(
         <CustomCircularProgress
           thickness={1}
           variant="determinate"
-          value={file[0]?.original === "selected" ? file[0]?.progress : 0}
+          value={file[0].progress}
         />
       )}
     </RootStyle>

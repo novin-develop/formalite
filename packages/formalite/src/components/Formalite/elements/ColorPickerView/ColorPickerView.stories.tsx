@@ -30,9 +30,9 @@ export default {
 
 const Template: ComponentStory<typeof TestColorPickerView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestColorPickerView {...args} lang={locale} />;
+  return <TestColorPickerView {...args} lang={globals?.locale} />;
 };
 
 export const Base = Template.bind({});

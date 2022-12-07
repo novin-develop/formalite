@@ -20,14 +20,21 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 
+type InLayoutDragItemProps = {
+  type:string,
+  id:string,
+  onDelete:(key:string)=>void
+  onDraggableItemClick:(type:string)=>void
+}
 
-const InLayoutDragItem = (props:{type:string,id:string,onDelete:(key:string)=>void}) => {
+const InLayoutDragItem = (props:InLayoutDragItemProps) => {
   const num = parseInt(props.id.split("_")[0])*1000 + parseInt(props.id.split("_")[1])*100;
   const allItemProps= {
     isFromLayout:true,
     onDelete:()=>{
       props.onDelete(props.id)
-    }
+    },
+    onClick: props.onDraggableItemClick
   }
     switch (props.type.split(".")[0]) {
       case "TextView":

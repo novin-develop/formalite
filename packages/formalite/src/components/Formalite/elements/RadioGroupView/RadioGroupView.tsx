@@ -128,9 +128,9 @@ const RadioGroupView = <T extends FormikValues>(
         allInputProps={allData.inputProps}
         labelProps={allData.labelProps}
         loadFunction={
-          allData?.dataFetching.type === FetchingDataEnum.AUTOMATIC
+          allData.dataFetching.type === FetchingDataEnum.AUTOMATIC
             ? loadFunction
-            : allData?.dataFetching.onRetry
+            : allData.dataFetching.onRetry
         }
         {...inputProps}
       />

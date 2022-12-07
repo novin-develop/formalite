@@ -110,3 +110,15 @@ test("TextView: textView onChange error -> TextView", async () => {
 
   expect(textBox).toBeInTheDocument();
 });
+
+test("TextView: is Rendered with is on updateMode -> TextView", async () => {
+  // @ts-ignore
+  render(<Simple {...Simple.args} showOnUpdate />);
+
+  await waitFor(async () => {
+    const TextView = await screen.queryByRole("textbox", {
+      name: /Title Input/i,
+    });
+    expect(TextView).toBeNull();
+  });
+});

@@ -240,12 +240,8 @@ export function itemRenderer<T extends FormikValues>({
 }
 
 export default React.memo(Formalite, (prevProps, nextProps) => {
-  try {
-    return (
-      prevProps.formString === nextProps.formString &&
-      prevProps.loading === nextProps.loading
-    );
-  } catch (e) {
-    return true;
-  }
+  return (
+    prevProps.formString === nextProps.formString &&
+    prevProps.loading === nextProps.loading
+  );
 }) as typeof Formalite;

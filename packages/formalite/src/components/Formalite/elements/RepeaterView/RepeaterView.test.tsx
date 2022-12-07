@@ -3,7 +3,7 @@ import { render, screen } from "@config/test-utils";
 import userEvent from "@testing-library/user-event";
 import { waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-import { ViewTypes } from "@components/Formalite";
+import { FetchingDataEnum, ViewTypes } from "@components/Formalite";
 import { Base } from "./RepeaterView.stories";
 
 beforeEach(() => {
@@ -128,5 +128,63 @@ test("Repeater View: disable removeAddBtn -> RepeaterView", async () => {
 
   await waitFor(async () => {
     expect(removeButtons).not.toBeInTheDocument();
+  });
+});
+
+test("Repeater View: with switch and date -> RepeaterView", async () => {
+  render(
+    <Base
+      layoutProps={{
+        xs: 12,
+      }}
+      buttonText="Custom text"
+      options={{
+        name: {
+          type: ViewTypes.SwitchGroupView,
+          layoutProps: {
+            xs: 6,
+          },
+          labelProps: {},
+          dataFetching: {
+            type: FetchingDataEnum.MANUAL,
+            loading: false,
+            error: false,
+            onRetry: () => {
+              console.log("fg forever");
+            },
+            data: {
+              one: {
+                label: "one",
+              },
+              two: {
+                label: "two",
+              },
+            },
+          },
+          inputProps: {
+            label: "Name",
+          },
+        },
+        family: {
+          type: ViewTypes.DatePickerView,
+          layoutProps: {
+            xs: 6,
+          },
+          inputProps: {
+            label: "Family",
+          },
+        },
+      }}
+    />
+  );
+  const addBtn = screen.getByRole("button", { name: "Custom text" });
+  await waitFor(async () => {
+    expect(addBtn).toBeInTheDocument();
+  });
+  await waitFor(() => {
+    userEvent.click(addBtn);
+  });
+  await waitFor(async () => {
+    expect(screen.queryByText(/retry/i)).toBeNull();
   });
 });

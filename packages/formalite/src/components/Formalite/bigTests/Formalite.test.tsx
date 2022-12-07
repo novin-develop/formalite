@@ -10,6 +10,7 @@ import {
 import userEvent from "@testing-library/user-event";
 import moment from "moment";
 import { ErrorRepeaterFormalite } from "@components/Formalite/bigTests/ErrorRepeaterFormalite";
+import { FirstExtraComponent } from "@components/Formalite/bigTests/ExtraFormaliteForm";
 import { ErrorTestFormalite } from "./ErrorTestFromalite";
 import { TestFormalite } from "./TestFormalite";
 
@@ -62,7 +63,8 @@ test("Formalite: Test Error in Repeater", async () => {
 
 /// -------------------------Error
 test("Formalite: All component must have error with timeView", async () => {
-  render(<AllBaseError themeMode="light" />);
+  const onFormChange = jest.fn();
+  render(<AllBaseError themeMode="light" onFormChange={onFormChange} />);
 
   const submitButton = screen.getByRole("button", { name: "Submit" });
   // ----------
@@ -94,6 +96,7 @@ test("Formalite: All component must have error with timeView", async () => {
 
   const allErrorTexts = screen.getAllByText(/Required/i);
   expect(allErrorTexts).toHaveLength(20);
+  expect(onFormChange).toBeCalledTimes(13);
 });
 
 /// -----------------------------Loading
@@ -125,5 +128,36 @@ test("Formalite: Dark Mode and rtl rendered", async () => {
 
   await waitFor(async () => {
     expect(RetryButton).toBeNull();
+  });
+});
+
+// -----==============-----------------=======================---- Extras
+
+test("Formalite: First Extra", async () => {
+  render(<FirstExtraComponent themeMode="dark" direction="rtl" />);
+  const allTextViews = screen.getAllByRole("textbox");
+
+  await waitFor(async () => {
+    expect(allTextViews).toHaveLength(1);
+  });
+});
+
+test("Formalite: First Extra 2", async () => {
+  render(
+    <FirstExtraComponent
+      themeMode="dark"
+      direction="rtl"
+      onSubmit={() => {
+        throw new Error("some Error");
+      }}
+    />
+  );
+  const allTextViews = screen.getAllByRole("textbox");
+
+  await waitFor(async () => {
+    expect(allTextViews).toHaveLength(1);
+  });
+  await waitFor(async () => {
+    userEvent.click(screen.getByRole("button", { name: "Submit" }));
   });
 });

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/novin-develop/formalite/compare/v0.4.0...v0.4.1) (2022-12-10)
+
+
+### Bug Fixes
+
+* coverall action ([6f7450e](https://github.com/novin-develop/formalite/commit/6f7450e189ecc50303302e354623d22af69b2c8c))
+
+
+
+
 ## [0.4.0](https://github.com/novin-develop/formalite/compare/v0.3.1...v0.4.0) (2022-11-08)
 
 

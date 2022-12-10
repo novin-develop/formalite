@@ -15,6 +15,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+          
+      - name: update npm version
+        run: npm i -g npm
 
       - name: npm install and run test
         run: |

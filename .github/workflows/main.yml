@@ -25,4 +25,4 @@ jobs:
         with:
           path-to-lcov: ./packages/formalite/coverage/lcov.info
           base-path: packages/formalite
-          github-token: sKy7odcDcvQpianJm3WWAj080VBtbDQuV
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -28,11 +28,8 @@ export default {
   ],
 } as ComponentMeta<typeof TestEditorView>;
 
-const Template: ComponentStory<typeof TestEditorView> = (
-  args,
-  { globals: { locale } }
-) => {
-  return <TestEditorView {...args} lang={locale} />;
+const Template: ComponentStory<typeof TestEditorView> = (args, { globals }) => {
+  return <TestEditorView {...args} lang={globals?.locale} />;
 };
 
 export const Base = Template.bind({});

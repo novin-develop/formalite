@@ -24,7 +24,7 @@ export interface AutoCompleteViewType extends BaseViewType {
    * Specify props that passed to MUI Autocomplete component
    * @see [MUI AutocompleteProps](https://mui.com/material-ui/api/autocomplete/)
    */
-  autoCompleteProps?: Omit<
+  autoCompleteProps: Omit<
     AutocompleteProps<
       SingleAutoCompleteViewOptionType,
       true | false,

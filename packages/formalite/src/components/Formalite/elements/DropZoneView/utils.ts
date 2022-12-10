@@ -1,6 +1,10 @@
-import { ImageDownloaderPromise,OutsideFile } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
+import {
+  ImageDownloaderPromise,
+  OutsideFile,
+} from "@components/Formalite/elements/DropZoneView/Components/Global.type";
 
 // outside library
+/* istanbul ignore next */
 export const dropzoneImageDownloader = (
   filePath: string,
   controller: AbortController
@@ -37,6 +41,7 @@ export const fixDropZoneDefaultValue = (
     original: "default",
     status: "not_downloaded",
     controller: new AbortController(),
+    originalName: "default",
   }));
 };
 

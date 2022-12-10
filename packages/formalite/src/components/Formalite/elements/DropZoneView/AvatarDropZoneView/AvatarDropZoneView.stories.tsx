@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestAvatarDropZoneView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestAvatarDropZoneView {...args} lang={locale} />;
+  return <TestAvatarDropZoneView {...args} lang={globals?.locale} />;
 };
 
 export const AvatarDropZoneView = Template.bind({});

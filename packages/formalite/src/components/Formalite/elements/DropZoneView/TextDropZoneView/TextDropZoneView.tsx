@@ -1,5 +1,6 @@
 import { FormikValues } from "formik";
 import {
+  alpha,
   FormControl,
   FormHelperText,
   Grid,
@@ -45,7 +46,7 @@ const TextDropZoneView = <T extends FormikValues>(
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>(
     fixDropZoneDefaultValue(
       getData({ source: formik.values, key: name })?.files || []
-    ) || []
+    )
   );
   const uploadController = new AbortController();
 
@@ -56,7 +57,7 @@ const TextDropZoneView = <T extends FormikValues>(
     setFile((pre) => {
       const temp = [...pre];
       if (item.original === "default") {
-        const index = pre.findIndex((i) => i?.uid === item?.uid);
+        const index = pre.findIndex((i) => i.uid === item.uid);
         if (index > -1) {
           temp[index] = newData;
         }
@@ -71,7 +72,7 @@ const TextDropZoneView = <T extends FormikValues>(
       (progress) => {
         setFile((pre) => {
           const tempArray = [...pre];
-          const index = pre.findIndex((i) => i?.uid === item?.uid);
+          const index = pre.findIndex((i) => i.uid === item.uid);
           if (tempArray[index].original === "selected") {
             (tempArray[index] as CustomFile).progress = progress;
             (tempArray[index] as CustomFile).status = "uploading";
@@ -84,7 +85,7 @@ const TextDropZoneView = <T extends FormikValues>(
       .then((resId) => {
         setFile((pre) => {
           const tempArray = [...pre];
-          const index = pre.findIndex((i) => i?.uid === item?.uid);
+          const index = pre.findIndex((i) => i.uid === item.uid);
           if (tempArray[index].original === "selected") {
             tempArray[index].uid =
               resId || `${Date.now()}*${tempArray[index].uid}`;
@@ -98,7 +99,7 @@ const TextDropZoneView = <T extends FormikValues>(
       .catch((e) => {
         setFile((pre) => {
           const tempArray = [...pre];
-          const index = pre.findIndex((i) => i?.uid === item?.uid);
+          const index = pre.findIndex((i) => i.uid === item.uid);
           if (tempArray[index].original === "selected") {
             tempArray[index].status = "error";
             tempArray[index].errorText = e.message;
@@ -117,7 +118,7 @@ const TextDropZoneView = <T extends FormikValues>(
             status: "downloading",
           } as OutsideFile);
           handleSetFile(item, newDataForDefaults);
-          imageDownloader(item.preview || "", item.controller)
+          imageDownloader(item.preview, item.controller)
             .then((res) => {
               const newData = Object.assign(item, {
                 original: "default",
@@ -197,7 +198,7 @@ const TextDropZoneView = <T extends FormikValues>(
         {...inputProps}
         sx={(theme) => ({
           background: isDragActive
-            ? theme.palette.grey[theme.palette.mode === "light" ? 200 : 800]
+            ? alpha(theme.palette.grey[500], 0.2)
             : undefined,
           ...(typeof inputProps.sx === "function" ? inputProps.sx(theme) : {}),
         })}
@@ -205,7 +206,11 @@ const TextDropZoneView = <T extends FormikValues>(
           ...(inputProps.InputProps || {}),
           endAdornment: (
             <InputAdornment position="end">
-              <input {...getInputProps()} ref={inputRef} />
+              <input
+                {...getInputProps()}
+                ref={inputRef}
+                data-testid="drop-input"
+              />
               <IconButton
                 sx={
                   allData.inputProps.multiline
@@ -263,8 +268,8 @@ const TextDropZoneView = <T extends FormikValues>(
         <FormControl>
           <FormHelperText
             error={
-              getData({ source: formik.touched, key: name }) &&
-              getData({ source: formik.errors, key: `${String(name)}.files` })
+              !!getData({ source: formik.touched, key: name }) &&
+              !!getData({ source: formik.errors, key: `${String(name)}.files` })
             }
           >
             {getData({ source: formik.touched, key: name }) &&
@@ -284,9 +289,5 @@ const TextDropZoneView = <T extends FormikValues>(
 };
 
 export default React.memo(TextDropZoneView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof TextDropZoneView;

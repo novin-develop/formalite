@@ -30,9 +30,9 @@ export default {
 
 const Template: ComponentStory<typeof TestCardNumberView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestCardNumberView {...args} lang={locale} />;
+  return <TestCardNumberView {...args} lang={globals?.locale} />;
 };
 
 export const Base = Template.bind({});

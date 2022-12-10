@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestRepeaterView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestRepeaterView {...args} lang={locale} />;
+  return <TestRepeaterView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const Base = Template.bind({});

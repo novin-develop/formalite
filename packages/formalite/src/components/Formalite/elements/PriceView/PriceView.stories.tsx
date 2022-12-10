@@ -28,11 +28,8 @@ export default {
   ],
 } as ComponentMeta<typeof TestPriceView>;
 
-const Template: ComponentStory<typeof TestPriceView> = (
-  args,
-  { globals: { locale } }
-) => {
-  return <TestPriceView {...args} lang={locale} />;
+const Template: ComponentStory<typeof TestPriceView> = (args, { globals }) => {
+  return <TestPriceView {...args} lang={globals?.locale} />;
 };
 
 export const Base = Template.bind({});
@@ -44,7 +41,7 @@ Base.args = {
   inputProps: {
     label: "Price",
     onChange: (value) => {
-      console.log(value);
+      // console.log(value);
     },
   },
 };

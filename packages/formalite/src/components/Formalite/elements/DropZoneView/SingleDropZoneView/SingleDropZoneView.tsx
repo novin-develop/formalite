@@ -10,7 +10,6 @@ import {
   FormHelperText,
   FormLabel,
   Grid,
-  Typography,
   useTheme,
 } from "@mui/material";
 import { FormikValues } from "formik";
@@ -26,7 +25,7 @@ import {
   CustomFile,
   OutsideFile,
 } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
-import { getNameFromUrl, removeUrlExtras } from "@config/utils";
+import { getNameFromUrl } from "@config/utils";
 
 const DropZoneStyle = styled("div")(({ theme }) => ({
   outline: "none",
@@ -74,7 +73,7 @@ const SingleDropZoneView = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
+            tempArray[0].status &&
             tempArray[0].original === "selected"
           ) {
             tempArray[0].progress = progress;
@@ -102,7 +101,7 @@ const SingleDropZoneView = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
+            tempArray[0].status &&
             tempArray[0].original === "selected"
           ) {
             tempArray[0].status = "error";
@@ -114,48 +113,53 @@ const SingleDropZoneView = <T extends FormikValues>(
   }, []);
 
   useEffect(() => {
-    const firstData = getData({ source: formik.values, key: name })[0];
-    const controller = new AbortController();
-    if (firstData?.original !== "selected" && !!firstData?.preview) {
-      setPreventDefault(true);
-      if (imageDownloader) {
-        imageDownloader(firstData.preview, controller)
-          .then((res) => {
-            const data = Object.assign(firstData, {
-              original: "default",
-              status: "done",
-              base64: res.base64,
-              preview: res.base64,
-              originalName: res.originalName,
-              size: res.size,
-              errorText: "",
-              controller,
+    if (
+      getData({ source: formik.values, key: name }) &&
+      getData({ source: formik.values, key: name }).length
+    ) {
+      const firstData = getData({ source: formik.values, key: name })[0];
+      const controller = new AbortController();
+      if (firstData.original !== "selected" && !!firstData.preview) {
+        setPreventDefault(true);
+        if (imageDownloader) {
+          imageDownloader(firstData.preview, controller)
+            .then((res) => {
+              const data = Object.assign(firstData, {
+                original: "default",
+                status: "done",
+                base64: res.base64,
+                preview: res.base64,
+                originalName: res.originalName,
+                size: res.size,
+                errorText: "",
+                controller,
+              });
+              setFile([data]);
+              setPreventDefault(false);
+            })
+            .catch((e) => {
+              const data = Object.assign(firstData, {
+                original: "default",
+                status: "error",
+                errorText: e.message,
+              } as OutsideFile);
+              setFile([data]);
+              setPreventDefault(false);
             });
-            setFile([data]);
-            setPreventDefault(false);
-          })
-          .catch((e) => {
-            const data = Object.assign(firstData, {
-              original: "default",
-              status: "error",
-              errorText: e.message,
-            } as OutsideFile);
-            setFile([data]);
-            setPreventDefault(false);
+        } else {
+          const data = Object.assign(firstData, {
+            original: "default",
+            status: "done",
+            base64: firstData.preview,
+            preview: firstData.preview,
+            originalName: getNameFromUrl(firstData.preview),
+            size: 0,
+            errorText: "",
+            controller,
           });
-      } else {
-        const data = Object.assign(firstData, {
-          original: "default",
-          status: "done",
-          base64: firstData.preview,
-          preview: firstData.preview,
-          originalName: getNameFromUrl(firstData.preview),
-          size: 0,
-          errorText: "",
-          controller,
-        });
-        setFile([data]);
-        setPreventDefault(false);
+          setFile([data]);
+          setPreventDefault(false);
+        }
       }
     }
   }, [formik.values]);
@@ -186,7 +190,7 @@ const SingleDropZoneView = <T extends FormikValues>(
     },
   });
 
-  if (loading || preventDrop) {
+  if (loading) {
     return (
       <Grid item {...allData.layoutProps}>
         <TextViewSkeleton height={253} hasHelper={!!helperText} />
@@ -222,7 +226,7 @@ const SingleDropZoneView = <T extends FormikValues>(
           }),
         }}
       >
-        <input {...getInputProps()} ref={inputRef} />
+        <input {...getInputProps()} ref={inputRef} data-testid="drop-input" />
 
         <BlockContent
           isLessMd={isLessMd}
@@ -242,7 +246,7 @@ const SingleDropZoneView = <T extends FormikValues>(
         />
       </DropZoneStyle>
       {(fileRejections.length > 0 ||
-        (typeof file[0] === "object" && file[0]?.status === "error")) && (
+        (typeof file[0] === "object" && file[0].status === "error")) && (
         <RejectionFiles fileRejections={fileRejections} fileState={file[0]} />
       )}
       {helperText ||
@@ -267,9 +271,5 @@ const SingleDropZoneView = <T extends FormikValues>(
 };
 
 export default React.memo(SingleDropZoneView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof SingleDropZoneView;

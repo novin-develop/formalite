@@ -17,10 +17,12 @@ const iniValues: ValidationType = {
 
 type TestColorPickerViewProps = Omit<ColorPickerViewType, "type"> & {
   lang?: Language;
+  withExtra?: boolean;
 };
 
 export const TestColorPickerView = ({
   lang = "en",
+  withExtra = false,
   ...props
 }: TestColorPickerViewProps) => {
   const formRef = useFormaliteRef<ValidationType>();
@@ -35,15 +37,18 @@ export const TestColorPickerView = ({
   }, [props]);
 
   return (
-    <Formalite<ValidationType>
-      lang={lang}
-      formString={formString}
-      initialValues={iniValues}
-      validationSchema={validation}
-      formRef={formRef}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-    />
+    <>
+      <Formalite<ValidationType>
+        lang={lang}
+        formString={formString}
+        initialValues={iniValues}
+        validationSchema={validation}
+        formRef={formRef}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      />
+      {withExtra ? <span>extra text</span> : null}
+    </>
   );
 };

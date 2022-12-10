@@ -21,8 +21,8 @@ jobs:
 
       - name: npm install and run test
         run: |
-          npm i -g lerna@3 && lerna bootstrap --scope @novin-dev/formalite --include-dependencies --ci
-          npm run test:story-cover
+          npm i -g lerna@3 && lerna bootstrap
+          npm run test:story-cover -- --no-cache
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:

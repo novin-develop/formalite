@@ -16,10 +16,10 @@ jobs:
         with:
           node-version: 10.x
 
-      - name: npm install, make test-coverage
+      - name: npm install, make test:story-cover
         run: |
           npm i -g lerna@3 && lerna bootstrap
-          npm run test:story-cover
+          npm run test:coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:

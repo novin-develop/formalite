@@ -2,6 +2,7 @@
 
 Generate MUI form with few line of code
 
+[![Coverage Status](https://coveralls.io/repos/github/novin-develop/formalite/badge.svg?branch=main)](https://coveralls.io/github/novin-develop/formalite?branch=main)
 [![size](https://img.shields.io/bundlephobia/min/@novin-dev/formalite)](https://bundlephobia.com/package/@novin-dev/formalite)
 [![download](https://img.shields.io/npm/dw/@novin-dev/formalite)](https://www.npmjs.com/package/@novin-dev/formalite)
 [![licence](https://img.shields.io/npm/l/@novin-dev/formalite)](https://www.npmjs.com/package/@novin-dev/formalite)

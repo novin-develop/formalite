@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": true,
   "scripts": {
     "dev": "next dev -p 8080",
@@ -16,7 +16,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.7",
-    "@novin-dev/formalite": "^0.4.1",
+    "@novin-dev/formalite": "^0.4.2",
     "@uiw/react-code-preview": "^5.1.2",
     "lodash-es": "^4.17.21",
     "next": "12.2.5",

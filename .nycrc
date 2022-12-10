@@ -1,0 +1,11 @@
+{
+  "include": [
+    "src/components/Formalite/elements/**/*.{js,jsx,ts,tsx}"
+  ],
+  "exclude": [
+    "src/components/Formalite/elements/**/Test*.{js,jsx,ts,tsx}",
+    "**/node_modules/**",
+    "**/*.stories.{ts,tsx}",
+    "**/*.code.{ts,tsx}"
+  ]
+}

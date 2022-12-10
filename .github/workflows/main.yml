@@ -1,0 +1,31 @@
+on: ["pull_request"]
+
+name: Test Coveralls
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          
+      - name: update npm version
+        run: npm i -g npm
+
+      - name: npm install and run test
+        run: |
+          npm i -g lerna@3 && lerna bootstrap
+          npm run test:story-cover
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          path-to-lcov: ./packages/formalite/coverage/lcov.info
+          base-path: packages/formalite
+          github-token: ${{ secrets.GITHUB_TOKEN }}

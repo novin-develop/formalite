@@ -31,7 +31,7 @@
     "lint:fix": "lerna run lint:fix --stream --parallel",
     "test": "jest",
     "test:dev": "jest -o --watch",
-    "test:coverage": "jest --watchAll=false --coverage",
+    "test:coverage": "jest --watchAll=false --coverage --no-cache",
     "test:coverage-file": "jest --watchAll=false --coverage --collectCoverageFrom=src/components/Formalite/elements/DropZoneView/MultiDropZoneView/MultiDropZoneView.tsx",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",

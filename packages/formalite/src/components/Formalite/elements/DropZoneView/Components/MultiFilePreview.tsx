@@ -27,26 +27,11 @@ import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import DownloadIcon from "@mui/icons-material/Download";
 import { downloadBase64 } from "@components/Formalite/elements/DropZoneView/utils";
-// ----------------------------------------------------------------------
-
-const getFileData = (file: CustomFile | string) => {
-  if (typeof file === "string") {
-    return {
-      key: file,
-    };
-  }
-  return {
-    key: file.name,
-    name: file.name,
-    size: file.size,
-    preview: file.preview,
-  };
-};
-
-// ----------------------------------------------------------------------
+import { getExtensionFromUrl } from "@config/utils";
+import { FileIcon } from "@components/Formalite/elements/DropZoneView/Components/BlockContent";
 
 export default function MultiFilePreview({
-  showPreview = false,
+  showPreview,
   files,
   onRemove,
   setFile,
@@ -72,11 +57,7 @@ export default function MultiFilePreview({
         return item;
       })
     );
-    onRemove(
-      file?.uid || "",
-      file.original === "default",
-      !file.errorText?.length
-    )
+    onRemove(file.uid, file.original === "default", !file.errorText)
       .then(() => {
         setFile((pre) => {
           const newValue = [...pre].filter((item) => item.uid !== file.uid);
@@ -131,7 +112,7 @@ export default function MultiFilePreview({
                     border: (theme) => `solid 1px ${theme.palette.divider}`,
                   }}
                 >
-                  <Fade in={["uploading", "deleting"].includes(status || "")}>
+                  <Fade in={["uploading", "deleting"].includes(status)}>
                     {status === "deleting" ? (
                       <CircularProgress
                         variant="indeterminate"
@@ -160,7 +141,10 @@ export default function MultiFilePreview({
                       />
                     )}
                   </Fade>
-                  <Image alt="preview" src={preview} ratio="1/1" />
+                  <FileIcon
+                    type={getExtensionFromUrl(file)}
+                    preview={<Image alt="file preview" src={preview} />}
+                  />
                   <Grid>
                     <IconButton
                       size="small"
@@ -174,12 +158,6 @@ export default function MultiFilePreview({
                         right: 3,
                         position: "absolute",
                         color: "common.white",
-                        bgcolor: (theme) =>
-                          alpha(theme.palette.grey[900], 0.72),
-                        "&:hover": {
-                          bgcolor: (theme) =>
-                            alpha(theme.palette.grey[900], 0.48),
-                        },
                       }}
                     >
                       <CloseIcon />
@@ -195,12 +173,6 @@ export default function MultiFilePreview({
                           left: 3,
                           position: "absolute",
                           color: "common.white",
-                          bgcolor: (theme) =>
-                            alpha(theme.palette.grey[900], 0.72),
-                          "&:hover": {
-                            bgcolor: (theme) =>
-                              alpha(theme.palette.grey[900], 0.48),
-                          },
                         }}
                       >
                         <ReplayIcon />
@@ -237,9 +209,7 @@ export default function MultiFilePreview({
                         mr: 2,
                       }}
                     >
-                      <Fade
-                        in={["uploading", "deleting"].includes(status || "")}
-                      >
+                      <Fade in={["uploading", "deleting"].includes(status)}>
                         {status === "deleting" ? (
                           <CircularProgress
                             variant="indeterminate"
@@ -333,10 +303,7 @@ export default function MultiFilePreview({
                           edge="end"
                           size="small"
                           onClick={() => {
-                            downloadBase64(
-                              file.preview || "",
-                              file.originalName || ""
-                            );
+                            downloadBase64(file.preview, file.originalName);
                           }}
                         >
                           <DownloadIcon />

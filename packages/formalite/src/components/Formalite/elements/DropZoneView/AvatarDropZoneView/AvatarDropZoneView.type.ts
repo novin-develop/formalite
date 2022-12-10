@@ -51,7 +51,7 @@ export interface AvatarDropZoneViewType extends BaseViewType {
     file: CustomFile,
     progress: (progress: number) => void,
     uploadController: AbortController
-  ) => Promise<string>;
+  ) => Promise<string | undefined>;
 
   /**
    * A callback function that runs when Delete occurred in MultiDropZoneView

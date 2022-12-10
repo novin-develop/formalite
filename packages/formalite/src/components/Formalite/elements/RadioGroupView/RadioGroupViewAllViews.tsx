@@ -45,6 +45,7 @@ const CustomLabel = ({
 }: CustomLabelProps) => {
   return (
     <FormLabel
+      data-testid="label"
       component="legend"
       required={checkIsRequired({
         schema: validationSchema,

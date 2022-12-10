@@ -2,7 +2,11 @@
 import React, { useMemo, useState } from "react";
 import { Button, Container, Typography } from "@mui/material";
 import * as Yup from "yup";
-import { MainType, ViewTypes } from "@components/Formalite/Formalite.type";
+import {
+  FormalitePropsType,
+  MainType,
+  ViewTypes,
+} from "@components/Formalite/Formalite.type";
 import { ImageDownloaderPromise } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
 import { FetchingDataEnum, Language, Theme } from "@components/base/model";
 import { RTL } from "@components/base/RTL";
@@ -52,11 +56,12 @@ type ValidationType = Yup.InferType<typeof validation>;
 type TestFormaliteProps = {
   themeMode: Theme;
   lang?: Language;
-};
+} & Partial<FormalitePropsType<ValidationType>>;
 
 export const TestFormalite = ({
   themeMode,
   lang = "en",
+  ...props
 }: TestFormaliteProps) => {
   const [otherForm, setOtherForm] = useState({});
   const [loading, setLoading] = useState(false);
@@ -157,6 +162,7 @@ export const TestFormalite = ({
                 disabled,
                 selectOptions
               )}
+              translator={() => "aaa"}
               initialValues={iniValues}
               validationSchema={validation}
               formRef={formRef}
@@ -166,6 +172,7 @@ export const TestFormalite = ({
               onSubmit={(values) => {
                 console.log(values);
               }}
+              {...props}
             />
             <Button
               onClick={() => {
@@ -190,6 +197,13 @@ export const TestFormalite = ({
               }}
             >
               Submit
+            </Button>
+            <Button
+              onClick={() => {
+                formRef.current?.callRest();
+              }}
+            >
+              Rest Form
             </Button>
             <Button
               onClick={() => {
@@ -324,7 +338,7 @@ function useFromString(
               placeholder: "some other title",
               disabled,
               onChange: (value) => {
-                console.log(value);
+                // console.log(value);
               },
             },
           },
@@ -353,7 +367,7 @@ function useFromString(
         inputProps: {
           label: "Price",
           onChange: (value) => {
-            console.log(value);
+            // console.log(value);
           },
         },
       },
@@ -467,7 +481,9 @@ function useFromString(
         // datePickerProps: {
         //   mask: "____/__/__",
         // },
-        onChange: (date) => console.log("test datePicker onChange", date),
+        onChange: (date) => {
+          // console.log("test datePicker onChange", date)
+        },
       },
       dateTimePicker: {
         type: ViewTypes.DateTimePickerView,
@@ -480,7 +496,9 @@ function useFromString(
           helperText: "helper text",
         },
         datePickerProps: {},
-        onChange: (date) => console.log("test dateTimePicker onChange", date),
+        onChange: (date) => {
+          console.log("test dateTimePicker onChange", date);
+        },
       },
       timePicker: {
         type: ViewTypes.TimePickerView,
@@ -493,7 +511,9 @@ function useFromString(
           helperText: "helper text",
         },
         timePickerProps: {},
-        onChange: (date) => console.log("test timePicker onChange", date),
+        onChange: (date) => {
+          console.log("test timePicker onChange", date);
+        },
       },
       editor: {
         type: ViewTypes.EditorView,
@@ -664,7 +684,6 @@ function useFromString(
           }),
         onDelete: (id, isFromDefault, isSuccess) =>
           new Promise<void>((resolve, reject) => {
-            console.log(isSuccess);
             setTimeout(() => {
               resolve();
             }, 2000);
@@ -754,7 +773,7 @@ function useFromString(
         inputProps: {
           label: "CheckGroupView",
           onChange: (value, additionalData) => {
-            console.log(value, additionalData);
+            // console.log(value, additionalData);
           },
         },
       },

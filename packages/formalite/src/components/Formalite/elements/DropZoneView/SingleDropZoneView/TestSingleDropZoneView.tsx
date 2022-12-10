@@ -7,9 +7,18 @@ import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
 import type { SingleDropZoneViewType } from "./SingleDropZoneView.type";
 
 const validation = Yup.object({
-  title: Yup.array().of(Yup.mixed()).nullable(),
+  title: Yup.array()
+    .of(
+      Yup.object({
+        preview: Yup.string().required(),
+        uid: Yup.string().required(),
+      })
+    )
+    .nullable(),
 }).required();
 type ValidationType = Yup.InferType<typeof validation>;
+
+const iniValueNull = { title: [] };
 
 const iniValues: ValidationType = {
   title: [
@@ -22,10 +31,12 @@ const iniValues: ValidationType = {
 
 type TestSingleDropZoneViewProps = Omit<SingleDropZoneViewType, "type"> & {
   lang?: Language;
+  withIni?: boolean;
 };
 
 export const TestSingleDropZoneView = ({
   lang = "en",
+  withIni = true,
   ...props
 }: TestSingleDropZoneViewProps) => {
   const formRef = useFormaliteRef<ValidationType>();
@@ -43,7 +54,7 @@ export const TestSingleDropZoneView = ({
     <Formalite<ValidationType>
       lang={lang}
       formString={formString}
-      initialValues={iniValues}
+      initialValues={withIni ? iniValues : iniValueNull}
       validationSchema={validation}
       formRef={formRef}
       onSubmit={(values) => {

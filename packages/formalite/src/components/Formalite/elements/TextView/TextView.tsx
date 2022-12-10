@@ -32,8 +32,8 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
   );
   const mainRef = useRef<HTMLInputElement>();
   const { t } = useI18nContext();
-  let startCursor = 10000;
-  let endCursor = 10000;
+  const startCursor = 10000;
+  const endCursor = 10000;
   const { autoComplete, type, InputProps, ...inputProps } = allData.inputProps;
 
   return (
@@ -58,23 +58,17 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
                   <InputAdornment position="end">
                     <Tooltip title={t("textview_toggle_password_visibility")}>
                       <IconButton
-                        aria-label={t("textview_toggle_password_visibility")}
+                        aria-label={t("fg-toggle-password-visibility")}
                         onClick={() => {
                           setShowPassword(!showPassword);
-                          setTimeout(() => {
-                            if (mainRef.current) {
-                              mainRef.current.selectionStart = startCursor;
-                              mainRef.current.selectionEnd = endCursor;
-                            }
-                          }, 0);
+                          if (mainRef.current) {
+                            mainRef.current.blur();
+                          }
                         }}
                         onMouseDown={(e) => {
                           e.preventDefault();
-                          mainRef.current?.focus();
                           if (mainRef.current) {
-                            startCursor =
-                              mainRef.current.selectionStart || 10000;
-                            endCursor = mainRef.current?.selectionEnd || 10000;
+                            mainRef.current.focus();
                           }
                         }}
                       >
@@ -96,9 +90,5 @@ const TextView = <T extends FormikValues>(props: TextViewProps<T>) => {
   );
 };
 export default React.memo(TextView, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof TextView;

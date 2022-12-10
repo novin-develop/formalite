@@ -71,7 +71,7 @@ export interface MultiDropZoneViewType extends BaseViewType {
    * @param isSuccess > Tells you delete was Success
    */
   onDelete: (
-    id: string,
+    id: string | undefined,
     isFromDefault: boolean,
     isSuccess: boolean
   ) => Promise<void>;
@@ -113,7 +113,7 @@ export interface UploadMultiFileProps extends DropzoneOptions {
   files: (CustomFile | OutsideFile)[];
   showPreview: boolean;
   onRemove: (
-    id: string,
+    id: string | undefined,
     isFromDefault: boolean,
     isSuccess: boolean
   ) => Promise<void>;

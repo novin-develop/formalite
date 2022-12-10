@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestSwitchGroupView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestSwitchGroupView {...args} lang={locale} />;
+  return <TestSwitchGroupView {...args} lang={globals?.locale || "en"} />;
 };
 
 export const Base = Template.bind({});

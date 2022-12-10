@@ -111,9 +111,9 @@ const CheckGroupView = <T extends FormikValues>({
         labelProps={allData.labelProps}
         component={component}
         loadFunction={
-          allData?.dataFetching.type === FetchingDataEnum.AUTOMATIC
+          allData.dataFetching.type === FetchingDataEnum.AUTOMATIC
             ? loadFunction
-            : allData?.dataFetching.onRetry
+            : allData.dataFetching.onRetry
         }
         {...inputProps}
       />

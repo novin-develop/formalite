@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import * as Yup from "yup";
-
 import { Language } from "@components/base/model";
 import { Formalite, MainType, ViewTypes } from "@components/Formalite";
 import { useFormaliteRef } from "@components/Formalite/config/useFormaliteRef";
@@ -11,17 +10,21 @@ const validation = Yup.object({
 }).required();
 type ValidationType = Yup.InferType<typeof validation>;
 
+const iniValueNull = { title: [] };
+
 const iniValues: ValidationType = {
-  title: [],
+  title: ["one", "test"],
 };
 
 type TestComplexAutoCompleteViewProps = Omit<AutoCompleteViewType, "type"> & {
   lang?: Language;
+  withIni: boolean;
   // mode?: "complex " | "freesolo" | "multiple" | "simple"
 };
 
 export const TestComplexAutoCompleteView = ({
   lang = "en",
+  withIni = false,
   ...props
 }: TestComplexAutoCompleteViewProps) => {
   const formRef = useFormaliteRef<ValidationType>();
@@ -39,7 +42,7 @@ export const TestComplexAutoCompleteView = ({
     <Formalite<ValidationType>
       lang={lang}
       formString={formString}
-      initialValues={iniValues}
+      initialValues={withIni ? iniValues : iniValueNull}
       validationSchema={validation}
       formRef={formRef}
       onSubmit={(values) => {

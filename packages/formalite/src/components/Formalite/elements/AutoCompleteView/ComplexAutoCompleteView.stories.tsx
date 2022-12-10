@@ -34,9 +34,9 @@ export default {
 
 const Template: ComponentStory<typeof TestComplexAutoCompleteView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestComplexAutoCompleteView {...args} lang={locale} />;
+  return <TestComplexAutoCompleteView {...args} lang={globals?.locale} />;
 };
 
 export const MultipleAutoCompleteView = Template.bind({});
@@ -53,7 +53,7 @@ MultipleAutoCompleteView.args = {
     freeSolo: false,
     multiple: true,
     onChange: (value) => {
-      console.log(value);
+      // console.log(value);
     },
   },
   dataFetching: {
@@ -98,7 +98,7 @@ ComplexAutoCompleteView.args = {
     freeSolo: true,
     multiple: true,
     onChange: (value) => {
-      console.log(value);
+      // console.log(value);
     },
   },
   dataFetching: {

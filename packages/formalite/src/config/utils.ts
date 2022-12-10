@@ -47,7 +47,7 @@ export const removeUrlExtras = (url: string | undefined): string => {
 };
 
 export const getExtensionFromUrl = (file: CustomFile | OutsideFile) => {
-  if (file.preview === "selected") {
+  if (file.original === "selected") {
     return (file as CustomFile).name.split(".")[1];
   }
   const lastPart =

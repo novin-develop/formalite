@@ -3,3 +3,4 @@
 .eslintcache
 modelOutput
 /lerna-debug.log
+/packages/formalite/coverage/

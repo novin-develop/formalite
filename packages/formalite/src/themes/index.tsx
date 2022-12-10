@@ -28,6 +28,7 @@ export default function ThemeProvider({
     palette: {
       mode: isLight ? "light" : "dark",
     },
+    direction: themeDirection,
   });
 
   return (

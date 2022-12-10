@@ -38,6 +38,7 @@
     "prepublishOnly": "lerna run build:local --scope @novin-dev/formalite",
     "deploy:website" : "lerna run build --scope website",
     "deploy:story" : "lerna run build:storybook --scope @novin-dev/formalite",
+    "test:story" : "lerna run test --scope @novin-dev/formalite",
     "test:story-cover" : "lerna run test:coverage --scope @novin-dev/formalite"
   },
   "workspaces": {

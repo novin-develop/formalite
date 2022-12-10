@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 
 interface ChoromPickerProps {
   colorPicked: string;
@@ -13,7 +13,7 @@ export const ChromePickerComponent = ({
   const [currentColor, setCurrentColor] = useState(colorPicked);
 
   return (
-    <ChromePicker
+    <SketchPicker
       color={currentColor}
       onChange={(value) => setCurrentColor(value.hex)}
       onChangeComplete={(value) => {

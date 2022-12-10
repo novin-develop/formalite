@@ -31,9 +31,9 @@ export default {
 
 const Template: ComponentStory<typeof TestSingleDropZoneView> = (
   args,
-  { globals: { locale } }
+  { globals }
 ) => {
-  return <TestSingleDropZoneView {...args} lang={locale} />;
+  return <TestSingleDropZoneView {...args} lang={globals?.locale} />;
 };
 
 export const SingleDropZoneView = Template.bind({});
@@ -43,7 +43,7 @@ SingleDropZoneView.args = {
     xs: 12,
   },
   inputProps: {
-    label: "aaa",
+    label: "Single Drop Zone",
     dropZoneOptions: {
       maxSize: 3145728,
     },
@@ -56,8 +56,8 @@ SingleDropZoneView.args = {
         progress(50);
       }, 1000);
       setTimeout(() => {
-        // resolve(new Date().getTime().toString());
-        reject(new Error("aaaa"));
+        resolve(new Date().getTime().toString());
+        // reject(new Error("aaaa"));
       }, 2000);
     }),
   onDelete: (id, isFromDefault) =>

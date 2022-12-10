@@ -1,5 +1,4 @@
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import { Language } from "@components/base/model";
 import { FormControl, FormHelperText, Grid } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
@@ -55,7 +54,7 @@ const AvatarDropZone = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
+            tempArray[0].status &&
             tempArray[0].original === "selected"
           ) {
             tempArray[0].progress = progress;
@@ -83,8 +82,8 @@ const AvatarDropZone = <T extends FormikValues>(
           const tempArray = [...pre];
           if (
             tempArray.length &&
-            tempArray[0]?.status &&
-            tempArray[0]?.original === "selected"
+            tempArray[0].status &&
+            tempArray[0].original === "selected"
           ) {
             tempArray[0].status = "error";
             tempArray[0].errorText = e.message;
@@ -95,48 +94,53 @@ const AvatarDropZone = <T extends FormikValues>(
   }, []);
 
   useEffect(() => {
-    const firstData = getData({ source: formik.values, key: name })[0];
-    const controller = new AbortController();
-    if (firstData?.original !== "selected" && !!firstData?.preview) {
-      setPreventDefault(true);
-      if (imageDownloader) {
-        imageDownloader(firstData.preview, controller)
-          .then((res) => {
-            const data = Object.assign(firstData, {
-              original: "default",
-              status: "done",
-              base64: res.base64,
-              preview: res.base64,
-              originalName: res.originalName,
-              size: res.size,
-              errorText: "",
-              controller,
+    if (
+      getData({ source: formik.values, key: name }) &&
+      getData({ source: formik.values, key: name }).length
+    ) {
+      const firstData = getData({ source: formik.values, key: name })[0];
+      const controller = new AbortController();
+      if (firstData.original !== "selected" && !!firstData.preview) {
+        setPreventDefault(true);
+        if (imageDownloader) {
+          imageDownloader(firstData.preview, controller)
+            .then((res) => {
+              const data = Object.assign(firstData, {
+                original: "default",
+                status: "done",
+                base64: res.base64,
+                preview: res.base64,
+                originalName: res.originalName,
+                size: res.size,
+                errorText: "",
+                controller,
+              });
+              setFile([data]);
+              setPreventDefault(false);
+            })
+            .catch((e) => {
+              const data = Object.assign(firstData, {
+                original: "default",
+                status: "error",
+                errorText: e.message,
+              } as OutsideFile);
+              setFile([data]);
+              setPreventDefault(false);
             });
-            setFile([data]);
-            setPreventDefault(false);
-          })
-          .catch((e) => {
-            const data = Object.assign(firstData, {
-              original: "default",
-              status: "error",
-              errorText: e.message,
-            } as OutsideFile);
-            setFile([data]);
-            setPreventDefault(false);
+        } else {
+          const data = Object.assign(firstData, {
+            original: "default",
+            status: "done",
+            base64: firstData.preview,
+            preview: firstData.preview,
+            originalName: getNameFromUrl(firstData.preview),
+            size: 0,
+            errorText: "",
+            controller,
           });
-      } else {
-        const data = Object.assign(firstData, {
-          original: "default",
-          status: "done",
-          base64: firstData.preview,
-          preview: firstData.preview,
-          originalName: getNameFromUrl(firstData.preview),
-          size: 0,
-          errorText: "",
-          controller,
-        });
-        setFile([data]);
-        setPreventDefault(false);
+          setFile([data]);
+          setPreventDefault(false);
+        }
       }
     }
   }, [formik.values[name]]);
@@ -190,7 +194,7 @@ const AvatarDropZone = <T extends FormikValues>(
       />
 
       {(fileRejections.length > 0 ||
-        (typeof file[0] === "object" && file[0]?.status === "error")) && (
+        (typeof file[0] === "object" && file[0].status === "error")) && (
         <RejectionFiles fileRejections={fileRejections} fileState={file[0]} />
       )}
 
@@ -211,9 +215,5 @@ const AvatarDropZone = <T extends FormikValues>(
 };
 
 export default React.memo(AvatarDropZone, (prevProps, nextProps) => {
-  try {
-    return baseMemo(prevProps, nextProps);
-  } catch (e) {
-    return true;
-  }
+  return baseMemo(prevProps, nextProps);
 }) as typeof AvatarDropZone;

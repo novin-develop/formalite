@@ -1,4 +1,4 @@
-on: ["push", "pull_request"]
+on: ["pull_request"]
 
 name: Test Coveralls
 
@@ -16,9 +16,10 @@ jobs:
         with:
           node-version: 10.x
 
-      - name: npm install, make test:story-cover
+      - name: npm install and run test
         run: |
           npm i -g lerna@3 && lerna bootstrap
+          npm run test:story-cover
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:

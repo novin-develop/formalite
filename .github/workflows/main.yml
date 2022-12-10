@@ -7,6 +7,11 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    if:
+      contains('
+        refs/heads/main
+        refs/heads/develop
+      ', github.ref)
     steps:
 
       - uses: actions/checkout@v1

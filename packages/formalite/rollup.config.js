@@ -63,13 +63,14 @@ export default [
   {
     input: "src/index.ts",
     output: [
-      // {
-      //   dir: "./dist/cjs",
-      //   format: "cjs",
-      //   sourcemap: true,
-      //   preserveModules: true,
-      //   preserveModulesRoot: "src",
-      // },
+      {
+        dir: "./dist/cjs",
+        format: "cjs",
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        exports: "named",
+      },
       {
         dir: "./dist/esm",
         format: "esm",

@@ -9,4 +9,3 @@ storybook-static
 bundle-analysis.html
 *.tgz
 coverage
-/coverage/

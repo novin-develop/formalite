@@ -6,4 +6,4 @@ import "@testing-library/jest-dom";
 import fetchMock from "jest-fetch-mock";
 
 fetchMock.enableMocks();
-jest.setTimeout(200000);
+jest.setTimeout(250000);

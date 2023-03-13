@@ -347,7 +347,7 @@ test("Simple Auto Complete: is MANUAL Fetch Error Test -> SimpleAutoComplete", a
   let RetryBtn: HTMLElement;
 
   await waitFor(async () => {
-    ErrorElement = await screen.findByText("Something went wrong!");
+    ErrorElement = await screen.findByText("Problem in receiving data!");
     RetryBtn = await screen.findByRole("button");
     expect(ErrorElement).toBeInTheDocument();
     expect(RetryBtn).toBeInTheDocument();

@@ -11,7 +11,8 @@ export const fa = {
   dropzone_avatar_update_photo: "به روز رسانی تصویر",
   dropzone_avatar_upload_photo: "آپلود تصویر",
 
-  general_something_went_wrong: "خطایی روی داده است!",
+  general_something_went_wrong: "اشکال در دریافت اطلاعات!",
+  fg_select_no_option: "موردی یافت نشد",
 
   error_boundary_title: "اوه!",
   error_boundary_body: "خطایی روی داده است",

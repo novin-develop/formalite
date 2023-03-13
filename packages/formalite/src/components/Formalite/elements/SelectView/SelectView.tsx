@@ -95,6 +95,7 @@ const SelectView = <T extends FormikValues>(props: SelectViewProps<T>) => {
       direction="column"
     >
       <SelectViewAllViews
+        emptyItemLabel={allData.emptyItemLabel}
         formik={formik}
         validationSchema={validationSchema}
         translator={translator}

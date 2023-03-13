@@ -10,6 +10,7 @@ import {
 import {
   checkIsRequired,
   getData,
+  isIOS,
   showErrorMessage,
 } from "@components/Formalite/config/utils";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -51,6 +52,7 @@ type SelectViewAllViewsProps<T> = {
 
 const SelectViewAllViews = <T extends FormikValues>(
   props: SelectViewAllViewsProps<T>
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   const { t } = useI18nContext();
   const {
@@ -87,12 +89,14 @@ const SelectViewAllViews = <T extends FormikValues>(
           label={label}
           displayEmpty
           value={getData({ source: formik.values, key: name })}
-          onFocus={() => {
-            setMouseOver(true);
-          }}
-          onMouseEnter={() => setMouseOver(true)}
-          onMouseLeave={() => setMouseOver(false)}
-          onOpen={() => setMouseOver(false)}
+          {...(!isIOS() && {
+            onFocus: () => {
+              setMouseOver(true);
+            },
+            onMouseEnter: () => setMouseOver(true),
+            onMouseLeave: () => setMouseOver(false),
+            onOpen: () => setMouseOver(false),
+          })}
           onChange={(e) => {
             const { value } = e.target;
             formik.setFieldValue(name, value);
@@ -122,7 +126,7 @@ const SelectViewAllViews = <T extends FormikValues>(
                   margin: "0px 8px",
                   right: "16px",
                   visibility:
-                    mouseOver &&
+                    (isIOS() ? true : mouseOver) &&
                     !inputProps.disabled &&
                     getData({ source: formik.values, key: name }) &&
                     getData({ source: formik.values, key: name }) !== ""

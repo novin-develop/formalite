@@ -367,3 +367,34 @@ test("Select View: is MANUAL Fetch Error Test -> SelectView", async () => {
     expect(mockFn).toHaveBeenCalledWith("called");
   });
 });
+
+/// ================================================ check IOS detection
+
+test("Select View: is in IOS mode works -> SelectView", async () => {
+  const oldUserAgent = window.navigator.userAgent;
+
+  const agentGetter = jest.spyOn(window.navigator, "userAgent", "get");
+  Object.defineProperty(document, "ontouchend", { value: () => {} });
+  agentGetter.mockReturnValue("Mac");
+
+  // @ts-ignore
+  render(<Base {...Base.args} />);
+  const SelectView = screen.getByRole("button", {
+    name: /one/i,
+  });
+  await waitFor(async () => {
+    userEvent.click(SelectView);
+  });
+  const AllOptions = screen.getAllByRole("option");
+  await waitFor(async () => {
+    userEvent.click(AllOptions[1]);
+  });
+
+  await waitFor(async () => {
+    expect(screen.queryByRole("option")).toBeNull();
+    expect(SelectView).toHaveTextContent("two");
+  });
+
+  // rest mocks
+  agentGetter.mockReturnValue(oldUserAgent);
+});

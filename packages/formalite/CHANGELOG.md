@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/novin-develop/formalite/compare/v0.5.0...v0.5.1) (2023-03-13)
+
+
+### Bug Fixes
+
+* change lodash-es to lodash and fix it in rollup ([f616f4b](https://github.com/novin-develop/formalite/commit/f616f4b29f85644bb02ec418112cd1afa56ecc6e))
+
+
+
 ## [0.5.0](https://github.com/novin-develop/formalite/compare/v0.4.3...v0.5.0) (2023-03-13)
 
 

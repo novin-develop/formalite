@@ -79,6 +79,7 @@ const SelectViewAllViews = <T extends FormikValues>(
           Boolean(getData({ source: formik.errors, key: name }))
         }
         fullWidth
+        variant={inputProps.variant}
       >
         <InputLabel htmlFor="my-input">{label}</InputLabel>
         <Select

@@ -1,7 +1,7 @@
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
 import Condition from "yup/lib/Condition";
 import numeral from "numeral";
-import { get } from "lodash-es";
+import { get } from "lodash";
 import { MainType, ViewTypes } from "@components/Formalite/Formalite.type";
 import { ObjectSchema } from "yup";
 import { GroupViewType } from "@components/Formalite/elements/GroupView/GroupView.type";
@@ -49,7 +49,7 @@ const generalCheck = (
       );
 
       const newSchema = condition.fn.bind(null, ...refValues, fieldSchema)();
-      isRequired = get(newSchema, `exclusiveTests.${type}`);
+      isRequired = !!get(newSchema, `exclusiveTests.${type}`);
 
       return !isRequired;
     });

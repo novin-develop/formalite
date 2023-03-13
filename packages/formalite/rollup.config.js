@@ -1,4 +1,6 @@
 import path from "path";
+// eslint-disable-next-line import/no-unresolved
+import { optimizeLodashImports } from "@optimize-lodash/rollup-plugin";
 import { exec } from "child_process";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -59,42 +61,57 @@ const tscAlias = () => {
   };
 };
 
+const sharedConfig = {
+  onwarn,
+  plugins: [
+    resolve(),
+    commonjs(),
+    typescript({
+      tsconfig: "./tsconfig.build.json",
+      useTsconfigDeclarationDir: true,
+    }),
+    svgr({ exportType: "named" }),
+    tscAlias(),
+    visualizer({
+      filename: "bundle-analysis.html",
+    }),
+    image(),
+  ],
+  external: isExternal,
+};
+
 export default [
   {
     input: "src/index.ts",
-    output: [
-      {
-        dir: "./dist/cjs",
-        format: "cjs",
-        sourcemap: true,
-        preserveModules: true,
-        preserveModulesRoot: "src",
-        exports: "named",
-      },
-      {
-        dir: "./dist/esm",
-        format: "esm",
-        sourcemap: true,
-        preserveModules: true,
-        preserveModulesRoot: "src",
-      },
-    ],
-    onwarn,
-    plugins: [
-      resolve(),
-      commonjs(),
-      typescript({
-        tsconfig: "./tsconfig.build.json",
-        useTsconfigDeclarationDir: true,
-      }),
-      svgr({ exportType: "named" }),
-      tscAlias(),
-      visualizer({
-        filename: "bundle-analysis.html",
-      }),
-      image(),
-    ],
-    external: isExternal,
+    output: {
+      dir: "./dist/cjs",
+      format: "cjs",
+      sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: "src",
+      exports: "named",
+    },
+    ...{
+      ...sharedConfig,
+      plugins: [...sharedConfig.plugins, optimizeLodashImports()],
+    },
+  },
+  {
+    input: "src/index.ts",
+    output: {
+      dir: "./dist/esm",
+      format: "esm",
+      sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: "src",
+    },
+    ...{
+      ...sharedConfig,
+      plugins: [
+        ...sharedConfig.plugins,
+        optimizeLodashImports({ useLodashEs: true }),
+      ],
+    },
   },
   {
     input: "dist/types/index.d.ts",

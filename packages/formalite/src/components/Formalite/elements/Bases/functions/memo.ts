@@ -4,7 +4,7 @@ import {
   generateNestedKeyForYup,
   getData,
 } from "@components/Formalite/config/utils";
-import { get } from "lodash-es";
+import { get } from "lodash";
 
 export const baseMemo = (
   prevProps: Readonly<PropsWithChildren<any>>,

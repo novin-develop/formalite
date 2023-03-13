@@ -15,7 +15,6 @@ import {
 import ClearIcon from "@mui/icons-material/Clear";
 import React, { useState } from "react";
 import { FormikProps, FormikValues } from "formik";
-import { OptionalObjectSchema } from "yup/lib/object";
 import {
   SelectGroupStateType,
   SelectInputPropsType,
@@ -23,6 +22,7 @@ import {
 } from "@components/Formalite/elements/SelectView/SelectView.type";
 import ViewPending from "@components/Formalite/components/ViewPending";
 import ViewError from "@components/Formalite/components/ViewError";
+import { useI18nContext } from "@components/base/I18nProvider";
 import { ObjectSchema } from "yup";
 
 const selectSX = {
@@ -46,11 +46,13 @@ type SelectViewAllViewsProps<T> = {
   dataStatus: SelectGroupStateType;
   allInputProps: SelectInputPropsType;
   loadFunction: () => void;
+  emptyItemLabel?: string | null;
 };
 
 const SelectViewAllViews = <T extends FormikValues>(
   props: SelectViewAllViewsProps<T>
 ) => {
+  const { t } = useI18nContext();
   const {
     formik,
     name,
@@ -59,6 +61,7 @@ const SelectViewAllViews = <T extends FormikValues>(
     dataStatus,
     loadFunction,
     allInputProps,
+    emptyItemLabel = t("fg_select_no_option"),
   } = props;
   const { label, onChange, placeholder, helperText, ...inputProps } =
     allInputProps;
@@ -104,7 +107,7 @@ const SelectViewAllViews = <T extends FormikValues>(
           renderValue={(selected) => {
             // console.log(selected)
             if (selected) {
-              return dataStatus.data[selected].label;
+              return dataStatus.data[selected]?.label;
             }
             return placeholder;
           }}
@@ -144,7 +147,23 @@ const SelectViewAllViews = <T extends FormikValues>(
           sx={selectSX}
         >
           {dataStatus.status === SelectStateEnum.READY &&
-            Object.entries(dataStatus.data).map(([key, value]) => {
+            (Object.entries(dataStatus.data).length || emptyItemLabel === null
+              ? Object.entries(dataStatus.data)
+              : [
+                  [
+                    "",
+                    {
+                      label: emptyItemLabel,
+                      props: {
+                        style: { fontStyle: "italic", opacity: 0.3 },
+                        disabled: true,
+                        selected: false,
+                      },
+                      additionalData: {},
+                    } as any,
+                  ],
+                ]
+            ).map(([key, value]) => {
               return (
                 <MenuItem
                   key={key}

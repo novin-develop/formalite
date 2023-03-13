@@ -11,7 +11,8 @@ export const en = {
   dropzone_avatar_update_photo: "Update photo",
   dropzone_avatar_upload_photo: "Upload photo",
 
-  general_something_went_wrong: "Something went wrong!",
+  general_something_went_wrong: "Problem in receiving data!",
+  fg_select_no_option: "No option",
 
   error_boundary_title: "Oops!",
   error_boundary_body: "There is a problem in loading!",

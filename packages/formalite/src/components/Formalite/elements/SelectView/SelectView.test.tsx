@@ -69,6 +69,82 @@ test("Select View: is select options works -> SelectView", async () => {
     expect(SelectView).toHaveTextContent("two");
   });
 });
+/// ============================================================= Check if no option works
+
+test("Select View: is remove no options works -> SelectView", async () => {
+  render(
+    <Base
+      layoutProps={{
+        md: 6,
+        xs: 12,
+      }}
+      emptyItemLabel={null}
+      dataFetching={{
+        type: FetchingDataEnum.AUTOMATIC,
+        options: () =>
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve({});
+            }, 1);
+          }),
+      }}
+      inputProps={{
+        label: "Select Title",
+        helperText: "HelperText",
+        onChange: () => {
+          throw new Error("Error");
+        },
+      }}
+    />
+  );
+
+  // check
+  const ProgressView = screen.getByRole("progressbar");
+  await waitForElementToBeRemoved(ProgressView);
+
+  const SelectView = screen.getByRole("button");
+  await waitFor(async () => {
+    userEvent.click(SelectView);
+  });
+  expect(screen.queryByRole("option")).toBeNull();
+});
+
+test("Select View: is no options works -> SelectView", async () => {
+  render(
+    <Base
+      layoutProps={{
+        md: 6,
+        xs: 12,
+      }}
+      dataFetching={{
+        type: FetchingDataEnum.AUTOMATIC,
+        options: () =>
+          new Promise((resolve, reject) => {
+            resolve({});
+          }),
+      }}
+      inputProps={{
+        label: "Select Title",
+        helperText: "HelperText",
+        onChange: () => {
+          throw new Error("Error");
+        },
+      }}
+    />
+  );
+
+  // check
+  const ProgressView = screen.getByRole("progressbar");
+  await waitForElementToBeRemoved(ProgressView);
+
+  const SelectView = screen.getByRole("button");
+  await waitFor(async () => {
+    userEvent.click(SelectView);
+  });
+  expect(screen.queryAllByRole("option")).toHaveLength(1);
+  expect(screen.getByText("No option")).toBeInTheDocument();
+});
+
 /// ============================================================= Check OnChange works
 
 test("Select View: is onChange throw error works -> SelectView", async () => {
@@ -78,6 +154,7 @@ test("Select View: is onChange throw error works -> SelectView", async () => {
         md: 6,
         xs: 12,
       }}
+      emptyItemLabel="some string"
       dataFetching={{
         type: FetchingDataEnum.AUTOMATIC,
         options: () =>
@@ -279,7 +356,7 @@ test("Select View: is MANUAL Fetch Error Test -> SelectView", async () => {
   let RetryBtn: HTMLElement;
 
   await waitFor(async () => {
-    ErrorElement = await screen.findByText("Something went wrong!");
+    ErrorElement = await screen.findByText("Problem in receiving data!");
     RetryBtn = await screen.findByRole("button");
     expect(ErrorElement).toBeInTheDocument();
     expect(RetryBtn).toBeInTheDocument();

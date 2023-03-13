@@ -46,6 +46,11 @@ export interface SelectViewType extends BaseViewType {
    * Choosing type of data fetching for this component
    */
   dataFetching: FetchingDataType<SelectViewOptionsType>;
+
+  /**
+   * Override "no Item" Label; if set to null will be disabled
+   */
+  emptyItemLabel?: string | null;
 }
 
 export enum SelectStateEnum {

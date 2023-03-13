@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.0](https://github.com/novin-develop/formalite/compare/v0.4.3...v0.5.0) (2023-03-13)
+
+
+### Features
+
+* add no option to SelectView ([0879dec](https://github.com/novin-develop/formalite/commit/0879dec82bbba0fe5b1a73d3da88503eefc41f66))
+
+
+### Bug Fixes
+
+* add variant support to selectView ([1ba3345](https://github.com/novin-develop/formalite/commit/1ba33459318ea8351666e9bde2dbe379bf63d18e))
+* fix bug double click on options in IOS for selectView ([d524564](https://github.com/novin-develop/formalite/commit/d5245645d66736a7e8ca7e374be09dcb6893d33f))
+
+
+
+
 ## [0.4.3](https://github.com/novin-develop/formalite/compare/v0.4.2...v0.4.3) (2022-12-14)
 
 **Note:** Version bump only for package formalite

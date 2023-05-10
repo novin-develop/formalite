@@ -33,6 +33,7 @@ type AvatarComponentPropsType<T> = {
   getInputProps: <K extends DropzoneRootProps>(props?: K) => K;
   isDragActive: boolean;
   isDragReject: boolean;
+  disabled: boolean;
 };
 
 export const AvatarComponent = <T extends FormikValues>(
@@ -49,6 +50,7 @@ export const AvatarComponent = <T extends FormikValues>(
     getRootProps,
     getInputProps,
     isDragActive,
+    disabled,
   } = props;
   const { t } = useI18nContext();
   return (
@@ -61,19 +63,22 @@ export const AvatarComponent = <T extends FormikValues>(
         }),
       }}
     >
-      <DeleteIconButton
-        name={name}
-        file={file}
-        uploadController={uploadController}
-        setFile={setFile}
-        formik={formik}
-        onDelete={onDelete}
-      />
+      {!disabled && (
+        <DeleteIconButton
+          name={name}
+          file={file}
+          uploadController={uploadController}
+          setFile={setFile}
+          formik={formik}
+          onDelete={onDelete}
+        />
+      )}
 
       <DropZoneStyle
         {...getRootProps()}
         sx={{
           ...(isDragActive && { opacity: 0.72 }),
+          cursor: disabled ? "default" : "pointer",
         }}
       >
         <input {...getInputProps()} data-testid="drop-input" />
@@ -93,28 +98,30 @@ export const AvatarComponent = <T extends FormikValues>(
           />
         )}
 
-        <PlaceholderStyle
-          className="placeholder"
-          sx={(theme: Theme) => ({
-            ...(file[0] && {
-              opacity: `${0}`,
-              color: `${theme.palette.common.white}`,
-              bgcolor: `${theme.palette.grey[900]}`,
-              "&:hover": { opacity: `${0.72}` },
-            }),
-            ...((isDragReject ||
-              !!getData({ source: formik.errors, key: name })) && {
-              bgcolor: `${theme.palette.error.light}`,
-            }),
-          })}
-        >
-          <AddAPhotoIcon sx={{ width: 24, height: 24, mb: 1 }} />
-          <Typography variant="caption">
-            {file[0]
-              ? t("dropzone_avatar_update_photo")
-              : t("dropzone_avatar_upload_photo")}
-          </Typography>
-        </PlaceholderStyle>
+        {!disabled && (
+          <PlaceholderStyle
+            className="placeholder"
+            sx={(theme: Theme) => ({
+              ...(file[0] && {
+                opacity: `${0}`,
+                color: `${theme.palette.common.white}`,
+                bgcolor: `${theme.palette.grey[900]}`,
+                "&:hover": { opacity: `${0.72}` },
+              }),
+              ...((isDragReject ||
+                !!getData({ source: formik.errors, key: name })) && {
+                bgcolor: `${theme.palette.error.light}`,
+              }),
+            })}
+          >
+            <AddAPhotoIcon sx={{ width: 24, height: 24, mb: 1 }} />
+            <Typography variant="caption">
+              {file[0]
+                ? t("dropzone_avatar_update_photo")
+                : t("dropzone_avatar_upload_photo")}
+            </Typography>
+          </PlaceholderStyle>
+        )}
       </DropZoneStyle>
       {file[0]?.status === "deleting" && (
         <CustomCircularProgress

@@ -41,7 +41,7 @@ const AvatarDropZone = <T extends FormikValues>(
   } = props;
   const { onUpload, inputProps, layoutProps, onDelete, imageDownloader } =
     allData;
-  const { dropZoneOptions = {}, helperText } = inputProps;
+  const { dropZoneOptions = {}, helperText, disabled = false } = inputProps;
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>([]);
   const [preventDrop, setPreventDefault] = useState(false);
   const uploadController = new AbortController();
@@ -154,7 +154,7 @@ const AvatarDropZone = <T extends FormikValues>(
   } = useDropzone({
     multiple: false,
     ...dropZoneOptions,
-    disabled: preventDrop,
+    disabled: preventDrop || disabled,
     onDrop: (acceptedFiles) => {
       const tempFile = Object.assign(acceptedFiles[0], {
         original: "selected",
@@ -191,6 +191,7 @@ const AvatarDropZone = <T extends FormikValues>(
         getInputProps={getInputProps}
         isDragActive={isDragActive}
         isDragReject={isDragReject}
+        disabled={disabled}
       />
 
       {(fileRejections.length > 0 ||

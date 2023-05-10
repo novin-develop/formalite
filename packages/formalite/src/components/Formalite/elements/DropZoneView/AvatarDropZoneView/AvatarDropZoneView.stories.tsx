@@ -44,6 +44,7 @@ AvatarDropZoneView.args = {
   },
   inputProps: {
     label: "aaa",
+    disabled: false,
     dropZoneOptions: {
       maxSize: 3145728,
     },

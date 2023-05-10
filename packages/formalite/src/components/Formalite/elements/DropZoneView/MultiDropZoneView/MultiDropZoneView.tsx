@@ -45,7 +45,6 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
       theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
       0.72
     ),
-    cursor: "pointer",
   },
 })) as any;
 
@@ -64,7 +63,7 @@ const MultiDropZoneView = <T extends FormikValues>(
     showPreview,
     isSmallView = false,
   } = allData;
-  const { dropZoneOptions = {}, helperText } = inputProps;
+  const { dropZoneOptions = {}, helperText, disabled = false } = inputProps;
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>(
     fixDropZoneDefaultValue(getData({ source: formik.values, key: name }) || [])
   );
@@ -198,6 +197,7 @@ const MultiDropZoneView = <T extends FormikValues>(
     fileRejections,
   } = useDropzone({
     multiple: true,
+    disabled,
     ...dropZoneOptions,
     onDrop: (acceptedFiles: File[]) => {
       const tempFile = acceptedFiles.map((item) =>
@@ -253,6 +253,7 @@ const MultiDropZoneView = <T extends FormikValues>(
             bgcolor: "error.lighter",
             padding: theme.spacing(isSmallView ? 3 : 5, 1),
           }),
+          cursor: disabled ? "default" : "pointer",
         })}
       >
         <input {...getInputProps()} ref={inputRef} data-testid="drop-input" />
@@ -287,6 +288,7 @@ const MultiDropZoneView = <T extends FormikValues>(
         }}
         uploadFunction={uploadFunction}
         uploadController={uploadController}
+        disabled={disabled}
       />
 
       {helperText ||

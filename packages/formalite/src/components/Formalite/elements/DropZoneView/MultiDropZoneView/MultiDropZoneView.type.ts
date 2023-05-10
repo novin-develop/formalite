@@ -46,6 +46,7 @@ export interface MultiDropZoneViewType extends BaseViewType {
      * Text show below component (ReactNode)
      */
     helperText?: ReactNode;
+    disabled?: boolean;
   };
 
   /**

@@ -38,6 +38,7 @@ export default function MultiFilePreview({
   setToFormik,
   uploadFunction,
   uploadController,
+  disabled,
 }: UploadMultiFileProps) {
   const hasFile = files.length > 0;
 
@@ -146,22 +147,24 @@ export default function MultiFilePreview({
                     preview={<Image alt="file preview" src={preview} />}
                   />
                   <Grid>
-                    <IconButton
-                      size="small"
-                      onClick={(e) => {
-                        DeleteFunc(e, file);
-                      }}
-                      sx={{
-                        zIndex: 2,
-                        top: 3,
-                        p: "2px",
-                        right: 3,
-                        position: "absolute",
-                        color: "common.white",
-                      }}
-                    >
-                      <CloseIcon />
-                    </IconButton>
+                    {!disabled && (
+                      <IconButton
+                        size="small"
+                        onClick={(e) => {
+                          DeleteFunc(e, file);
+                        }}
+                        sx={{
+                          zIndex: 2,
+                          top: 3,
+                          p: "2px",
+                          right: 3,
+                          position: "absolute",
+                          color: "common.white",
+                        }}
+                      >
+                        <CloseIcon />
+                      </IconButton>
+                    )}
                     {status === "error" && (
                       <IconButton
                         size="small"
@@ -289,15 +292,17 @@ export default function MultiFilePreview({
                           <ReplayIcon />
                         </IconButton>
                       )}
-                      <IconButton
-                        edge="end"
-                        size="small"
-                        onClick={(e) => {
-                          DeleteFunc(e, file);
-                        }}
-                      >
-                        <CloseIcon />
-                      </IconButton>
+                      {!disabled && (
+                        <IconButton
+                          edge="end"
+                          size="small"
+                          onClick={(e) => {
+                            DeleteFunc(e, file);
+                          }}
+                        >
+                          <CloseIcon />
+                        </IconButton>
+                      )}
                       {status !== "error" && file.original === "default" && (
                         <IconButton
                           edge="end"

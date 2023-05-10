@@ -84,6 +84,11 @@ export interface SingleDropZoneViewType extends BaseViewType {
     pathUrl: string,
     controller: AbortController
   ) => Promise<ImageDownloaderPromise>;
+
+  /**
+   * Choose size of MultiDropZoneView
+   */
+  isSmallView?: boolean;
 }
 
 export type SingleDropZoneViewProps<T> = {

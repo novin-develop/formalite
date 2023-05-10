@@ -5,7 +5,7 @@ import { PaddingContainer } from "@components/base/PaddingContainer";
 import { TestMultiDropZoneView } from "./TestMultiDropZoneView";
 import {
   MultiDropZoneViewCode,
-  SmallDropZoneViewCode,
+  SmallMultiDropZoneViewCode,
 } from "./MultiDropZoneView.code";
 
 export default {
@@ -82,8 +82,8 @@ MultiDropZoneView.parameters = {
   },
 };
 
-export const SmallDropZoneView = Template.bind({});
-SmallDropZoneView.args = {
+export const SmallMultiDropZoneView = Template.bind({});
+SmallMultiDropZoneView.args = {
   layoutProps: {
     md: 6,
     xs: 12,
@@ -115,11 +115,11 @@ SmallDropZoneView.args = {
       }, 1000);
     }),
 };
-SmallDropZoneView.storyName = "Small dropzone";
-SmallDropZoneView.parameters = {
+SmallMultiDropZoneView.storyName = "Small dropzone";
+SmallMultiDropZoneView.parameters = {
   docs: {
     source: {
-      code: SmallDropZoneViewCode,
+      code: SmallMultiDropZoneViewCode,
       language: "javascript",
       type: "auto",
     },

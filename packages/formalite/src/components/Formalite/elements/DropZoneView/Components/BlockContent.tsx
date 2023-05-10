@@ -65,9 +65,15 @@ type BlockContentType = {
   isLessMd: boolean;
 };
 
-type HelperSectionType = Pick<BlockContentType, "file" | "required">;
+type HelperSectionType = Pick<BlockContentType, "file" | "required"> & {
+  isSmall?: boolean;
+};
 
-const HelperSection = ({ required, file }: HelperSectionType) => {
+export const HelperSection = ({
+  required,
+  file,
+  isSmall,
+}: HelperSectionType) => {
   const { t } = useI18nContext();
 
   return (
@@ -81,7 +87,10 @@ const HelperSection = ({ required, file }: HelperSectionType) => {
       </Typography>
 
       <Typography variant="body2" sx={{ color: "text.secondary" }}>
-        {t("dropzone_drop_files_here_or_click")}&nbsp;
+        {isSmall
+          ? t("dropzone_click")
+          : t("dropzone_select_thorough_your_machine")}
+        &nbsp;
         <Typography
           variant="body2"
           component="span"

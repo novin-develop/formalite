@@ -3,7 +3,10 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { dropzoneImageDownloader } from "@components/Formalite/elements/DropZoneView/utils";
 import { PaddingContainer } from "@components/base/PaddingContainer";
 import { TestSingleDropZoneView } from "./TestSingleDropZoneView";
-import { SingleDropZoneViewCode } from "./SingleDropZoneView.code";
+import {
+  SingleDropZoneViewCode,
+  SmallSingleDropZoneViewCode,
+} from "./SingleDropZoneView.code";
 
 export default {
   title: "Components/DropZoneView",
@@ -72,6 +75,49 @@ SingleDropZoneView.parameters = {
   docs: {
     source: {
       code: SingleDropZoneViewCode,
+      language: "javascript",
+      type: "auto",
+    },
+  },
+};
+
+export const SmallSingleDropZoneView = Template.bind({});
+SmallSingleDropZoneView.args = {
+  layoutProps: {
+    md: 6,
+    xs: 12,
+  },
+  inputProps: {
+    label: "aaa",
+    dropZoneOptions: {
+      maxSize: 3145728,
+    },
+    helperText: `Allowed *.jpeg, *.jpg, *.png, *.gif`,
+  },
+  isSmallView: true,
+  imageDownloader: dropzoneImageDownloader,
+  onUpload: (_file, progress) =>
+    new Promise<string>((_resolve, reject) => {
+      setTimeout(() => {
+        progress(50);
+      }, 1000);
+      setTimeout(() => {
+        // resolve(new Date().getTime().toString());
+        reject(new Error("aaaa"));
+      }, 1000);
+    }),
+  onDelete: (_id, _isFromDefault) =>
+    new Promise<void>((resolve, _reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    }),
+};
+SmallSingleDropZoneView.storyName = "Small Single dropzone";
+SmallSingleDropZoneView.parameters = {
+  docs: {
+    source: {
+      code: SmallSingleDropZoneViewCode,
       language: "javascript",
       type: "auto",
     },

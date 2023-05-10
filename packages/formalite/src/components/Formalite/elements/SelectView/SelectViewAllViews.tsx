@@ -6,6 +6,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Typography,
 } from "@mui/material";
 import {
   checkIsRequired,
@@ -71,11 +72,15 @@ const SelectViewAllViews = <T extends FormikValues>(
   if (dataStatus.status === SelectStateEnum.READY) {
     return (
       <FormControl
-        required={checkIsRequired({
-          schema: validationSchema,
-          formikValues: formik.values,
-          key: name,
-        })}
+        required={
+          label
+            ? checkIsRequired({
+                schema: validationSchema,
+                formikValues: formik.values,
+                key: name,
+              })
+            : false
+        }
         error={
           getData({ source: formik.touched, key: name }) &&
           Boolean(getData({ source: formik.errors, key: name }))
@@ -83,10 +88,16 @@ const SelectViewAllViews = <T extends FormikValues>(
         fullWidth
         variant={inputProps.variant}
       >
-        <InputLabel htmlFor="my-input">{label}</InputLabel>
+        <InputLabel
+          htmlFor="my-input"
+          shrink={!!placeholder && !!label ? true : undefined}
+        >
+          {label}
+        </InputLabel>
         <Select
           name={name}
           label={label}
+          notched={!!placeholder && !!label ? true : undefined}
           displayEmpty
           value={getData({ source: formik.values, key: name })}
           {...(!isIOS() && {
@@ -114,7 +125,11 @@ const SelectViewAllViews = <T extends FormikValues>(
             if (selected) {
               return dataStatus.data[selected]?.label;
             }
-            return placeholder;
+            return (
+              <Typography variant="inherit" color="text.disabled">
+                {placeholder || <>&nbsp;</>}
+              </Typography>
+            );
           }}
           {...inputProps}
           endAdornment={

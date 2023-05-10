@@ -6,6 +6,7 @@ export const fa = {
 
   dropzone_drop_or_select_file: "فایل را رها یا انتخاب کنید",
   dropzone_drop_files_here_or_click: "فایل‌ها را اینجا رها کنید یا با",
+  dropzone_click: "کلیک کنید تا با",
   dropzone_browse: "مرور",
   dropzone_select_thorough_your_machine: "از سیستم خودتان انتخاب کنید",
   dropzone_avatar_update_photo: "به روز رسانی تصویر",

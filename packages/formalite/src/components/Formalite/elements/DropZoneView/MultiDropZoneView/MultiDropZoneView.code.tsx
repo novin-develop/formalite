@@ -90,7 +90,7 @@ export const MultiDropZoneView = () => {
 };
 `;
 
-export const SmallDropZoneViewCode = `
+export const SmallMultiDropZoneViewCode = `
 import React, { useMemo } from "react";
 import * as Yup from "yup";
 

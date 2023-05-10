@@ -6,6 +6,7 @@ export const en = {
 
   dropzone_drop_or_select_file: "Drop or Select file",
   dropzone_drop_files_here_or_click: "Drop files here or click",
+  dropzone_click: "Click to",
   dropzone_browse: "browse",
   dropzone_select_thorough_your_machine: "thorough your machine",
   dropzone_avatar_update_photo: "Update photo",

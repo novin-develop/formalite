@@ -26,12 +26,12 @@ import {
   OutsideFile,
 } from "@components/Formalite/elements/DropZoneView/Components/Global.type";
 import { getNameFromUrl } from "@config/utils";
+import SingleSmallBlockContent from "@components/Formalite/elements/DropZoneView/Components/SinagleSmallBlockContent";
 
 const DropZoneStyle = styled("div")(({ theme }) => ({
   outline: "none",
   overflow: "hidden",
   position: "relative",
-  padding: theme.spacing(4, 1),
   borderRadius: theme.shape.borderRadius,
   transition: theme.transitions.create("padding"),
   backgroundColor:
@@ -48,11 +48,18 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
 
 const SingleDropZoneView = <T extends FormikValues>(
   props: SingleDropZoneViewProps<T>
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   const { allData, name, formik, loading, validationSchema, translator } =
     props;
-  const { onUpload, inputProps, layoutProps, onDelete, imageDownloader } =
-    allData;
+  const {
+    onUpload,
+    inputProps,
+    layoutProps,
+    onDelete,
+    imageDownloader,
+    isSmallView = false,
+  } = allData;
   const { dropZoneOptions = {}, helperText } = inputProps;
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>([]);
   const [preventDrop, setPreventDefault] = useState(false);
@@ -193,7 +200,10 @@ const SingleDropZoneView = <T extends FormikValues>(
   if (loading) {
     return (
       <Grid item {...allData.layoutProps}>
-        <TextViewSkeleton height={253} hasHelper={!!helperText} />
+        <TextViewSkeleton
+          height={isSmallView ? 126 : 253}
+          hasHelper={!!helperText}
+        />
       </Grid>
     );
   }
@@ -216,6 +226,7 @@ const SingleDropZoneView = <T extends FormikValues>(
       <DropZoneStyle
         {...getRootProps()}
         sx={{
+          padding: theme.spacing(isSmallView ? 2 : 4, 1),
           ...(isDragActive && { opacity: 0.72 }),
           ...((isDragReject ||
             (!!getData({ source: formik.errors, key: name }) &&
@@ -227,23 +238,40 @@ const SingleDropZoneView = <T extends FormikValues>(
         }}
       >
         <input {...getInputProps()} ref={inputRef} data-testid="drop-input" />
-
-        <BlockContent
-          isLessMd={isLessMd}
-          file={file[0]}
-          onDelete={onDelete}
-          setFile={setFile}
-          resetDropZone={() => {
-            formik.setFieldValue(String(name), []);
-          }}
-          required={checkIsMin({
-            schema: validationSchema,
-            formikValues: formik.values,
-            key: String(name),
-          })}
-          uploadFunction={uploadFunction}
-          uploadController={uploadController}
-        />
+        {isSmallView ? (
+          <SingleSmallBlockContent
+            required={checkIsMin({
+              schema: validationSchema,
+              formikValues: formik.values,
+              key: String(name),
+            })}
+            file={file[0]}
+            onDelete={onDelete}
+            setFile={setFile}
+            resetDropZone={() => {
+              formik.setFieldValue(String(name), []);
+            }}
+            uploadFunction={uploadFunction}
+            uploadController={uploadController}
+          />
+        ) : (
+          <BlockContent
+            isLessMd={isLessMd}
+            file={file[0]}
+            onDelete={onDelete}
+            setFile={setFile}
+            resetDropZone={() => {
+              formik.setFieldValue(String(name), []);
+            }}
+            required={checkIsMin({
+              schema: validationSchema,
+              formikValues: formik.values,
+              key: String(name),
+            })}
+            uploadFunction={uploadFunction}
+            uploadController={uploadController}
+          />
+        )}
       </DropZoneStyle>
       {(fileRejections.length > 0 ||
         (typeof file[0] === "object" && file[0].status === "error")) && (

@@ -63,6 +63,7 @@ type BlockContentType = {
   uploadFunction: (file: CustomFile) => void;
   uploadController: AbortController;
   isLessMd: boolean;
+  disabled: boolean;
 };
 
 type HelperSectionType = Pick<BlockContentType, "file" | "required"> & {
@@ -166,26 +167,28 @@ export default function BlockContent(props: BlockContentType) {
     >
       {props.file ? (
         <Box width={220} sx={{ position: "relative" }}>
-          <Box
-            sx={(theme) => ({
-              position: "absolute",
-              top: "-5px",
-              right: "-5px",
-              borderRadius: "6px",
-              background: theme.palette.error.main,
-              width: "24px",
-              color: "white",
-              height: "24px",
-              zIndex: 5,
-              "&:hover": {
-                background: theme.palette.error.dark,
-                cursor: "pointer",
-              },
-            })}
-            onClick={boxClick}
-          >
-            <CloseIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
-          </Box>
+          {!props.disabled && (
+            <Box
+              sx={(theme) => ({
+                position: "absolute",
+                top: "-5px",
+                right: "-5px",
+                borderRadius: "6px",
+                background: theme.palette.error.main,
+                width: "24px",
+                color: "white",
+                height: "24px",
+                zIndex: 5,
+                "&:hover": {
+                  background: theme.palette.error.dark,
+                  cursor: "pointer",
+                },
+              })}
+              onClick={boxClick}
+            >
+              <CloseIcon sx={{ padding: "4px", boxSizing: "border-box" }} />
+            </Box>
+          )}
           {props.file.status === "error" && (
             <Box
               sx={(theme) => ({

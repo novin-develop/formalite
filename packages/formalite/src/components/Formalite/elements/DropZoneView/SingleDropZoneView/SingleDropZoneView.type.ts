@@ -43,6 +43,7 @@ export interface SingleDropZoneViewType extends BaseViewType {
      * Text show below component (ReactNode)
      */
     helperText?: ReactNode;
+    disabled?: boolean;
   };
 
   /**

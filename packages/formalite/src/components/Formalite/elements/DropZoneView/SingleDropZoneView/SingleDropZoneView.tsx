@@ -42,7 +42,6 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
       theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
       0.72
     ),
-    cursor: "pointer",
   },
 })) as any;
 
@@ -60,7 +59,7 @@ const SingleDropZoneView = <T extends FormikValues>(
     imageDownloader,
     isSmallView = false,
   } = allData;
-  const { dropZoneOptions = {}, helperText } = inputProps;
+  const { dropZoneOptions = {}, helperText, disabled = false } = inputProps;
   const [file, setFile] = useState<(CustomFile | OutsideFile)[]>([]);
   const [preventDrop, setPreventDefault] = useState(false);
   const uploadController = new AbortController();
@@ -181,7 +180,7 @@ const SingleDropZoneView = <T extends FormikValues>(
   } = useDropzone({
     multiple: false,
     ...dropZoneOptions,
-    disabled: preventDrop,
+    disabled: preventDrop || disabled,
     onDrop: (acceptedFiles) => {
       const tempFile = Object.assign(acceptedFiles[0], {
         original: "selected",
@@ -235,6 +234,7 @@ const SingleDropZoneView = <T extends FormikValues>(
             borderColor: "error.light",
             bgcolor: "error.lighter",
           }),
+          cursor: disabled ? "default" : "pointer",
         }}
       >
         <input {...getInputProps()} ref={inputRef} data-testid="drop-input" />
@@ -253,6 +253,7 @@ const SingleDropZoneView = <T extends FormikValues>(
             }}
             uploadFunction={uploadFunction}
             uploadController={uploadController}
+            disabled={disabled}
           />
         ) : (
           <BlockContent
@@ -270,6 +271,7 @@ const SingleDropZoneView = <T extends FormikValues>(
             })}
             uploadFunction={uploadFunction}
             uploadController={uploadController}
+            disabled={disabled}
           />
         )}
       </DropZoneStyle>

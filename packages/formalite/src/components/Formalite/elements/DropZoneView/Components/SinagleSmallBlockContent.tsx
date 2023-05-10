@@ -26,8 +26,10 @@ type SingleSmallBlockContentProps = {
   required: boolean;
   uploadFunction: (file: CustomFile) => void;
   uploadController?: AbortController;
+  disabled: boolean;
 };
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const SingleSmallBlockContent = (props: SingleSmallBlockContentProps) => {
   const { t } = useI18nContext();
 
@@ -43,63 +45,65 @@ const SingleSmallBlockContent = (props: SingleSmallBlockContentProps) => {
       >
         {props.file ? (
           <Box width={110} sx={{ position: "relative" }}>
-            <Box
-              sx={(theme) => ({
-                position: "absolute",
-                top: "-5px",
-                right: "-5px",
-                borderRadius: "6px",
-                background: theme.palette.error.main,
-                width: "24px",
-                color: "white",
-                height: "24px",
-                zIndex: 5,
-                "&:hover": {
-                  background: theme.palette.error.dark,
-                  cursor: "pointer",
-                },
-              })}
-              onClick={(e) => {
-                e.stopPropagation();
-                props.uploadController?.abort();
-                props.setFile((pre) => {
-                  const tempArray = [...pre];
-                  if (tempArray.length) {
-                    tempArray[0].status = "deleting";
+            {!props.disabled && (
+              <Box
+                sx={(theme) => ({
+                  position: "absolute",
+                  top: "-5px",
+                  right: "-5px",
+                  borderRadius: "6px",
+                  background: theme.palette.error.main,
+                  width: "24px",
+                  color: "white",
+                  height: "24px",
+                  zIndex: 5,
+                  "&:hover": {
+                    background: theme.palette.error.dark,
+                    cursor: "pointer",
+                  },
+                })}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  props.uploadController?.abort();
+                  props.setFile((pre) => {
+                    const tempArray = [...pre];
+                    if (tempArray.length) {
+                      tempArray[0].status = "deleting";
+                    }
+                    return tempArray;
+                  });
+                  try {
+                    props.file?.controller.abort();
+                  } catch (e1) {
+                    // Do nothing
                   }
-                  return tempArray;
-                });
-                try {
-                  props.file?.controller.abort();
-                } catch (e1) {
-                  // Do nothing
-                }
-                if (props.onDelete) {
-                  props
-                    .onDelete(
-                      props.file?.uid || "",
-                      props.file?.original === "default",
-                      !props.file?.errorText?.length
-                    )
-                    .then(() => {
-                      props.resetDropZone();
-                      props.setFile([]);
-                    })
-                    .catch((e1) => {
-                      props.setFile((pre) => {
-                        const tempArray = [...pre];
-                        if (tempArray.length && tempArray[0]?.status) {
-                          tempArray[0].status = "error";
-                          tempArray[0].errorText = e1.message;
-                        }
-                        return tempArray;
+                  if (props.onDelete) {
+                    props
+                      .onDelete(
+                        props.file?.uid || "",
+                        props.file?.original === "default",
+                        !props.file?.errorText?.length
+                      )
+                      .then(() => {
+                        props.resetDropZone();
+                        props.setFile([]);
+                      })
+                      .catch((e1) => {
+                        props.setFile((pre) => {
+                          const tempArray = [...pre];
+                          if (tempArray.length && tempArray[0]?.status) {
+                            tempArray[0].status = "error";
+                            tempArray[0].errorText = e1.message;
+                          }
+                          return tempArray;
+                        });
                       });
-                    });
-                }
-              }}
-            >
-              <CloseIcon sx={{ padding: "4px" }} />
-            </Box>
+                  }
+                }}
+              >
+                <CloseIcon sx={{ padding: "4px" }} />
+              </Box>
+            )}
             {props.file.status === "error" && (
               <Box
                 sx={(theme) => ({

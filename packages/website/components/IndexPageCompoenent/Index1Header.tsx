@@ -17,7 +17,7 @@ export const Index1Header = () => {
           spacing={2}
           mt={4}
         >
-          <Link href="https://formalite-docs.novin.dev" target="_blank">
+          <Link href="https://formalite-storybook.mostafaroosta.ir" target="_blank">
             <Button size={"large"} variant="contained">Document Page</Button>
           </Link>
           <Link href="https://github.com/novin-develop/formalite" target="_blank">

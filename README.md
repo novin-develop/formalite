@@ -9,9 +9,9 @@ Generate MUI form with few line of code
 [![last_commit](https://img.shields.io/github/last-commit/novin-develop/formalite)](https://github.com/novin-develop/formalite)
 
 
-### [Website Link](https://formalite.novin.dev/)
+### [Website Link](https://formalite.mostafaroosta.ir/)
 
-### [Documents Link](https://formalite-docs.novin.dev/)
+### [Documents Link](https://formalite-storybook.mostafaroosta.ir/)
 
 ## Install
 
